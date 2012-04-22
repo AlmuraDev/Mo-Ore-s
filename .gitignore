@@ -1,0 +1,22 @@
+###################
+# Byte code files #
+###################
+*.class
+
+#################
+# Package Files #
+#################
+*.jar
+*.war
+*.ear
+
+####################
+# specific folders #
+####################
+bin
+#######################
+# Workspase generated #
+#######################
+.project
+.classpath
+.settings
