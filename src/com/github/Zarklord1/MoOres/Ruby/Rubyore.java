@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.oreblocks;
+package com.github.Zarklord1.MoOres.Ruby;
 
 import org.bukkit.World;
 import org.bukkit.entity.Entity;

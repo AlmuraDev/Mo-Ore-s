@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.oreblocks;
+package com.github.Zarklord1.MoOres.Crystalite;
 
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -8,8 +8,8 @@ import org.getspout.commons.block.BlockFace;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class Silverore extends GenericCubeCustomBlock {
-	public Silverore(Plugin plugin) {
+public class Crsytaliteore extends GenericCubeCustomBlock {
+	public Crsytaliteore(Plugin plugin) {
         super(plugin, "Flarite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
 	}
 	 

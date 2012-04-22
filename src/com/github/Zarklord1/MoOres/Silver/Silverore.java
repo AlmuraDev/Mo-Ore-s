@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.oreblocks;
+package com.github.Zarklord1.MoOres.Silver;
 
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -8,8 +8,8 @@ import org.getspout.commons.block.BlockFace;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class Thermiteore extends GenericCubeCustomBlock {
-	public Thermiteore(Plugin plugin) {
+public class Silverore extends GenericCubeCustomBlock {
+	public Silverore(Plugin plugin) {
         super(plugin, "Flarite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
 	}
 	 
