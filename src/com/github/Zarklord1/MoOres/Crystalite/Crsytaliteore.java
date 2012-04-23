@@ -11,7 +11,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class Crsytaliteore extends GenericCubeCustomBlock {
 	public Crsytaliteore(Plugin plugin) {
-        super(plugin, "Flarite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
+        super(plugin, "Crystalite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
         SpoutManager.getFileManager().addToPreLoginCache(plugin,  "http://cdn.spout.org/img/icon/spout_16x16.png");
 	}
 	 

@@ -11,7 +11,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class Thermiteore extends GenericCubeCustomBlock {
 	public Thermiteore(Plugin plugin) {
-        super(plugin, "Flarite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
+        super(plugin, "Thermite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
         SpoutManager.getFileManager().addToPreLoginCache(plugin,  "http://cdn.spout.org/img/icon/spout_16x16.png");
 	}
 	 
