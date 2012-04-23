@@ -5,12 +5,14 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 import org.getspout.commons.block.BlockFace;
+import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class Crsytaliteore extends GenericCubeCustomBlock {
 	public Crsytaliteore(Plugin plugin) {
         super(plugin, "Flarite Ore", "http://cdn.spout.org/img/icon/spout_16x16.png", 16);
+        SpoutManager.getFileManager().addToPreLoginCache(plugin,  "http://cdn.spout.org/img/icon/spout_16x16.png");
 	}
 	 
     public void onNeighborBlockChange(World world, int x, int y, int z, int changedId) { }
