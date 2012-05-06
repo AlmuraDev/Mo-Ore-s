@@ -7,7 +7,7 @@
 /*    */ import org.bukkit.Bukkit;
 /*    */ import org.bukkit.configuration.InvalidConfigurationException;
 /*    */ import org.bukkit.configuration.file.YamlConfiguration;
-/*    */ import org.yaml.snakeyaml.error.YAMLException;
+import org.yaml.snakeyaml.error.YAMLException;
 /*    */ 
 /*    */ public class MyConfiguration extends YamlConfiguration
 /*    */ {
@@ -69,7 +69,7 @@
 /* 69 */       throw new UnsupportedOperationException("You didn't use a File to create this object.");
 /* 70 */     super.save(this.file);
 /*    */   }
-/*    */ }
+/*    */}
 
 /* Location:           C:\Users\zachary\Documents\Desktop\RpgEssentials\
  * Qualified Name:     me.duckdoom5.RpgEssentials.config.MyConfiguration

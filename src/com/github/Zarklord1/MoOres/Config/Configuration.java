@@ -59,10 +59,10 @@ import com.github.Zarklord1.MoOres.MoOres;
 /*     */ 
 /*  95 */     if (load(items, "items.yml")) {
 /*  96 */       items = MyConfiguration.loadConfiguration("plugins/Mo Ores/items.yml");
-/*  97 */       ItemConfig.set();
+/*  97 */       ItemConfig1.set();
 /*  98 */       save(items);
 /*     */     }
-/* 100 */     ItemConfig.set();
+/* 100 */     ItemConfig1.set();
 /*     */     try {
 /* 102 */       items.save();
 /*     */     } catch (Exception e) {
@@ -71,10 +71,10 @@ import com.github.Zarklord1.MoOres.MoOres;
 /*     */ 
 			  if (load(texture, "textures.yml")) {
 /* 168 */       texture = MyConfiguration.loadConfiguration("plugins/Mo Ores/textures.yml");
-/* 169 */       TextureConfig.set();
+/* 169 */       TextureConfig1.set();
 /* 170 */       save(texture);
 /*     */     }
-/* 172 */     TextureConfig.set();
+/* 172 */     TextureConfig1.set();
 /*     */     try {
 /* 174 */       texture.save();
 /*     */     } catch (Exception e) {

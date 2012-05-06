@@ -56,7 +56,7 @@
 /*  59 */       Configuration.Ores.set("Original Ores.Diamond Ore.minheight", Integer.valueOf(2));
 /*     */     }
 /*  61 */     if (!Configuration.Ores.contains("Original Ores.Diamond Ore.maxheight")) {
-/*  62 */       Configuration.Ores.set("Original Ores.Diamond Ore.maxheight", Integer.valueOf(18));
+/*  62 */       Configuration.Ores.set("Original Ores.Diamond Ore.maxheight", Integer.valueOf(17));
 /*     */     }
 /*     */ 
 /*  68 */     if (!Configuration.Ores.contains("Custom Ores.Flarite Ore.textureID")) {
@@ -91,8 +91,8 @@
 /* 101 */       Configuration.Ores.set("Custom Ores.Ruby Ore.hardness", Integer.valueOf(8));
 /*     */     }
 /*     */     if (!Configuration.Ores.contains("Custom Ores.Ruby Ore.drop")) {
-/*  81 */       Configuration.Ores.set("Custom Ores.Ruby Ore.drop", "Ruby");
 /*     */       Configuration.Ores.set("Custom Ores.Ruby Ore.drop.amount",  Integer.valueOf(1));
+/*  81 */       Configuration.Ores.set("Custom Ores.Ruby Ore.drop", "Ruby");
 /*     */     }
 /*     */ 
 /* 105 */     if (!Configuration.Ores.contains("Custom Ores.Thermite Ore.textureID")) {
@@ -111,8 +111,8 @@
 /* 118 */       Configuration.Ores.set("Custom Ores.Thermite Ore.hardness", Integer.valueOf(7));
 /*     */     }
 /*     */     if (!Configuration.Ores.contains("Custom Ores.Thermite Ore.drop")) {
-/*  81 */       Configuration.Ores.set("Custom Ores.Thermite Ore.drop", "Thermite Dust");
 /*     */       Configuration.Ores.set("Custom Ores.Thermite Ore.drop.amount",  Integer.valueOf(4));
+/*  81 */       Configuration.Ores.set("Custom Ores.Thermite Ore.drop", "Thermite Dust");
 /*     */     }
 /*     */ 
 /* 122 */     if (!Configuration.Ores.contains("Custom Ores.Silver Ore.textureID")) {
@@ -147,8 +147,8 @@
 /* 152 */       Configuration.Ores.set("Custom Ores.Crystalite Ore.hardness", Integer.valueOf(8));
 /*     */     }
 /*     */     if (!Configuration.Ores.contains("Custom Ores.Crystalite Ore.drop")) {
+				Configuration.Ores.set("Custom Ores.Crystalite Ore.drop.amount",  Integer.valueOf(2));
 /*  81 */       Configuration.Ores.set("Custom Ores.Crystalite Ore.drop", "Crystalite");
-/*     */       Configuration.Ores.set("Custom Ores.Crystalite Ore.drop.amount",  Integer.valueOf(2));
 /*     */     }
 }
 }

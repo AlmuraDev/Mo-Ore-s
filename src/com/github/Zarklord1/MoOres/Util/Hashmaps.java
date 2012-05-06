@@ -16,6 +16,7 @@ import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFood;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.material.CustomBlock;
 import org.getspout.spoutapi.material.CustomItem;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
@@ -43,9 +44,11 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 /*     */ 
 /*  51 */   public static Set<GenericCustomFood> customfish = new LinkedHashSet();
 /*  52 */   public static HashMap<String, GenericCustomFood> customfishmap = new LinkedHashMap();
+
+/*  55 */   public static Set<CustomBush> custombushes = new LinkedHashSet();
+/*  55 */   public static HashMap<String, CustomBush> custombushesmap = new LinkedHashMap();
 /*     */ 
 /*  54 */   public static Set<OriginalOres> originalores = new LinkedHashSet();
-/*  55 */   public static Set<GenericCubeCustomBlock> bushes = new LinkedHashSet();
 /*  57 */   public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet();
 /*     */
 /*     */   public static void CustomOres(MoOres plugin) {
@@ -103,6 +106,17 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 /* 116 */         addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount);
 /*     */     }
 /*     */   }
+
+/*     */   public static void CustomBushes(MoOres plugin) {
+/*  65 */     ConfigurationSection section = Configuration.Blocks.getConfigurationSection("Custom Bushes");
+			  Iterator keys = section.getKeys(false).iterator();
+/*  67 */     while (keys.hasNext()) {
+/*  68 */       String name = (String)keys.next();
+/*  69 */       int textureID = Configuration.Blocks.getInt("Custom Bushes." + name + ".textureID");
+/*  70 */       int freq = Configuration.Blocks.getInt("Custom Bushes." + name + ".frequency");
+/*  98 */       addbushes(plugin, name, new int[] {textureID, textureID, textureID, textureID, textureID, textureID}, freq);
+/*  98 */     }
+/*  98 */	}
 /*     */ 
 /*     */   public static void CustomBlock(MoOres plugin) {
 /* 121 */     ConfigurationSection section = Configuration.Blocks.getConfigurationSection("Custom Blocks");
@@ -120,36 +134,52 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 /*     */   public static void CustomItems(MoOres plugin) {
 /* 134 */     ConfigurationSection section = Configuration.items.getConfigurationSection("Custom Items");
 /* 135 */     Iterator keys = section.getKeys(false).iterator();
+int y = 0;
 /* 136 */     while (keys.hasNext()) {
 /* 137 */       String name = (String)keys.next();
 /* 138 */       String textureurl = Configuration.items.getString("Custom Items." + name + ".texture url");
 /* 139 */       addItem(plugin, name, textureurl);
+y++;
+MoOres.log.info(y +"items added");
 /*     */   
 /*     */     }
 /* 141 */     ConfigurationSection section2 = Configuration.items.getConfigurationSection("Custom Tools");
 /* 142 */     Iterator keys2 = section2.getKeys(false).iterator();
+y = 0;
 /* 143 */     while (keys2.hasNext()) {
 /* 144 */       String name = (String)keys2.next();
 /* 145 */       String textureurl = Configuration.items.getString("Custom Tools." + name + ".texture url");
-/* 146 */       int durability = Configuration.items.getInt("Custom Tools." + name + ".durability");
-/* 147 */       addTool(plugin, name, textureurl, durability);
+/* 146 */       int durability1 = Configuration.items.getInt("Custom Tools." + name + ".durability");
+/*     */       int strength1 = Configuration.items.getInt("Custom Tools." + name + ".toolstrength");
+/*     */       String toolType = "Pickaxe";//Configuration.items.getString("Custom Tools." + name + ".Type of Tool");
+/*     */       short durability = 1150;//(short) durability1;
+/*     */       float strength = 25;//(float) strength1;
+/* 147 */       addTool(plugin, name, textureurl, durability, strength, toolType);
+y++;
+MoOres.log.info(y +"Tools added");
 /*     */     }
 /* 149 */     ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
 /* 150 */     Iterator keys3 = section3.getKeys(false).iterator();
+y = 0;
 /* 151 */     while (keys3.hasNext()) {
 /* 152 */       String name = (String)keys3.next();
 /* 153 */       String textureurl = Configuration.items.getString("Custom Food." + name + ".texture url");
 /* 154 */       int restore = Configuration.items.getInt("Custom Food." + name + ".restore");
 /* 155 */       addFood(plugin, name, textureurl, restore);
+y++;
+MoOres.log.info(y +"Food added");
 /*     */     }
 /* 157 */     ConfigurationSection section4 = Configuration.items.getConfigurationSection("Custom Fish");
 /* 158 */     Iterator keys4 = section4.getKeys(false).iterator();
+y = 0;
 /* 159 */     while (keys4.hasNext()) {
 /* 160 */       String name = (String)keys4.next();
 /* 161 */       String textureurl = Configuration.items.getString("Custom Fish." + name + ".texture url");
 /* 162 */       int restore = Configuration.items.getInt("Custom Fish." + name + ".restore");
 /* 163 */       addFood(plugin, name, textureurl, restore);
 /* 164 */       addFish(plugin, name, textureurl);
+y++;
+MoOres.log.info(y +"Fish added");
 /*     */     }
 /*     */   }
 /*     */ 
@@ -190,11 +220,17 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 				customfishmap.put(name, fish);
 			}
 			
-			private static void addTool(MoOres plugin, String name, String textureurl, int durability) {
-				CustomTools tool = new CustomTools(plugin, name, textureurl, (short)durability);
-					customtools.add(tool);
+			private static void addTool(MoOres plugin, String name, String textureurl, short durability, float strength, String toolType) {
+				CustomTools tool = new CustomTools(plugin, name, textureurl, durability, strength, toolType);
+				customtools.add(tool);
 				customtoolsmap.put(name, tool);
 			}
+			
+			private static void addbushes(MoOres plugin, String name, int[] textureids, int freq) {
+/* 175 */     CustomBush bush = new CustomBush(plugin, name, textureids, freq);
+/* 176 */     custombushes.add(bush);
+/* 177 */     custombushesmap.put(name, bush);
+/*     */   }
 /*     */ 
 /*     */
 /*     */   public static void registerBlocks(MoOres plugin)
@@ -211,31 +247,10 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 /* 225 */     originalores.add(GoldOre);
 /* 226 */     originalores.add(RedstoneOre);
 /* 227 */     originalores.add(DiamondOre);
-/* 229 */     CustomItems(plugin);
 /* 230 */     CustomBlock(plugin);
 /* 231 */     CustomOres(plugin);
+/*  98 */	  CustomBushes(plugin);
+/*     */     CustomItems(plugin);
 /*     */  
-/* 277 */     CustomBush orangebush = new CustomBush(plugin, "Orange Bush", new int[6], 50);
-/* 278 */     CustomBush darkgreenbush = new CustomBush(plugin, "Dark Green Bush", new int[] { 3, 3, 3, 3, 3, 3 }, 50);
-/* 279 */     CustomBush greenbush = new CustomBush(plugin, "Green Bush", new int[] { 4, 4, 4, 4, 4, 4 }, 50);
-/* 280 */     CustomBush lightgreenbush = new CustomBush(plugin, "Light Green Bush", new int[] { 5, 5, 5, 5, 5, 5 }, 50);
-/* 281 */     CustomBush greenbush2 = new CustomBush(plugin, "Green Bush", new int[] { 6, 6, 6, 6, 6, 6 }, 50);
-/* 282 */     CustomBush darkgreenbush2 = new CustomBush(plugin, "Dark Green Bush", new int[] { 7, 7, 7, 7, 7, 7 }, 50);
-/* 283 */     CustomBush darkgreenbush3 = new CustomBush(plugin, "Dark Green Bush", new int[] { 8, 8, 8, 8, 8, 8 }, 50);
-/* 284 */     CustomBush lightgreenbush2 = new CustomBush(plugin, "Light Green Bush", new int[] { 9, 9, 9, 9, 9, 9 }, 50);
-/* 285 */     CustomBush greenbush3 = new CustomBush(plugin, "Green Bush", new int[] { 10, 10, 10, 10, 10, 10 }, 50);
-/* 286 */     CustomBush pinkbush = new CustomBush(plugin, "Pink Bush", new int[] { 11, 11, 11, 11, 11, 11 }, 50);
-/* 287 */     CustomBush whitebush = new CustomBush(plugin, "White Bush", new int[] { 12, 12, 12, 12, 12, 12 }, 50);
-/* 288 */     bushes.add(orangebush);
-/* 289 */     bushes.add(darkgreenbush);
-/* 290 */     bushes.add(greenbush);
-/* 291 */     bushes.add(lightgreenbush);
-/* 292 */     bushes.add(greenbush2);
-/* 293 */     bushes.add(darkgreenbush2);
-/* 294 */     bushes.add(darkgreenbush3);
-/* 295 */     bushes.add(lightgreenbush2);
-/* 296 */     bushes.add(greenbush3);
-/* 297 */     bushes.add(pinkbush);
-/* 298 */     bushes.add(whitebush);
 /*     */   }
 /*     */ }

@@ -61,7 +61,7 @@ public class MoOres extends JavaPlugin{
 
 
 	public void onDisable(){ 
-		Hashmaps.bushes.clear();
+		Hashmaps.custombushes.clear();
 		Hashmaps.customitems.clear();
 		Hashmaps.customores.clear();
 		Hashmaps.customtools.clear();

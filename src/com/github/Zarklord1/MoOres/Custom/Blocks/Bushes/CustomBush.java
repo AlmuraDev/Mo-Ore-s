@@ -1,6 +1,7 @@
 package com.github.Zarklord1.MoOres.Custom.Blocks.Bushes;
 
 import com.github.Zarklord1.MoOres.*;
+
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
@@ -15,4 +16,5 @@ private MoOres plugin;
     setBlockDesign(new CustomBushDesign(plugin, textureids, freq));
     this.plugin = plugin;
   }
+
 }
