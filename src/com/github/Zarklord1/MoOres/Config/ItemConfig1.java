@@ -176,7 +176,7 @@
 /*     */     }
 /*     */ 
 /* 375 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.texture url")) {
-/* 376 */       Configuration.items.set("Custom Tools.Silver Pickaxe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Adamantinepick.png");
+/* 376 */       Configuration.items.set("Custom Tools.Silver Pickaxe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/52.png");
 /*     */     }
 /* 378 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.durability")) {
 /* 379 */       Configuration.items.set("Custom Tools.Silver Pickaxe.durability", Integer.valueOf(650));

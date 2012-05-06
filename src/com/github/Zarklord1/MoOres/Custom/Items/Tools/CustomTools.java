@@ -12,6 +12,7 @@ public class CustomTools extends GenericCustomTool
 	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, String toolType) {
 		super(plugin, name, textureurl);
 		this.setDurability(durability);
+		this.setStrengthModifier(MaterialData.trapdoor, strength);
 		if (toolType == "Pickaxe") {
 			for (CustomBlocks Blocks:Hashmaps.customblocks) {
 				this.setStrengthModifier(Blocks, strength);

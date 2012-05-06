@@ -140,7 +140,7 @@ int y = 0;
 /* 138 */       String textureurl = Configuration.items.getString("Custom Items." + name + ".texture url");
 /* 139 */       addItem(plugin, name, textureurl);
 y++;
-MoOres.log.info(y +"items added");
+MoOres.log.info(y +" items added");
 /*     */   
 /*     */     }
 /* 141 */     ConfigurationSection section2 = Configuration.items.getConfigurationSection("Custom Tools");
@@ -150,13 +150,13 @@ y = 0;
 /* 144 */       String name = (String)keys2.next();
 /* 145 */       String textureurl = Configuration.items.getString("Custom Tools." + name + ".texture url");
 /* 146 */       int durability1 = Configuration.items.getInt("Custom Tools." + name + ".durability");
-/*     */       int strength1 = Configuration.items.getInt("Custom Tools." + name + ".toolstrength");
+/*     */       //int strength1 = Configuration.items.getInt("Custom Tools." + name + ".toolstrength");
 /*     */       String toolType = "Pickaxe";//Configuration.items.getString("Custom Tools." + name + ".Type of Tool");
-/*     */       short durability = 1150;//(short) durability1;
+/*     */       short durability = (short) durability1;
 /*     */       float strength = 25;//(float) strength1;
 /* 147 */       addTool(plugin, name, textureurl, durability, strength, toolType);
 y++;
-MoOres.log.info(y +"Tools added");
+MoOres.log.info(y +" Tools added");
 /*     */     }
 /* 149 */     ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
 /* 150 */     Iterator keys3 = section3.getKeys(false).iterator();
@@ -167,7 +167,7 @@ y = 0;
 /* 154 */       int restore = Configuration.items.getInt("Custom Food." + name + ".restore");
 /* 155 */       addFood(plugin, name, textureurl, restore);
 y++;
-MoOres.log.info(y +"Food added");
+MoOres.log.info(y +" Food added");
 /*     */     }
 /* 157 */     ConfigurationSection section4 = Configuration.items.getConfigurationSection("Custom Fish");
 /* 158 */     Iterator keys4 = section4.getKeys(false).iterator();
@@ -179,7 +179,7 @@ y = 0;
 /* 163 */       addFood(plugin, name, textureurl, restore);
 /* 164 */       addFish(plugin, name, textureurl);
 y++;
-MoOres.log.info(y +"Fish added");
+MoOres.log.info(y +" Fish added");
 /*     */     }
 /*     */   }
 /*     */ 
