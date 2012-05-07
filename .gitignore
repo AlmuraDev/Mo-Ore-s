@@ -20,3 +20,4 @@ bin
 .project
 .classpath
 .settings
+/nbproject/private/
