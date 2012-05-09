@@ -24,3 +24,5 @@ nbproject
 .settings
 /nbproject/private/
 *.xml
+/build/
+/dist/

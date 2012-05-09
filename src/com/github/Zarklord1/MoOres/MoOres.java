@@ -10,10 +10,12 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.block.design.Texture;
 import com.github.Zarklord1.MoOres.Config.Configuration;
+import com.github.Zarklord1.MoOres.Events.*;
 import com.github.Zarklord1.MoOres.Generator.Generator;
 import com.github.Zarklord1.MoOres.Util.BO2ObjectManager;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import com.github.Zarklord1.MoOres.Util.Recipes;
+import org.bukkit.plugin.PluginManager;
 
 public class MoOres extends JavaPlugin{
 	
@@ -96,5 +98,9 @@ public class MoOres extends JavaPlugin{
 	  public ChunkGenerator getDefaultWorldGenerator(String worldname, String uid) {
 		    return new Generator(this);
 		  }
+          public void reg() {
+              PluginManager pm = this.getServer().getPluginManager();
+              pm.registerEvents(new MoOresEntityListener(this), this);
+          }
 	  
 }

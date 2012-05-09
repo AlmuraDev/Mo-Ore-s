@@ -1,0 +1,5 @@
+name: Mo Ores
+main: com.github.Zarklord1.MoOres.MoOres
+version: 1.5 Alpha
+load: startup
+depend: [Spout]
