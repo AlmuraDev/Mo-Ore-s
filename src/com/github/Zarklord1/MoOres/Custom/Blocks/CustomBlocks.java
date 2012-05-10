@@ -12,7 +12,7 @@ private int light = 1;
 
   public CustomBlocks(MoOres plugin, String name, int textureID, float hard, int light, float friction) {
     super(plugin, name, new GenericCubeBlockDesign(plugin, plugin.blocks, textureID));
-    setLightLevel(light);
+    this.setLightLevel(light);
   }
 
   public float gethardness() {

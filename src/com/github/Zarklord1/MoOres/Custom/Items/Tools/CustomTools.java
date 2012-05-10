@@ -9,11 +9,12 @@ import com.github.Zarklord1.MoOres.Util.Hashmaps;
 
 public class CustomTools extends GenericCustomTool
 {
-	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, String toolType) {
+    int damage;
+	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword) {
 		super(plugin, name, textureurl);
 		this.setDurability(durability);
 		this.setStrengthModifier(MaterialData.trapdoor, strength);
-		if (toolType == "Pickaxe") {
+		if (Pickaxe) {
 			for (CustomBlocks Blocks:Hashmaps.customblocks) {
 				this.setStrengthModifier(Blocks, strength);
 			}
@@ -73,12 +74,21 @@ public class CustomTools extends GenericCustomTool
 			this.setStrengthModifier(MaterialData.stoneDoubleSlabs, strength);
 			this.setStrengthModifier(MaterialData.stonePressurePlate, strength);
 			this.setStrengthModifier(MaterialData.stoneSlab, strength);
-		} else if (toolType == "Axe") {
-			this.setStrengthModifier(MaterialData.trapdoor, strength);
-		} else if (toolType == "Shovel") {
-			this.setStrengthModifier(MaterialData.trapdoor, strength);
-		} else if (toolType == "Sword") {
+		}
+                if (Axe) {
 			this.setStrengthModifier(MaterialData.trapdoor, strength);
 		}
+                if (Shovel) {
+			this.setStrengthModifier(MaterialData.trapdoor, strength);
+		}
+                if (Sword) {
+			this.setStrengthModifier(MaterialData.trapdoor, strength);
+		}
+                if (Hoe) {
+                    
+                }
+                if (Bow) {
+                    
+                }
 	}
 }

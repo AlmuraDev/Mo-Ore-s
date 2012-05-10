@@ -22,24 +22,25 @@ public class MoOresEntityListener implements Listener  {
         plugin = instance; 
     }
     
-    @EventHandler(priority = EventPriority.NORMAL)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDamage ( EntityDamageByEntityEvent event )
     {
 	if( event.getCause() == DamageCause.ENTITY_ATTACK ) {
             Entity entityhit = event.getEntity();
             Entity entityhitting = event.getDamager();
-            SpoutPlayer splayer = SpoutManager.getPlayer( (org.bukkit.entity.Player) (entityhitting) );
             if (entityhitting instanceof Player){
-    		for (GenericCustomTool tool:Hashmaps.customtools){
-                    if (Configuration.items.getBoolean("Custom Tools." + tool.getName() + ".tooltype.Sword") == true) {
-                        if (splayer.getItemInHand().equals(tool)) {
-                            if (Configuration.items.contains("Custom Tools." + tool.getName() + ".damage")) {
-                                    int damage = Configuration.items.getInt("Custom Tools." + tool.getName() + ".damage");
-                                    event.setDamage(damage);
+                Player player = (Player) entityhitting;
+                if (player instanceof SpoutPlayer) {
+                    SpoutPlayer splayer = (SpoutPlayer) player;
+                    for (GenericCustomTool tool:Hashmaps.customtools){
+                        if (Configuration.items.getBoolean("Custom Tools." + tool.getName() + ".tooltype.Sword")) {
+                            if (splayer.getItemInHand().equals(tool)) {
+                                int damage = Configuration.items.getInt("Custom Tools." + tool.getName() + ".damage");
+                                event.setDamage(damage);
                             }
                         }
                     }
-    		}   	
+                }                
             }
         }
 	/*@SuppressWarnings("deprecation")

@@ -30,11 +30,11 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 /*  36 */   public static Set<CustomOres> customores = new LinkedHashSet();
 /*  37 */   public static HashMap<String, CustomOres> customoresmap = new LinkedHashMap();
 /*     */ 
-			public static Set<CustomBlocks> customblocks = new LinkedHashSet();
+	    public static Set<CustomBlocks> customblocks = new LinkedHashSet();
 /*  37 */   public static HashMap<String, CustomBlocks> customblocksmap = new LinkedHashMap();
 /*     */ 
-/*  42 */    public static Set<GenericCustomItem> customitems = new LinkedHashSet();
-			 public static HashMap<String, GenericCustomItem> customitemsmap = new LinkedHashMap();
+/*  42 */   public static Set<GenericCustomItem> customitems = new LinkedHashSet();
+	    public static HashMap<String, GenericCustomItem> customitemsmap = new LinkedHashMap();
 
 /*  45 */   public static Set<GenericCustomTool> customtools = new LinkedHashSet();
 /*  46 */   public static HashMap<String, GenericCustomTool> customtoolsmap = new LinkedHashMap();
@@ -53,7 +53,7 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 /*     */
 /*     */   public static void CustomOres(MoOres plugin) {
 /*  65 */     ConfigurationSection section = Configuration.Ores.getConfigurationSection("Custom Ores");
-			  Iterator keys = section.getKeys(false).iterator();
+	      Iterator keys = section.getKeys(false).iterator();
 /*  67 */     while (keys.hasNext()) {
 /*  68 */       String name = (String)keys.next();
 /*  69 */       int textureID = Configuration.Ores.getInt("Custom Ores." + name + ".textureID");
