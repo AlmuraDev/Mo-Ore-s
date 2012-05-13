@@ -39,7 +39,7 @@ import net.royawesome.jlibnoise.module.source.Voronoi;
 import org.spout.api.generator.biome.Biome;
 import org.spout.api.generator.biome.BiomeSelector;
 
-import org.spout.vanilla.world.generator.VanillaBiomes;
+import com.github.Zarklord1.MoOres.Generator.generator.VanillaBiomes;
 
 public class WhittakerNoiseSelector extends BiomeSelector {
 	private static double scale;

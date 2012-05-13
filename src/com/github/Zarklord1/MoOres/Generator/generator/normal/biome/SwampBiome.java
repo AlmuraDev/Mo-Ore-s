@@ -24,7 +24,7 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.generator.normal.biome;
+package com.github.Zarklord1.MoOres.Generator.generator.normal.biome;
 
 import org.spout.api.util.cuboid.CuboidShortBuffer;
 

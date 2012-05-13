@@ -24,10 +24,9 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.generator;
+package com.github.Zarklord1.MoOres.Generator.generator;
 
-import org.spout.api.generator.biome.Biome;
-import org.spout.api.generator.biome.BiomeDecorator;
+
 
 public abstract class VanillaBiome extends Biome {
 	private final int biomeId;

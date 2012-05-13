@@ -24,24 +24,10 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.generator;
+package com.github.Zarklord1.MoOres.Generator.generator;
 
-import org.spout.vanilla.world.generator.flat.biome.FlatGrassBiome;
-import org.spout.vanilla.world.generator.nether.biome.NetherrackBiome;
-import org.spout.vanilla.world.generator.normal.biome.BeachBiome;
-import org.spout.vanilla.world.generator.normal.biome.DesertBiome;
-import org.spout.vanilla.world.generator.normal.biome.ForestBiome;
-import org.spout.vanilla.world.generator.normal.biome.JungleBiome;
-import org.spout.vanilla.world.generator.normal.biome.MountainsBiome;
-import org.spout.vanilla.world.generator.normal.biome.MushroomBiome;
-import org.spout.vanilla.world.generator.normal.biome.OceanBiome;
-import org.spout.vanilla.world.generator.normal.biome.PlainBiome;
-import org.spout.vanilla.world.generator.normal.biome.RiverBiome;
-import org.spout.vanilla.world.generator.normal.biome.SmallMountainsBiome;
-import org.spout.vanilla.world.generator.normal.biome.SwampBiome;
-import org.spout.vanilla.world.generator.normal.biome.TaigaBiome;
-import org.spout.vanilla.world.generator.normal.biome.TundraBiome;
-import org.spout.vanilla.world.generator.theend.biome.EndStoneBiome;
+import com.github.Zarklord1.MoOres.Generator.generator.normal.biome.*;
+
 
 public class VanillaBiomes {
 	//TODO These numbers need to be checked...
@@ -53,12 +39,9 @@ public class VanillaBiomes {
 	public static final VanillaBiome TAIGA = new TaigaBiome(5);
 	public static final VanillaBiome SWAMP = new SwampBiome(6);
 	public static final VanillaBiome RIVER = new RiverBiome(7);
-	public static final VanillaBiome NETHERRACK = new NetherrackBiome(8);
 	public static final VanillaBiome TUNDRA = new TundraBiome(12);
 	public static final VanillaBiome MUSHROOM = new MushroomBiome(14);
 	public static final VanillaBiome BEACH = new BeachBiome(16);
 	public static final VanillaBiome SMALL_MOUNTAINS = new SmallMountainsBiome(20);
 	public static final VanillaBiome JUNGLE = new JungleBiome(21);
-	public static final VanillaBiome ENDSTONE = new EndStoneBiome(22);
-	public static final VanillaBiome FLATGRASS = new FlatGrassBiome(23);
 }

@@ -24,18 +24,13 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.populator;
+package com.github.Zarklord1.MoOres.Generator.populator;
 
 import java.util.Random;
+import org.bukkit.Chunk;
+import org.bukkit.block.Biome;
+import org.getspout.commons.material.BlockMaterial;
 
-import org.spout.api.generator.Populator;
-import org.spout.api.generator.biome.Biome;
-import org.spout.api.geo.World;
-import org.spout.api.geo.cuboid.Block;
-import org.spout.api.geo.cuboid.Chunk;
-import org.spout.api.material.BlockMaterial;
-
-import org.spout.vanilla.material.VanillaMaterials;
 
 /**
  * Populator ran at stage 2 of world generation which serves to smooth
@@ -48,6 +43,12 @@ public class SmoothPopulator implements Populator {
 	// to sample when smoothing. (byte) Math.floor((double) SIDE_LENGTH / 2D);
 	private final static byte SAMPLE_SIZE = 1;
 	private final static byte SMOOTHING_AMOUNT_DAMPENER = 7;
+
+    private static class World {
+
+        public World() {
+        }
+    }
 
 	@Override
 	public void populate(Chunk chunk, Random random) {

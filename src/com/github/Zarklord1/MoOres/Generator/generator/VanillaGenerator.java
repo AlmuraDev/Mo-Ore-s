@@ -24,12 +24,8 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.generator;
+package com.github.Zarklord1.MoOres.Generator.generator;
 
-import org.spout.api.generator.biome.BiomeGenerator;
-import org.spout.api.geo.World;
-import org.spout.api.geo.discrete.Point;
-import org.spout.api.util.cuboid.CuboidShortBuffer;
 
 public abstract class VanillaGenerator extends BiomeGenerator {
 	@Override

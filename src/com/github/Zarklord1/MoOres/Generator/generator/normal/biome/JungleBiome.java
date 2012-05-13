@@ -24,12 +24,11 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.generator.normal.biome;
+package com.github.Zarklord1.MoOres.Generator.generator.normal.biome;
 
+import com.github.Zarklord1.MoOres.Generator.generator.VanillaBiome;
 import org.spout.api.util.cuboid.CuboidShortBuffer;
 
-import org.spout.vanilla.material.VanillaMaterials;
-import org.spout.vanilla.world.generator.VanillaBiome;
 
 public class JungleBiome extends VanillaBiome {
 	public JungleBiome(int biomeId) {

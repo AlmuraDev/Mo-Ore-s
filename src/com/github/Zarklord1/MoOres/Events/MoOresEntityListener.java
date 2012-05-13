@@ -1,6 +1,5 @@
 package com.github.Zarklord1.MoOres.Events;
 
-import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
 import org.bukkit.entity.Entity;
@@ -10,8 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.getspout.commons.entity.Player;
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.material.item.GenericCustomTool;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
@@ -39,8 +36,11 @@ public class MoOresEntityListener implements Listener  {
                                 int damage = tool.getdamage();
                                 event.setDamage(damage);
                                 if (tool.isFireTool()) {
-                                int firetime = Configuration.items.getInt("Custom Tools." + tool.getName() + ".fire ticks");
+                                int firetime = tool.getfiretime();
                                 entityhit.setFireTicks(firetime);
+                                return;
+                                } else {
+                                    return;
                                 }
                             }
                         }

@@ -24,12 +24,11 @@
  * License and see <http://www.spout.org/SpoutDevLicenseV1.txt> for the full license,
  * including the MIT license.
  */
-package org.spout.vanilla.world.generator.normal.biome;
+package com.github.Zarklord1.MoOres.Generator.generator.normal.biome;
 
+import com.github.Zarklord1.MoOres.Generator.generator.VanillaBiome;
+import org.bukkit.Material;
 import org.spout.api.util.cuboid.CuboidShortBuffer;
-
-import org.spout.vanilla.material.VanillaMaterials;
-import org.spout.vanilla.world.generator.VanillaBiome;
 
 public class TaigaBiome extends VanillaBiome {
 	public TaigaBiome(int biomeId) {
@@ -53,15 +52,15 @@ public class TaigaBiome extends VanillaBiome {
 	protected short getBlockId(int top, int dy) {
 		short id;
 		if (dy > top) {
-			id = VanillaMaterials.AIR.getId();
+			id = (short) Material.AIR.getId();
 		} else if (dy == top) {
-			id = VanillaMaterials.GRASS.getId();
+			id = (short) Material.GRASS.getId();
 		} else if (dy + 4 >= top) {
-			id = VanillaMaterials.DIRT.getId();
+			id = (short) Material.DIRT.getId();
 		} else if (dy != 0) {
-			id = VanillaMaterials.STONE.getId();
+			id = (short) Material.STONE.getId();
 		} else {
-			id = VanillaMaterials.BEDROCK.getId();
+			id = (short) Material.BEDROCK.getId();
 		}
 		return id;
 	}

@@ -6,10 +6,11 @@ import org.getspout.spoutapi.material.item.GenericCustomTool;
 import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
+import org.bukkit.block.Block;
 
 public class CustomTools extends GenericCustomTool
 {
-    int damage;
+    
     boolean Pickaxe;
     boolean Axe;
     boolean Shovel;
@@ -17,9 +18,20 @@ public class CustomTools extends GenericCustomTool
     boolean Bow;
     boolean Sword;
     boolean fire;
-	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire) {
+    int firetime;
+    int damage;
+	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int firetime) {
 		super(plugin, name, textureurl);
 		this.setDurability(durability);
+                this.damage = damage;
+                this.Axe = Axe;
+                this.Shovel = Shovel;
+                this.Hoe = Hoe;
+                this.Bow = Bow;
+                this.Sword = Sword;
+                this.fire = fire;
+                this.firetime = firetime;
+                this.Pickaxe = Pickaxe;
 		if (Pickaxe) {
 			for (CustomBlocks Blocks:Hashmaps.customblocks) {
 				this.setStrengthModifier(Blocks, strength);
@@ -27,14 +39,11 @@ public class CustomTools extends GenericCustomTool
 			for (CustomOres Ores:Hashmaps.customores) {
 				this.setStrengthModifier(Ores, strength);
 			}
-                        this.damage = damage;
-                        this.Pickaxe = Pickaxe;
-                        this.Axe = Axe;
-                        this.Shovel = Shovel;
-                        this.Hoe = Hoe;
-                        this.Bow = Bow;
-                        this.Sword = Sword;
-                        this.fire = fire;
+                        for (MaterialData materialdata:Hashmaps.Pickaxebreackableblocks) {
+				this.setStrengthModifier(materialdata, strength);
+			}
+                        this.setStrengthModifier(null, strength)
+
                         this.setStrengthModifier(MaterialData.diamondOre, strength);
 			this.setStrengthModifier(MaterialData.coalOre, strength);
 			this.setStrengthModifier(MaterialData.goldOre, strength);
@@ -128,5 +137,8 @@ public class CustomTools extends GenericCustomTool
         }
         public boolean isFireTool() {
             return fire;
+        }
+        public int getfiretime() {
+            return firetime;
         }
 }

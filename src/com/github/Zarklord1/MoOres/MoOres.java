@@ -1,7 +1,6 @@
 package com.github.Zarklord1.MoOres;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,7 +11,6 @@ import org.getspout.spoutapi.block.design.Texture;
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Events.*;
 import com.github.Zarklord1.MoOres.Generator.Generator;
-import com.github.Zarklord1.MoOres.Util.BO2ObjectManager;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import com.github.Zarklord1.MoOres.Util.Recipes;
 import org.bukkit.plugin.PluginManager;
@@ -20,12 +18,13 @@ import org.bukkit.plugin.PluginManager;
 public class MoOres extends JavaPlugin{
 	
 	public static MoOres plugin;
-	public static Logger log = Logger.getLogger("Minecraft");
+	public static final Logger log = Logger.getLogger("Minecraft");
 	public Texture ores;
 	public Texture blocks;
 	public Texture plants;
 	File bo2file;
 
+    @Override
 	public void onEnable(){ 
 		String path = this.getDataFolder() + "/BO2Objects/";
 		new File(path).mkdirs();
@@ -47,6 +46,7 @@ public class MoOres extends JavaPlugin{
 		log.info("[Mo Ores] Loaded Configs!");
 		loadTextures();
 		log.info("[Mo Ores] Registering Block And Items...");
+                Hashmaps.addvanillablocks();
 		Hashmaps.registerBlocks(this);
 		log.info("[Mo Ores] Registered all Custom Blocks And Items!");
 		
@@ -62,6 +62,7 @@ public class MoOres extends JavaPlugin{
 	 
 
 
+    @Override
 	public void onDisable(){ 
 		Hashmaps.custombushes.clear();
 		Hashmaps.customitems.clear();
@@ -95,6 +96,7 @@ public class MoOres extends JavaPlugin{
 	    }
 
 	  
+    @Override
 	  public ChunkGenerator getDefaultWorldGenerator(String worldname, String uid) {
 		    return new Generator(this);
 		  }
