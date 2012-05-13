@@ -10,10 +10,16 @@ import com.github.Zarklord1.MoOres.Util.Hashmaps;
 public class CustomTools extends GenericCustomTool
 {
     int damage;
-	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword) {
+    boolean Pickaxe;
+    boolean Axe;
+    boolean Shovel;
+    boolean Hoe;
+    boolean Bow;
+    boolean Sword;
+    boolean fire;
+	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire) {
 		super(plugin, name, textureurl);
 		this.setDurability(durability);
-		this.setStrengthModifier(MaterialData.trapdoor, strength);
 		if (Pickaxe) {
 			for (CustomBlocks Blocks:Hashmaps.customblocks) {
 				this.setStrengthModifier(Blocks, strength);
@@ -21,7 +27,15 @@ public class CustomTools extends GenericCustomTool
 			for (CustomOres Ores:Hashmaps.customores) {
 				this.setStrengthModifier(Ores, strength);
 			}
-			this.setStrengthModifier(MaterialData.diamondOre, strength);
+                        this.damage = damage;
+                        this.Pickaxe = Pickaxe;
+                        this.Axe = Axe;
+                        this.Shovel = Shovel;
+                        this.Hoe = Hoe;
+                        this.Bow = Bow;
+                        this.Sword = Sword;
+                        this.fire = fire;
+                        this.setStrengthModifier(MaterialData.diamondOre, strength);
 			this.setStrengthModifier(MaterialData.coalOre, strength);
 			this.setStrengthModifier(MaterialData.goldOre, strength);
 			this.setStrengthModifier(MaterialData.lapisOre, strength);
@@ -85,10 +99,34 @@ public class CustomTools extends GenericCustomTool
 			this.setStrengthModifier(MaterialData.trapdoor, strength);
 		}
                 if (Hoe) {
-                    
+                        this.setStrengthModifier(MaterialData.trapdoor, strength);
                 }
                 if (Bow) {
-                    
+                        this.setStrengthModifier(MaterialData.trapdoor, strength);
                 }
 	}
+        public boolean isPickaxe() {
+            return Pickaxe;
+        }
+        public boolean isAxe() {
+            return Axe;
+        }
+        public boolean isShovel() {
+            return Shovel;
+        }
+        public boolean isBow() {
+            return Bow;
+        }
+        public boolean isSword() {
+            return Sword;
+        }
+        public boolean isHoe() {
+            return Hoe;
+        }
+        public int getdamage() {
+            return damage;
+        }
+        public boolean isFireTool() {
+            return fire;
+        }
 }
