@@ -2,7 +2,7 @@
 /*     */ 
 /*     */ import java.util.Arrays;
 /*     */ 
-/*     */ public class ItemConfig1
+/*     */ public class Item
 /*     */ {
 /*     */   public static void set()
 /*     */   {
@@ -169,24 +169,25 @@
 /* 366 */       Configuration.items.set("Custom Tools.Silver Axe.shaped recipe1.ingredients", Arrays.asList(new String[] { "Silver Ingot,Silver Ingot,-", "Silver Ingot,280,-", "-,-,-" }));
 /*     */     }
 /* 368 */     if (!Configuration.items.contains("Custom Tools.Silver Axe.shaped recipe2.amount")) {
-/* 369 */       Configuration.items.set("Custom Tools.Flarite Axe.shaped recipe2.amount", Integer.valueOf(1));
+/* 369 */       Configuration.items.set("Custom Tools.Silver Axe.shaped recipe2.amount", Integer.valueOf(1));
 /*     */     }
 /* 371 */     if (!Configuration.items.contains("Custom Tools.Silver Axe.shaped recipe2.ingredients")) {
 /* 372 */       Configuration.items.set("Custom Tools.Silver Axe.shaped recipe2.ingredients", Arrays.asList(new String[] { "-,Silver Ingot,Silver Ingot", "-,280,Silver Ingot", "-,280,-" }));
 /*     */     }
+/*     */
+/*     */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.texture url")) {
+/* 586 */       Configuration.items.set("Custom Tools.Silver Pickaxe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilpick.png");
+/*     */     }
+/* 588 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.durability")) {
+/* 589 */       Configuration.items.set("Custom Tools.Silver Pickaxe.durability", Integer.valueOf(650));
+/*     */     }
+/* 591 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.shaped recipe1.amount")) {
+/* 592 */       Configuration.items.set("Custom Tools.Silver Pickaxe.shaped recipe1.amount", Integer.valueOf(1));
+/*     */     }
+/* 594 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.shaped recipe1.ingredients")) {
+/* 595 */       Configuration.items.set("Custom Tools.Silver Pickaxe.shaped recipe1.ingredients", Arrays.asList(new String[] { "Silver,Silver,Silver", "-,280,-", "-,280,-" }));
+/*     */     }
 /*     */ 
-/* 375 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.texture url")) {
-/* 376 */       Configuration.items.set("Custom Tools.Silver Pickaxe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/52.png");
-/*     */     }
-/* 378 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.durability")) {
-/* 379 */       Configuration.items.set("Custom Tools.Silver Pickaxe.durability", Integer.valueOf(650));
-/*     */     }
-/* 381 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.shaped recipe1.amount")) {
-/* 382 */       Configuration.items.set("Custom Tools.Silver Pickaxe.shaped recipe1.amount", Integer.valueOf(1));
-/*     */     }
-/* 384 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.shaped recipe1.ingredients")) {
-/* 385 */       Configuration.items.set("Custom Tools.Silver Pickaxe.shaped recipe1.ingredients", Arrays.asList(new String[] { "Silver Ingot,Silver Ingot,Silver Ingot", "-,280,-", "-,280,-" }));
-/*     */     }
 /*     */ 
 /* 388 */     if (!Configuration.items.contains("Custom Tools.Silver Hoe.texture url")) {
 /* 389 */       Configuration.items.set("Custom Tools.Silver Hoe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Adamantinehoe.png");
@@ -201,7 +202,7 @@
 /* 398 */       Configuration.items.set("Custom Tools.Silver Hoe.shaped recipe1.ingredients", Arrays.asList(new String[] { "Silver Ingot,Silver Ingot,-", "-,280,-", "-,280,-" }));
 /*     */     }
 /* 400 */     if (!Configuration.items.contains("Custom Tools.Silver Hoe.shaped recipe2.amount")) {
-/* 401 */       Configuration.items.set("Custom Tools.Flarite Hoe.shaped recipe2.amount", Integer.valueOf(1));
+/* 401 */       Configuration.items.set("Custom Tools.Silver Hoe.shaped recipe2.amount", Integer.valueOf(1));
 /*     */     }
 /* 403 */     if (!Configuration.items.contains("Custom Tools.Silver Hoe.shaped recipe2.ingredients")) {
 /* 404 */       Configuration.items.set("Custom Tools.Silver Hoe.shaped recipe2.ingredients", Arrays.asList(new String[] { "-,Silver Ingot,Silver Ingot", "-,280,-", "-,280,-" }));

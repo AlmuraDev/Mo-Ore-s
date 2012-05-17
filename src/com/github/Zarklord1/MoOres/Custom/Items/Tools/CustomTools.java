@@ -1,12 +1,13 @@
 package com.github.Zarklord1.MoOres.Custom.Items.Tools;
 
-import org.bukkit.plugin.Plugin;
-import org.getspout.spoutapi.material.MaterialData;
-import org.getspout.spoutapi.material.item.GenericCustomTool;
 import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
+import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
-import org.bukkit.block.Block;
+import org.bukkit.plugin.Plugin;
+import org.getspout.spoutapi.material.Block;
+import org.getspout.spoutapi.material.MaterialData;
+import org.getspout.spoutapi.material.item.GenericCustomTool;
 
 public class CustomTools extends GenericCustomTool
 {
@@ -32,87 +33,54 @@ public class CustomTools extends GenericCustomTool
                 this.fire = fire;
                 this.firetime = firetime;
                 this.Pickaxe = Pickaxe;
-		if (Pickaxe) {
-			for (CustomBlocks Blocks:Hashmaps.customblocks) {
-				this.setStrengthModifier(Blocks, strength);
-			}
-			for (CustomOres Ores:Hashmaps.customores) {
-				this.setStrengthModifier(Ores, strength);
-			}
-                        for (MaterialData materialdata:Hashmaps.Pickaxebreackableblocks) {
-				this.setStrengthModifier(materialdata, strength);
-			}
-                        this.setStrengthModifier(null, strength)
 
-                        this.setStrengthModifier(MaterialData.diamondOre, strength);
-			this.setStrengthModifier(MaterialData.coalOre, strength);
-			this.setStrengthModifier(MaterialData.goldOre, strength);
-			this.setStrengthModifier(MaterialData.lapisOre, strength);
-			this.setStrengthModifier(MaterialData.redstoneOre, strength);
-			this.setStrengthModifier(MaterialData.ironOre, strength);
-			this.setStrengthModifier(MaterialData.brick, strength);
-			this.setStrengthModifier(MaterialData.brickDoubleSlabs, strength);
-			this.setStrengthModifier(MaterialData.brickSlab, strength);
-			this.setStrengthModifier(MaterialData.brickStairs, strength);
-			this.setStrengthModifier(MaterialData.burningfurnace, strength);
-			this.setStrengthModifier(MaterialData.circleStoneBricks, strength);
-			this.setStrengthModifier(MaterialData.cobblestone, strength);
-			this.setStrengthModifier(MaterialData.cobblestoneDoubleSlabs, strength);
-			this.setStrengthModifier(MaterialData.cobblestoneStairs, strength);
-			this.setStrengthModifier(MaterialData.crackedStoneBricks, strength);
-			this.setStrengthModifier(MaterialData.detectorRail, strength);
-			this.setStrengthModifier(MaterialData.diamondBlock, strength);
-			this.setStrengthModifier(MaterialData.dispenser, strength);
-			this.setStrengthModifier(MaterialData.endStone, strength);
-			this.setStrengthModifier(MaterialData.furnace, strength);
-			this.setStrengthModifier(MaterialData.glowingRedstoneOre, strength);
-			this.setStrengthModifier(MaterialData.glowstoneBlock, strength);
-			this.setStrengthModifier(MaterialData.goldBlock, strength);
-			this.setStrengthModifier(MaterialData.ironBars, strength);
-			this.setStrengthModifier(MaterialData.ironBlock, strength);
-			this.setStrengthModifier(MaterialData.ironDoorBlock, strength);
-			this.setStrengthModifier(MaterialData.jukebox, strength);
-			this.setStrengthModifier(MaterialData.monsterSpawner, strength);
-			this.setStrengthModifier(MaterialData.mossStone, strength);
-			this.setStrengthModifier(MaterialData.mossyStoneBricks, strength);
-			this.setStrengthModifier(MaterialData.netherBrick, strength);
-			this.setStrengthModifier(MaterialData.netherBrickFence, strength);
-			this.setStrengthModifier(MaterialData.netherBrickStairs, strength);
-			this.setStrengthModifier(MaterialData.netherrack, strength);
-			this.setStrengthModifier(MaterialData.noteblock, strength);
-			this.setStrengthModifier(MaterialData.obsidian, strength);
-			this.setStrengthModifier(MaterialData.pistonBase, strength);
-			this.setStrengthModifier(MaterialData.pistonStickyBase, strength);
-			this.setStrengthModifier(MaterialData.poweredRail, strength);
-			this.setStrengthModifier(MaterialData.sandstone, strength);
-			this.setStrengthModifier(MaterialData.sandstoneDoubleSlabs, strength);
-			this.setStrengthModifier(MaterialData.sandstoneSlab, strength);
-			this.setStrengthModifier(MaterialData.silverfishStone, strength);
-			this.setStrengthModifier(MaterialData.stone, strength);
-			this.setStrengthModifier(MaterialData.stoneBrickDoubleSlabs, strength);
-			this.setStrengthModifier(MaterialData.stoneBricks, strength);
-			this.setStrengthModifier(MaterialData.stoneBrickSlab, strength);
-			this.setStrengthModifier(MaterialData.stoneBrickStairs, strength);
-			this.setStrengthModifier(MaterialData.stoneButton, strength);
-			this.setStrengthModifier(MaterialData.stoneDoubleSlabs, strength);
-			this.setStrengthModifier(MaterialData.stonePressurePlate, strength);
-			this.setStrengthModifier(MaterialData.stoneSlab, strength);
+		if (Pickaxe) {
+                    for (CustomBlocks Blocks:Hashmaps.customblocks) {
+                    	this.setStrengthModifier(Blocks, strength);
+                    }
+                    for (CustomOres Ores:Hashmaps.customores) {
+			this.setStrengthModifier(Ores, strength);
+                    }
+                    for (Block block:Hashmaps.Pickaxebreackableblocks) {
+			this.setStrengthModifier(block, strength);
+                    }
 		}
+                
                 if (Axe) {
-			this.setStrengthModifier(MaterialData.trapdoor, strength);
+                    for (Block block:Hashmaps.Axebreackableblocks) {
+			this.setStrengthModifier(block, strength);
+                    }
+                    for (CustomBlocks Blocks:Hashmaps.customblocks) {
+			this.setStrengthModifier(Blocks, strength);
+                    }
 		}
+                
                 if (Shovel) {
-			this.setStrengthModifier(MaterialData.trapdoor, strength);
-		}
+                    for (Block block:Hashmaps.Shovelbreackableblocks) {
+			this.setStrengthModifier(block, strength);
+                    }
+                    for (CustomBlocks Blocks:Hashmaps.customblocks) {
+                        this.setStrengthModifier(Blocks, strength);
+                    }
+                }
+                
                 if (Sword) {
-			this.setStrengthModifier(MaterialData.trapdoor, strength);
+                    for (Block block:Hashmaps.Swordbreackableblocks) {
+                       this.setStrengthModifier(block, strength);
+                    }
+                    for (CustomBlocks Blocks:Hashmaps.customblocks) {
+                    	this.setStrengthModifier(Blocks, strength);
+                    }
 		}
+                
                 if (Hoe) {
-                        this.setStrengthModifier(MaterialData.trapdoor, strength);
+                    this.setStrengthModifier(MaterialData.farmland, strength);
                 }
+                
                 if (Bow) {
-                        this.setStrengthModifier(MaterialData.trapdoor, strength);
+                    this.setStrengthModifier(MaterialData.dirt, strength);
                 }
+                
 	}
         public boolean isPickaxe() {
             return Pickaxe;
@@ -135,10 +103,10 @@ public class CustomTools extends GenericCustomTool
         public int getdamage() {
             return damage;
         }
-        public boolean isFireTool() {
+        public boolean isFireSword() {
             return fire;
         }
-        public int getfiretime() {
+        public int getfireticks() {
             return firetime;
         }
 }

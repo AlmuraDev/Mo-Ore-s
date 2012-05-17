@@ -46,15 +46,19 @@ public class MoOres extends JavaPlugin{
 		log.info("[Mo Ores] Loaded Configs!");
 		loadTextures();
 		log.info("[Mo Ores] Registering Block And Items...");
-                Hashmaps.addvanillablocks();
+                Hashmaps.addvanillablocks(this);
 		Hashmaps.registerBlocks(this);
 		log.info("[Mo Ores] Registered all Custom Blocks And Items!");
 		
 		log.info("[Mo Ores] Registering Recipes...");
 		Recipes.addBlockShapedRecipe(plugin);
+                log.info("1");
 		Recipes.addFoodShapedRecipe(plugin);
+                log.info("2");
 		Recipes.addItemShapedRecipe(plugin);
+                log.info("3");
 		Recipes.addToolShapedRecipe(plugin);
+                log.info("4");
 		log.info("[Mo Ores] Registered all Recipes!");
 		
 		log.info("[Mo Ores] Is Enabled!");
@@ -70,14 +74,21 @@ public class MoOres extends JavaPlugin{
 		Hashmaps.customtools.clear();
 		Hashmaps.originalores.clear();
 		Hashmaps.plants.clear();
+                Hashmaps.Axebreackableblocks.clear();
+                Hashmaps.Pickaxebreackableblocks.clear();
+                Hashmaps.Shovelbreackableblocks.clear();
+                Hashmaps.Swordbreackableblocks.clear();
 		log.info("[Mo Ores] Is Disabled!");
 	}
 	
 	  public void loadTextures()
 	  {
-	    this.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), 256, 256, 16);
-	    this.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), 256, 256, 16);
-	    this.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), 256, 256, 16);
+            int j = Configuration.texture.getInt("Ores Texture Size");
+            int d = Configuration.texture.getInt("Blocks Texture Size");
+            int k = Configuration.texture.getInt("Plants Texture Size");
+	    this.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), j * j, j * j, j);
+	    this.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), d * d, d * d, d);
+	    this.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), k * k, k * k, k);
 	  }
 	  
 		public void copy (InputStream in, File file){

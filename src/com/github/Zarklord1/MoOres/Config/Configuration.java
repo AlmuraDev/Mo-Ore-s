@@ -1,9 +1,8 @@
 /*     */ package com.github.Zarklord1.MoOres.Config;
 /*     */ 
-/*     */ import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import com.github.Zarklord1.MoOres.MoOres;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /*     */ public class Configuration
 /*     */ {
@@ -14,7 +13,8 @@ import com.github.Zarklord1.MoOres.MoOres;
 /*  34 */   public static MyConfiguration items = new MyConfiguration();
 /*  41 */   public static MyConfiguration texture = new MyConfiguration();
 /*     */ 
-/*  47 */   static { if (load(config, "config.yml")) {
+/*  47 */   static { 
+              if (load(config, "config.yml")) {
 /*  48 */       config = MyConfiguration.loadConfiguration("plugins/Mo Ores/config.yml");
 /*  49 */       Config.set();
 /*  50 */       save(config);
@@ -59,17 +59,17 @@ import com.github.Zarklord1.MoOres.MoOres;
 /*     */ 
 /*  95 */     if (load(items, "items.yml")) {
 /*  96 */       items = MyConfiguration.loadConfiguration("plugins/Mo Ores/items.yml");
-/*  97 */       ItemConfig1.set();
+/*  97 */       Item.set();
 /*  98 */       save(items);
 /*     */     }
-/* 100 */     ItemConfig1.set();
+/* 100 */     Item.set();
 /*     */     try {
 /* 102 */       items.save();
 /*     */     } catch (Exception e) {
 /* 104 */       e.printStackTrace();
 /*     */     }
 /*     */ 
-			  if (load(texture, "textures.yml")) {
+              if (load(texture, "textures.yml")) {
 /* 168 */       texture = MyConfiguration.loadConfiguration("plugins/Mo Ores/textures.yml");
 /* 169 */       TextureConfig1.set();
 /* 170 */       save(texture);

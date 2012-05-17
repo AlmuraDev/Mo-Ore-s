@@ -1,19 +1,18 @@
 package com.github.Zarklord1.MoOres.Util;
 
+import com.github.Zarklord1.MoOres.Config.Configuration;
+import com.github.Zarklord1.MoOres.Custom.Blocks.Bushes.CustomBush;
+import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
+import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
+import com.github.Zarklord1.MoOres.MoOres;
 import java.util.Iterator;
 import java.util.List;
-import com.github.Zarklord1.MoOres.*;
-import com.github.Zarklord1.MoOres.Custom.Blocks.*;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.*;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Bushes.*;
-import com.github.Zarklord1.MoOres.Config.*;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.inventory.SpoutShapedRecipe;
 import org.getspout.spoutapi.material.MaterialData;
-import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 import org.getspout.spoutapi.material.item.GenericCustomFood;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
 import org.getspout.spoutapi.material.item.GenericCustomTool;
@@ -48,8 +47,12 @@ public class Recipes {
 		}
 	}
 	public static void addToolShapedRecipe(MoOres plugin){
+                int y;
 		for (GenericCustomTool tool:Hashmaps.customtools){
-			checkitem("Tools",tool);
+                    y = 0;
+                    checkitem("Tools",tool);
+                    y++;
+                    MoOres.log.info(y + " recipes");
 		}	
 	}
 	  public static void addFoodShapedRecipe(MoOres plugin) {

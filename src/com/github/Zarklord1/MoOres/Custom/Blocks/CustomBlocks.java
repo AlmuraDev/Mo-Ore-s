@@ -10,8 +10,8 @@ public class CustomBlocks extends GenericCubeCustomBlock
 private int light = 1;
   float hard = 1.0F; float friction = 0.0F;
 
-  public CustomBlocks(MoOres plugin, String name, int textureID, float hard, int light, float friction) {
-    super(plugin, name, new GenericCubeBlockDesign(plugin, plugin.blocks, textureID));
+  public CustomBlocks(MoOres plugin, String name, int textureID, float hard, int light, float friction, int blockId, int metadata) {
+    super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.blocks, textureID));
     this.setLightLevel(light);
   }
 

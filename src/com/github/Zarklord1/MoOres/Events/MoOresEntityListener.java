@@ -35,8 +35,8 @@ public class MoOresEntityListener implements Listener  {
                             if (splayer.getItemInHand().equals(tool)) {
                                 int damage = tool.getdamage();
                                 event.setDamage(damage);
-                                if (tool.isFireTool()) {
-                                int firetime = tool.getfiretime();
+                                if (tool.isFireSword()) {
+                                int firetime = tool.getfireticks();
                                 entityhit.setFireTicks(firetime);
                                 return;
                                 } else {
