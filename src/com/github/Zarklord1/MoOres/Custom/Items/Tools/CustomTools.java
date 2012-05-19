@@ -33,7 +33,6 @@ public class CustomTools extends GenericCustomTool
                 this.fire = fire;
                 this.firetime = firetime;
                 this.Pickaxe = Pickaxe;
-
 		if (Pickaxe) {
                     for (CustomBlocks Blocks:Hashmaps.customblocks) {
                     	this.setStrengthModifier(Blocks, strength);
