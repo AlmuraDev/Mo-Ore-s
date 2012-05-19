@@ -3,6 +3,7 @@ package com.github.Zarklord1.MoOres.Events;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -36,22 +37,21 @@ public class MoOresEntityListener implements Listener  {
                 if (player instanceof SpoutPlayer) {
                     System.out.println("6");
                     SpoutPlayer splayer = SpoutManager.getPlayerManager().getPlayer(player);
-                    System.out.println("7");
+                    System.out.println("7" + splayer.getTitle());
                     for (CustomTools tool:Hashmaps.customtools){
                         System.out.println(tool.getName());
                         //if (tool.isSword()) {
-                            if (splayer.getItemInHand().getDurability() == tool.getDurability()) {
+                            if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
                                 System.out.println(tool.getName() + "8");
-                                MoOres.log.info("wind");
-                                int damage = tool.getdamage();
-                                event.setDamage(damage);
-                                if (tool.isFireSword()) {
+                                event.setDamage(tool.getdamage());
+                                Bukkit.broadcastMessage("9" + tool.getdamage());
+                                /*if (tool.isFireSword()) {
                                 int firetime = tool.getfireticks();
                                 entityhit.setFireTicks(firetime);
                                 return;
                                 } else {
                                     return;
-                                }
+                                }*/
                             }
                         //}
                     }
