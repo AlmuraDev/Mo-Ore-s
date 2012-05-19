@@ -25,38 +25,30 @@ public class MoOresEntityListener implements Listener  {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDamage ( EntityDamageByEntityEvent event )
     {
-	if( event.getCause() == DamageCause.ENTITY_ATTACK ) {
+        if( event.getCause() == DamageCause.ENTITY_ATTACK ) {
             Entity entityhit = event.getEntity();
-            System.out.println("1");
             Entity entityhitting = event.getDamager();
-            System.out.println("3");
             if (entityhitting instanceof Player){
-                System.out.println("4");
                 Player player = (Player) entityhitting;
-                System.out.println("5");
                 if (player instanceof SpoutPlayer) {
-                    System.out.println("6");
                     SpoutPlayer splayer = SpoutManager.getPlayerManager().getPlayer(player);
-                    System.out.println("7" + splayer.getTitle());
                     for (CustomTools tool:Hashmaps.customtools){
-                        System.out.println(tool.getName());
                         //if (tool.isSword()) {
-                            if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
-                                System.out.println(tool.getName() + "8");
+                            if (splayer.getItemInHand().equals(tool)) {
                                 event.setDamage(tool.getdamage());
-                                Bukkit.broadcastMessage("9" + tool.getdamage());
-                                /*if (tool.isFireSword()) {
+                                Bukkit.broadcastMessage("" + tool.getdamage());
+                                if (tool.isFireSword()) {
                                 int firetime = tool.getfireticks();
                                 entityhit.setFireTicks(firetime);
                                 return;
                                 } else {
                                     return;
-                                }*/
+                                }
                             }
                         //}
                     }
                 }                
-            }
+            } 
         }
     }
 }

@@ -6,6 +6,7 @@ import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.OriginalOres;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
+import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFood;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
@@ -47,8 +48,8 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 /*  48 */   public static Set<GenericCustomFood> customfood = new LinkedHashSet();
 /*  49 */   public static HashMap<String, GenericCustomFood> customfoodmap = new LinkedHashMap();
 /*     */ 
-/*  51 */   public static Set<GenericCustomFood> customfish = new LinkedHashSet();
-/*  52 */   public static HashMap<String, GenericCustomFood> customfishmap = new LinkedHashMap();
+/*  51 */   public static Set<CustomFishes> customfish = new LinkedHashSet();
+/*  52 */   public static HashMap<String, CustomFishes> customfishmap = new LinkedHashMap();
 
 /*  55 */   public static Set<CustomBush> custombushes = new LinkedHashSet();
 /*  55 */   public static HashMap<String, CustomBush> custombushesmap = new LinkedHashMap();
@@ -190,8 +191,8 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 /* 160 */       String name = (String)keys4.next();
 /* 161 */       String textureurl = Configuration.items.getString("Custom Fish." + name + ".texture url");
 /* 162 */       int restore = Configuration.items.getInt("Custom Fish." + name + ".restore");
-/* 163 */       addFood(plugin, name, textureurl, restore);
-/* 164 */       addFish(plugin, name, textureurl);
+                int chance = Configuration.items.getInt("Custom Fish." + name + ".chance", 100);
+/* 164 */       addFish(plugin, name, textureurl, restore, chance);
 /*     */     }
 /*     */   }
 /*     */ 
@@ -226,8 +227,8 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 				customfood.add(food);
 				customfoodmap.put(name, food);
 			}
-			private static void addFish(MoOres plugin, String name, String textureurl) {
-				GenericCustomFood fish = (GenericCustomFood)customfoodmap.get(name);
+			private static void addFish(MoOres plugin, String name, String textureurl, int restore, int chance) {
+				CustomFishes fish = new CustomFishes(plugin, name, textureurl, restore, chance);
 				customfish.add(fish);
 				customfishmap.put(name, fish);
 			}

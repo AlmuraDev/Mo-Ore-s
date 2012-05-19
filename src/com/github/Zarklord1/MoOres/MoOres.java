@@ -49,7 +49,7 @@ public class MoOres extends JavaPlugin{
                 Hashmaps.addvanillablocks(this);
 		Hashmaps.registerBlocks(this);
 		log.info("[Mo Ores] Registered all Custom Blocks And Items!");
-		
+		reg();
 		log.info("[Mo Ores] Registering Recipes...");
 		Recipes.addBlockShapedRecipe(plugin);
 		Recipes.addFoodShapedRecipe(plugin);

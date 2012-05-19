@@ -7,7 +7,7 @@ package com.github.Zarklord1.MoOres.Config;
 		{
 			
 			if (!Configuration.Blocks.contains("Custom Blocks.Crystalite Block.textureID")) {
-				Configuration.Blocks.set("Custom Blocks.Crystalite Block.textureID", Integer.valueOf(17));
+				Configuration.Blocks.set("Custom Blocks.Crystalite Block.textureID", Integer.valueOf(16));
 			}
 			if (!Configuration.Blocks.contains("Custom Blocks.Crystalite Block.hardness")) {
 				Configuration.Blocks.set("Custom Blocks.Crystalite Block.hardness", Integer.valueOf(3));
