@@ -52,13 +52,9 @@ public class MoOres extends JavaPlugin{
 		
 		log.info("[Mo Ores] Registering Recipes...");
 		Recipes.addBlockShapedRecipe(plugin);
-                log.info("1");
 		Recipes.addFoodShapedRecipe(plugin);
-                log.info("2");
 		Recipes.addItemShapedRecipe(plugin);
-                log.info("3");
 		Recipes.addToolShapedRecipe(plugin);
-                log.info("4");
 		log.info("[Mo Ores] Registered all Recipes!");
 		
 		log.info("[Mo Ores] Is Enabled!");
@@ -114,6 +110,7 @@ public class MoOres extends JavaPlugin{
           public void reg() {
               PluginManager pm = this.getServer().getPluginManager();
               pm.registerEvents(new MoOresEntityListener(this), this);
+              pm.registerEvents(new MoOresBlockListener(this), this);
           }
 	  
 }

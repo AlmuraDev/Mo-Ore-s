@@ -9,16 +9,17 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class MoOresBlockBreakEventListener {
+public class MoOresBlockListener implements Listener {
     public static MoOres plugin;
     boolean cblockbool;
     boolean isholding;
     CustomTools tool;
     
-    public MoOresBlockBreakEventListener(MoOres instance) {
+    public MoOresBlockListener(MoOres instance) {
         plugin = instance; 
     }
     

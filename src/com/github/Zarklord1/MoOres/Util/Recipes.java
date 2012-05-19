@@ -47,9 +47,8 @@ public class Recipes {
 		}
 	}
 	public static void addToolShapedRecipe(MoOres plugin){
-                int y;
+                int y = 0;
 		for (GenericCustomTool tool:Hashmaps.customtools){
-                    y = 0;
                     checkitem("Tools",tool);
                     y++;
                     MoOres.log.info(y + " recipes");
@@ -77,6 +76,7 @@ public class Recipes {
 				String srow1 = "";
 				String srow2 = "";
 				String srow3 = "";
+                                MoOres.log.info("1");
 
 				ItemStack result = new SpoutItemStack(item, amount);
 				recipe = new SpoutShapedRecipe(result);
@@ -86,6 +86,7 @@ public class Recipes {
 
 				for(int count=0; count<3; count ++){
 					if(row1[count].contains(":")){
+                                            MoOres.log.info("2");
 						if(count == 0){
 							row1dv1 = row1[count].split(":");
 						}else if(count == 1){
@@ -97,6 +98,7 @@ public class Recipes {
 				}
 				for(int count=0; count<3; count ++){
 					if(row2[count].contains(":")){
+                                            MoOres.log.info("3");
 						if(count == 0){
 							row2dv1 = row2[count].split(":");
 						}else if(count == 1){
@@ -108,6 +110,7 @@ public class Recipes {
 				}
 				for(int count=0; count<3; count ++){
 					if(row3[count].contains(":")){
+                                            MoOres.log.info("4");
 						if(count == 0){
 							row3dv1 = row3[count].split(":");
 						}else if(count == 1){
@@ -121,6 +124,7 @@ public class Recipes {
 				for(int rowi = 0; rowi<3; ++rowi){
 					if(rowi == 0){
 						for(i = 0; i<3;){
+                                                    MoOres.log.info("5");
 							if(i == 0){
 								letter = 'a';
 								rowletter = "a";
@@ -132,9 +136,11 @@ public class Recipes {
 								rowletter = "c";
 							}
 							if(!row1[i].equals("-")){
+                                                            MoOres.log.info("6");
 								try{
 									if(i == 0){
 										if(row1dv1 != null){
+                                                                                    MoOres.log.info("7");
 											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv1[0]), Short.parseShort(row1dv1[1])));
 											srow1 = srow1 + rowletter;
 											row1dv1 = null;
@@ -148,6 +154,7 @@ public class Recipes {
 											srow1 = srow1 + rowletter;
 											row1dv2 = null;
 										}else{
+                                                                                    MoOres.log.info("8");
 											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1[i])));
 											srow1 = srow1 + rowletter;
 										}
@@ -173,6 +180,7 @@ public class Recipes {
 										customId = Hashmaps.customblocksmap.get(row1[i]).getCustomId();
 										srow1 = srow1 + rowletter;
 									}else if(Hashmaps.customtoolsmap.containsKey(row1[i])){
+                                                                            MoOres.log.info("9");
 										customId = Hashmaps.customtoolsmap.get(row1[i]).getCustomId();
 										srow1 = srow1 + rowletter;
 									}else if(Hashmaps.customfoodmap.containsKey(row1[i])){
@@ -191,6 +199,7 @@ public class Recipes {
 						}
 					}else if(rowi == 1){
 						for(int i = 0; i<3;){
+                                                    MoOres.log.info("1");
 							if(i == 0){
 								letter = 'd';
 								rowletter = "d";
@@ -204,6 +213,7 @@ public class Recipes {
 							if(!row2[i].equals("-")){
 								try{
 									if(i == 0){
+                                                                            MoOres.log.info("2");
 										if(row2dv1 != null){
 											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv1[0]), Short.parseShort(row2dv1[1])));
 											srow2 = srow2 + rowletter;
@@ -227,6 +237,7 @@ public class Recipes {
 											srow2 = srow2 + rowletter;
 											row2dv3 = null;
 										}else{
+                                                                                    MoOres.log.info("3");
 											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2[i])));
 											srow2 = srow2 + rowletter;
 										}
@@ -245,6 +256,7 @@ public class Recipes {
 									}else if(Hashmaps.customtoolsmap.containsKey(row2[i])){
 										customId = Hashmaps.customtoolsmap.get(row2[i]).getCustomId();
 										srow2 = srow2 + rowletter;
+                                                                                MoOres.log.info("4");
 									}else if(Hashmaps.customfoodmap.containsKey(row2[i])){
 										customId = Hashmaps.customfoodmap.get(row2[i]).getCustomId();
 										srow2 = srow2 + rowletter;
@@ -270,6 +282,7 @@ public class Recipes {
 							}else if(i == 2){
 								letter = 'i';
 								rowletter = "i";
+                                                                MoOres.log.info("5");
 							}
 							if(!row3[i].equals("-")){
 								try{
@@ -288,6 +301,7 @@ public class Recipes {
 											srow3 = srow3 + rowletter;
 											row3dv2 = null;
 										}else{
+                                                                                    MoOres.log.info("6");
 											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3[i])));
 											srow3 = srow3 + rowletter;
 										}
@@ -302,6 +316,7 @@ public class Recipes {
 										}
 									}
 								}catch(NumberFormatException e){
+                                                                    MoOres.log.info("7");
 									int customId = 0;
 									if(Hashmaps.customitemsmap.containsKey(row3[i])){
 										customId = Hashmaps.customitemsmap.get(row3[i]).getCustomId();
@@ -325,6 +340,7 @@ public class Recipes {
 									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
 								}
 							} else {
+                                                            MoOres.log.info("8");
 								srow3 = srow3 + " ";
 							}
 							++i;
@@ -359,8 +375,9 @@ public class Recipes {
 						customId = Hashmaps.customfoodmap.get(ingredientraw).getCustomId();
 						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
 					}else if(Hashmaps.custombushesmap.containsKey(ingredientraw)){
+                                            MoOres.log.info("1");
 						customId = Hashmaps.custombushesmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
+						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
 					}
 				}
 			}
