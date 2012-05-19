@@ -42,15 +42,15 @@ public class MoOresBlockListener implements Listener {
                     }
                 }
             }
-            if (isholding) {
+            //if (isholding) {
                 if (isVanilla(block)) {
                     block.breakNaturally();
                 } else if (isCustomOre(block)) {
                     block.breakNaturally();
-                } else if (isCustomStoneBlock(block)) {
+                } else if (isCustomStone(block)) {
                     block.breakNaturally();
                 }
-            }  
+            //}  
         }
     }
     public static boolean isVanilla(Block block) {
@@ -69,7 +69,7 @@ public class MoOresBlockListener implements Listener {
         }
         return false;
     }
-    public static boolean isCustomStoneBlock(Block block) {
+    public static boolean isCustomStone(Block block) {
         for (CustomBlocks blok:Hashmaps.customblocks) {
             if (block.equals(blok)) {
                 return true;

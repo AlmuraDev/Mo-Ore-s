@@ -92,8 +92,8 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 /*  89 */         friction = Configuration.Ores.getInt("Custom Ores." + name + ".friction");
 /*     */       }
 /*  91 */       if (Configuration.Ores.contains("Custom Ores." + name + ".drop")) {
-/*  92 */         if (Configuration.Ores.contains("Custom Ores." + name + ".drop.amount")) {
-/*  93 */           amount = Configuration.Ores.getInt("Custom Ores." + name + ".drop.amount");
+/*  92 */         if (Configuration.Ores.contains("Custom Ores." + name + ".dropamount")) {
+/*  93 */           amount = Configuration.Ores.getInt("Custom Ores." + name + ".dropamount");
 /*     */         }
 /*  95 */         String sdrop = Configuration.Ores.getString("Custom Ores." + name + ".drop");
 /*     */         try {
@@ -169,7 +169,7 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
                 boolean Bow = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Bow");
                 boolean Sword = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Sword");
                 boolean fire = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.setfire");
-                int damage = Configuration.items.getInt("Custom Tools." + name + ".Sword.setdamage");
+                int damage = Configuration.items.getInt("Custom Tools." + name + ".damage");
                 int firetime = Configuration.items.getInt("Custom Tools." + name + ".Sword.Firetime");
 /*     */       short durability = (short) durability1;
 /*     */       float strength = (float) strength1;
@@ -287,6 +287,7 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
                         axe = x.split(":");
                         Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(axe[0]), Short.parseShort(axe[1]));
                         Axebreackableblocks.add(materialdata);
+                        
                     } else {
                         Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(x));
                         Axebreackableblocks.add(materialdata);

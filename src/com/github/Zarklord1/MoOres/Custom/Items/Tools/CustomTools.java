@@ -68,9 +68,9 @@ public class CustomTools extends GenericCustomTool
                     for (Block block:Hashmaps.Swordbreackableblocks) {
                        this.setStrengthModifier(block, strength);
                     }
-                    for (CustomBlocks Blocks:Hashmaps.customblocks) {
+                    /*for (CustomBlocks Blocks:Hashmaps.customblocks) {
                     	this.setStrengthModifier(Blocks, strength);
-                    }
+                    }*/
 		}
                 
                 if (Hoe) {

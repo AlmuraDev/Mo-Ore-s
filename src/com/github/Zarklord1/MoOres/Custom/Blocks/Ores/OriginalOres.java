@@ -1,7 +1,7 @@
-/*    */ package com.github.Zarklord1.MoOres.Custom.Blocks.Ores;
-/*    */ 
-/*    */ import com.github.Zarklord1.MoOres.MoOres;
-/*    */ import org.bukkit.Material;
+package com.github.Zarklord1.MoOres.Custom.Blocks.Ores;
+
+import com.github.Zarklord1.MoOres.MoOres;
+import org.bukkit.Material;
 /*    */ 
 /*    */ public class OriginalOres
 /*    */ {

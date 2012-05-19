@@ -111,6 +111,7 @@ public class MoOres extends JavaPlugin{
               PluginManager pm = this.getServer().getPluginManager();
               pm.registerEvents(new MoOresEntityListener(this), this);
               pm.registerEvents(new MoOresBlockListener(this), this);
+              pm.registerEvents(new MoOresFurnaceListener(this), this);
           }
 	  
 }

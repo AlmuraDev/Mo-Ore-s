@@ -76,7 +76,7 @@
 /*     */     }
 /*     */ 
 /*  88 */     if (!Configuration.Ores.contains("Custom Ores.Ruby Ore.textureID")) {
-/*  89 */       Configuration.Ores.set("Custom Ores.Ruby Ore.textureID", Integer.valueOf(1));
+/*  89 */       Configuration.Ores.set("Custom Ores.Ruby Ore.textureID", Integer.valueOf(8));
 /*     */     }
 /*  91 */     if (!Configuration.Ores.contains("Custom Ores.Ruby Ore.frequency")) {
 /*  92 */       Configuration.Ores.set("Custom Ores.Ruby Ore.frequency", Integer.valueOf(100));
@@ -91,12 +91,12 @@
 /* 101 */       Configuration.Ores.set("Custom Ores.Ruby Ore.hardness", Integer.valueOf(8));
 /*     */     }
 /*     */     if (!Configuration.Ores.contains("Custom Ores.Ruby Ore.drop")) {
-/*     */       Configuration.Ores.set("Custom Ores.Ruby Ore.drop.amount",  Integer.valueOf(1));
+/*     */       Configuration.Ores.set("Custom Ores.Ruby Ore.dropamount",  Integer.valueOf(1));
 /*  81 */       Configuration.Ores.set("Custom Ores.Ruby Ore.drop", "Ruby");
 /*     */     }
 /*     */ 
 /* 105 */     if (!Configuration.Ores.contains("Custom Ores.Thermite Ore.textureID")) {
-/* 106 */       Configuration.Ores.set("Custom Ores.Thermite Ore.textureID", Integer.valueOf(2));
+/* 106 */       Configuration.Ores.set("Custom Ores.Thermite Ore.textureID", Integer.valueOf(11));
 /*     */     }
 /* 108 */     if (!Configuration.Ores.contains("Custom Ores.Thermite Ore.frequency")) {
 /* 109 */       Configuration.Ores.set("Custom Ores.Thermite Ore.frequency", Integer.valueOf(100));
@@ -111,12 +111,12 @@
 /* 118 */       Configuration.Ores.set("Custom Ores.Thermite Ore.hardness", Integer.valueOf(7));
 /*     */     }
 /*     */     if (!Configuration.Ores.contains("Custom Ores.Thermite Ore.drop")) {
-/*     */       Configuration.Ores.set("Custom Ores.Thermite Ore.drop.amount",  Integer.valueOf(4));
+/*     */       Configuration.Ores.set("Custom Ores.Thermite Ore.dropamount",  Integer.valueOf(4));
 /*  81 */       Configuration.Ores.set("Custom Ores.Thermite Ore.drop", "Thermite Dust");
 /*     */     }
 /*     */ 
 /* 122 */     if (!Configuration.Ores.contains("Custom Ores.Silver Ore.textureID")) {
-/* 123 */       Configuration.Ores.set("Custom Ores.Silver Ore.textureID", Integer.valueOf(3));
+/* 123 */       Configuration.Ores.set("Custom Ores.Silver Ore.textureID", Integer.valueOf(10));
 /*     */     }
 /* 125 */     if (!Configuration.Ores.contains("Custom Ores.Silver Ore.frequency")) {
 /* 126 */       Configuration.Ores.set("Custom Ores.Silver Ore.frequency", Integer.valueOf(100));
@@ -147,7 +147,7 @@
 /* 152 */       Configuration.Ores.set("Custom Ores.Crystalite Ore.hardness", Integer.valueOf(8));
 /*     */     }
 /*     */     if (!Configuration.Ores.contains("Custom Ores.Crystalite Ore.drop")) {
-				Configuration.Ores.set("Custom Ores.Crystalite Ore.drop.amount",  Integer.valueOf(2));
+				Configuration.Ores.set("Custom Ores.Crystalite Ore.dropamount",  Integer.valueOf(2));
 /*  81 */       Configuration.Ores.set("Custom Ores.Crystalite Ore.drop", "Crystalite");
 /*     */     }
 }
