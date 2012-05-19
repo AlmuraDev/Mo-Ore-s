@@ -27,7 +27,7 @@
 /*  11 */ 	  }
 /*     */
 /*  65 */     if (!Configuration.items.contains("Custom Items.Flarite Ingot.texture url")) {
-/*  66 */       Configuration.items.set("Custom Items.Flarite Ingot.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/ingots/Adamantineingot.png");
+/*  66 */       Configuration.items.set("Custom Items.Flarite Ingot.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Flarite/Flartieingot.png");
 /*     */     }
 /*  68 */     if (!Configuration.items.contains("Custom Items.Flarite Ingot.furnace recipe1.amount")) {
 /*  69 */       Configuration.items.set("Custom Items.Flarite Ingot.furnace recipe1.amount", Integer.valueOf(1));
@@ -37,7 +37,7 @@
 /*     */     }
 /*     */ 
 /*  76 */     if (!Configuration.items.contains("Custom Items.Silver Ingot.texture url")) {
-/*  77 */       Configuration.items.set("Custom Items.Silver Ingot.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/ingots/Iridiumnugget.png");
+/*  77 */       Configuration.items.set("Custom Items.Silver Ingot.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/Silveringot.png");
 /*     */     }
 /*  79 */     if (!Configuration.items.contains("Custom Items.Silver Ingot.furnace recipe1.amount")) {
 /*  80 */       Configuration.items.set("Custom Items.Silver Ingot.furnace recipe1.amount", Integer.valueOf(1));
@@ -47,19 +47,19 @@
 /*     */     }
 /*     */ 
 /*  87 */     if (!Configuration.items.contains("Custom Items.Ruby.texture url")) {
-/*  88 */       Configuration.items.set("Custom Items.Ruby.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/ingots/Iridiumingot.png");
+/*  88 */       Configuration.items.set("Custom Items.Ruby.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/RubyDiamond.png");
 /*     */     }
 /*     */ 
 /*  98 */     if (!Configuration.items.contains("Custom Items.Thermite Dust.texture url")) {
-/*  99 */       Configuration.items.set("Custom Items.Thermite Dust.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/ingots/Mithrilingot.png");
+/*  99 */       Configuration.items.set("Custom Items.Thermite Dust.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Thermite/ThermiteDust.png");
 /*     */     }
 /*     */ 
 /* 109 */     if (!Configuration.items.contains("Custom Items.Crystalite.texture url")) {
-/* 110 */       Configuration.items.set("Custom Items.Crystalite.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/ingots/Verditeingot.png");
+/* 110 */       Configuration.items.set("Custom Items.Crystalite.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/Crystalite.png");
 /*     */     }
 /*     */
 /* 109 */     if (!Configuration.items.contains("Custom Items.Ruby Shaft.texture url")) {
-/* 110 */       Configuration.items.set("Custom Items.Ruby Shaft.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/CrystaliteRuby.png");
+/* 110 */       Configuration.items.set("Custom Items.Ruby Shaft.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/Shaft.png");
 /*     */     }
 /*     */     if (!Configuration.items.contains("Custom Items.Ruby Shaft.shaped recipe1.amount")) {
 /* 313 */       Configuration.items.set("Custom Items.Ruby Shaft.shaped recipe1.amount", Integer.valueOf(1));
@@ -75,7 +75,7 @@
 /*     */     }
 /*     */ 
 /* 303 */     if (!Configuration.items.contains("Custom Tools.Silver Sword.texture url")) {
-/* 304 */       Configuration.items.set("Custom Tools.Silver Sword.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Adamantinesword.png");
+/* 304 */       Configuration.items.set("Custom Tools.Silver Sword.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/SilverSword.png");
 /*     */     }
 /* 306 */     if (!Configuration.items.contains("Custom Tools.Silver Sword.durability")) {
 /* 307 */       Configuration.items.set("Custom Tools.Silver Sword.durability", Integer.valueOf(650));
@@ -103,7 +103,7 @@
 /*     */     }
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Silver Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Silver Sword(Ruby).texture url", "http://db.tt/3ZyoxYds");
+/* 409 */       Configuration.items.set("Custom Tools.Silver Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/ShaftedSilverSword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Silver Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Silver Sword(Ruby).durability", Integer.valueOf(750));
@@ -132,7 +132,7 @@
 /*     */ 
 /*     */ 
 /* 331 */     if (!Configuration.items.contains("Custom Tools.Silver Shovel.texture url")) {
-/* 332 */       Configuration.items.set("Custom Tools.Silver Shovel.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Adamantineshovel.png");
+/* 332 */       Configuration.items.set("Custom Tools.Silver Shovel.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/SilverShovel.png");
 /*     */     }
 /* 334 */     if (!Configuration.items.contains("Custom Tools.Silver Shovel.durability")) {
 /* 335 */       Configuration.items.set("Custom Tools.Silver Shovel.durability", Integer.valueOf(650));
@@ -157,7 +157,7 @@
 /*     */     }
 /*     */ 
 /* 356 */     if (!Configuration.items.contains("Custom Tools.Silver Axe.texture url")) {
-/* 357 */       Configuration.items.set("Custom Tools.Silver Axe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Adamantineaxe.png");
+/* 357 */       Configuration.items.set("Custom Tools.Silver Axe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/SilverAxe.png");
 /*     */     }
 /* 359 */     if (!Configuration.items.contains("Custom Tools.Silver Axe.durability")) {
 /* 360 */       Configuration.items.set("Custom Tools.Silver Axe.durability", Integer.valueOf(650));
@@ -176,7 +176,7 @@
 /*     */     }
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.texture url")) {
-/* 586 */       Configuration.items.set("Custom Tools.Silver Pickaxe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilpick.png");
+/* 586 */       Configuration.items.set("Custom Tools.Silver Pickaxe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/SilverPick.png");
 /*     */     }
 /* 588 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.durability")) {
 /* 589 */       Configuration.items.set("Custom Tools.Silver Pickaxe.durability", Integer.valueOf(650));
@@ -190,7 +190,7 @@
 /*     */ 
 /*     */ 
 /* 388 */     if (!Configuration.items.contains("Custom Tools.Silver Hoe.texture url")) {
-/* 389 */       Configuration.items.set("Custom Tools.Silver Hoe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Adamantinehoe.png");
+/* 389 */       Configuration.items.set("Custom Tools.Silver Hoe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/Silverhoe.png");
 /*     */     }
 /* 391 */     if (!Configuration.items.contains("Custom Tools.Silver Hoe.durability")) {
 /* 392 */       Configuration.items.set("Custom Tools.Silver Hoe.durability", Integer.valueOf(650));
@@ -209,7 +209,7 @@
 /*     */     }
 /*     */ 
 /* 408 */     if (!Configuration.items.contains("Custom Tools.Flarite Sword.texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Flarite Sword.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Iridiumsword.png");
+/* 409 */       Configuration.items.set("Custom Tools.Flarite Sword.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Flarite/flariteSword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Flarite Sword.durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Flarite Sword.durability", Integer.valueOf(700));
@@ -237,7 +237,7 @@
 /*     */     }
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Flarite Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Flarite Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/SilverRuby.png");
+/* 409 */       Configuration.items.set("Custom Tools.Flarite Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Flarite/ShaftedFlariteSword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Flarite Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Flarite Sword(Ruby).durability", Integer.valueOf(800));
@@ -265,7 +265,7 @@
 /*     */     }
 /*     */ 
 /* 513 */     if (!Configuration.items.contains("Custom Tools.Ruby Sword.texture url")) {
-/* 514 */       Configuration.items.set("Custom Tools.Ruby Sword.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilsword.png");
+/* 514 */       Configuration.items.set("Custom Tools.Ruby Sword.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/RubySword.png");
 /*     */     }
 /* 516 */     if (!Configuration.items.contains("Custom Tools.Ruby Sword.durability")) {
 /* 517 */       Configuration.items.set("Custom Tools.Ruby Sword.durability", Integer.valueOf(1500));
@@ -293,7 +293,7 @@
 /*     */     }
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Ruby Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Ruby Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/RubyRuby.png");
+/* 409 */       Configuration.items.set("Custom Tools.Ruby Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/ShaftedRubysword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Ruby Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Ruby Sword(Ruby).durability", Integer.valueOf(1600));
@@ -323,7 +323,7 @@
 
 /*     */ 
 /* 541 */     if (!Configuration.items.contains("Custom Tools.Ruby Shovel.texture url")) {
-/* 542 */       Configuration.items.set("Custom Tools.Ruby Shovel.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilshovel.png");
+/* 542 */       Configuration.items.set("Custom Tools.Ruby Shovel.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/RubyShovel.png");
 /*     */     }
 /* 544 */     if (!Configuration.items.contains("Custom Tools.Ruby Shovel.durability")) {
 /* 545 */       Configuration.items.set("Custom Tools.Ruby Shovel.durability", Integer.valueOf(1500));
@@ -348,7 +348,7 @@
 /*     */     }
 /*     */ 
 /* 566 */     if (!Configuration.items.contains("Custom Tools.Ruby Axe.texture url")) {
-/* 567 */       Configuration.items.set("Custom Tools.Ruby Axe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilaxe.png");
+/* 567 */       Configuration.items.set("Custom Tools.Ruby Axe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/RubyAxe.png");
 /*     */     }
 /* 569 */     if (!Configuration.items.contains("Custom Tools.Ruby Axe.durability")) {
 /* 570 */       Configuration.items.set("Custom Tools.Ruby Axe.durability", Integer.valueOf(1500));
@@ -367,7 +367,7 @@
 /*     */     }
 /*     */ 
 /* 585 */     if (!Configuration.items.contains("Custom Tools.Ruby Pickaxe.texture url")) {
-/* 586 */       Configuration.items.set("Custom Tools.Ruby Pickaxe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilpick.png");
+/* 586 */       Configuration.items.set("Custom Tools.Ruby Pickaxe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/RubyPick.png");
 /*     */     }
 /* 588 */     if (!Configuration.items.contains("Custom Tools.Ruby Pickaxe.durability")) {
 /* 589 */       Configuration.items.set("Custom Tools.Ruby Pickaxe.durability", Integer.valueOf(1500));
@@ -380,7 +380,7 @@
 /*     */     }
 /*     */ 
 /* 598 */     if (!Configuration.items.contains("Custom Tools.Ruby Hoe.texture url")) {
-/* 599 */       Configuration.items.set("Custom Tools.Ruby Hoe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Mithrilhoe.png");
+/* 599 */       Configuration.items.set("Custom Tools.Ruby Hoe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Ruby/RubyHoe.png");
 /*     */     }
 /* 601 */     if (!Configuration.items.contains("Custom Tools.Ruby Hoe.durability")) {
 /* 602 */       Configuration.items.set("Custom Tools.Ruby Hoe.durability", Integer.valueOf(1500));
@@ -399,7 +399,7 @@
 /*     */     }
 /*     */ 
 /* 618 */     if (!Configuration.items.contains("Custom Tools.Crystalite Sword.texture url")) {
-/* 619 */       Configuration.items.set("Custom Tools.Crystalite Sword.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Verditesword.png");
+/* 619 */       Configuration.items.set("Custom Tools.Crystalite Sword.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteSword.png");
 /*     */     }
 /* 621 */     if (!Configuration.items.contains("Custom Tools.Crystalite Sword.durability")) {
 /* 622 */       Configuration.items.set("Custom Tools.Crystalite Sword.durability", Integer.valueOf(1000));
@@ -427,7 +427,7 @@
 /*     */     }
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Crystalite Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Crystalite Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/CrystaliteRuby.png");
+/* 409 */       Configuration.items.set("Custom Tools.Crystalite Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/ShaftedCrystaliteSword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Crystalite Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Crystalite Sword(Ruby).durability", Integer.valueOf(1100));
@@ -456,7 +456,7 @@
 /*     */ 
 /*     */ 
 /* 646 */     if (!Configuration.items.contains("Custom Tools.Crystalite Shovel.texture url")) {
-/* 647 */       Configuration.items.set("Custom Tools.Crystalite Shovel.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Verditeshovel.png");
+/* 647 */       Configuration.items.set("Custom Tools.Crystalite Shovel.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteShovel.png");
 /*     */     }
 /* 649 */     if (!Configuration.items.contains("Custom Tools.Crystalite Shovel.durability")) {
 /* 650 */       Configuration.items.set("Custom Tools.Crystalite Shovel.durability", Integer.valueOf(1000));
@@ -481,7 +481,7 @@
 /*     */     }
 /*     */ 
 /* 671 */     if (!Configuration.items.contains("Custom Tools.Crystalite Axe.texture url")) {
-/* 672 */       Configuration.items.set("Custom Tools.Crystalite Axe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Verditeaxe.png");
+/* 672 */       Configuration.items.set("Custom Tools.Crystalite Axe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteAxe.png");
 /*     */     }
 /* 674 */     if (!Configuration.items.contains("Custom Tools.Crystalite Axe.durability")) {
 /* 675 */       Configuration.items.set("Custom Tools.Crystalite Axe.durability", Integer.valueOf(1000));
@@ -500,7 +500,7 @@
 /*     */     }
 /*     */ 
 /* 690 */     if (!Configuration.items.contains("Custom Tools.Crystalite Pickaxe.texture url")) {
-/* 691 */       Configuration.items.set("Custom Tools.Crystalite Pickaxe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Verditepick.png");
+/* 691 */       Configuration.items.set("Custom Tools.Crystalite Pickaxe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystalitePick.png");
 /*     */     }
 /* 693 */     if (!Configuration.items.contains("Custom Tools.Crystalite Pickaxe.durability")) {
 /* 694 */       Configuration.items.set("Custom Tools.Crystalite Pickaxe.durability", Integer.valueOf(1000));
@@ -513,7 +513,7 @@
 /*     */     }
 /*     */ 
 /* 703 */     if (!Configuration.items.contains("Custom Tools.Crystalite Hoe.texture url")) {
-/* 704 */       Configuration.items.set("Custom Tools.Crystalite Hoe.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/tools/Verditehoe.png");
+/* 704 */       Configuration.items.set("Custom Tools.Crystalite Hoe.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/Cyrstalitehoe.png");
 /*     */     }
 /* 706 */     if (!Configuration.items.contains("Custom Tools.Crystalite Hoe.durability")) {
 /* 707 */       Configuration.items.set("Custom Tools.Crystalite Hoe.durability", Integer.valueOf(1000));
@@ -532,7 +532,7 @@
 /*     */     }
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Iron Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Iron Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/IronSword.png");
+/* 409 */       Configuration.items.set("Custom Tools.Iron Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Other/ShaftedIronSword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Iron Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Iron Sword(Ruby).durability", Integer.valueOf(351));
@@ -561,7 +561,7 @@
 /*     */ 
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Gold Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Gold Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/GoldSword.png");
+/* 409 */       Configuration.items.set("Custom Tools.Gold Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Other/ShaftedGoldSword.png");
 /*     */     }
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Gold Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Gold Sword(Ruby).durability", Integer.valueOf(133));
@@ -590,8 +590,7 @@
 /*     */ 
 /*     */
 /*     */     if (!Configuration.items.contains("Custom Tools.Diamond Sword(Ruby).texture url")) {
-/* 409 */       Configuration.items.set("Custom Tools.Diamond Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Diamondsword.png");
-/*     */     }
+/* 409 */       Configuration.items.set("Custom Tools.Diamond Sword(Ruby).texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Other/ShaftedDiamondSword.png");
 /* 411 */     if (!Configuration.items.contains("Custom Tools.Diamond Sword(Ruby).durability")) {
 /* 412 */       Configuration.items.set("Custom Tools.Diamond Sword(Ruby).durability", Integer.valueOf(1651));
 /*     */     }
@@ -619,3 +618,4 @@
 /*     */ 
 }
 /*     */ }
+}

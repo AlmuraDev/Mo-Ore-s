@@ -92,8 +92,8 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 /*  89 */         friction = Configuration.Ores.getInt("Custom Ores." + name + ".friction");
 /*     */       }
 /*  91 */       if (Configuration.Ores.contains("Custom Ores." + name + ".drop")) {
-/*  92 */         if (Configuration.Ores.contains("Custom Ores." + name + ".dropamount")) {
-/*  93 */           amount = Configuration.Ores.getInt("Custom Ores." + name + ".dropamount");
+/*  92 */         if (Configuration.Ores.contains("Custom Ores." + name + ".droopamount")) {
+/*  93 */           amount = Configuration.Ores.getInt("Custom Ores." + name + ".droopamount");
 /*     */         }
 /*  95 */         String sdrop = Configuration.Ores.getString("Custom Ores." + name + ".drop");
 /*     */         try {
@@ -140,8 +140,8 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 /* 126 */       float hard = Configuration.Blocks.getInt("Custom Blocks." + name + ".hardness");
 /* 127 */       int light = Configuration.Blocks.getInt("Custom Blocks." + name + ".lightlevel");
 /* 128 */       float friction = Configuration.Blocks.getInt("Custom Blocks." + name + ".friction");
-                int id = Configuration.Blocks.getInt("Custom Blocks." + name + ".block id");
-                int metadata = Configuration.Blocks.getInt("Custom Blocks." + name + ".metadata id");
+                int id = 1;//Configuration.Blocks.getInt("Custom Blocks." + name + ".block id");
+                int metadata = 0;//Configuration.Blocks.getInt("Custom Blocks." + name + ".metadata id");
 /* 129 */       addblock(plugin, name, textureID, hard, light, friction, id, metadata);
 /*     */     }
 /*     */   }
