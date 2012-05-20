@@ -9,10 +9,10 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.commons.block.Block;
-import org.getspout.commons.material.MaterialData;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.inventory.SpoutShapedRecipe;
 import org.getspout.spoutapi.inventory.SpoutShapelessRecipe;
+import org.getspout.spoutapi.material.MaterialData;
 
 public class Recipes {
 
@@ -25,25 +25,33 @@ public class Recipes {
 	private static String[] Ingredient7;
 	private static String[] Ingredient8;
 	private static String[] Ingredient9;
-        private static String[] resultsplit;
         String letter1 = "a";
         char letter11 = 'a';
-        String letter2 = "a";
-        char letter22 = 'a';
-        String letter3 = "a";
-        char letter33 = 'a';
-        String letter4 = "a";
-        char letter44 = 'a';
-        String letter5 = "a";
-        char letter55 = 'a';
-        String letter6 = "a";
-        char letter66 = 'a';
-        String letter7 = "a";
-        char letter77 = 'a';
-        String letter8 = "a";
-        char letter88 = 'a';
-        String letter9 = "a";
-        char letter99 = 'a';
+        String letter2 = "b";
+        char letter22 = 'b';
+        String letter3 = "c";
+        char letter33 = 'c';
+        String letter4 = "d";
+        char letter44 = 'd';
+        String letter5 = "e";
+        char letter55 = 'e';
+        String letter6 = "f";
+        char letter66 = 'f';
+        String letter7 = "g";
+        char letter77 = 'g';
+        String letter8 = "h";
+        char letter88 = 'h';
+        String letter9 = "i";
+        char letter99 = 'i';
+        int a;
+        int b;
+        int c;        
+        int d;
+        int e;
+        int f;   
+        int g;
+        int h;
+        int i;
         int x = 1;
         int y = 4;
         int z = 7;
@@ -199,7 +207,6 @@ public class Recipes {
 										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
 										srow1 = srow1 + rowletter;
 									}else if(Hashmaps.customtoolsmap.containsKey(TopRow[i])){
-                                 
 										customId = Hashmaps.customtoolsmap.get(TopRow[i]).getCustomId();
 										srow1 = srow1 + rowletter;
 									}else if(Hashmaps.customfoodmap.containsKey(TopRow[i])){
@@ -214,7 +221,7 @@ public class Recipes {
 							} else {
 								srow1 = srow1 + " ";
 							}
-							++i;
+							i++;
 						}
 					}else if(rowi == 1){
 						for(int i = 0; i<3;){
@@ -275,7 +282,6 @@ public class Recipes {
 									}else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[i])){
 										customId = Hashmaps.customtoolsmap.get(MiddleRow[i]).getCustomId();
 										srow2 = srow2 + rowletter;
-                                     
 									}else if(Hashmaps.customfoodmap.containsKey(MiddleRow[i])){
 										customId = Hashmaps.customfoodmap.get(MiddleRow[i]).getCustomId();
 										srow2 = srow2 + rowletter;
@@ -1311,6 +1317,7 @@ public class Recipes {
 				}
 			}
 	}*/
+    
     String[] TopRow;
     String[] MiddleRow;
     String[] BottomRow;
@@ -1379,15 +1386,53 @@ public class Recipes {
                             ItemStack result = new ItemStack(Material.getMaterial(Integer.parseInt(resultname)), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
                         }
-                        DetermineLetter();
-                        for(int count=0; count<3; count++) {
-                            
+                        DetermineLetters();
+                        shapedrecipe.shape(recipeshape[2], recipeshape[1], recipeshape[0]);
+                        if (a == 1) {
+                            if (!TopRow[0].contains("-")) {
+                                int customId;
+                                char letter = 0;
+                                if (a == 1) {
+                                    letter = letter11;
+                                } else if (b == 2) {
+                                    letter = letter22;
+                                } else if (c == 3) {
+                                    letter = letter33;
+                                }
+                                if(Hashmaps.customitemsmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.customitemsmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                }else if(Hashmaps.customoresmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.customoresmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                }else if(Hashmaps.customblocksmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.customblocksmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                }else if(Hashmaps.customtoolsmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.customtoolsmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                }else if(Hashmaps.customfoodmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.customfoodmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                }else if(Hashmaps.custombushesmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.custombushesmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                }else if(Hashmaps.customfishmap.containsKey(TopRow[0])){
+                                    customId = Hashmaps.customfishmap.get(TopRow[0]).getCustomId();
+                                    shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                }
+                                
+                            }
                         }
+                        if (!MiddleRow[0].contains("-")) {
+                        }
+                        if (!BottomRow[0].contains("-")) {
+                        }              
                     }
                 }
             }
         } else if (Configuration.recipe.contains("Shapless Recipes")) {
-            ConfigurationSection section = Configuration.ore.getConfigurationSection("Shapless Recipes");
+            ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapless Recipes");
             Iterator keys = section.getKeys(false).iterator();
             while (keys.hasNext()) {
                 for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
@@ -1395,7 +1440,7 @@ public class Recipes {
                 }
             }
         } else if (Configuration.recipe.contains("Furnace Recipes")) {
-            ConfigurationSection section = Configuration.ore.getConfigurationSection("Furnace Recipes");
+            ConfigurationSection section = Configuration.recipe.getConfigurationSection("Furnace Recipes");
             Iterator keys = section.getKeys(false).iterator();
             while (keys.hasNext()) {
                 for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
@@ -1406,20 +1451,21 @@ public class Recipes {
         }     
     }
 
-    private void DetermineLetter() {
+    private void DetermineLetters() {
         if (!TopRow[0].contains("-")) {
             switch (x) {
                 case 1:
                     recipeshape[2] = letter1;
                     x++;
-                    break;
+                    a = 1;
                 case 2:
-                    recipeshape[2] = letter1 + letter2;
+                    recipeshape[2] = recipeshape[2] + letter2;
                     x++;
-                    break;
+                    b = 2;
                 case 3:
-                    recipeshape[2] = letter1 + letter2 + letter3;
+                    recipeshape[2] = recipeshape[2] + letter3;
                     x++;
+                    c = 3;
                     break;
             }            
         } else if (!TopRow[1].contains("-")) {
@@ -1427,14 +1473,15 @@ public class Recipes {
                 case 1:
                     recipeshape[2] = letter1;
                     x++;
-                    break;
+                    a = 1;
                 case 2:
-                    recipeshape[2] = letter1 + letter2;
+                    recipeshape[2] = recipeshape[2] + letter2;
                     x++;
-                    break;
+                    b = 2;
                 case 3:
-                    recipeshape[2] = letter1 + letter2 + letter3;
+                    recipeshape[2] = recipeshape[2] + letter3;
                     x++;
+                    c = 3;
                     break;
             }
         } else if (!TopRow[2].contains("-")) {
@@ -1442,106 +1489,163 @@ public class Recipes {
                 case 1:
                     recipeshape[2] = letter1;
                     x++;
-                    break;
+                    a = 1;
                 case 2:
-                    recipeshape[2] = letter1 + letter2;
+                    recipeshape[2] = recipeshape[2] + letter2;
                     x++;
-                    break;
+                    b = 2;
                 case 3:
-                    recipeshape[2] = letter1 + letter2 + letter3;
+                    recipeshape[2] = recipeshape[2] + letter3;
                     x++;
+                    c = 3;
                     break;
             }
-            
         } else if (!MiddleRow[0].contains("-")) {
-            switch (y) {
+            if (!recipeshape[2].equals("abc")) {
+                switch (y) {
                     case 4:
                         recipeshape[1] = letter4;
                         y++;
+                        d = 4;
                         break;
                     case 5:
-                        recipeshape[1] = letter4 + letter5;
+                        recipeshape[1] = recipeshape[1] + letter5;
                         y++;
+                        e = 5;
                         break;
                     case 6:
-                        recipeshape[1] = letter4 + letter5 + letter6;
+                        recipeshape[1] = recipeshape[1] + letter6;
                         y++;
+                        f = 6;
                         break;
                 }
+            } else {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
+            }
         } else if (!MiddleRow[1].contains("-")) {
-            switch (y) {
-                case 4:
-                    recipeshape[1] = letter4;
-                    y++;
-                    break;
-                case 5:
-                    recipeshape[1] = letter4 + letter5;
-                    y++;
-                    break;
-                case 6:
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    y++;
-                    break;
+            if (!recipeshape[2].equals("abc")) {
+                switch (y) {
+                    case 4:
+                        recipeshape[1] = letter4;
+                        y++;
+                        d = 4;
+                        break;
+                    case 5:
+                        recipeshape[1] = recipeshape[1] + letter5;
+                        y++;
+                        e = 5;
+                        break;
+                    case 6:
+                        recipeshape[1] = recipeshape[1] + letter6;
+                        y++;
+                        f = 6;
+                        break;
+                }
+            } else {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
             }
         } else if (!MiddleRow[2].contains("-")) {
-            switch (y) {
-                case 4:
-                    recipeshape[1] = letter4;
-                    y++;
-                    break;
-                case 5:
-                    recipeshape[1] = letter4 + letter5;
-                    y++;
-                    break;
-                case 6:
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    y++;
-                    break;
+            if (!recipeshape[2].equals("abc")) {
+                switch (y) {
+                    case 4:
+                        recipeshape[1] = letter4;
+                        y++;
+                        d = 4;
+                        break;
+                    case 5:
+                        recipeshape[1] = recipeshape[1] + letter5;
+                        y++;
+                        e = 5;
+                        break;
+                    case 6:
+                        recipeshape[1] = recipeshape[1] + letter6;
+                        y++;
+                        f = 6;
+                        break;
+                } 
+            } else {
+               recipeshape[1] = letter4 + letter5 + letter6;
+               d = 4;
+               e = 5;
+               f = 6;
             }
         } else if (!BottomRow[0].contains("-")) {
-            switch (z) {
-                case 7:
-                    recipeshape[0] = letter7;
-                    z++;
-                    break;
-                case 8:
-                    recipeshape[0] = letter7 + letter8;
-                    z++;
-                    break;
-                case 9:
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    z++;
-                    break;
-            } 
+            if (!recipeshape[2].equals("abc") && !recipeshape[1].equals("def")) {
+                switch (z) {
+                    case 7:
+                        recipeshape[0] = letter7;
+                        z++;
+                        g = 7;
+                        break;
+                    case 8:
+                        recipeshape[0] = recipeshape[0] + letter8;
+                        z++;
+                        h = 8;
+                        break;
+                    case 9:
+                        recipeshape[0] = recipeshape[0] + letter9;
+                        z++;
+                        i = 9;
+                        break;
+                } 
+            } else {
+               recipeshape[2] = letter7 + letter8 + letter9;
+               g = 4;
+               h = 5;
+               i = 6;
+            }
         } else if (!BottomRow[1].contains("-")) {
-            switch (z) {
-                case 7:
-                    recipeshape[0] = letter7;
-                    z++;
-                    break;
-                case 8:
-                    recipeshape[0] = letter7 + letter8;
-                    z++;
-                    break;
-                case 9:
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    z++;
-                    break;
+            if (!recipeshape[2].equals("abc") && !recipeshape[1].equals("def")) {
+                switch (z) {
+                    case 7:
+                        recipeshape[0] = letter7;
+                        z++;
+                        g = 7;
+                        break;
+                    case 8:
+                        recipeshape[0] = recipeshape[0] + letter8;
+                        z++;
+                        h = 8;
+                        break;
+                    case 9:
+                        recipeshape[0] = recipeshape[0] + letter9;
+                        z++;
+                        i = 9;
+                        break;
+                } 
+            } else {
+               recipeshape[2] = letter7 + letter8 + letter9;
+               g = 4;
+               h = 5;
+               i = 6;
             }
         } else if (!BottomRow[2].contains("-")) {
-            switch (z) {
-                case 7:
-                    recipeshape[0] = letter7;
-                    z++;
-                    break;
-                case 8:
-                    recipeshape[0] = letter7 + letter8;
-                    z++;
-                    break;
-                case 9:
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    z++;
-                    break;
+            if (!recipeshape[2].equals("abc") && !recipeshape[1].equals("def")) {
+                switch (z) {
+                    case 7:
+                        recipeshape[0] = letter7;
+                        z++;
+                        break;
+                    case 8:
+                        recipeshape[0] = recipeshape[0] + letter8;
+                        z++;
+                        break;
+                    case 9:
+                        recipeshape[0] = recipeshape[0] + letter9;
+                        z++;
+                        break;
+                } 
+            } else {
+               recipeshape[2] = letter7 + letter8 + letter9;
+               g = 4;
+               h = 5;
+               i = 6;
             }
         }
     }
