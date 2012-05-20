@@ -31,7 +31,7 @@ public class MoOresBlockListener implements Listener {
         if (player instanceof SpoutPlayer){
             SpoutPlayer splayer = (SpoutPlayer) player;
             for (CustomTools tools:Hashmaps.customtools) {
-                if (splayer.getItemInHand().equals(tools)) {
+                if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
                     if (tools.isPickaxe()) {
                         this.tool = tools;
                         isholding = true;
@@ -42,7 +42,7 @@ public class MoOresBlockListener implements Listener {
                     }
                 }
             }
-            //if (isholding) {
+            if (isholding) {
                 if (isVanilla(block)) {
                     block.breakNaturally();
                 } else if (isCustomOre(block)) {
@@ -50,7 +50,7 @@ public class MoOresBlockListener implements Listener {
                 } else if (isCustomStone(block)) {
                     block.breakNaturally();
                 }
-            //}  
+            }  
         }
     }
     public static boolean isVanilla(Block block) {

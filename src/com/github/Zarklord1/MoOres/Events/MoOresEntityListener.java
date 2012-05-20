@@ -5,7 +5,6 @@ import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -33,10 +32,9 @@ public class MoOresEntityListener implements Listener  {
                 if (player instanceof SpoutPlayer) {
                     SpoutPlayer splayer = SpoutManager.getPlayerManager().getPlayer(player);
                     for (CustomTools tool:Hashmaps.customtools){
-                        //if (tool.isSword()) {
-                            if (splayer.getItemInHand().equals(tool)) {
+                        if (tool.isSword()) {
+                            if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
                                 event.setDamage(tool.getdamage());
-                                Bukkit.broadcastMessage("" + tool.getdamage());
                                 if (tool.isFireSword()) {
                                 int firetime = tool.getfireticks();
                                 entityhit.setFireTicks(firetime);
@@ -45,7 +43,7 @@ public class MoOresEntityListener implements Listener  {
                                     return;
                                 }
                             }
-                        //}
+                        }
                     }
                 }                
             } 

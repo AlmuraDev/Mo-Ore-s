@@ -1,36 +1,32 @@
 package com.github.Zarklord1.MoOres.Util;
 
 import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Bushes.CustomBush;
-import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.MoOres;
 import java.util.Iterator;
-import java.util.List;
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
-import org.getspout.spoutapi.SpoutManager;
+import org.getspout.commons.block.Block;
+import org.getspout.commons.material.MaterialData;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.inventory.SpoutShapedRecipe;
-import org.getspout.spoutapi.material.MaterialData;
-import org.getspout.spoutapi.material.item.GenericCustomFood;
-import org.getspout.spoutapi.material.item.GenericCustomItem;
-import org.getspout.spoutapi.material.item.GenericCustomTool;
-import org.getspout.spoutapi.material.item.GenericItem;
+import org.getspout.spoutapi.inventory.SpoutShapelessRecipe;
 
 public class Recipes {
 
-	private static String[] row1dv1;
-	private static String[] row1dv2;
-	private static String[] row1dv3;
-	private static String[] row2dv1;
-	private static String[] row2dv2;
-	private static String[] row2dv3;
-	private static String[] row3dv1;
-	private static String[] row3dv2;
-	private static String[] row3dv3;
+	private static String[] Ingredient1;
+	private static String[] Ingredient2;
+	private static String[] Ingredient3;
+	private static String[] Ingredient4;
+	private static String[] Ingredient5;
+	private static String[] Ingredient6;
+	private static String[] Ingredient7;
+	private static String[] Ingredient8;
+	private static String[] Ingredient9;
+        private static String[] resultsplit;
 
-	public static void addItemShapedRecipe(MoOres plugin){
+	/*public static void addItemShapedRecipe(MoOres plugin){
 		for (GenericCustomItem item:Hashmaps.customitems) {
 			checkitem("Items",item);
 		}
@@ -57,11 +53,14 @@ public class Recipes {
 	  public static void addFoodShapedRecipe(MoOres plugin) {
 		for (GenericCustomFood food : Hashmaps.customfood)
 	      checkitem("Food", food);
-	  }
+	  }*/
+          public void addAllRecipes(MoOres plugin) {
+              addRecipes();
+          }
 	
 		
 	
-	public static int i = 0;
+	/*public static int i = 0;
 	private static SpoutShapedRecipe recipe;
 	private static String rowletter;
 	public static void checkitem(String type, GenericItem item){
@@ -384,9 +383,9 @@ public class Recipes {
 	}
 	public static void checkore(String type, CustomOres item){
 		for(int rpc = 1; rpc < 10; ++rpc){
-			if(Configuration.Ores.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-				int amount = Configuration.Ores.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-				List list = Configuration.Ores.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
+			if(Configuration.ore.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
+				int amount = Configuration.ore.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
+				List list = Configuration.ore.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
 				int customId = 0;
 				Iterator keys = list.iterator();
 				String[] row1 = keys.next().toString().split(",");
@@ -685,9 +684,9 @@ public class Recipes {
 	}
 	public static void checkblock(String type, CustomBlocks item){
 		for(int rpc = 1; rpc < 10; ++rpc){
-			if(Configuration.Blocks.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-				int amount = Configuration.Blocks.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-				List list = Configuration.Blocks.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
+			if(Configuration.block.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
+				int amount = Configuration.block.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
+				List list = Configuration.block.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
 				int customId = 0;
 				Iterator keys = list.iterator();
 				String[] row1 = keys.next().toString().split(",");
@@ -989,9 +988,9 @@ public class Recipes {
 	}
 		public static void checkbush(String type, CustomBush item){
 			for(int rpc = 1; rpc < 10; ++rpc){
-				if(Configuration.Blocks.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-					int amount = Configuration.Blocks.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-					List list = Configuration.Blocks.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
+				if(Configuration.block.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
+					int amount = Configuration.block.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
+					List list = Configuration.block.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
 					int customId = 0;
 					Iterator keys = list.iterator();
 					String[] row1 = keys.next().toString().split(",");
@@ -1290,5 +1289,87 @@ public class Recipes {
 					}
 				}
 			}
-	}
+	}*/
+    private static SpoutShapedRecipe shapedrecipe;
+    private static SpoutShapelessRecipe shaplessrecipe;
+    private static FurnaceRecipe furnacerecipe;
+    private void addRecipes() {
+        if (Configuration.recipe.contains("Shaped Recipes")) {
+            ConfigurationSection section = Configuration.ore.getConfigurationSection("Shaped Recipes");
+            Iterator keys = section.getKeys(false).iterator();
+            boolean isblock = false;
+            boolean isore = false;
+            boolean isbush = false;
+            boolean istool = false;
+            boolean isfood = false;
+            boolean isfish = false;
+            boolean isitem = false;      
+            while (keys.hasNext()) {
+                for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
+                    String resultname = (String)keys.next();
+                    if (Configuration.recipe.contains("Shaped Recipes." + resultname + ".Recipe" + rpcnum)) {
+                        int amount = Configuration.recipe.getInt("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
+                        if (Hashmaps.customblocksmap.containsKey(resultname)) {
+                            isblock = true;
+                        } else if (Hashmaps.customoresmap.containsKey(resultname)) {
+                            isore = true;
+                        } else if (Hashmaps.custombushesmap.containsKey(resultname)) {
+                            isbush = true;
+                        } else if (Hashmaps.customtoolsmap.containsKey(resultname)) {
+                            istool = true;
+                        } else if (Hashmaps.customfoodmap.containsKey(resultname)) {
+                            isfood = true;
+                        } else if (Hashmaps.customfishmap.containsKey(resultname)) {
+                            isfish = true;
+                        } else if (Hashmaps.customitemsmap.containsKey(resultname)) { 
+                            isitem = true;
+                        }
+                        if (isblock) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.customblocksmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else if (isore) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.customoresmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else if (isbush) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.custombushesmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else if (istool) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.customtoolsmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else if (isfood) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.customfoodmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else if (isfish) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.customfishmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else if (isitem) {
+                            ItemStack result = new SpoutItemStack(Hashmaps.customitemsmap.get(resultname), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        } else {
+                            ItemStack result = new ItemStack(Material.getMaterial(Integer.parseInt(resultname)), amount);
+                            shapedrecipe = new SpoutShapedRecipe(result);
+                        }
+                        
+                    }
+                }
+            }
+        } else if (Configuration.recipe.contains("Shapless Recipes")) {
+            ConfigurationSection section = Configuration.ore.getConfigurationSection("Shapless Recipes");
+            Iterator keys = section.getKeys(false).iterator();
+            while (keys.hasNext()) {
+                for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
+                    String resultname = (String)keys.next();
+                }
+            }
+        } else if (Configuration.recipe.contains("Furnace Recipes")) {
+            ConfigurationSection section = Configuration.ore.getConfigurationSection("Furnace Recipes");
+            Iterator keys = section.getKeys(false).iterator();
+            while (keys.hasNext()) {
+                for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
+                    String resultname = (String)keys.next();
+                }
+                
+            }
+        }     
+    }
 }

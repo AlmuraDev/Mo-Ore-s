@@ -1,6 +1,6 @@
 /*    */ package com.github.Zarklord1.MoOres.Config;
 /*    */ 
-/*    */ public class TextureConfig1
+/*    */ public class TextureConfig
 /*    */ {
 /*    */   public static void set()
 /*    */   {

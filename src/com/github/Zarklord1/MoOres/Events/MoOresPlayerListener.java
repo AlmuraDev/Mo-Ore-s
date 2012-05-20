@@ -4,7 +4,8 @@ import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import java.util.Random;
-import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,6 +17,7 @@ import org.getspout.spoutapi.inventory.SpoutItemStack;
 
 public class MoOresPlayerListener implements Listener {
     public static MoOres plugin;
+    Boolean fishchanged = false;
         
         
     public MoOresPlayerListener(MoOres instance) {
@@ -26,15 +28,21 @@ public class MoOresPlayerListener implements Listener {
     public void onPlayerFish(PlayerFishEvent event) {
         Player player = event.getPlayer();
         State state = event.getState();
-        if (state == state.FISHING) {
-            for (CustomFishes Fish : Hashmaps.customfish) {
-                Location droplocation = player.getLocation();
-                Random rand = new Random();
-                int chance = rand.nextInt(100);
-                if (chance < Fish.getchance()) {
-                    ItemStack fish = new SpoutItemStack(Fish);
-                    droplocation.getWorld().dropItemNaturally(droplocation, fish);
-                }
+        Entity entity = event.getCaught();
+        Random rand = new Random();
+        if (state == state.CAUGHT_FISH) {
+            if (entity instanceof Item) {
+                Item item = (Item) entity;
+                for (CustomFishes fish:Hashmaps.customfish)    {
+                    int Chance = rand.nextInt(100);
+                    if (!fishchanged) {
+                        if (Chance <= fish.getchance()) {
+                            ItemStack fishingfish = new SpoutItemStack(fish, 1);
+                            item.setItemStack(fishingfish);
+                            fishchanged = true;
+                        }
+                    }
+                }         
             }
         }
     }

@@ -2,29 +2,29 @@
 /*     */ 
 /*     */ import java.util.Arrays;
 /*     */ 
-/*     */ public class Item
+/*     */ public class ItemConfig
 /*     */ {
 /*     */   public static void set()
 /*     */   {
 /*  11 */     if (!Configuration.items.contains("Custom Food.Salad.texture url")) {
 /*     */    	Configuration.items.set("Custom Food.Salad.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/food/salad.png");
-/*     */  	  }
-/*     */  	  if (!Configuration.items.contains("Custom Food.Salad.restore")) {
+/*     */     }
+/*     */     if (!Configuration.items.contains("Custom Food.Salad.restore")) {
 /*     */      	Configuration.items.set("Custom Food.Salad.restore", Integer.valueOf(2));
-/*     */	  } 
+/*     */     } 
 /*     */
 /*  11 */     if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.texture url")) {
 /*  11 */    	Configuration.items.set("Custom Fish.Raw Cave Trout.texture url", "http://dl.lynxdragon.com/rpgessentials/textures/fish/cavetrout.png");
-/*  11 */  	  }
-/*  11 */	  if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.restore")) {
-/*  11 */ 		Configuration.items.set("Custom Fish.Raw Cave Trout.restore", Integer.valueOf(10));
 /*  11 */     }
-/*  11 */  	  if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.level")) {
-/*  11 */		Configuration.items.set("Custom Fish.Raw Cave Trout.level", Integer.valueOf(50));
-/*  11 */  	  }
-/*  11 */  	  if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.chance")) {
-/*  11 */  		Configuration.items.set("Custom Fish.Raw Cave Trout.chance", Integer.valueOf(5));
-/*  11 */ 	  }
+/*  11 */     if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.restore")) {
+/*  11 */     Configuration.items.set("Custom Fish.Raw Cave Trout.restore", Integer.valueOf(10));
+/*  11 */     }
+/*  11 */     if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.level")) {
+/*  11 */      	Configuration.items.set("Custom Fish.Raw Cave Trout.level", Integer.valueOf(50));
+/*  11 */     }
+/*  11 */     if (!Configuration.items.contains("Custom Fish.Raw Cave Trout.chance")) {
+/*  11 */       Configuration.items.set("Custom Fish.Raw Cave Trout.chance", Integer.valueOf(50));
+/*  11 */     }
 /*     */
 /*  65 */     if (!Configuration.items.contains("Custom Items.Flarite Ingot.texture url")) {
 /*  66 */       Configuration.items.set("Custom Items.Flarite Ingot.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Flarite/Flartieingot.png");

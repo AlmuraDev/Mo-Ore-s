@@ -7,18 +7,26 @@ import java.io.IOException;
 /*     */ public class Configuration
 /*     */ {
 /*  30 */   public static MyConfiguration config = new MyConfiguration();
-/*  31 */   public static MyConfiguration Ores = new MyConfiguration();
-/*  31 */   public static MyConfiguration Blocks = new MyConfiguration();
+/*  31 */   public static MyConfiguration ore = new MyConfiguration();
+/*  31 */   public static MyConfiguration block = new MyConfiguration();
 /*  33 */   public static MyConfiguration generator = new MyConfiguration();
 /*  34 */   public static MyConfiguration items = new MyConfiguration();
 /*  41 */   public static MyConfiguration texture = new MyConfiguration();
+            public static MyConfiguration recipe = new MyConfiguration();
 /*     */ 
 /*  47 */   static { 
-              if (load(config, "config.yml")) {
-/*  48 */       config = MyConfiguration.loadConfiguration("plugins/Mo Ores/config.yml");
+              if (load(config, "Config.yml")) {
+/*  48 */       config = MyConfiguration.loadConfiguration("plugins/MoOres/Config.yml");
 /*  49 */       Config.set();
 /*  50 */       save(config);
 /*     */     }
+              
+              if (load(recipe, "Recipes.yml")) {
+/*  48 */       recipe = MyConfiguration.loadConfiguration("plugins/MoOres/Recipes.yml");
+/*  49 */       RecipeConfig.set();
+/*  50 */       save(recipe);
+/*     */     }
+              
 /*  52 */     Config.set();
 /*     */     try {
 /*  54 */       config.save();
@@ -26,27 +34,27 @@ import java.io.IOException;
 /*  56 */       e.printStackTrace();
 /*     */     }
 /*     */ 
-/*  59 */     if (load(Ores, "Ores.yml")) {
-/*  60 */       Ores = MyConfiguration.loadConfiguration("plugins/Mo Ores/Ores.yml");
+/*  59 */     if (load(ore, "Ores.yml")) {
+/*  60 */       ore = MyConfiguration.loadConfiguration("plugins/MoOres/Ores.yml");
 /*  61 */       OresConfig.set();
-/*  62 */       save(Ores);
+/*  62 */       save(ore);
 /*     */     }
 /*  62 */
-/*     */     if (load(Blocks, "blocks.yml")) {
-/*  60 */       Blocks = MyConfiguration.loadConfiguration("plugins/Mo Ores/blocks.yml");
+/*     */     if (load(block, "Blocks.yml")) {
+/*  60 */       block = MyConfiguration.loadConfiguration("plugins/MoOres/Blocks.yml");
 /*  61 */       BlockConfig.set();
-/*  62 */       save(Blocks);
+/*  62 */       save(block);
 /*     */     }
 
 /*  64 */     BlockConfig.set();
 /*     */     try {
-/*  66 */      	Blocks.save();
+/*  66 */      	block.save();
 /*     */     } catch (Exception e) {
 /*  68 */       e.printStackTrace();
 /*     */     }
 
-/*     */     if (load(generator, "worldgenerator.yml")) {
-/*  84 */       generator = MyConfiguration.loadConfiguration("plugins/Mo Ores/worldgenerator.yml");
+/*     */     if (load(generator, "Worldgenerator.yml")) {
+/*  84 */       generator = MyConfiguration.loadConfiguration("plugins/MoOres/Worldgenerator.yml");
 /*  85 */       GeneratorConfig.set();
 /*  86 */       save(generator);
 /*     */     }
@@ -57,24 +65,24 @@ import java.io.IOException;
 /*  92 */       e.printStackTrace();
 /*     */     }
 /*     */ 
-/*  95 */     if (load(items, "items.yml")) {
-/*  96 */       items = MyConfiguration.loadConfiguration("plugins/Mo Ores/items.yml");
-/*  97 */       Item.set();
+/*  95 */     if (load(items, "Items.yml")) {
+/*  96 */       items = MyConfiguration.loadConfiguration("plugins/MoOres/Items.yml");
+/*  97 */       ItemConfig.set();
 /*  98 */       save(items);
 /*     */     }
-/* 100 */     Item.set();
+/* 100 */     ItemConfig.set();
 /*     */     try {
 /* 102 */       items.save();
 /*     */     } catch (Exception e) {
 /* 104 */       e.printStackTrace();
 /*     */     }
 /*     */ 
-              if (load(texture, "textures.yml")) {
-/* 168 */       texture = MyConfiguration.loadConfiguration("plugins/Mo Ores/textures.yml");
-/* 169 */       TextureConfig1.set();
+              if (load(texture, "Textures.yml")) {
+/* 168 */       texture = MyConfiguration.loadConfiguration("plugins/MoOres/Textures.yml");
+/* 169 */       TextureConfig.set();
 /* 170 */       save(texture);
 /*     */     }
-/* 172 */     TextureConfig1.set();
+/* 172 */     TextureConfig.set();
 /*     */     try {
 /* 174 */       texture.save();
 /*     */     } catch (Exception e) {

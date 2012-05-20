@@ -112,6 +112,7 @@ public class MoOres extends JavaPlugin{
               pm.registerEvents(new MoOresEntityListener(this), this);
               pm.registerEvents(new MoOresBlockListener(this), this);
               pm.registerEvents(new MoOresFurnaceListener(this), this);
+              pm.registerEvents(new MoOresPlayerListener(this), this);
           }
           public void SetDrops() {
               

@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Custom.Items.Bowplusarrow;
+package com.github.Zarklord1.MoOres.Custom.Items.Arrows;
 
 import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
