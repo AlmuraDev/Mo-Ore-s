@@ -13,7 +13,12 @@ import com.github.Zarklord1.MoOres.Events.*;
 import com.github.Zarklord1.MoOres.Generator.Generator;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import com.github.Zarklord1.MoOres.Util.Recipes;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.plugin.PluginManager;
+import org.getspout.spoutapi.inventory.SpoutItemStack;
+import org.getspout.spoutapi.material.MaterialData;
 
 public class MoOres extends JavaPlugin{
 	
@@ -51,11 +56,11 @@ public class MoOres extends JavaPlugin{
 		log.info("[Mo Ores] Registered all Custom Blocks And Items!");
 		reg();
 		log.info("[Mo Ores] Registering Recipes...");
-		Recipes.addBlockShapedRecipe(plugin);
-		Recipes.addFoodShapedRecipe(plugin);
-		Recipes.addItemShapedRecipe(plugin);
-		Recipes.addToolShapedRecipe(plugin);
-                Recipes.addAllRecipes(plugin);
+		//Recipes.addBlockShapedRecipe(plugin);
+		//Recipes.addFoodShapedRecipe(plugin);
+		//Recipes.addItemShapedRecipe(plugin);
+		//Recipes.addToolShapedRecipe(plugin);
+                Recipes.addAllRecipes(plugin); 
 		log.info("[Mo Ores] Registered all Recipes!");
 		
 		log.info("[Mo Ores] Is Enabled!");
