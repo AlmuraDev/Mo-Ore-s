@@ -3,7 +3,6 @@ package com.github.Zarklord1.MoOres;
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Events.MoOresBlockListener;
 import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
-import com.github.Zarklord1.MoOres.Events.MoOresFurnaceListener;
 import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
 import com.github.Zarklord1.MoOres.Generator.Generator;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
@@ -83,9 +82,9 @@ public class MoOres extends JavaPlugin{
 	
 	  public void loadTextures()
 	  {
-            int j = Configuration.texture.getInt("Ores Texture Size");
-            int d = Configuration.texture.getInt("Blocks Texture Size");
-            int k = Configuration.texture.getInt("Plants Texture Size");
+            int j = Configuration.texture.getInt("Ores Block Texture Size");
+            int d = Configuration.texture.getInt("Blocks Block Texture Size");
+            int k = Configuration.texture.getInt("Plants Block Texture Size");
 	    this.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), j * j, j * j, j);
 	    this.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), d * d, d * d, d);
 	    this.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), k * k, k * k, k);
@@ -115,7 +114,6 @@ public class MoOres extends JavaPlugin{
               PluginManager pm = this.getServer().getPluginManager();
               pm.registerEvents(new MoOresEntityListener(this), this);
               pm.registerEvents(new MoOresBlockListener(this), this);
-              pm.registerEvents(new MoOresFurnaceListener(this), this);
               pm.registerEvents(new MoOresPlayerListener(this), this);
           }
           public void SetDrops() {

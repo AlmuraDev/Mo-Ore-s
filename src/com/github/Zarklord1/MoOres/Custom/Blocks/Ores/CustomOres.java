@@ -14,6 +14,7 @@ public class CustomOres extends GenericCubeCustomBlock
    private int minY = 2; private int maxY = 128; private int freq = 0; @SuppressWarnings("unused")
 private int light = 1;
    float hard = 1.0F; float friction = 0.0F;
+   int blockid;
 /*    */ 
 /* 17 */   public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomItem drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
            super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
@@ -23,6 +24,7 @@ private int light = 1;
 /* 21 */     this.hard = hard;
 /* 22 */     this.light = light;
 /* 23 */     this.friction = friction;
+this.blockid = blockId;
              setFriction(friction);
 /* 24 */     setHardness(hard);
 /* 25 */     setLightLevel(light);
@@ -40,6 +42,7 @@ private int light = 1;
 /* 38 */     this.hard = hard;
 /* 39 */     this.light = light;
 /* 40 */     this.friction = friction;
+this.blockid = blockId;
              setFriction(friction);
 /* 41 */     setHardness(hard);
 /* 42 */     setLightLevel(light);
@@ -57,6 +60,7 @@ private int light = 1;
 /* 55 */     this.hard = hard;
 /* 56 */     this.light = light;
 /* 57 */     this.friction = friction;
+this.blockid = blockId;
 			setHardness(hard);
 			setLightLevel(light);
 			setFriction(friction);
@@ -77,4 +81,8 @@ private int light = 1;
    public float getHardness() {
 	   return this.hard;
    }
+   public Material getMaterial() {
+      Material material = Material.getMaterial(blockid);
+      return material;
+  }
 }

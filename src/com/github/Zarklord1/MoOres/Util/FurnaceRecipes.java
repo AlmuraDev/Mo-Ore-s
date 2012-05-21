@@ -1,7 +1,12 @@
 package com.github.Zarklord1.MoOres.Util;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import com.github.Zarklord1.MoOres.Custom.Blocks.Bushes.CustomBush;
+import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
+import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
+import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
+import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFood;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -10,20 +15,31 @@ import org.bukkit.material.MaterialData;
 
 public class FurnaceRecipes {
 
-	public static HashMap<Short, ItemStack> customrecipes = new LinkedHashMap<Short, ItemStack>();
+	public static void MaterialFurnaceRecipe(ItemStack result, int id){
 
-	public static void NewFurnaceRecipe(ItemStack result, int ingredient){
-		FurnaceRecipe fr = new FurnaceRecipe(result, (new MaterialData(ingredient)));
+		FurnaceRecipe fr = new FurnaceRecipe(result, (new MaterialData(id)));
 
 		Bukkit.getServer().addRecipe(fr);
+
 	}
 
-	public static void CustomFurnaceRecipe(ItemStack result, Material material, short i) {
+	public static void CustomFurnaceRecipe(ItemStack result, Material stone, int CustomId) {
 
-		customrecipes.put(i, result);
+		int durability = CustomId;
 
-		FurnaceRecipe fr = new FurnaceRecipe(result, material, i);
+		MaterialData customblock = new MaterialData(stone, (byte) durability);
+
+		FurnaceRecipe fr = new FurnaceRecipe(result, customblock);
 
 		Bukkit.getServer().addRecipe(fr);
+
+	}
+        
+        public static void MaterialDataFurnaceRecipe(ItemStack result, int id, int data){
+
+		FurnaceRecipe fr = new FurnaceRecipe(result, (new MaterialData(id, (byte) data)));
+
+		Bukkit.getServer().addRecipe(fr);
+
 	}
 }

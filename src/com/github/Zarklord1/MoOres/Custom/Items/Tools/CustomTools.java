@@ -4,6 +4,7 @@ import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
+import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.material.Block;
 import org.getspout.spoutapi.material.MaterialData;
@@ -108,4 +109,8 @@ public class CustomTools extends GenericCustomTool
         public int getfireticks() {
             return firetime;
         }
+
+    public Material getMaterial() {
+        return Material.FLINT;
+    }
 }

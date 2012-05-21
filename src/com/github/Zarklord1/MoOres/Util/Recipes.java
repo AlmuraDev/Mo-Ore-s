@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
+import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.inventory.SpoutShapedRecipe;
 import org.getspout.spoutapi.inventory.SpoutShapelessRecipe;
@@ -24,6 +25,9 @@ public class Recipes {
 	private static String[] Ingredient7;
 	private static String[] Ingredient8;
 	private static String[] Ingredient9;
+        private static String[] SplitRecipe;
+        private static String[] FurnaceResult;
+        private static String[] SourceResult;
         private static String letter1 = "a";
         private static char letter11 = 'a';
         private static String letter2 = "b";
@@ -51,1276 +55,16 @@ public class Recipes {
         private static int g;
         private static int h;
         private static int i;
-	/*public static void addItemShapedRecipe(MoOres plugin){
-		for (GenericCustomItem item:Hashmaps.customitems) {
-			checkitem("Items",item);
-		}
-	}
-	public static void addBlockShapedRecipe(MoOres plugin){
-		for (CustomOres block:Hashmaps.customores) {
-			checkore("Ores",block);
-		}
-		for (CustomBlocks block:Hashmaps.customblocks) {
-			checkblock("Blocks",block);
-		}
-		for (CustomBush Bush:Hashmaps.custombushes) {
-			checkbush("Bushes", Bush);
-		}
-	}
-	public static void addToolShapedRecipe(MoOres plugin){
-                int y = 0;
-		for (GenericCustomTool tool:Hashmaps.customtools){
-                    checkitem("Tools",tool);
-                    y++;
-                    MoOres.log.info(y + " recipes");
-		}	
-	}
-	  public static void addFoodShapedRecipe(MoOres plugin) {
-		for (GenericCustomFood food : Hashmaps.customfood)
-	      checkitem("Food", food);
-	  }*/
           public static void addAllRecipes(MoOres plugin) {
               addRecipes();
           }
-	
-		
-	
-	/*public static int i = 0;
-	private static SpoutShapedRecipe recipe;
-	private static String rowletter;
-	public static void checkitem(String type, GenericItem item){
-		for(int rpc = 1; rpc < 10; rpc++){
-			if(Configuration.items.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-				int amount = Configuration.items.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-				List list = Configuration.items.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
-				Iterator keys = list.iterator();
-				String[] TopRow = keys.next().toString().split(",");
-				String[] MiddleRow = keys.next().toString().split(",");
-				String[] BottomRow = keys.next().toString().split(",");
-				String srow1 = "";
-				String srow2 = "";
-				String srow3 = "";
 
-				ItemStack result = new SpoutItemStack(item, amount);
-				recipe = new SpoutShapedRecipe(result);
-				recipe.shape("ghi", "def", "abc");
-
-				char letter = 0;
-
-				for(int count=0; count<3; count ++){
-					if(TopRow[count].contains(":")){
- 
-						if(count == 0){
-							row1dv1 = TopRow[count].split(":");
-						}else if(count == 1){
-							row1dv2 = TopRow[count].split(":");
-						}else if(count == 2){
-							row1dv3 = TopRow[count].split(":");
-						}
-					}
-				}
-				for(int count=0; count<3; count ++){
-					if(MiddleRow[count].contains(":")){
- 
-						if(count == 0){
-							row2dv1 = MiddleRow[count].split(":");
-						}else if(count == 1){
-							row2dv2 = MiddleRow[count].split(":");
-						}else if(count == 2){
-							row2dv3 = MiddleRow[count].split(":");
-						}
-					}
-				}
-				for(int count=0; count<3; count ++){
-					if(BottomRow[count].contains(":")){
- 
-						if(count == 0){
-							row3dv1 = BottomRow[count].split(":");
-						}else if(count == 1){
-							row3dv2 = BottomRow[count].split(":");
-						}else if(count == 2){
-							row3dv3 = BottomRow[count].split(":");
-						}
-					}
-				}
-
-				for(int rowi = 0; rowi<3; ++rowi){
-					if(rowi == 0){
-						for(i = 0; i<3;){
-         
-							if(i == 0){
-								letter = 'a';
-								rowletter = "a";
-							}else if(i == 1){
-								letter = 'b';
-								rowletter = "b";
-							}else if(i == 2){
-								letter = 'c';
-								rowletter = "c";
-							}
-							if(!TopRow[i].equals("-")){
-                 
-								try{
-									if(i == 0){
-										if(row1dv1 != null){
-                                         
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv1[0]), Short.parseShort(row1dv1[1])));
-											srow1 = srow1 + rowletter;
-											row1dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}else if(i == 1){
-										if(row1dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv2[0]), Short.parseShort(row1dv2[1])));
-											srow1 = srow1 + rowletter;
-											row1dv2 = null;
-										}else{
-                                         
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}else{
-										if(row1dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv3[0]), Short.parseShort(row1dv3[1])));
-											srow1 = srow1 + rowletter;
-											row1dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									int customId = 0;
-									if(Hashmaps.customitemsmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customitemsmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customoresmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customtoolsmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customfoodmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow1 = srow1 + " ";
-							}
-							i++;
-						}
-					}else if(rowi == 1){
-						for(int i = 0; i<3;){
-         
-							if(i == 0){
-								letter = 'd';
-								rowletter = "d";
-							}else if(i == 1){
-								letter = 'e';
-								rowletter = "e";
-							}else if(i == 2){
-								letter = 'f';
-								rowletter = "f";
-							}
-							if(!MiddleRow[i].equals("-")){
-								try{
-									if(i == 0){
-                                 
-										if(row2dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv1[0]), Short.parseShort(row2dv1[1])));
-											srow2 = srow2 + rowletter;
-											row2dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}else if(i == 1){
-										if(row2dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv2[0]), Short.parseShort(row2dv2[1])));
-											srow2 = srow2 + rowletter;
-											row2dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}else{
-										if(row2dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv3[0]), Short.parseShort(row2dv3[1])));
-											srow2 = srow2 + rowletter;
-											row2dv3 = null;
-										}else{
-                                         
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									int customId = 0;
-									if(Hashmaps.customitemsmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customitemsmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customoresmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customtoolsmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customfoodmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow2 = srow2 + " ";
-							}
-							++i;
-						}
-					}else if(rowi == 2){
-						for(int i = 0; i<3;){
-							if(i == 0){
-								letter = 'g';
-								rowletter = "g";
-							}else if(i == 1){
-								letter = 'h';
-								rowletter = "h";
-							}else if(i == 2){
-								letter = 'i';
-								rowletter = "i";
-                     
-							}
-							if(!BottomRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row3dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv1[0]), Short.parseShort(row3dv1[1])));
-											srow3 = srow3 + rowletter;
-											row3dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}else if(i == 1){
-										if(row3dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv2[0]), Short.parseShort(row3dv2[1])));
-											srow3 = srow3 + rowletter;
-											row3dv2 = null;
-										}else{
-                                         
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}else{
-										if(row3dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv3[0]), Short.parseShort(row3dv3[1])));
-											srow3 = srow3 + rowletter;
-											row3dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-                         
-									int customId = 0;
-									if(Hashmaps.customitemsmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customitemsmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customoresmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customtoolsmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customfoodmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-                 
-								srow3 = srow3 + " ";
-							}
-							++i;
-						}
-					}
-				}
-				recipe.shape(srow1, srow2, srow3);
-				SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
-			}
-			if(Configuration.items.contains("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc)){
-				int amount = Configuration.items.getInt("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".amount");
-				String ingredientraw = Configuration.items.getString("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".ingredient");
-				int customId = 0;
-				ItemStack result = new SpoutItemStack(item, amount);
-				try{
-					int ingredient = Integer.parseInt(ingredientraw);
-					FurnaceRecipes.NewFurnaceRecipe(result, ingredient);
-				}catch(NumberFormatException e){
-					if(Hashmaps.customoresmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customoresmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}else if(Hashmaps.customblocksmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customblocksmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}else if(Hashmaps.customitemsmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customitemsmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.customtoolsmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customtoolsmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.customfoodmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customfoodmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.custombushesmap.containsKey(ingredientraw)){
- 
-						customId = Hashmaps.custombushesmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}
-				}
-			}
-		}
-	}
-	public static void checkore(String type, CustomOres item){
-		for(int rpc = 1; rpc < 10; ++rpc){
-			if(Configuration.ore.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-				int amount = Configuration.ore.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-				List list = Configuration.ore.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
-				int customId = 0;
-				Iterator keys = list.iterator();
-				String[] TopRow = keys.next().toString().split(",");
-				String[] MiddleRow = keys.next().toString().split(",");
-				String[] BottomRow = keys.next().toString().split(",");
-				String srow1 = "";
-				String srow2 = "";
-				String srow3 = "";
-
-				ItemStack result = new SpoutItemStack(item, amount);
-				recipe = new SpoutShapedRecipe(result);
-				recipe.shape("ghi", "def", "abc");
-
-				char letter = 0;
-
-				for(int count=0; count<3; count ++){
-					if(TopRow[count].contains(":")){
-						if(count == 0){
-							row1dv1 = TopRow[count].split(":");
-						}else if(count == 1){
-							row1dv2 = TopRow[count].split(":");
-						}else if(count == 2){
-							row1dv3 = TopRow[count].split(":");
-						}
-					}
-				}
-				for(int count=0; count<3; count ++){
-					if(MiddleRow[count].contains(":")){
-						if(count == 0){
-							row2dv1 = MiddleRow[count].split(":");
-						}else if(count == 1){
-							row2dv2 = MiddleRow[count].split(":");
-						}else if(count == 2){
-							row2dv3 = MiddleRow[count].split(":");
-						}
-					}
-				}
-				for(int count=0; count<3; count ++){
-					if(BottomRow[count].contains(":")){
-						if(count == 0){
-							row3dv1 = BottomRow[count].split(":");
-						}else if(count == 1){
-							row3dv2 = BottomRow[count].split(":");
-						}else if(count == 2){
-							row3dv3 = BottomRow[count].split(":");
-						}
-					}
-				}
-
-				for(int rowi = 0; rowi<3; ++rowi){
-					if(rowi == 0){
-						for(i = 0; i<3;){
-							if(i == 0){
-								letter = 'a';
-								rowletter = "a";
-							}else if(i == 1){
-								letter = 'b';
-								rowletter = "b";
-							}else if(i == 2){
-								letter = 'c';
-								rowletter = "c";
-							}
-							if(!TopRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row1dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv1[0]), Short.parseShort(row1dv1[1])));
-											srow1 = srow1 + rowletter;
-											row1dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}else if(i == 1){
-										if(row1dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv2[0]), Short.parseShort(row1dv2[1])));
-											srow1 = srow1 + rowletter;
-											row1dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}else{
-										if(row1dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv3[0]), Short.parseShort(row1dv3[1])));
-											srow1 = srow1 + rowletter;
-											row1dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									if(Hashmaps.customitemsmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customitemsmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customoresmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customtoolsmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customfoodmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow1 = srow1 + " ";
-							}
-							++i;
-						}
-					}else if(rowi == 1){
-						for(int i = 0; i<3;){
-							if(i == 0){
-								letter = 'd';
-								rowletter = "d";
-							}else if(i == 1){
-								letter = 'e';
-								rowletter = "e";
-							}else if(i == 2){
-								letter = 'f';
-								rowletter = "f";
-							}
-							if(!MiddleRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row2dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv1[0]), Short.parseShort(row2dv1[1])));
-											srow2 = srow2 + rowletter;
-											row2dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}else if(i == 1){
-										if(row2dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv2[0]), Short.parseShort(row2dv2[1])));
-											srow2 = srow2 + rowletter;
-											row2dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}else{
-										if(row2dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv3[0]), Short.parseShort(row2dv3[1])));
-											srow2 = srow2 + rowletter;
-											row2dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									if(Hashmaps.customitemsmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customitemsmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customoresmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customtoolsmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customfoodmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow2 = srow2 + " ";
-							}
-							++i;
-						}
-					}else if(rowi == 2){
-						for(int i = 0; i<3;){
-							if(i == 0){
-								letter = 'g';
-								rowletter = "g";
-							}else if(i == 1){
-								letter = 'h';
-								rowletter = "h";
-							}else if(i == 2){
-								letter = 'i';
-								rowletter = "i";
-							}
-							if(!BottomRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row3dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv1[0]), Short.parseShort(row3dv1[1])));
-											srow3 = srow3 + rowletter;
-											row3dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}else if(i == 1){
-										if(row3dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv2[0]), Short.parseShort(row3dv2[1])));
-											srow3 = srow3 + rowletter;
-											row3dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}else{
-										if(row3dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv3[0]), Short.parseShort(row3dv3[1])));
-											srow3 = srow3 + rowletter;
-											row3dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									if(Hashmaps.customitemsmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customitemsmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customoresmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customtoolsmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customfoodmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow3 = srow3 + " ";
-							}
-							++i;
-						}
-					}
-				}
-				recipe.shape(srow1, srow2, srow3);
-				SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
-			}
-			if(Configuration.items.contains("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc)){
-				int amount = Configuration.items.getInt("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".amount");
-				String ingredientraw = Configuration.items.getString("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".ingredient");
-				int customId = 0;
-				ItemStack result = new SpoutItemStack(item, amount);
-				try{
-					int ingredient = Integer.parseInt(ingredientraw);
-					FurnaceRecipes.NewFurnaceRecipe(result, ingredient);
-				}catch(NumberFormatException e){
-					GenericCustomItem test2 = Hashmaps.customitemsmap.get(ingredientraw);
-					GenericCustomTool test3 = Hashmaps.customtoolsmap.get(ingredientraw);
-					if(Hashmaps.customoresmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customoresmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}else if(Hashmaps.customblocksmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customblocksmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}else if(Hashmaps.customitemsmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customitemsmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.customtoolsmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customtoolsmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.customfoodmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customfoodmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.custombushesmap.containsKey(ingredientraw)){
-						customId = Hashmaps.custombushesmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}
-				}
-			}
-		}
-	}
-	public static void checkblock(String type, CustomBlocks item){
-		for(int rpc = 1; rpc < 10; ++rpc){
-			if(Configuration.block.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-				int amount = Configuration.block.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-				List list = Configuration.block.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
-				int customId = 0;
-				Iterator keys = list.iterator();
-				String[] TopRow = keys.next().toString().split(",");
-				String[] MiddleRow = keys.next().toString().split(",");
-				String[] BottomRow = keys.next().toString().split(",");
-				String srow1 = "";
-				String srow2 = "";
-				String srow3 = "";
-
-				ItemStack result = new SpoutItemStack(item, amount);
-				recipe = new SpoutShapedRecipe(result);
-				recipe.shape("ghi", "def", "abc");
-
-				char letter = 0;
-
-				for(int count=0; count<3; count ++){
-					if(TopRow[count].contains(":")){
-						if(count == 0){
-							row1dv1 = TopRow[count].split(":");
-						}else if(count == 1){
-							row1dv2 = TopRow[count].split(":");
-						}else if(count == 2){
-							row1dv3 = TopRow[count].split(":");
-						}
-					}
-				}
-				for(int count=0; count<3; count ++){
-					if(MiddleRow[count].contains(":")){
-						if(count == 0){
-							row2dv1 = MiddleRow[count].split(":");
-						}else if(count == 1){
-							row2dv2 = MiddleRow[count].split(":");
-						}else if(count == 2){
-							row2dv3 = MiddleRow[count].split(":");
-						}
-					}
-				}
-				for(int count=0; count<3; count ++){
-					if(BottomRow[count].contains(":")){
-						if(count == 0){
-							row3dv1 = BottomRow[count].split(":");
-						}else if(count == 1){
-							row3dv2 = BottomRow[count].split(":");
-						}else if(count == 2){
-							row3dv3 = BottomRow[count].split(":");
-						}
-					}
-				}
-
-				for(int rowi = 0; rowi<3; ++rowi){
-					if(rowi == 0){
-						for(i = 0; i<3;){
-							if(i == 0){
-								letter = 'a';
-								rowletter = "a";
-							}else if(i == 1){
-								letter = 'b';
-								rowletter = "b";
-							}else if(i == 2){
-								letter = 'c';
-								rowletter = "c";
-							}
-							if(!TopRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row1dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv1[0]), Short.parseShort(row1dv1[1])));
-											srow1 = srow1 + rowletter;
-											row1dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}else if(i == 1){
-										if(row1dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv2[0]), Short.parseShort(row1dv2[1])));
-											srow1 = srow1 + rowletter;
-											row1dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}else{
-										if(row1dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv3[0]), Short.parseShort(row1dv3[1])));
-											srow1 = srow1 + rowletter;
-											row1dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-											srow1 = srow1 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									if(Hashmaps.customitemsmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customitemsmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customoresmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customtoolsmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customfoodmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									
-									
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow1 = srow1 + " ";
-							}
-							++i;
-						}
-					}else if(rowi == 1){
-						for(int i = 0; i<3;){
-							if(i == 0){
-								letter = 'd';
-								rowletter = "d";
-							}else if(i == 1){
-								letter = 'e';
-								rowletter = "e";
-							}else if(i == 2){
-								letter = 'f';
-								rowletter = "f";
-							}
-							if(!MiddleRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row2dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv1[0]), Short.parseShort(row2dv1[1])));
-											srow2 = srow2 + rowletter;
-											row2dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}else if(i == 1){
-										if(row2dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv2[0]), Short.parseShort(row2dv2[1])));
-											srow2 = srow2 + rowletter;
-											row2dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}else{
-										if(row2dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv3[0]), Short.parseShort(row2dv3[1])));
-											srow2 = srow2 + rowletter;
-											row2dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-											srow2 = srow2 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									if(Hashmaps.customitemsmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customitemsmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customoresmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customtoolsmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(MiddleRow[i])){
-										customId = Hashmaps.customfoodmap.get(MiddleRow[i]).getCustomId();
-										srow2 = srow2 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow2 = srow2 + " ";
-							}
-							++i;
-						}
-					}else if(rowi == 2){
-						for(int i = 0; i<3;){
-							if(i == 0){
-								letter = 'g';
-								rowletter = "g";
-							}else if(i == 1){
-								letter = 'h';
-								rowletter = "h";
-							}else if(i == 2){
-								letter = 'i';
-								rowletter = "i";
-							}
-							if(!BottomRow[i].equals("-")){
-								try{
-									if(i == 0){
-										if(row3dv1 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv1[0]), Short.parseShort(row3dv1[1])));
-											srow3 = srow3 + rowletter;
-											row3dv1 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}else if(i == 1){
-										if(row3dv2 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv2[0]), Short.parseShort(row3dv2[1])));
-											srow3 = srow3 + rowletter;
-											row3dv2 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}else{
-										if(row3dv3 != null){
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv3[0]), Short.parseShort(row3dv3[1])));
-											srow3 = srow3 + rowletter;
-											row3dv3 = null;
-										}else{
-											recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-											srow3 = srow3 + rowletter;
-										}
-									}
-								}catch(NumberFormatException e){
-									if(Hashmaps.customitemsmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customitemsmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customoresmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customoresmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-										customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}else if(Hashmaps.customtoolsmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customtoolsmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.customfoodmap.containsKey(BottomRow[i])){
-										customId = Hashmaps.customfoodmap.get(BottomRow[i]).getCustomId();
-										srow3 = srow3 + rowletter;
-									}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-										customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-										srow1 = srow1 + rowletter;
-									}
-									recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-								}
-							} else {
-								srow3 = srow3 + " ";
-							}
-							++i;
-						}
-					}
-				}
-				recipe.shape(srow1, srow2, srow3);
-				SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
-			}
-			if(Configuration.items.contains("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc)){
-				int amount = Configuration.items.getInt("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".amount");
-				String ingredientraw = Configuration.items.getString("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".ingredient");
-				int customId = 0;
-				ItemStack result = new SpoutItemStack(item, amount);
-				try{
-					int ingredient = Integer.parseInt(ingredientraw);
-					FurnaceRecipes.NewFurnaceRecipe(result, ingredient);
-				}catch(NumberFormatException e){
-					GenericCustomItem test2 = Hashmaps.customitemsmap.get(ingredientraw);
-					GenericCustomTool test3 = Hashmaps.customtoolsmap.get(ingredientraw);
-					if(Hashmaps.customoresmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customoresmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}else if(Hashmaps.customblocksmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customblocksmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}else if(Hashmaps.customitemsmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customitemsmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.customtoolsmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customtoolsmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.customfoodmap.containsKey(ingredientraw)){
-						customId = Hashmaps.customfoodmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-					}else if(Hashmaps.custombushesmap.containsKey(ingredientraw)){
-						customId = Hashmaps.custombushesmap.get(ingredientraw).getCustomId();
-						FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-					}
-				}
-			}
-		}
-	}
-		public static void checkbush(String type, CustomBush item){
-			for(int rpc = 1; rpc < 10; ++rpc){
-				if(Configuration.block.contains("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc)){
-					int amount = Configuration.block.getInt("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".amount");
-					List list = Configuration.block.getList("Custom " + type + "." + item.getName() + ".shaped recipe"+ rpc +".ingredients");
-					int customId = 0;
-					Iterator keys = list.iterator();
-					String[] TopRow = keys.next().toString().split(",");
-					String[] MiddleRow = keys.next().toString().split(",");
-					String[] BottomRow = keys.next().toString().split(",");
-					String srow1 = "";
-					String srow2 = "";
-					String srow3 = "";
-
-					ItemStack result = new SpoutItemStack(item, amount);
-					recipe = new SpoutShapedRecipe(result);
-					recipe.shape("ghi", "def", "abc");
-
-					char letter = 0;
-
-					for(int count=0; count<3; count ++){
-						if(TopRow[count].contains(":")){
-							if(count == 0){
-								row1dv1 = TopRow[count].split(":");
-							}else if(count == 1){
-								row1dv2 = TopRow[count].split(":");
-							}else if(count == 2){
-								row1dv3 = TopRow[count].split(":");
-							}
-						}
-					}
-					for(int count=0; count<3; count ++){
-						if(MiddleRow[count].contains(":")){
-							if(count == 0){
-								row2dv1 = MiddleRow[count].split(":");
-							}else if(count == 1){
-								row2dv2 = MiddleRow[count].split(":");
-							}else if(count == 2){
-								row2dv3 = MiddleRow[count].split(":");
-							}
-						}
-					}
-					for(int count=0; count<3; count ++){
-						if(BottomRow[count].contains(":")){
-							if(count == 0){
-								row3dv1 = BottomRow[count].split(":");
-							}else if(count == 1){
-								row3dv2 = BottomRow[count].split(":");
-							}else if(count == 2){
-								row3dv3 = BottomRow[count].split(":");
-							}
-						}
-					}
-
-					for(int rowi = 0; rowi<3; ++rowi){
-						if(rowi == 0){
-							for(i = 0; i<3;){
-								if(i == 0){
-									letter = 'a';
-									rowletter = "a";
-								}else if(i == 1){
-									letter = 'b';
-									rowletter = "b";
-								}else if(i == 2){
-									letter = 'c';
-									rowletter = "c";
-								}
-								if(!TopRow[i].equals("-")){
-									try{
-										if(i == 0){
-											if(row1dv1 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv1[0]), Short.parseShort(row1dv1[1])));
-												srow1 = srow1 + rowletter;
-												row1dv1 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-												srow1 = srow1 + rowletter;
-											}
-										}else if(i == 1){
-											if(row1dv2 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv2[0]), Short.parseShort(row1dv2[1])));
-												srow1 = srow1 + rowletter;
-												row1dv2 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-												srow1 = srow1 + rowletter;
-											}
-										}else{
-											if(row1dv3 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row1dv3[0]), Short.parseShort(row1dv3[1])));
-												srow1 = srow1 + rowletter;
-												row1dv3 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[i])));
-												srow1 = srow1 + rowletter;
-											}
-										}
-									}catch(NumberFormatException e){
-										if(Hashmaps.customitemsmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customitemsmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.customoresmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customoresmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.customtoolsmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customtoolsmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.customfoodmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customfoodmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-											customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}
-										
-										
-										recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-									}
-								} else {
-									srow1 = srow1 + " ";
-								}
-								++i;
-							}
-						}else if(rowi == 1){
-							for(int i = 0; i<3;){
-								if(i == 0){
-									letter = 'd';
-									rowletter = "d";
-								}else if(i == 1){
-									letter = 'e';
-									rowletter = "e";
-								}else if(i == 2){
-									letter = 'f';
-									rowletter = "f";
-								}
-								if(!MiddleRow[i].equals("-")){
-									try{
-										if(i == 0){
-											if(row2dv1 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv1[0]), Short.parseShort(row2dv1[1])));
-												srow2 = srow2 + rowletter;
-												row2dv1 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-												srow2 = srow2 + rowletter;
-											}
-										}else if(i == 1){
-											if(row2dv2 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv2[0]), Short.parseShort(row2dv2[1])));
-												srow2 = srow2 + rowletter;
-												row2dv2 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-												srow2 = srow2 + rowletter;
-											}
-										}else{
-											if(row2dv3 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row2dv3[0]), Short.parseShort(row2dv3[1])));
-												srow2 = srow2 + rowletter;
-												row2dv3 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[i])));
-												srow2 = srow2 + rowletter;
-											}
-										}
-									}catch(NumberFormatException e){
-										if(Hashmaps.customitemsmap.containsKey(MiddleRow[i])){
-											customId = Hashmaps.customitemsmap.get(MiddleRow[i]).getCustomId();
-											srow2 = srow2 + rowletter;
-										}else if(Hashmaps.customoresmap.containsKey(MiddleRow[i])){
-											customId = Hashmaps.customoresmap.get(MiddleRow[i]).getCustomId();
-											srow2 = srow2 + rowletter;
-										}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[i])){
-											customId = Hashmaps.customtoolsmap.get(MiddleRow[i]).getCustomId();
-											srow2 = srow2 + rowletter;
-										}else if(Hashmaps.customfoodmap.containsKey(MiddleRow[i])){
-											customId = Hashmaps.customfoodmap.get(MiddleRow[i]).getCustomId();
-											srow2 = srow2 + rowletter;
-										}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-											customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}
-										
-										recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-									}
-								} else {
-									srow2 = srow2 + " ";
-								}
-								++i;
-							}
-						}else if(rowi == 2){
-							for(int i = 0; i<3;){
-								if(i == 0){
-									letter = 'g';
-									rowletter = "g";
-								}else if(i == 1){
-									letter = 'h';
-									rowletter = "h";
-								}else if(i == 2){
-									letter = 'i';
-									rowletter = "i";
-								}
-								if(!BottomRow[i].equals("-")){
-									try{
-										if(i == 0){
-											if(row3dv1 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv1[0]), Short.parseShort(row3dv1[1])));
-												srow3 = srow3 + rowletter;
-												row3dv1 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-												srow3 = srow3 + rowletter;
-											}
-										}else if(i == 1){
-											if(row3dv2 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv2[0]), Short.parseShort(row3dv2[1])));
-												srow3 = srow3 + rowletter;
-												row3dv2 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-												srow3 = srow3 + rowletter;
-											}
-										}else{
-											if(row3dv3 != null){
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(row3dv3[0]), Short.parseShort(row3dv3[1])));
-												srow3 = srow3 + rowletter;
-												row3dv3 = null;
-											}else{
-												recipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[i])));
-												srow3 = srow3 + rowletter;
-											}
-										}
-									}catch(NumberFormatException e){
-										if(Hashmaps.customitemsmap.containsKey(BottomRow[i])){
-											customId = Hashmaps.customitemsmap.get(BottomRow[i]).getCustomId();
-											srow3 = srow3 + rowletter;
-										}else if(Hashmaps.customoresmap.containsKey(BottomRow[i])){
-											customId = Hashmaps.customoresmap.get(BottomRow[i]).getCustomId();
-											srow3 = srow3 + rowletter;
-										}else if(Hashmaps.customblocksmap.containsKey(TopRow[i])){
-											customId = Hashmaps.customblocksmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}else if(Hashmaps.customtoolsmap.containsKey(BottomRow[i])){
-											customId = Hashmaps.customtoolsmap.get(BottomRow[i]).getCustomId();
-											srow3 = srow3 + rowletter;
-										}else if(Hashmaps.customfoodmap.containsKey(BottomRow[i])){
-											customId = Hashmaps.customfoodmap.get(BottomRow[i]).getCustomId();
-											srow3 = srow3 + rowletter;
-										}else if(Hashmaps.custombushesmap.containsKey(TopRow[i])){
-											customId = Hashmaps.custombushesmap.get(TopRow[i]).getCustomId();
-											srow1 = srow1 + rowletter;
-										}
-										recipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-									}
-								} else {
-									srow3 = srow3 + " ";
-								}
-								++i;
-							}
-						}
-					}
-					recipe.shape(srow1, srow2, srow3);
-					SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
-				}
-				if(Configuration.items.contains("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc)){
-					int amount = Configuration.items.getInt("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".amount");
-					String ingredientraw = Configuration.items.getString("Custom " + type + "." + item.getName() + ".furnace recipe"+ rpc +".ingredient");
-					int customId = 0;
-					ItemStack result = new SpoutItemStack(item, amount);
-					try{
-						int ingredient = Integer.parseInt(ingredientraw);
-						FurnaceRecipes.NewFurnaceRecipe(result, ingredient);
-					}catch(NumberFormatException e){
-						GenericCustomItem test2 = Hashmaps.customitemsmap.get(ingredientraw);
-						GenericCustomTool test3 = Hashmaps.customtoolsmap.get(ingredientraw);
-						if(Hashmaps.customoresmap.containsKey(ingredientraw)){
-							customId = Hashmaps.customoresmap.get(ingredientraw).getCustomId();
-							FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-						}else if(Hashmaps.customblocksmap.containsKey(ingredientraw)){
-							customId = Hashmaps.customblocksmap.get(ingredientraw).getCustomId();
-							FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-						}else if(Hashmaps.customitemsmap.containsKey(ingredientraw)){
-							customId = Hashmaps.customitemsmap.get(ingredientraw).getCustomId();
-							FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-						}else if(Hashmaps.customtoolsmap.containsKey(ingredientraw)){
-							customId = Hashmaps.customtoolsmap.get(ingredientraw).getCustomId();
-							FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-						}else if(Hashmaps.customfoodmap.containsKey(ingredientraw)){
-							customId = Hashmaps.customfoodmap.get(ingredientraw).getCustomId();
-							FurnaceRecipes.CustomFurnaceRecipe(result, Material.FLINT, (short) customId);
-						}else if(Hashmaps.custombushesmap.containsKey(ingredientraw)){
-							customId = Hashmaps.custombushesmap.get(ingredientraw).getCustomId();
-							FurnaceRecipes.CustomFurnaceRecipe(result, Material.STONE, (short) customId);
-						}
-					}
-				}
-			}
-	}*/
-    
     private static String[] TopRow;
     private static String[] MiddleRow;
     private static String[] BottomRow;
     private static String[] recipeshape = {"", "", ""};
     private static SpoutShapedRecipe shapedrecipe;
     private static SpoutShapelessRecipe shaplessrecipe;
-    private static FurnaceRecipe furnacerecipe;
     private static void addRecipes() {
         if (Configuration.recipe.contains("Shaped Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shaped Recipes");
@@ -1379,12 +123,18 @@ public class Recipes {
                             ItemStack result = new SpoutItemStack(Hashmaps.customitemsmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
                         } else {
-                            ItemStack result = new ItemStack(Material.getMaterial(Integer.parseInt(resultname)), amount);
-                            shapedrecipe = new SpoutShapedRecipe(result);
+                            if (resultname.contains(":")) {
+                                SplitRecipe = resultname.split(":");
+                                ItemStack result = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(SplitRecipe[0]), Short.parseShort(SplitRecipe[1])), amount);
+                                shapedrecipe = new SpoutShapedRecipe(result);
+                            } else {
+                                ItemStack result = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(resultname)), amount);
+                                shapedrecipe = new SpoutShapedRecipe(result);
+                            }
                         }
                         DetermineShape();
                         shapedrecipe.shape(recipeshape[0], recipeshape[1], recipeshape[2]);
-                        if (!TopRow[0].contains("-")) {
+                        if (!TopRow[0].equals("-")) {
                             if (a == 1) {
                                 int customId;
                                 char letter = 0;
@@ -1422,7 +172,7 @@ public class Recipes {
                                 }
                             }
                         }
-                        if (!TopRow[1].contains("-")) {
+                        if (!TopRow[1].equals("-")) {
                             if (b == 2) {
                                 int customId;
                                 char letter = 0;
@@ -1451,16 +201,15 @@ public class Recipes {
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
                                     }
                                     if (TopRow[1].contains(":")) {
-                                        Ingredient1 = TopRow[1].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
+                                        Ingredient2 = TopRow[1].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient2[0]), Short.parseShort(Ingredient2[1])));
                                     } else {
-                                      Ingredient1[0] = TopRow[1];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
+                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[1])));  
                                     }
                                 }
                             }
                         }
-                        if (!TopRow[2].contains("-")) {
+                        if (!TopRow[2].equals("-")) {
                             if (c == 3) {
                                 int customId;
                                 char letter = 0;
@@ -1489,95 +238,19 @@ public class Recipes {
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
                                     }
                                     if (TopRow[2].contains(":")) {
-                                        Ingredient1 = TopRow[2].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
+                                        Ingredient3 = TopRow[2].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient3[0]), Short.parseShort(Ingredient3[1])));
                                     } else {
-                                      Ingredient1[0] = TopRow[2];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
+                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[2])));  
                                     }
                                 }
                             }
                         }
-                        if (!MiddleRow[0].contains("-")) {
+                        if (!MiddleRow[0].equals("-")) {
                             int customId;
                             char letter = 0;
                                 if (d == 4) {
-                                    letter = letter33;
-                                    if(Hashmaps.customitemsmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.customitemsmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customoresmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.customoresmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customblocksmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.customblocksmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.customtoolsmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customfoodmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.customfoodmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.custombushesmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.custombushesmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customfishmap.containsKey(MiddleRow[2])){
-                                        customId = Hashmaps.customfishmap.get(MiddleRow[2]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }
-                                    if (MiddleRow[2].contains(":")) {
-                                        Ingredient1 = MiddleRow[2].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
-                                    } else {
-                                      Ingredient1[0] = MiddleRow[2];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
-                                    }
-                                }
-                        }
-                        if (!MiddleRow[1].contains("-")) {
-                            if (a == 1) {
-                                int customId;
-                                char letter = 0;
-                                if (a == 1) {
-                                    letter = letter11;
-                                    if(Hashmaps.customitemsmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.customitemsmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customoresmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.customoresmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customblocksmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.customblocksmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.customtoolsmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customfoodmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.customfoodmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.custombushesmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.custombushesmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customfishmap.containsKey(MiddleRow[1])){
-                                        customId = Hashmaps.customfishmap.get(MiddleRow[1]).getCustomId();
-                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }
-                                    if (MiddleRow[1].contains(":")) {
-                                        Ingredient1 = MiddleRow[1].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
-                                    } else {
-                                      Ingredient1[0] = MiddleRow[1];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
-                                    }
-                                }
-                            }
-                        }
-                        if (!MiddleRow[0].contains("-")) {
-                            if (a == 1) {
-                                int customId;
-                                char letter = 0;
-                                if (a == 1) {
-                                    letter = letter11;
+                                    letter = letter44;
                                     if(Hashmaps.customitemsmap.containsKey(MiddleRow[0])){
                                         customId = Hashmaps.customitemsmap.get(MiddleRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
@@ -1601,175 +274,318 @@ public class Recipes {
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
                                     }
                                     if (MiddleRow[0].contains(":")) {
-                                        Ingredient1 = MiddleRow[0].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
+                                        Ingredient4 = MiddleRow[0].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient4[0]), Short.parseShort(Ingredient4[1])));
                                     } else {
-                                      Ingredient1[0] = MiddleRow[0];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
+                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[0])));  
+                                    }
+                                }
+                        }
+                        if (!MiddleRow[1].equals("-")) {
+                            if (e == 5) {
+                                int customId;
+                                char letter = 0;
+                                if (e == 5) {
+                                    letter = letter55;
+                                    if(Hashmaps.customitemsmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.customitemsmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }else if(Hashmaps.customoresmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.customoresmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                    }else if(Hashmaps.customblocksmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.customblocksmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                    }else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.customtoolsmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                    }else if(Hashmaps.customfoodmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.customfoodmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }else if(Hashmaps.custombushesmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.custombushesmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }else if(Hashmaps.customfishmap.containsKey(MiddleRow[1])){
+                                        customId = Hashmaps.customfishmap.get(MiddleRow[1]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }
+                                    if (MiddleRow[1].contains(":")) {
+                                        Ingredient5 = MiddleRow[1].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient5[0]), Short.parseShort(Ingredient5[1])));
+                                    } else {
+                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[1])));  
                                     }
                                 }
                             }
                         }
-                        if (!BottomRow[0].contains("-")) {
-                            if (a == 1) {
+                        if (!MiddleRow[2].equals("-")) {
+                            if (f == 6) {
                                 int customId;
                                 char letter = 0;
-                                if (a == 1) {
-                                    letter = letter11;
-                                    if(Hashmaps.customitemsmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customitemsmap.get(TopRow[0]).getCustomId();
+                                if (f == 6) {
+                                    letter = letter66;
+                                    if(Hashmaps.customitemsmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.customitemsmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customoresmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customoresmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customoresmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.customoresmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customblocksmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customblocksmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customblocksmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.customblocksmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customtoolsmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customtoolsmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customtoolsmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.customtoolsmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customfoodmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customfoodmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customfoodmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.customfoodmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.custombushesmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.custombushesmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.custombushesmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.custombushesmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customfishmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customfishmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customfishmap.containsKey(MiddleRow[2])){
+                                        customId = Hashmaps.customfishmap.get(MiddleRow[2]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
                                     }
-                                    if (TopRow[0].contains(":")) {
-                                        Ingredient1 = TopRow[0].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
+                                    if (MiddleRow[2].contains(":")) {
+                                        Ingredient6 = MiddleRow[2].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient6[0]), Short.parseShort(Ingredient6[1])));
                                     } else {
-                                      Ingredient1[0] = TopRow[0];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
+                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(MiddleRow[2])));  
                                     }
                                 }
                             }
                         }
-                        if (!TopRow[0].contains("-")) {
-                            if (a == 1) {
+                        if (!BottomRow[0].equals("-")) {
+                            if (g == 7) {
                                 int customId;
                                 char letter = 0;
-                                if (a == 1) {
-                                    letter = letter11;
-                                    if(Hashmaps.customitemsmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customitemsmap.get(TopRow[0]).getCustomId();
+                                if (g == 7) {
+                                    letter = letter77;
+                                    if(Hashmaps.customitemsmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.customitemsmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customoresmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customoresmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customoresmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.customoresmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customblocksmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customblocksmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customblocksmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.customblocksmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customtoolsmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customtoolsmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customtoolsmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.customtoolsmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customfoodmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customfoodmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customfoodmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.customfoodmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.custombushesmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.custombushesmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.custombushesmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.custombushesmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customfishmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customfishmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customfishmap.containsKey(BottomRow[0])){
+                                        customId = Hashmaps.customfishmap.get(BottomRow[0]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
                                     }
-                                    if (TopRow[0].contains(":")) {
-                                        Ingredient1 = TopRow[0].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
+                                    if (BottomRow[0].contains(":")) {
+                                        Ingredient7 = BottomRow[0].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient7[0]), Short.parseShort(Ingredient7[1])));
                                     } else {
-                                      Ingredient1[0] = TopRow[0];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
+                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[0])));  
                                     }
                                 }
                             }
                         }
-                        if (!TopRow[0].contains("-")) {
-                            if (a == 1) {
+                        if (!BottomRow[1].equals("-")) {
+                            if (h == 8) {
                                 int customId;
                                 char letter = 0;
-                                if (a == 1) {
-                                    letter = letter11;
-                                    if(Hashmaps.customitemsmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customitemsmap.get(TopRow[0]).getCustomId();
+                                if (h == 8) {
+                                    letter = letter88;
+                                    if(Hashmaps.customitemsmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.customitemsmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customoresmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customoresmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customoresmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.customoresmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customblocksmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customblocksmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customblocksmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.customblocksmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customtoolsmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customtoolsmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customtoolsmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.customtoolsmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
-                                    }else if(Hashmaps.customfoodmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customfoodmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customfoodmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.customfoodmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.custombushesmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.custombushesmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.custombushesmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.custombushesmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
-                                    }else if(Hashmaps.customfishmap.containsKey(TopRow[0])){
-                                        customId = Hashmaps.customfishmap.get(TopRow[0]).getCustomId();
+                                    }else if(Hashmaps.customfishmap.containsKey(BottomRow[1])){
+                                        customId = Hashmaps.customfishmap.get(BottomRow[1]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
                                     }
-                                    if (TopRow[0].contains(":")) {
-                                        Ingredient1 = TopRow[0].split(":");
-                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0]), Short.parseShort(Ingredient1[1])));
+                                    if (BottomRow[1].contains(":")) {
+                                        Ingredient8 = BottomRow[1].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient8[0]), Short.parseShort(Ingredient8[1])));
                                     } else {
-                                      Ingredient1[0] = TopRow[0];
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient1[0])));  
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[1])));  
+                                    }
+                                }
+                            }
+                        }
+                        if (!BottomRow[2].equals("-")) {
+                            if (i == 9) {
+                                int customId;
+                                char letter = 0;
+                                if (i == 9) {
+                                    letter = letter99;
+                                    if(Hashmaps.customitemsmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.customitemsmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }else if(Hashmaps.customoresmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.customoresmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                    }else if(Hashmaps.customblocksmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.customblocksmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                    }else if(Hashmaps.customtoolsmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.customtoolsmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomBlock(customId));
+                                    }else if(Hashmaps.customfoodmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.customfoodmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }else if(Hashmaps.custombushesmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.custombushesmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }else if(Hashmaps.customfishmap.containsKey(BottomRow[2])){
+                                        customId = Hashmaps.customfishmap.get(BottomRow[2]).getCustomId();
+                                        shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
+                                    }
+                                    if (BottomRow[2].contains(":")) {
+                                        Ingredient9 = BottomRow[2].split(":");
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient9[0]), Short.parseShort(Ingredient9[1])));
+                                    } else {
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(BottomRow[2])));  
                                     }
                                 }
                             }
                         }
                     }
+                    SpoutManager.getMaterialManager().registerSpoutRecipe(shapedrecipe);
                 }
             }
-        } else if (Configuration.recipe.contains("Shapless Recipes")) {
+        }
+        if (Configuration.recipe.contains("Shapless Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapless Recipes");
             Iterator keys = section.getKeys(false).iterator();
             while (keys.hasNext()) {
                 for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
                     String resultname = (String)keys.next();
+                    if (Configuration.recipe.contains("Shapless Recipes." + resultname + ".Recipe" + rpcnum)) {
+                        int amount = Configuration.recipe.getInt("Shapless Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
+                    }
                 }
             }
-        } else if (Configuration.recipe.contains("Furnace Recipes")) {
+        } 
+        if (Configuration.recipe.contains("Furnace Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Furnace Recipes");
             Iterator keys = section.getKeys(false).iterator();
             while (keys.hasNext()) {
                 for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
                     String resultname = (String)keys.next();
-                }
-                
+                    if (Configuration.recipe.contains("Furnace Recipes." + resultname + ".Recipe" + rpcnum)) {
+                        int amount = Configuration.recipe.getInt("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
+                        String source = Configuration.recipe.getString("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient");
+                        ItemStack result = new SpoutItemStack(MaterialData.air);
+                        Material material;
+                        int id = 0;
+                        int data = 0;
+                        if (Hashmaps.customblocksmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.customblocksmap.get(resultname), amount);
+                        } else if (Hashmaps.customoresmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.customoresmap.get(resultname), amount);
+                        } else if (Hashmaps.custombushesmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.custombushesmap.get(resultname), amount);
+                        } else if (Hashmaps.customtoolsmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.customtoolsmap.get(resultname), amount);
+                        } else if (Hashmaps.customfoodmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.customfoodmap.get(resultname), amount);
+                        } else if (Hashmaps.customfishmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.customfishmap.get(resultname), amount);
+                        } else if (Hashmaps.customitemsmap.containsKey(resultname)) {
+                            result = new SpoutItemStack(Hashmaps.customitemsmap.get(resultname), amount);
+                        } else {
+                            if (resultname.contains(":")) {
+                                FurnaceResult = resultname.split(":");
+                                result = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(FurnaceResult[0]), Short.parseShort(FurnaceResult[1])), amount);
+                            } else {
+                                result = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(resultname)), amount);
+                            }
+                        }
+                        if (Hashmaps.customblocksmap.containsKey(source)) {
+                            data = Hashmaps.customblocksmap.get(resultname).getCustomId();
+                            material = Hashmaps.customblocksmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else if (Hashmaps.customoresmap.containsKey(source)) {
+                            data = Hashmaps.customoresmap.get(resultname).getCustomId();
+                            material = Hashmaps.customoresmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else if (Hashmaps.custombushesmap.containsKey(source)) {
+                            data = Hashmaps.custombushesmap.get(resultname).getCustomId();
+                            material = Hashmaps.custombushesmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else if (Hashmaps.customtoolsmap.containsKey(source)) {
+                            data = Hashmaps.customtoolsmap.get(resultname).getCustomId();
+                            material = Hashmaps.customtoolsmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else if (Hashmaps.customfoodmap.containsKey(source)) {
+                            data = Hashmaps.customfoodmap.get(resultname).getCustomId();
+                            material = Hashmaps.customfoodmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else if (Hashmaps.customfishmap.containsKey(source)) {
+                            data = Hashmaps.customfishmap.get(resultname).getCustomId();
+                            material = Hashmaps.customfishmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else if (Hashmaps.customitemsmap.containsKey(source)) {
+                            data = Hashmaps.customitemsmap.get(resultname).getCustomId();
+                            material = Hashmaps.customitemsmap.get(resultname).getMaterial();
+                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                        } else {
+                            if (source.contains(":")) {
+                                SourceResult = source.split(":");
+                                id = Integer.parseInt(SourceResult[0]);
+                                data = Integer.parseInt(SourceResult[1]);
+                                FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            } else {
+                                id = Integer.parseInt(source);
+                                FurnaceRecipes.MaterialFurnaceRecipe(result, id);
+                            }
+                        }
+                    }
+                }  
             }
         }     
     }
 
     private static void DetermineShape() {
-        if (!TopRow[0].contains("-")) {
+        if (!TopRow[0].equals("-")) {
                     recipeshape[2] = recipeshape[2] + letter1;
                     a = 1;
-        } else if (!TopRow[1].contains("-")) {
+        } else if (!TopRow[1].equals("-")) {
                     recipeshape[2] = recipeshape[2] + letter2;
                     b = 2; 
-        } else if (!TopRow[2].contains("-")) {
+        } else if (!TopRow[2].equals("-")) {
                     recipeshape[2] = recipeshape[2] + letter3;
                     c = 3; 
-        } else if (!MiddleRow[0].contains("-")) {
+        } else if (!MiddleRow[0].equals("-")) {
                     recipeshape[1] = recipeshape[1] + letter4;
                     d = 4; 
-        } else if (!MiddleRow[1].contains("-")) {
+        } else if (!MiddleRow[1].equals("-")) {
                     recipeshape[1] = recipeshape[1] + letter5;
                     e = 5;
-        } else if (!MiddleRow[2].contains("-")) {
+        } else if (!MiddleRow[2].equals("-")) {
                     recipeshape[1] = recipeshape[1] + letter6;
                     f = 6;
-        } else if (!BottomRow[0].contains("-")) {
+        } else if (!BottomRow[0].equals("-")) {
                     recipeshape[0] = recipeshape[0] + letter7;
                     g = 7;
-        } else if (!BottomRow[1].contains("-")) {
+        } else if (!BottomRow[1].equals("-")) {
                     recipeshape[0] = recipeshape[0] + letter8;
                     h = 8; 
         } else if (!BottomRow[2].contains("-")) {

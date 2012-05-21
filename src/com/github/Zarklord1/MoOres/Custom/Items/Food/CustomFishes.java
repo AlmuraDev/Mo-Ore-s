@@ -1,5 +1,6 @@
 package com.github.Zarklord1.MoOres.Custom.Items.Food;
 
+import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.block.SpoutBlock;
@@ -24,5 +25,8 @@ public class CustomFishes extends GenericCustomFood {
     }
     public int getchance() {
         return chance;
+    }
+    public Material getMaterial() {
+        return Material.FLINT;
     }
 }

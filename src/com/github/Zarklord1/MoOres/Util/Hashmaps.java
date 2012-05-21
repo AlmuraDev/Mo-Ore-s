@@ -39,14 +39,14 @@ import org.getspout.spoutapi.material.item.GenericCustomItem;
 	    public static Set<CustomBlocks> customblocks = new LinkedHashSet();
 /*  37 */   public static HashMap<String, CustomBlocks> customblocksmap = new LinkedHashMap();
 /*     */ 
-/*  42 */   public static Set<GenericCustomItem> customitems = new LinkedHashSet();
-	    public static HashMap<String, GenericCustomItem> customitemsmap = new LinkedHashMap();
+/*  42 */   public static Set<CustomItems> customitems = new LinkedHashSet();
+	    public static HashMap<String, CustomItems> customitemsmap = new LinkedHashMap();
 
 /*  45 */   public static Set<CustomTools> customtools = new LinkedHashSet();
 /*  46 */   public static HashMap<String, CustomTools> customtoolsmap = new LinkedHashMap();
 /*     */ 
-/*  48 */   public static Set<GenericCustomFood> customfood = new LinkedHashSet();
-/*  49 */   public static HashMap<String, GenericCustomFood> customfoodmap = new LinkedHashMap();
+/*  48 */   public static Set<CustomFood> customfood = new LinkedHashSet();
+/*  49 */   public static HashMap<String, CustomFood> customfoodmap = new LinkedHashMap();
 /*     */ 
 /*  51 */   public static Set<CustomFishes> customfish = new LinkedHashSet();
 /*  52 */   public static HashMap<String, CustomFishes> customfishmap = new LinkedHashMap();
