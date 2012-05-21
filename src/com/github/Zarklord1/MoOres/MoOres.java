@@ -55,6 +55,7 @@ public class MoOres extends JavaPlugin{
 		Recipes.addFoodShapedRecipe(plugin);
 		Recipes.addItemShapedRecipe(plugin);
 		Recipes.addToolShapedRecipe(plugin);
+                Recipes.addAllRecipes(plugin);
 		log.info("[Mo Ores] Registered all Recipes!");
 		
 		log.info("[Mo Ores] Is Enabled!");
