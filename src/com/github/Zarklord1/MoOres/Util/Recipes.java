@@ -1938,17 +1938,17 @@ public class Recipes {
                 h = 8;
                 i = 9;
             } 
-        } else if (recipeshape[2].equals("bc")) {
-            if (recipeshape[1].equals("de") || recipeshape[0].equals("gh")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
-                if (d == 4 || e == 5 || f == 6) {
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4;
-                    e = 5;
-                    f = 6;
+        } else if (recipeshape[1].equals("ef")) {
+            if (recipeshape[2].equals("ab") || recipeshape[0].equals("gh")) {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
                 if (g == 7 || h == 8 || i == 9) {
                     recipeshape[0] = letter7 + letter8 + letter9;
@@ -1956,16 +1956,16 @@ public class Recipes {
                     h = 8;
                     i = 9;
                 } 
-            } else if (recipeshape[1].equals("d") || recipeshape[0].equals("g")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
-                if (d == 4 || e == 5 || f == 6) {
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4;
-                    e = 5;
-                    f = 6;
+            } else if (recipeshape[2].equals("a") || recipeshape[0].equals("g")) {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
                 if (g == 7 || h == 8 || i == 9) {
                     recipeshape[0] = letter7 + letter8 + letter9;
@@ -1973,16 +1973,16 @@ public class Recipes {
                     h = 8;
                     i = 9;
                 }
-            } else if (recipeshape[1].equals("df") || recipeshape[0].equals("gi")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
-                if (d == 4 || e == 5 || f == 6) {
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4; 
-                    e = 5;
-                    f = 6;
+            } else if (recipeshape[2].equals("ac") || recipeshape[0].equals("gi")) {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
                 if (g == 7 || h == 8 || i == 9) {
                     recipeshape[0] = letter7 + letter8 + letter9;
@@ -2001,17 +2001,17 @@ public class Recipes {
                 h = 8;
                 i = 9;
             }
-        } else if (recipeshape[2].equals("ab")) {
-           if (recipeshape[1].equals("ef") || recipeshape[0].equals("hi")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
-                if (d == 4 || e == 5 || f == 6) {
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4;
-                    e = 5;
-                    f = 6;
+        } else if (recipeshape[1].equals("de")) {
+           if (recipeshape[2].equals("bc") || recipeshape[0].equals("hi")) {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
                 if (g == 7 || h == 8 || i == 9) {
                     recipeshape[0] = letter7 + letter8 + letter9;
@@ -2019,16 +2019,16 @@ public class Recipes {
                     h = 8;
                     i = 9;
                 } 
-            } else if (recipeshape[1].equals("f") || recipeshape[0].equals("i")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
-                if (d == 4 || e == 5 || f == 6) {
-                    recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4;
-                    e = 5;
-                    f = 6;
+            } else if (recipeshape[2].equals("c") || recipeshape[0].equals("i")) {
+                recipeshape[1] = letter4 + letter5 + letter6;
+                d = 4;
+                e = 5;
+                f = 6;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
                 if (g == 7 || h == 8 || i == 9) {
                     recipeshape[0] = letter7 + letter8 + letter9;
@@ -2036,16 +2036,16 @@ public class Recipes {
                     h = 8;
                     i = 9;
                 }
-            } else if (recipeshape[1].equals("df") || recipeshape[0].equals("gi")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
-                if (d == 4 || e == 5 || f == 6) {
-                    recipeshape[1] = letter4 + letter5 + letter6;
+            } else if (recipeshape[2].equals("ac") || recipeshape[0].equals("gi")) {
+                recipeshape[1] = letter4 + letter5 + letter6;
                     d = 4; 
                     e = 5;
                     f = 6;
+                if (d == 4 || e == 5 || f == 6) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3;   
                 }
                 if (g == 7 || h == 8 || i == 9) {
                     recipeshape[0] = letter7 + letter8 + letter9;
@@ -2064,16 +2064,16 @@ public class Recipes {
                 g = 7;
                 h = 8;
             }
-        } else if (recipeshape[2].equals("ac")) {
-            recipeshape[2] = letter1 + letter2 + letter3;
-            a = 1;
-            b = 2;
-            c = 3;
-            if (d == 4 || e == 5 || f == 6) {
-                recipeshape[1] = letter4 + letter5 + letter6;
-                d = 4;
-                e = 5;
-                f = 6;
+        } else if (recipeshape[1].equals("df")) {
+            recipeshape[1] = letter4 + letter5 + letter6;
+            d = 4;
+            e = 5;
+            f = 6;
+            if (a == 1 || b == 2 || c == 3) {
+                recipeshape[2] = letter1 + letter2 + letter3;
+                a = 1;
+                b = 2;
+                c = 3;
             }
             if (g == 7 || h == 8 || i == 9) {
                 recipeshape[0] = letter7 + letter8 + letter9;
@@ -2081,57 +2081,57 @@ public class Recipes {
                 h = 8;
                 i = 9;
             } 
-        } else if (recipeshape[2].equals("bc")) {
-            if (recipeshape[1].equals("de") || recipeshape[0].equals("gh")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
+        } else if (recipeshape[0].equals("hi")) {
+            if (recipeshape[1].equals("de") || recipeshape[2].equals("ab")) {
+                recipeshape[0] = letter7 + letter8 + letter9;
+                g = 7;
+                h = 8;
+                i = 9;
                 if (d == 4 || e == 5 || f == 6) {
                     recipeshape[1] = letter4 + letter5 + letter6;
                     d = 4;
                     e = 5;
                     f = 6;
                 }
-                if (g == 7 || h == 8 || i == 9) {
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    g = 7;
-                    h = 8;
-                    i = 9;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 } 
-            } else if (recipeshape[1].equals("d") || recipeshape[0].equals("g")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
+            } else if (recipeshape[1].equals("d") || recipeshape[2].equals("a")) {
+                recipeshape[0] = letter7 + letter8 + letter9;
+                g = 7;
+                h = 8;
+                i = 9;
                 if (d == 4 || e == 5 || f == 6) {
                     recipeshape[1] = letter4 + letter5 + letter6;
                     d = 4;
                     e = 5;
                     f = 6;
                 }
-                if (g == 7 || h == 8 || i == 9) {
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    g = 7;
-                    h = 8;
-                    i = 9;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
-            } else if (recipeshape[1].equals("df") || recipeshape[0].equals("gi")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
+            } else if (recipeshape[1].equals("df") || recipeshape[2].equals("ac")) {
+                recipeshape[0] = letter7 + letter8 + letter9;
+                g = 7;
+                h = 8;
+                i = 9;
                 if (d == 4 || e == 5 || f == 6) {
                     recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4; 
+                    d = 4;
                     e = 5;
                     f = 6;
                 }
-                if (g == 7 || h == 8 || i == 9) {
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    g = 7;
-                    h = 8;
-                    i = 9;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 } 
             } else {
                 recipeshape[2] = letter2 + letter3;
@@ -2144,57 +2144,57 @@ public class Recipes {
                 h = 8;
                 i = 9;
             }
-        } else if (recipeshape[2].equals("ab")) {
-           if (recipeshape[1].equals("ef") || recipeshape[0].equals("hi")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
+        } else if (recipeshape[0].equals("gh")) {
+           if (recipeshape[1].equals("ef") || recipeshape[2].equals("bc")) {
+                recipeshape[0] = letter7 + letter8 + letter9;
+                g = 7;
+                h = 8;
+                i = 9;
                 if (d == 4 || e == 5 || f == 6) {
                     recipeshape[1] = letter4 + letter5 + letter6;
                     d = 4;
                     e = 5;
                     f = 6;
                 }
-                if (g == 7 || h == 8 || i == 9) {
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    g = 7;
-                    h = 8;
-                    i = 9;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 } 
-            } else if (recipeshape[1].equals("f") || recipeshape[0].equals("i")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
+            } else if (recipeshape[1].equals("f") || recipeshape[2].equals("c")) {
+                recipeshape[0] = letter7 + letter8 + letter9;
+                g = 7;
+                h = 8;
+                i = 9;
                 if (d == 4 || e == 5 || f == 6) {
                     recipeshape[1] = letter4 + letter5 + letter6;
                     d = 4;
                     e = 5;
                     f = 6;
                 }
-                if (g == 7 || h == 8 || i == 9) {
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    g = 7;
-                    h = 8;
-                    i = 9;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 }
-            } else if (recipeshape[1].equals("df") || recipeshape[0].equals("gi")) {
-                recipeshape[2] = letter1 + letter2 + letter3;
-                a = 1;
-                b = 2;
-                c = 3;
+            } else if (recipeshape[1].equals("df") || recipeshape[2].equals("ac")) {
+                recipeshape[0] = letter7 + letter8 + letter9;
+                g = 7;
+                h = 8;
+                i = 9;
                 if (d == 4 || e == 5 || f == 6) {
                     recipeshape[1] = letter4 + letter5 + letter6;
-                    d = 4; 
+                    d = 4;
                     e = 5;
                     f = 6;
                 }
-                if (g == 7 || h == 8 || i == 9) {
-                    recipeshape[0] = letter7 + letter8 + letter9;
-                    g = 7;
-                    h = 8;
-                    i = 9;
+                if (a == 1 || b == 2 || c == 3) {
+                    recipeshape[2] = letter1 + letter2 + letter3;
+                    a = 1;
+                    b = 2;
+                    c = 3; 
                 } 
             } else {
                 recipeshape[2] = letter1 + letter2;
@@ -2207,22 +2207,22 @@ public class Recipes {
                 g = 7;
                 h = 8;
             }
-        } else if (recipeshape[2].equals("ac")) {
-            recipeshape[2] = letter1 + letter2 + letter3;
-            a = 1;
-            b = 2;
-            c = 3;
+        } else if (recipeshape[0].equals("gi")) {
+            recipeshape[0] = letter7 + letter8 + letter9;
+            g = 7;
+            h = 8;
+            i = 9;
             if (d == 4 || e == 5 || f == 6) {
                 recipeshape[1] = letter4 + letter5 + letter6;
                 d = 4;
                 e = 5;
                 f = 6;
             }
-            if (g == 7 || h == 8 || i == 9) {
-                recipeshape[0] = letter7 + letter8 + letter9;
-                g = 7;
-                h = 8;
-                i = 9;
+            if (a == 1 || b == 2 || c == 3) {
+                recipeshape[2] = letter1 + letter2 + letter3;
+                a = 1;
+                b = 2;
+                c = 3; 
             } 
         }
     }
