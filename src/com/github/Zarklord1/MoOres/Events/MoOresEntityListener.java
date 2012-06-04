@@ -4,6 +4,7 @@ import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,14 +27,17 @@ public class MoOresEntityListener implements Listener  {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDamage ( EntityDamageByEntityEvent event )
     {
-        if(event.getCause() == DamageCause.ENTITY_ATTACK) {
+        if(event.getCause() == DamageCause.PROJECTILE) {
             
+        }
+        if(event.getCause() == DamageCause.ENTITY_ATTACK) {
             Entity entityhit = event.getEntity();
             Entity entityhitting = event.getDamager();
             if (entityhitting instanceof Player){
                 Player player = (Player) entityhitting;
                 if (player instanceof SpoutPlayer) {
                     SpoutPlayer splayer = SpoutManager.getPlayer(player);
+                    World world = splayer.getWorld();
                     for (CustomTools tool:Hashmaps.customtools){
                         if (tool.isSword()) {
                             if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
@@ -48,7 +52,7 @@ public class MoOresEntityListener implements Listener  {
                                 }
                                 if (tool.isLightningSword()) {
                                     Location location = entityhit.getLocation();
-                                    
+                                    world.strikeLightning(location);
                                 }
                             }
                         }

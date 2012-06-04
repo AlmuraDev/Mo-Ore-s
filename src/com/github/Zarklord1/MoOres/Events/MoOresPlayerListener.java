@@ -26,7 +26,6 @@ public class MoOresPlayerListener implements Listener {
     
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerFish(PlayerFishEvent event) {
-        Player player = event.getPlayer();
         State state = event.getState();
         Entity entity = event.getCaught();
         Random rand = new Random();
