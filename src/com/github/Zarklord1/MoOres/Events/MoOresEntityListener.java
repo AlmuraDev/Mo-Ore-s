@@ -27,6 +27,7 @@ public class MoOresEntityListener implements Listener  {
     public void onEntityDamage ( EntityDamageByEntityEvent event )
     {
         if(event.getCause() == DamageCause.ENTITY_ATTACK) {
+            
             Entity entityhit = event.getEntity();
             Entity entityhitting = event.getDamager();
             if (entityhitting instanceof Player){
