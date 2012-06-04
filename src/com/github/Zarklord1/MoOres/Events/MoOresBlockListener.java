@@ -13,7 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class MoOresBlockListener implements Listener {
+public class MoOresBlockListener implements Listener{
     public static MoOres plugin;
     boolean cblockbool;
     boolean isholding;
@@ -24,7 +24,7 @@ public class MoOresBlockListener implements Listener {
     }
     
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onBlockBreakEvent (BlockBreakEvent event)
+    public void onBlockBreak( BlockBreakEvent event )
     {
         Block block = event.getBlock();
         Player player = event.getPlayer();
@@ -35,10 +35,6 @@ public class MoOresBlockListener implements Listener {
                     if (tools.isPickaxe()) {
                         this.tool = tools;
                         isholding = true;
-                    }
-                } else {
-                    if (!isholding) {
-                        isholding = false;
                     }
                 }
             }
@@ -53,7 +49,7 @@ public class MoOresBlockListener implements Listener {
             }  
         }
     }
-    public static boolean isVanilla(Block block) {
+    public boolean isVanilla(Block block) {
         for (org.getspout.spoutapi.material.Block blok:Hashmaps.Pickaxebreackableblocks) {
             if (block.equals(blok)) {
                 return true;
@@ -61,7 +57,7 @@ public class MoOresBlockListener implements Listener {
         }
         return false;
     }
-    public static boolean isCustomOre(Block block) {
+    public boolean isCustomOre(Block block) {
         for (CustomOres blok:Hashmaps.customores) {
             if (block.equals(blok)) {
                 return true;
@@ -69,7 +65,7 @@ public class MoOresBlockListener implements Listener {
         }
         return false;
     }
-    public static boolean isCustomStone(Block block) {
+    public boolean isCustomStone(Block block) {
         for (CustomBlocks blok:Hashmaps.customblocks) {
             if (block.equals(blok)) {
                 return true;

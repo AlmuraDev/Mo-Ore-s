@@ -30,7 +30,7 @@ public class MoOresPlayerListener implements Listener {
         State state = event.getState();
         Entity entity = event.getCaught();
         Random rand = new Random();
-        if (state == state.CAUGHT_FISH) {
+        if (state.equals(state.CAUGHT_FISH)) {
             if (entity instanceof Item) {
                 Item item = (Item) entity;
                 for (CustomFishes fish:Hashmaps.customfish)    {

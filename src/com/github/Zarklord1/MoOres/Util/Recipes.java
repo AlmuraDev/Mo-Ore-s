@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
@@ -77,7 +76,7 @@ public class Recipes {
             boolean isfish = false;
             boolean isitem = false;    
             while (keys.hasNext()) {
-                for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
+                for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
                     String resultname = (String)keys.next();
                     if (Configuration.recipe.contains("Shaped Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
@@ -133,12 +132,14 @@ public class Recipes {
                             }
                         }
                         DetermineShape();
+                                      System.out.println(letter1);
                         shapedrecipe.shape(recipeshape[0], recipeshape[1], recipeshape[2]);
                         if (!TopRow[0].equals("-")) {
                             if (a == 1) {
                                 int customId;
                                 char letter = 0;
                                 if (a == 1) {
+                                                  System.out.println(letter1);
                                     letter = letter11;
                                     if(Hashmaps.customitemsmap.containsKey(TopRow[0])){
                                         customId = Hashmaps.customitemsmap.get(TopRow[0]).getCustomId();
@@ -475,27 +476,26 @@ public class Recipes {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapless Recipes");
             Iterator keys = section.getKeys(false).iterator();
             while (keys.hasNext()) {
-                for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
+                for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
                     String resultname = (String)keys.next();
                     if (Configuration.recipe.contains("Shapless Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Shapless Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
                     }
                 }
             }
-        } 
+        }
         if (Configuration.recipe.contains("Furnace Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Furnace Recipes");
             Iterator keys = section.getKeys(false).iterator();
             while (keys.hasNext()) {
-                for (int rpcnum = 0; rpcnum > 30; rpcnum++) {
+                for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
                     String resultname = (String)keys.next();
                     if (Configuration.recipe.contains("Furnace Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
                         String source = Configuration.recipe.getString("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient");
-                        ItemStack result = new SpoutItemStack(MaterialData.air);
-                        Material material;
-                        int id = 0;
-                        int data = 0;
+                        ItemStack result;
+                        int id;
+                        int data;
                         if (Hashmaps.customblocksmap.containsKey(resultname)) {
                             result = new SpoutItemStack(Hashmaps.customblocksmap.get(resultname), amount);
                         } else if (Hashmaps.customoresmap.containsKey(resultname)) {
@@ -518,34 +518,35 @@ public class Recipes {
                                 result = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(resultname)), amount);
                             }
                         }
+                        
                         if (Hashmaps.customblocksmap.containsKey(source)) {
-                            data = Hashmaps.customblocksmap.get(resultname).getCustomId();
-                            material = Hashmaps.customblocksmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.customblocksmap.get(source).getCustomId();
+                            id = Hashmaps.customblocksmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customoresmap.containsKey(source)) {
-                            data = Hashmaps.customoresmap.get(resultname).getCustomId();
-                            material = Hashmaps.customoresmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.customoresmap.get(source).getCustomId();
+                            id = Hashmaps.customoresmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.custombushesmap.containsKey(source)) {
-                            data = Hashmaps.custombushesmap.get(resultname).getCustomId();
-                            material = Hashmaps.custombushesmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.custombushesmap.get(source).getCustomId();
+                            id = Hashmaps.custombushesmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customtoolsmap.containsKey(source)) {
-                            data = Hashmaps.customtoolsmap.get(resultname).getCustomId();
-                            material = Hashmaps.customtoolsmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.customtoolsmap.get(source).getCustomId();
+                            id = Hashmaps.customtoolsmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customfoodmap.containsKey(source)) {
-                            data = Hashmaps.customfoodmap.get(resultname).getCustomId();
-                            material = Hashmaps.customfoodmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.customfoodmap.get(source).getCustomId();
+                            id = Hashmaps.customfoodmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customfishmap.containsKey(source)) {
-                            data = Hashmaps.customfishmap.get(resultname).getCustomId();
-                            material = Hashmaps.customfishmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.customfishmap.get(source).getCustomId();
+                            id = Hashmaps.customfishmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customitemsmap.containsKey(source)) {
-                            data = Hashmaps.customitemsmap.get(resultname).getCustomId();
-                            material = Hashmaps.customitemsmap.get(resultname).getMaterial();
-                            FurnaceRecipes.CustomFurnaceRecipe(result, material, data);
+                            data = Hashmaps.customitemsmap.get(source).getCustomId();
+                            id = Hashmaps.customitemsmap.get(source).getId();
+                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
                         } else {
                             if (source.contains(":")) {
                                 SourceResult = source.split(":");
@@ -558,7 +559,7 @@ public class Recipes {
                             }
                         }
                     }
-                }  
+                }
             }
         }     
     }
@@ -1040,6 +1041,24 @@ public class Recipes {
                 b = 2;
                 c = 3; 
             } 
+        }
+        if (TopRow[2].equals("-") && TopRow[1].equals("-") && TopRow[0].equals("-")) {
+            recipeshape[2] = null;
+            a = 0;
+            b = 0;
+            c = 0;
+        }
+        if (MiddleRow[2].equals("-") && MiddleRow[1].equals("-") && MiddleRow[0].equals("-")) {
+            recipeshape[1] = null;
+            d = 0;
+            e = 0;
+            f = 0;
+        }
+        if (BottomRow[2].equals("-") && BottomRow[1].equals("-") && BottomRow[0].equals("-")) {
+            recipeshape[0] = null;
+            g = 0;
+            h = 0;
+            i = 0;
         }
     }
 }

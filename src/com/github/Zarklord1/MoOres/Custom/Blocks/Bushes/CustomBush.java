@@ -16,8 +16,8 @@ private MoOres plugin;
     setBlockDesign(new CustomBushDesign(plugin, textureids, freq));
     this.plugin = plugin;
   }
-  public Material getMaterial() {
-      return Material.STONE;
+  public int getId() {
+      return 318;
   }
 
 }

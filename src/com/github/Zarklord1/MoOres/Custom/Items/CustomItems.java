@@ -8,7 +8,7 @@ public class CustomItems extends GenericCustomItem{
   public CustomItems(Plugin plugin, String name, String texture){
     super(plugin, name, texture);
   }
-  public Material getMaterial() {
-      return Material.FLINT;
-  }
+  public int getId() {
+      return 318;
+   }
 }
