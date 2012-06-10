@@ -5,8 +5,8 @@ import com.github.Zarklord1.MoOres.Custom.Blocks.Bushes.CustomBush;
 import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.OriginalOres;
-import com.github.Zarklord1.MoOres.Custom.Items.Arrows.CustomArrows;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
+import com.github.Zarklord1.MoOres.Custom.Items.Arrows.CustomArrows;
 import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFood;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
@@ -174,11 +174,12 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
                 boolean fire = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.setfire");
                 boolean poison = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.setpoison");
                 boolean lightning = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.strikelightning");
-                int damage = Configuration.items.getInt("Custom Tools." + name + ".damage");
-                int firetime = Configuration.items.getInt("Custom Tools." + name + ".Sword.Fire Or Poison Ticks(2 seconds is one tick)");
+                int damage = Configuration.items.getInt("Custom Tools." + name + ".Sword.damage");
+                int fireticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Fire Ticks");
+                int poisonticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Poison Ticks");
 /*     */       short durability = (short) durability1;
 /*     */       float strength = (float) strength1;
-/* 147 */       addTool(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, firetime, poison, lightning);
+/* 147 */       addTool(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, fireticks, poison, lightning, poisonticks);
 /*     */     }
 /* 149 */     ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
 /* 150 */     Iterator keys3 = section3.getKeys(false).iterator();
@@ -237,8 +238,8 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 				customfishmap.put(name, fish);
 			}
 			
-			private static void addTool(MoOres plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean lightning, boolean poison) {
-				CustomTools tool = new CustomTools(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, ticks, lightning, poison);
+			private static void addTool(MoOres plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean lightning, boolean poison, int poisonticks) {
+				CustomTools tool = new CustomTools(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, ticks, lightning, poison, poisonticks);
 				customtools.add(tool);
 				customtoolsmap.put(name, tool);
 			}

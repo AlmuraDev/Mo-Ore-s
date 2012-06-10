@@ -19,19 +19,18 @@ import java.io.IOException;
 /*  48 */       config = MyConfiguration.loadConfiguration("plugins/MoOres/Config.yml");
 /*  49 */       Config.set();
 /*  50 */       save(config);
-/*     */     }
-              
-              if (load(recipe, "Recipes.yml")) {
-/*  48 */       recipe = MyConfiguration.loadConfiguration("plugins/MoOres/Recipes.yml");
-/*  49 */       RecipeConfig.set();
-/*  50 */       save(recipe);
-/*     */     }
+/*     */    }
               
 /*  52 */     Config.set();
 /*     */     try {
 /*  54 */       config.save();
 /*     */     } catch (Exception e) {
 /*  56 */       e.printStackTrace();
+/*     */     }
+              if (load(recipe, "Recipes.yml")) {
+/*  48 */       recipe = MyConfiguration.loadConfiguration("plugins/MoOres/Recipes.yml");
+/*  49 */       RecipeConfig.set();
+/*  50 */       save(recipe);
 /*     */     }
 /*     */ 
 /*  59 */     if (load(ore, "Ores.yml")) {

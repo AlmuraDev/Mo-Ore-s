@@ -31,9 +31,10 @@ public class CustomTools extends GenericCustomTool
     boolean fire;
     boolean poison;
     boolean lightning;
-    int ticks;
+    int fireticks;
+    int poisonticks;
     int damage;
-	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean poison, boolean lightning) {
+	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks) {
 		super(plugin, name, textureurl);
 		this.setDurability(durability);
                 this.damage = damage;
@@ -43,7 +44,8 @@ public class CustomTools extends GenericCustomTool
                 this.Bow = Bow;
                 this.Sword = Sword;
                 this.fire = fire;
-                this.ticks = ticks;
+                this.fireticks = fireticks;
+                this.poisonticks = poisonticks;
                 this.Pickaxe = Pickaxe;
                 this.poison = poison;
                 this.lightning = lightning;
@@ -110,8 +112,11 @@ public class CustomTools extends GenericCustomTool
         public boolean isPoisonSword() {
             return this.poison;
         }
-        public int getFireOrPoisonTicks() {
-            return ticks;
+        public int getPoisonTicks() {
+            return poisonticks;
+        }
+        public int getFireTicks() {
+            return fireticks;
         }
 
     public int getId() {
@@ -129,8 +134,11 @@ public class CustomTools extends GenericCustomTool
                 arrowstack.setAmount(arrowstack.getAmount() - 1);
                 
             }
-        } else if (this.isHoe()) {
-            
+        }
+        if (this.isHoe()) {
+          if (block.equals(MaterialData.dirt) || block.equals(MaterialData.grass)) {
+              block.setType(Material.SOIL);
+          }
         }
         return true;
     }

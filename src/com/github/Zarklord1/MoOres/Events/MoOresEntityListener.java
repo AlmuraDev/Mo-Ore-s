@@ -43,17 +43,18 @@ public class MoOresEntityListener implements Listener  {
                             if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
                                 event.setDamage(tool.getdamage());
                                 if (tool.isFireSword()) {
-                                entityhit.setFireTicks(tool.getFireOrPoisonTicks());
-                                return;
+                                    entityhit.setFireTicks(tool.getFireTicks());
                                 }
-                                if (tool.isPoisonSword()) {
-                                    splayer.addPotionEffect(new PotionEffect(PotionEffectType.POISON, tool.getFireOrPoisonTicks(), 1));
-                                    return;
+                                if (entityhit instanceof Player && tool.isPoisonSword()) {
+                                    Player playerhit = (Player) entityhit;
+                                    playerhit.addPotionEffect(new PotionEffect(PotionEffectType.POISON, tool.getPoisonTicks(), 1));
                                 }
                                 if (tool.isLightningSword()) {
                                     Location location = entityhit.getLocation();
                                     world.strikeLightning(location);
                                 }
+                                
+                                return;
                             }
                         }
                     }

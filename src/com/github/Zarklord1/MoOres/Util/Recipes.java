@@ -1,9 +1,11 @@
 package com.github.Zarklord1.MoOres.Util;
 
+import com.github.Zarklord1.FurnaceApi.FurnaceRecipes;
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.MoOres;
 import java.util.Iterator;
 import java.util.List;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
@@ -132,14 +134,12 @@ public class Recipes {
                             }
                         }
                         DetermineShape();
-                                      System.out.println(letter1);
                         shapedrecipe.shape(recipeshape[0], recipeshape[1], recipeshape[2]);
                         if (!TopRow[0].equals("-")) {
                             if (a == 1) {
                                 int customId;
                                 char letter = 0;
                                 if (a == 1) {
-                                                  System.out.println(letter1);
                                     letter = letter11;
                                     if(Hashmaps.customitemsmap.containsKey(TopRow[0])){
                                         customId = Hashmaps.customitemsmap.get(TopRow[0]).getCustomId();
@@ -242,7 +242,7 @@ public class Recipes {
                                         Ingredient3 = TopRow[2].split(":");
                                         shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(Ingredient3[0]), Short.parseShort(Ingredient3[1])));
                                     } else {
-                                      shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[2])));  
+                                        shapedrecipe.setIngredient(letter, MaterialData.getMaterial(Integer.parseInt(TopRow[2])));  
                                     }
                                 }
                             }
@@ -486,10 +486,10 @@ public class Recipes {
         }
         if (Configuration.recipe.contains("Furnace Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Furnace Recipes");
-            Iterator keys = section.getKeys(false).iterator();
-            while (keys.hasNext()) {
+            Object[] keys = section.getKeys(false).toArray();
+            for (int num = 0; num < keys.length; num++) {
                 for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
-                    String resultname = (String)keys.next();
+                    String resultname = (String)keys[num];
                     if (Configuration.recipe.contains("Furnace Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
                         String source = Configuration.recipe.getString("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient");
@@ -522,40 +522,40 @@ public class Recipes {
                         if (Hashmaps.customblocksmap.containsKey(source)) {
                             data = Hashmaps.customblocksmap.get(source).getCustomId();
                             id = Hashmaps.customblocksmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customoresmap.containsKey(source)) {
                             data = Hashmaps.customoresmap.get(source).getCustomId();
                             id = Hashmaps.customoresmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.custombushesmap.containsKey(source)) {
                             data = Hashmaps.custombushesmap.get(source).getCustomId();
                             id = Hashmaps.custombushesmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customtoolsmap.containsKey(source)) {
                             data = Hashmaps.customtoolsmap.get(source).getCustomId();
                             id = Hashmaps.customtoolsmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customfoodmap.containsKey(source)) {
                             data = Hashmaps.customfoodmap.get(source).getCustomId();
                             id = Hashmaps.customfoodmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customfishmap.containsKey(source)) {
                             data = Hashmaps.customfishmap.get(source).getCustomId();
                             id = Hashmaps.customfishmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else if (Hashmaps.customitemsmap.containsKey(source)) {
                             data = Hashmaps.customitemsmap.get(source).getCustomId();
                             id = Hashmaps.customitemsmap.get(source).getId();
-                            FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                            FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                         } else {
                             if (source.contains(":")) {
                                 SourceResult = source.split(":");
                                 id = Integer.parseInt(SourceResult[0]);
                                 data = Integer.parseInt(SourceResult[1]);
-                                FurnaceRecipes.MaterialDataFurnaceRecipe(result, id, data);
+                                FurnaceRecipes.CustomFurnaceRecipe(result, id, data);
                             } else {
                                 id = Integer.parseInt(source);
-                                FurnaceRecipes.MaterialFurnaceRecipe(result, id);
+                                frecipe.addFurnaceRecipe(result, Material.getMaterial(id));
                             }
                         }
                     }
