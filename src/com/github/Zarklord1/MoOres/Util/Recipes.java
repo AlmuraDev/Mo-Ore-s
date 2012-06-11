@@ -69,17 +69,10 @@ public class Recipes {
     private static void addRecipes() {
         if (Configuration.recipe.contains("Shaped Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shaped Recipes");
-            Iterator keys = section.getKeys(false).iterator();
-            boolean isblock = false;
-            boolean isore = false;
-            boolean isbush = false;
-            boolean istool = false;
-            boolean isfood = false;
-            boolean isfish = false;
-            boolean isitem = false;    
-            while (keys.hasNext()) {
+            Object[] keys = section.getKeys(false).toArray();
+            for (int num = 0; num < keys.length; num++) {
                 for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
-                    String resultname = (String)keys.next();
+                    String resultname = (String)keys[num];
                     if (Configuration.recipe.contains("Shaped Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
                         List list = Configuration.recipe.getList("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".ingredients");
@@ -88,39 +81,24 @@ public class Recipes {
                         MiddleRow = recipekeys.next().toString().split(",");
                         BottomRow = recipekeys.next().toString().split(",");
                         if (Hashmaps.customblocksmap.containsKey(resultname)) {
-                            isblock = true;
-                        } else if (Hashmaps.customoresmap.containsKey(resultname)) {
-                            isore = true;
-                        } else if (Hashmaps.custombushesmap.containsKey(resultname)) {
-                            isbush = true;
-                        } else if (Hashmaps.customtoolsmap.containsKey(resultname)) {
-                            istool = true;
-                        } else if (Hashmaps.customfoodmap.containsKey(resultname)) {
-                            isfood = true;
-                        } else if (Hashmaps.customfishmap.containsKey(resultname)) {
-                            isfish = true;
-                        } else if (Hashmaps.customitemsmap.containsKey(resultname)) { 
-                            isitem = true;
-                        }
-                        if (isblock) {
                             ItemStack result = new SpoutItemStack(Hashmaps.customblocksmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
-                        } else if (isore) {
+                        } else if (Hashmaps.customoresmap.containsKey(resultname)) {
                             ItemStack result = new SpoutItemStack(Hashmaps.customoresmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
-                        } else if (isbush) {
+                        } else if (Hashmaps.custombushesmap.containsKey(resultname)) {
                             ItemStack result = new SpoutItemStack(Hashmaps.custombushesmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
-                        } else if (istool) {
+                        } else if (Hashmaps.customtoolsmap.containsKey(resultname)) {
                             ItemStack result = new SpoutItemStack(Hashmaps.customtoolsmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
-                        } else if (isfood) {
+                        } else if (Hashmaps.customfoodmap.containsKey(resultname)) {
                             ItemStack result = new SpoutItemStack(Hashmaps.customfoodmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
-                        } else if (isfish) {
+                        } else if (Hashmaps.customfishmap.containsKey(resultname)) {
                             ItemStack result = new SpoutItemStack(Hashmaps.customfishmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
-                        } else if (isitem) {
+                        } else if (Hashmaps.customitemsmap.containsKey(resultname)) { 
                             ItemStack result = new SpoutItemStack(Hashmaps.customitemsmap.get(resultname), amount);
                             shapedrecipe = new SpoutShapedRecipe(result);
                         } else {
@@ -474,10 +452,10 @@ public class Recipes {
         }
         if (Configuration.recipe.contains("Shapless Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapless Recipes");
-            Iterator keys = section.getKeys(false).iterator();
-            while (keys.hasNext()) {
+            Object[] keys = section.getKeys(false).toArray();
+            for (int num = 0; num < keys.length; num++) {
                 for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
-                    String resultname = (String)keys.next();
+                    String resultname = (String)keys[num];
                     if (Configuration.recipe.contains("Shapless Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Shapless Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
                     }

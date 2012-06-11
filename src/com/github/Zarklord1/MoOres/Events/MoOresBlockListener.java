@@ -31,7 +31,7 @@ public class MoOresBlockListener implements Listener{
         if (player instanceof SpoutPlayer){
             SpoutPlayer splayer = (SpoutPlayer) player;
             for (CustomTools tools:Hashmaps.customtools) {
-                if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
+                if (splayer.getItemInHand().getDurability() == tool.getCustomId() && splayer.isSpoutCraftEnabled()) {
                     if (tools.isPickaxe()) {
                         this.tool = tools;
                         isholding = true;

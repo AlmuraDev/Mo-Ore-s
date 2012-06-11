@@ -39,7 +39,7 @@ public class MoOresEntityListener implements Listener  {
                     SpoutPlayer splayer = SpoutManager.getPlayer(player);
                     World world = splayer.getWorld();
                     for (CustomTools tool:Hashmaps.customtools){
-                        if (tool.isSword()) {
+                        if (tool.isSword() && splayer.isSpoutCraftEnabled()) {
                             if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
                                 event.setDamage(tool.getdamage());
                                 if (tool.isFireSword()) {

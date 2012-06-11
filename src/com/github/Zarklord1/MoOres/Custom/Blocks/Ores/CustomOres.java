@@ -24,14 +24,15 @@ private int light = 1;
 /* 21 */     this.hard = hard;
 /* 22 */     this.light = light;
 /* 23 */     this.friction = friction;
-id = blockId;
+             id = blockId;
              setFriction(friction);
 /* 24 */     setHardness(hard);
 /* 25 */     setLightLevel(light);
-/*    */ 
-/* 27 */     if (drop != null)
-/* 28 */       setItemDrop(new SpoutItemStack(drop, amount > 1 ? amount : 1));
-/*    */   }
+if (drop != null) {
+/*    */     SpoutItemStack drops = new SpoutItemStack(drop, amount);
+/*    */     this.setItemDrop(drops);
+}
+/* 27 */     }
 /*    */ 
 /*    */   public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomBlock drop, float hard, int light, float friction, int amount, int blockId, int metadata)
 /*    */   {
@@ -42,13 +43,17 @@ id = blockId;
 /* 38 */     this.hard = hard;
 /* 39 */     this.light = light;
 /* 40 */     this.friction = friction;
-id = blockId;
+             id = blockId;
              setFriction(friction);
 /* 41 */     setHardness(hard);
 /* 42 */     setLightLevel(light);
-/*    */ 
-/* 44 */     if (drop != null)
-/* 45 */       setItemDrop(new SpoutItemStack(drop, amount > 1 ? amount : 1));
+if (drop != null) {
+/* 44 */     SpoutItemStack drops = new SpoutItemStack(drop, amount);
+/*    */     this.setItemDrop(drops);
+} else {
+             SpoutItemStack drops = new SpoutItemStack(this, 1);
+/*    */     this.setItemDrop(drops);
+}
 /*    */   }
 /*    */ 
 /*    */   public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, Material drop, float hard, int light, float friction, int amount, int blockId, int metadata)
@@ -64,9 +69,11 @@ id = blockId;
 			setHardness(hard);
 			setLightLevel(light);
 			setFriction(friction);
-			if (drop != null)
-				setItemDrop(new ItemStack(drop, amount));
-			}
+             if (drop != null) {
+                ItemStack drops = new ItemStack(drop, amount);
+/*    */        this.setItemDrop(drops);
+             }
+}
    public int getFreq()
    {
 	   return this.freq;
