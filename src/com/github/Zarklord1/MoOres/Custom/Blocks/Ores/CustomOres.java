@@ -86,4 +86,8 @@ public class CustomOres extends GenericCubeCustomBlock {
     public int getId() {
         return 318;
     }
+    @Override
+    public int getLightLevel() {
+        return this.light;
+    }
 }
