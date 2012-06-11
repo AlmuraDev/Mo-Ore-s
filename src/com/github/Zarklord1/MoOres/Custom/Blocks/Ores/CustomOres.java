@@ -1,94 +1,89 @@
 package com.github.Zarklord1.MoOres.Custom.Blocks.Ores;
 
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
+import com.github.Zarklord1.MoOres.MoOres;
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.material.CustomBlock;
 import org.getspout.spoutapi.material.CustomItem;
+import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
-import com.github.Zarklord1.MoOres.MoOres;
 
-public class CustomOres extends GenericCubeCustomBlock
- {
-   private int minY = 2; private int maxY = 128; private int freq = 0;
-private int light = 1;
-   float hard = 1.0F; float friction = 0.0F;
-   int id;
-/*    */ 
-/* 17 */   public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomItem drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
-           super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
-/* 18 */     this.minY = minY;
-/* 19 */     this.maxY = maxY;
-/* 20 */     this.freq = freq;
-/* 21 */     this.hard = hard;
-/* 22 */     this.light = light;
-/* 23 */     this.friction = friction;
-             id = blockId;
-             setFriction(friction);
-/* 24 */     setHardness(hard);
-/* 25 */     setLightLevel(light);
-if (drop != null) {
-/*    */     SpoutItemStack drops = new SpoutItemStack(drop, amount);
-/*    */     this.setItemDrop(drops);
-}
-/* 27 */     }
-/*    */ 
-/*    */   public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomBlock drop, float hard, int light, float friction, int amount, int blockId, int metadata)
-/*    */   {
-/* 34 */     super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
-/* 35 */     this.minY = minY;
-/* 36 */     this.maxY = maxY;
-/* 37 */     this.freq = freq;
-/* 38 */     this.hard = hard;
-/* 39 */     this.light = light;
-/* 40 */     this.friction = friction;
-             id = blockId;
-             setFriction(friction);
-/* 41 */     setHardness(hard);
-/* 42 */     setLightLevel(light);
-if (drop != null) {
-/* 44 */     SpoutItemStack drops = new SpoutItemStack(drop, amount);
-/*    */     this.setItemDrop(drops);
-} else {
-             SpoutItemStack drops = new SpoutItemStack(this, 1);
-/*    */     this.setItemDrop(drops);
-}
-/*    */   }
-/*    */ 
-/*    */   public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, Material drop, float hard, int light, float friction, int amount, int blockId, int metadata)
-/*    */   {
-/* 51 */     super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
-/* 52 */     this.minY = minY;
-/* 53 */     this.maxY = maxY;
-/* 54 */     this.freq = freq;
-/* 55 */     this.hard = hard;
-/* 56 */     this.light = light;
-/* 57 */     this.friction = friction;
-id = blockId;
-			setHardness(hard);
-			setLightLevel(light);
-			setFriction(friction);
-             if (drop != null) {
-                ItemStack drops = new ItemStack(drop, amount);
-/*    */        this.setItemDrop(drops);
-             }
-}
-   public int getFreq()
-   {
-	   return this.freq;
-   }
-   public int getMinY() {
-	   return this.minY;
-   }
-   public int getMaxY() {
-	   return this.maxY;
-   }
+public class CustomOres extends GenericCubeCustomBlock {
+    
+    private int minY = 2;
+    private int maxY = 256;
+    private int freq = 0;
+    private int light = 1;
+    float hard = 1.0F;
+    float friction = 0.0F;
+    int id;
+    
+    public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomItem drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
+        super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
+        this.minY = minY;
+        this.maxY = maxY;
+        this.freq = freq;
+        this.hard = hard;
+        this.light = light;
+        this.friction = friction;
+        id = blockId;
+        setFriction(friction);
+        setHardness(hard);
+        setLightLevel(light);
+        SpoutItemStack drops = new SpoutItemStack(drop, amount);
+        this.setItemDrop(drops);
+    }
+ 
+    public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomBlock drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
+        super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
+        this.minY = minY;
+        this.maxY = maxY;
+        this.freq = freq;
+        this.hard = hard;
+        this.light = light;
+        this.friction = friction;
+        id = blockId;
+        setFriction(friction);
+        setHardness(hard);
+        setLightLevel(light);
+        if (drop != null) {
+            SpoutItemStack drops = new SpoutItemStack(drop, amount);
+            this.setItemDrop(drops);
+        } else {
+            SpoutItemStack drops = new SpoutItemStack(this, 1);
+            this.setItemDrop(drops);
+        }
+    }
+
+    public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, float hard, int light, float friction, int amount, int blockId, int metadata, int dropid, short dropmetaid) {
+        super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.ores, textureid));
+        this.minY = minY;
+        this.maxY = maxY;
+        this.freq = freq;
+        this.hard = hard;
+        this.light = light;
+        this.friction = friction;
+        id = blockId; 
+        setHardness(hard);
+        setLightLevel(light);
+        setFriction(friction);
+        SpoutItemStack drops = new SpoutItemStack(MaterialData.getMaterial(dropid, dropmetaid), amount);
+        this.setItemDrop(drops);
+    }
+    public int getFreq() {
+        return this.freq;
+    }
+    public int getMinY() {
+        return this.minY;
+    }
+    public int getMaxY() {
+        return this.maxY;
+    }
     @Override
-   public float getHardness() {
-	   return this.hard;
-   }
-   public int getId() {
-      return 318;
-   }
+    public float getHardness() {
+        return this.hard;
+    }
+    public int getId() {
+        return 318;
+    }
 }

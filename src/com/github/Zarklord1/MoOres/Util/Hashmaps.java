@@ -78,6 +78,7 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 /*  78 */       CustomItem idrop = null;
 /*  79 */       CustomBlock bdrop = null;
 /*  80 */       Material mdrop = null;
+                String drop = null;
 /*     */ 
 /*  82 */       if (Configuration.ore.contains("Custom Ores." + name + ".hardness")) {
 /*  83 */         hard = Configuration.ore.getInt("Custom Ores." + name + ".hardness");
@@ -95,35 +96,32 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 /*  89 */         friction = Configuration.ore.getInt("Custom Ores." + name + ".friction");
 /*     */       }
 /*  91 */       if (Configuration.ore.contains("Custom Ores." + name + ".drop")) {
-/*  92 */         if (Configuration.ore.contains("Custom Ores." + name + ".droopamount")) {
-/*  93 */           amount = Configuration.ore.getInt("Custom Ores." + name + ".droopamount");
-/*     */         }
-/*  95 */         String sdrop = Configuration.ore.getString("Custom Ores." + name + ".drop");
-/*     */         try {
-/*  97 */           mdrop = Material.getMaterial(Integer.parseInt(sdrop));
-/*  98 */           addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, mdrop, amount, id, metadata);
-/*     */         } catch (NumberFormatException e) {
-/* 100 */           if (customblocksmap.containsKey(sdrop))
-/* 101 */             bdrop = (CustomBlock)customblocksmap.get(sdrop);
-/* 102 */           else if (customitemsmap.containsKey(sdrop))
-/* 103 */             idrop = (CustomItem)customitemsmap.get(sdrop);
-/* 104 */           else if (customfoodmap.containsKey(sdrop))
-/* 105 */             idrop = (CustomItem)customfoodmap.get(sdrop);
-/* 106 */           else if (customtoolsmap.containsKey(sdrop)) {
-/* 107 */             idrop = (CustomItem)customfoodmap.get(sdrop);
-/*     */           }
-/*     */         }
-/*     */       }
-/* 111 */       if (bdrop != null)
-/* 112 */         addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
-/* 113 */       else if (idrop != null)
-/* 114 */         addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-/*     */       else
-/* 116 */         addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-/*     */     }
-/*     */   }
-
-/*     */   public static void CustomBushes(MoOres plugin) {
+                  drop = Configuration.ore.getString("Custom Ores." + name + ".drop");
+/*  92 */         if (Configuration.ore.contains("Custom Ores." + name + ".amount")) {
+/*  93 */           amount = Configuration.ore.getInt("Custom Ores." + name + ".amount");
+                    } else {
+                 amount = 1;
+                 if (customblocksmap.containsKey(drop)) {
+                   bdrop = customblocksmap.get(drop);
+                   addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
+                 } else if (custombushesmap.containsKey(drop)) {
+                   bdrop = custombushesmap.get(drop);
+                   addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
+                 } else if (customitemsmap.containsKey(drop)) {
+                   idrop = customitemsmap.get(drop);
+                   addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
+                 } else {
+                     if (drop.contains(":")) {
+                         
+                     } else {
+                         
+                     }
+                 }
+}
+}
+}
+}
+/*  95 */     public static void CustomBushes(MoOres plugin) {
 /*  65 */     ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Bushes");
               Iterator keys = section.getKeys(false).iterator();
 /*  67 */     while (keys.hasNext()) {
