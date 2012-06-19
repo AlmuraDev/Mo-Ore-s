@@ -7,7 +7,6 @@ import java.io.IOException;
 /*     */ public class Configuration
 /*     */ {
 /*  30 */   public static MyConfiguration config = new MyConfiguration();
-/*  31 */   public static MyConfiguration ore = new MyConfiguration();
 /*  31 */   public static MyConfiguration block = new MyConfiguration();
 /*  33 */   public static MyConfiguration generator = new MyConfiguration();
 /*  34 */   public static MyConfiguration items = new MyConfiguration();
@@ -33,15 +32,11 @@ import java.io.IOException;
 /*  50 */       save(recipe);
 /*     */     }
 /*     */ 
-/*  59 */     if (load(ore, "Ores.yml")) {
-/*  60 */       ore = MyConfiguration.loadConfiguration("plugins/MoOres/Ores.yml");
-/*  61 */       OresConfig.set();
-/*  62 */       save(ore);
-/*     */     }
 /*  62 */
 /*     */     if (load(block, "Blocks.yml")) {
 /*  60 */       block = MyConfiguration.loadConfiguration("plugins/MoOres/Blocks.yml");
 /*  61 */       BlockConfig.set();
+                ConfigWriter.setOres(block, "Custom Ores", "Original Ores");
 /*  62 */       save(block);
 /*     */     }
 

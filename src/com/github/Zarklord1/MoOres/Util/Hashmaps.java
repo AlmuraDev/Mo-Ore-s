@@ -62,14 +62,14 @@ public class Hashmaps {
     public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet();
     
     public static void CustomOres(MoOres plugin) {
-        ConfigurationSection section = Configuration.ore.getConfigurationSection("Custom Ores");
-        Iterator keys = section.getKeys(false).iterator();
+        ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Ores");
+        Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
-            String name = (String)keys.next();
-            int textureID = Configuration.ore.getInt("Custom Ores." + name + ".textureID");
-            int freq = Configuration.ore.getInt("Custom Ores." + name + ".frequency");
-            int minY = Configuration.ore.getInt("Custom Ores." + name + ".minheight");
-            int maxY = Configuration.ore.getInt("Custom Ores." + name + ".maxheight");
+            String name = keys.next();
+            int textureID = Configuration.block.getInt("Custom Ores." + name + ".textureID");
+            int freq = Configuration.block.getInt("Custom Ores." + name + ".frequency");
+            int minY = Configuration.block.getInt("Custom Ores." + name + ".minheight");
+            int maxY = Configuration.block.getInt("Custom Ores." + name + ".maxheight");
             float hard = 0.0F;
             float friction = 0.0F;
             int light = 0;
@@ -78,27 +78,26 @@ public class Hashmaps {
             int metadata = 0;
             CustomItem idrop = null;
             CustomBlock bdrop = null;
-            Material mdrop = null;
             String drop = null;
-            if (Configuration.ore.contains("Custom Ores." + name + ".hardness")) {
-                hard = Configuration.ore.getInt("Custom Ores." + name + ".hardness");
+            if (Configuration.block.contains("Custom Ores." + name + ".hardness")) {
+                hard = Configuration.block.getInt("Custom Ores." + name + ".hardness");
             }
-            if (Configuration.ore.contains("Custom Ores." + name + ".block id")) {
-                id = Configuration.ore.getInt("Custom Ores." + name + ".block id");
+            if (Configuration.block.contains("Custom Ores." + name + ".block id")) {
+                id = Configuration.block.getInt("Custom Ores." + name + ".block id");
             }
-            if (Configuration.ore.contains("Custom Ores." + name + ".metadata id")) {
-                metadata = Configuration.ore.getInt("Custom Ores." + name + ".metadata id");
+            if (Configuration.block.contains("Custom Ores." + name + ".metadata id")) {
+                metadata = Configuration.block.getInt("Custom Ores." + name + ".metadata id");
             }
-            if (Configuration.ore.contains("Custom Ores." + name + ".lightlevel")) {
-                light = Configuration.ore.getInt("Custom Ores." + name + ".lightlevel");
+            if (Configuration.block.contains("Custom Ores." + name + ".lightlevel")) {
+                light = Configuration.block.getInt("Custom Ores." + name + ".lightlevel");
             }
-            if (Configuration.ore.contains("Custom Ores." + name + ".friction")) {
-                friction = Configuration.ore.getInt("Custom Ores." + name + ".friction");
+            if (Configuration.block.contains("Custom Ores." + name + ".friction")) {
+                friction = Configuration.block.getInt("Custom Ores." + name + ".friction");
             }
-            if (Configuration.ore.contains("Custom Ores." + name + ".drop")) {
-                drop = Configuration.ore.getString("Custom Ores." + name + ".drop");
-                if (Configuration.ore.contains("Custom Ores." + name + ".amount")) {
-                    amount = Configuration.ore.getInt("Custom Ores." + name + ".amount");
+            if (Configuration.block.contains("Custom Ores." + name + ".drop")) {
+                drop = Configuration.block.getString("Custom Ores." + name + ".drop");
+                if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
+                    amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
                 } else {
                     amount = 1;
                 }
@@ -256,12 +255,12 @@ public class Hashmaps {
         custombushesmap.put(name, bush);
     }
     public static void registerBlocks(MoOres plugin) {
-        OriginalOres CoalOre = new OriginalOres(plugin, Material.COAL_ORE, Configuration.ore.getInt("Original Ores.Coal Ore.frequency"), Configuration.ore.getInt("Original Ores.Coal Ore.minheight"), Configuration.ore.getInt("Original Ores.Coal Ore.maxheight"));
-        OriginalOres IronOre = new OriginalOres(plugin, Material.IRON_ORE, Configuration.ore.getInt("Original Ores.Iron Ore.frequency"), Configuration.ore.getInt("Original Ores.Iron Ore.minheight"), Configuration.ore.getInt("Original Ores.Iron Ore.maxheight"));
-        OriginalOres LapisOre = new OriginalOres(plugin, Material.LAPIS_ORE, Configuration.ore.getInt("Original Ores.Lapis Ore.frequency"), Configuration.ore.getInt("Original Ores.Lapis Ore.minheight"), Configuration.ore.getInt("Original Ores.Lapis Ore.maxheight"));
-        OriginalOres GoldOre = new OriginalOres(plugin, Material.GOLD_ORE, Configuration.ore.getInt("Original Ores.Gold Ore.frequency"), Configuration.ore.getInt("Original Ores.Gold Ore.minheight"), Configuration.ore.getInt("Original Ores.Gold Ore.maxheight"));
-        OriginalOres RedstoneOre = new OriginalOres(plugin, Material.REDSTONE_ORE, Configuration.ore.getInt("Original Ores.Redstone Ore.frequency"), Configuration.ore.getInt("Original Ores.Redstone Ore.minheight"), Configuration.ore.getInt("Original Ores.Redstone Ore.maxheight"));
-        OriginalOres DiamondOre = new OriginalOres(plugin, Material.DIAMOND_ORE, Configuration.ore.getInt("Original Ores.Diamond Ore.frequency"), Configuration.ore.getInt("Original Ores.Diamond Ore.minheight"), Configuration.ore.getInt("Original Ores.Diamond Ore.maxheight"));
+        OriginalOres CoalOre = new OriginalOres(plugin, Material.COAL_ORE, Configuration.block.getInt("Original Ores.Coal Ore.frequency"), Configuration.block.getInt("Original Ores.Coal Ore.minheight"), Configuration.block.getInt("Original Ores.Coal Ore.maxheight"));
+        OriginalOres IronOre = new OriginalOres(plugin, Material.IRON_ORE, Configuration.block.getInt("Original Ores.Iron Ore.frequency"), Configuration.block.getInt("Original Ores.Iron Ore.minheight"), Configuration.block.getInt("Original Ores.Iron Ore.maxheight"));
+        OriginalOres LapisOre = new OriginalOres(plugin, Material.LAPIS_ORE, Configuration.block.getInt("Original Ores.Lapis Ore.frequency"), Configuration.block.getInt("Original Ores.Lapis Ore.minheight"), Configuration.block.getInt("Original Ores.Lapis Ore.maxheight"));
+        OriginalOres GoldOre = new OriginalOres(plugin, Material.GOLD_ORE, Configuration.block.getInt("Original Ores.Gold Ore.frequency"), Configuration.block.getInt("Original Ores.Gold Ore.minheight"), Configuration.block.getInt("Original Ores.Gold Ore.maxheight"));
+        OriginalOres RedstoneOre = new OriginalOres(plugin, Material.REDSTONE_ORE, Configuration.block.getInt("Original Ores.Redstone Ore.frequency"), Configuration.block.getInt("Original Ores.Redstone Ore.minheight"), Configuration.block.getInt("Original Ores.Redstone Ore.maxheight"));
+        OriginalOres DiamondOre = new OriginalOres(plugin, Material.DIAMOND_ORE, Configuration.block.getInt("Original Ores.Diamond Ore.frequency"), Configuration.block.getInt("Original Ores.Diamond Ore.minheight"), Configuration.block.getInt("Original Ores.Diamond Ore.maxheight"));
         originalores.add(CoalOre);
         originalores.add(IronOre);
         originalores.add(LapisOre);

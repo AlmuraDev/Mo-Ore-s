@@ -1,7 +1,8 @@
 package com.github.Zarklord1.MoOres;
 
 import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.Events.*;
+import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
+import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
 import com.github.Zarklord1.MoOres.Generator.Generator;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import com.github.Zarklord1.MoOres.Util.Recipes;
@@ -76,10 +77,6 @@ public class MoOres extends JavaPlugin{
           private void reg() {
               PluginManager pm = this.getServer().getPluginManager();
               pm.registerEvents(new MoOresEntityListener(this), this);
-              pm.registerEvents(new MoOresBlockListener(this), this);
               pm.registerEvents(new MoOresPlayerListener(this), this);
-          }
-          private void SetDrops() {
-              
           }	  
 }
