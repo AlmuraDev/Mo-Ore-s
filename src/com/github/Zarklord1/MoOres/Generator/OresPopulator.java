@@ -76,8 +76,8 @@ public class OresPopulator extends BlockPopulator {
 
 		for (x = 0; x < 16; ++x){
 			for (z = 0; z < 16; ++z){
-				if((maxY - minY) < 25){
-					if(random.nextInt(700) < freq){
+                            if((maxY - minY) < 25){
+                                if(random.nextInt(700) < freq){
 						y = maxY - random.nextInt(maxY - (minY - 1));
 						block = chunk.getBlock(x, y, z);
 						if(block.getType() == Material.STONE){
