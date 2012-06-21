@@ -1,7 +1,5 @@
 package com.github.Zarklord1.MoOres.Events;
 
-import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
@@ -40,7 +38,7 @@ public class MoOresPlayerListener implements Listener {
         if (player instanceof SpoutPlayer) {
             SpoutPlayer splayer = SpoutManager.getPlayer(player);
             if (splayer.isSpoutCraftEnabled()) {
-                if (state.equals(state.CAUGHT_FISH)) {
+                if (state.equals(State.CAUGHT_FISH)) {
                     List<Entity> nearbyEntities = splayer.getNearbyEntities(5.0D, 5.0D, 5.0D);
                     for (Entity entity:nearbyEntities) {
                         if (entity instanceof Item) {
@@ -63,57 +61,23 @@ public class MoOresPlayerListener implements Listener {
         }
     }
     
-    boolean cblockbool;
-    boolean isholding;
-    CustomTools tool;
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onBlockBreak( BlockBreakEvent event )
-    {
+    public void onBlockBreak( BlockBreakEvent event ) {
         Block block = event.getBlock();
         Player player = event.getPlayer();
         if (player instanceof SpoutPlayer){
             SpoutPlayer splayer = (SpoutPlayer) player;
             for (CustomTools tools:Hashmaps.customtools) {
-                if (splayer.getItemInHand().getDurability() == tool.getCustomId() && splayer.isSpoutCraftEnabled()) {
+                if (splayer.getItemInHand().getDurability() == tools.getCustomId() && splayer.isSpoutCraftEnabled()) {
                     if (tools.isPickaxe()) {
-                        this.tool = tools;
-                        isholding = true;
+                       for (org.getspout.spoutapi.material.Block blok:Hashmaps.Pickaxebreackableblocks) {
+                            if (block.equals(blok)) {
+                                block.breakNaturally();
+                            }
+                        } 
                     }
                 }
             }
-            if (isholding) {
-                if (isVanilla(block)) {
-                    block.breakNaturally();
-                } else if (isCustomOre(block)) {
-                    block.breakNaturally();
-                } else if (isCustomStone(block)) {
-                    block.breakNaturally();
-                }
-            }  
         }
-    }
-    public boolean isVanilla(Block block) {
-        for (org.getspout.spoutapi.material.Block blok:Hashmaps.Pickaxebreackableblocks) {
-            if (block.equals(blok)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean isCustomOre(Block block) {
-        for (CustomOres blok:Hashmaps.customores) {
-            if (block.equals(blok)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean isCustomStone(Block block) {
-        for (CustomBlocks blok:Hashmaps.customblocks) {
-            if (block.equals(blok)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

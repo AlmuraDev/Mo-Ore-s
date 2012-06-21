@@ -1,9 +1,28 @@
 package com.github.Zarklord1.MoOres.Config;
 
+import java.util.Arrays;
+
 public class ConfigWriter {
+    private static String name;
+    
+    public static void setRecipes(MyConfiguration cfg, String furn, String shapeless, String shaped) {
+        name = ".Flarite Ingot";
+        if (!cfg.contains(furn + name + ".Recipe1.amount")) {
+            cfg.set(furn + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(furn + name + ".Recipe1.ingredient")) {
+            cfg.set(furn + name + ".Recipe1.ingredient", "Flarite Ore");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.ingredients")) {
+            cfg.set(shaped + name + ".Recipe1.ingredients", Arrays.asList("-,-,-", "Flarite Nugget,Flarite Nugget,-", "Flarite Nugget,Flarite Nugget,-"));
+        }
+    }
     
     public static void setOres(MyConfiguration cfg, String custom, String orig) {
-        String name = ".Coal Ore";
+        name = ".Coal Ore";
         if (!cfg.contains(orig + name + ".frequency")) {
             cfg.set(orig + name + ".frequency", Integer.valueOf(100));
         }  

@@ -14,16 +14,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.block.design.Texture;
 
 public class MoOres extends JavaPlugin{
-	
-	public static MoOres plugin;
-	public static final Logger log = Logger.getLogger("Minecraft");
-	public Texture ores;
-	public Texture blocks;
-	public Texture plants;
-	File bo2file;
+    public static MoOres plugin;
+    public static final Logger log = Logger.getLogger("Minecraft");
+    public static Texture ores;
+    public static Texture blocks;
+    public static Texture plants;
 
     @Override
-	public void onEnable(){
+    public void onEnable(){
+            MoOres.plugin = this;
 		log.info("[Mo Ores] Is Enabling...");
 
 		log.info("[Mo Ores] Loading Configs...");
@@ -64,9 +63,9 @@ public class MoOres extends JavaPlugin{
             int j = Configuration.texture.getInt("Ores Block Texture Size");
             int d = Configuration.texture.getInt("Blocks Block Texture Size");
             int k = Configuration.texture.getInt("Plants Block Texture Size");
-	    this.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), j * j, j * j, j);
-	    this.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), d * d, d * d, d);
-	    this.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), k * k, k * k, k);
+	    MoOres.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), j * j, j * j, j);
+	    MoOres.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), d * d, d * d, d);
+	    MoOres.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), k * k, k * k, k);
 	  }
 	  
     @Override

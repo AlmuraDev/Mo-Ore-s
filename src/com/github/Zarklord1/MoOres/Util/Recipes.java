@@ -111,6 +111,7 @@ public class Recipes {
                         shapedrecipe.shape(recipeshape[0], recipeshape[1], recipeshape[2]);
                         for (int t = 1; 1 < 3; t++) {
                             if (!TopRow[t].equals("-")) {
+                                t += 1;
                                 int customId;
                                 char letter = 0;
                                 if (a == t) 
@@ -119,6 +120,7 @@ public class Recipes {
                                     letter = letter22;
                                 else if (c == t)
                                     letter = letter33;
+                                t -= 1;
                                     if(Hashmaps.customitemsmap.containsKey(TopRow[t])){
                                             customId = Hashmaps.customitemsmap.get(TopRow[t]).getCustomId();
                                             shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
@@ -150,7 +152,7 @@ public class Recipes {
                                     }
                                 }
                             if (!MiddleRow[t].equals("-")) {
-                                t += 3;
+                                t += 4;
                                 int customId;
                                 char letter = 0;
                                 if (d == t) 
@@ -159,7 +161,7 @@ public class Recipes {
                                     letter = letter55;
                                 else if (f == t)
                                     letter = letter66;
-                                t -= 3;
+                                t -= 4;
                                 if(Hashmaps.customitemsmap.containsKey(MiddleRow[t])){
                                     customId = Hashmaps.customitemsmap.get(MiddleRow[t]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
@@ -191,7 +193,7 @@ public class Recipes {
                                 }
                             }
                             if (!BottomRow[t].equals("-")) {
-                                t += 6;
+                                t += 7;
                                 int customId;
                                 char letter = 0;
                                 if (g == t) 
@@ -200,7 +202,7 @@ public class Recipes {
                                     letter = letter88;
                                 else if (i == t)
                                     letter = letter99;
-                                t -= 6;
+                                t -= 7;
                                 if(Hashmaps.customitemsmap.containsKey(BottomRow[t])){
                                     customId = Hashmaps.customitemsmap.get(BottomRow[t]).getCustomId();
                                         shapedrecipe.setIngredient(letter, MaterialData.getCustomItem(customId));
