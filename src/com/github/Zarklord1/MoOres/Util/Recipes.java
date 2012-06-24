@@ -19,14 +19,15 @@ public class Recipes {
     private static String[] SplitRecipe;
     private static String[] FurnaceResult;
     private static String[] SourceResult;
+    private static SpoutShapedRecipe shapedrecipe;
+    private static SpoutShapelessRecipe shaplessrecipe;
     
     public static void addAllRecipes(MoOres plugin) {
         addShapedRecipes();
         addShaplessRecipes();
         addFurnaceRecipes();
     }
-    private static SpoutShapedRecipe shapedrecipe;
-    private static SpoutShapelessRecipe shaplessrecipe;
+    
     private static void addShapedRecipes() {
         if (Configuration.recipe.contains("Shaped Recipes")) {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shaped Recipes");
@@ -69,6 +70,7 @@ public class Recipes {
                         }
                         List<String> recshape = Configuration.recipe.getStringList("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".Shape");
                         Iterator rec = recshape.iterator();
+                        System.out.println(recshape.size());
                         if (recshape.size() == 1) {
                             shapedrecipe.shape(rec.next().toString());
                         } else if (recshape.size() == 2) {
