@@ -16,9 +16,20 @@ public class ConfigWriter {
         if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
             cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
         }
-        if (!cfg.contains(shaped + name + ".Recipe1.ingredients")) {
-            cfg.set(shaped + name + ".Recipe1.ingredients", Arrays.asList("-,-,-", "Flarite Nugget,Flarite Nugget,-", "Flarite Nugget,Flarite Nugget,-"));
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"aa", "aa"}));
         }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Flarite Nugget");
+        }
+        name = ".Silver Ingot";
+        if (!cfg.contains(furn + name + ".Recipe1.amount")) {
+            cfg.set(furn + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(furn + name + ".Recipe1.ingredient")) {
+            cfg.set(furn + name + ".Recipe1.ingredient", "Silver Ore");
+        }
+        
     }
     
     public static void setOres(MyConfiguration cfg, String custom, String orig) {

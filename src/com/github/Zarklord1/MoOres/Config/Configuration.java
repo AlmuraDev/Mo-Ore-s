@@ -14,75 +14,45 @@ import java.io.IOException;
             public static MyConfiguration recipe = new MyConfiguration();
 /*     */ 
 /*  47 */   static { 
-              if (load(config, "Config.yml")) {
-/*  48 */       config = MyConfiguration.loadConfiguration("plugins/MoOres/Config.yml");
+              if (load(Configuration.config, "Config.yml")) {
+/*  48 */       Configuration.config = MyConfiguration.loadConfiguration("plugins/MoOres/Config.yml");
 /*  49 */       Config.set();
-/*  50 */       save(config);
+/*  50 */       save(Configuration.config);
 /*     */    }
               
-/*  52 */     Config.set();
-/*     */     try {
-/*  54 */       config.save();
-/*     */     } catch (Exception e) {
-/*  56 */       e.printStackTrace();
-/*     */     }
-              if (load(recipe, "Recipes.yml")) {
-/*  48 */       recipe = MyConfiguration.loadConfiguration("plugins/MoOres/Recipes.yml");
-/*  49 */       RecipeConfig.set();
-/*  50 */       save(recipe);
+              if (load(Configuration.recipe, "Recipes.yml")) {
+/*  48 */       Configuration.recipe = MyConfiguration.loadConfiguration("plugins/MoOres/Recipes.yml");
+/*  49 */       ConfigWriter.setRecipes(Configuration.recipe, "Furnace Recipes", "Shapeless Recipes", "Shaped Recipes");
+/*  50 */       save(Configuration.recipe);
 /*     */     }
 /*     */ 
 /*  62 */
-/*     */     if (load(block, "Blocks.yml")) {
-/*  60 */       block = MyConfiguration.loadConfiguration("plugins/MoOres/Blocks.yml");
+/*     */     if (load(Configuration.block, "Blocks.yml")) {
+/*  60 */       Configuration.block = MyConfiguration.loadConfiguration("plugins/MoOres/Blocks.yml");
 /*  61 */       BlockConfig.set();
-                ConfigWriter.setOres(block, "Custom Ores", "Original Ores");
-/*  62 */       save(block);
+                ConfigWriter.setOres(Configuration.block, "Custom Ores", "Original Ores");
+/*  62 */       save(Configuration.block);
 /*     */     }
 
-/*  64 */     BlockConfig.set();
-/*     */     try {
-/*  66 */      	block.save();
-/*     */     } catch (Exception e) {
-/*  68 */       e.printStackTrace();
-/*     */     }
-
-/*     */     if (load(generator, "Worldgenerator.yml")) {
-/*  84 */       generator = MyConfiguration.loadConfiguration("plugins/MoOres/Worldgenerator.yml");
+/*  64 */     
+/*     */     if (load(Configuration.generator, "Worldgenerator.yml")) {
+/*  84 */       Configuration.generator = MyConfiguration.loadConfiguration("plugins/MoOres/Worldgenerator.yml");
 /*  85 */       GeneratorConfig.set();
-/*  86 */       save(generator);
+/*  86 */       save(Configuration.generator);
 /*     */     }
-/*  88 */     GeneratorConfig.set();
-/*     */     try {
-/*  90 */       generator.save();
-/*     */     } catch (Exception e) {
-/*  92 */       e.printStackTrace();
-/*     */     }
+/*  88 */     
 /*     */ 
-/*  95 */     if (load(items, "Items.yml")) {
-/*  96 */       items = MyConfiguration.loadConfiguration("plugins/MoOres/Items.yml");
+/*  95 */     if (load(Configuration.items, "Items.yml")) {
+/*  96 */       Configuration.items = MyConfiguration.loadConfiguration("plugins/MoOres/Items.yml");
 /*  97 */       ItemConfig.set();
-/*  98 */       save(items);
-/*     */     }
-/* 100 */     ItemConfig.set();
-/*     */     try {
-/* 102 */       items.save();
-/*     */     } catch (Exception e) {
-/* 104 */       e.printStackTrace();
+/*  98 */       save(Configuration.items);
 /*     */     }
 /*     */ 
-              if (load(texture, "Textures.yml")) {
-/* 168 */       texture = MyConfiguration.loadConfiguration("plugins/MoOres/Textures.yml");
+              if (load(Configuration.texture, "Textures.yml")) {
+/* 168 */       Configuration.texture = MyConfiguration.loadConfiguration("plugins/MoOres/Textures.yml");
 /* 169 */       TextureConfig.set();
-/* 170 */       save(texture);
+/* 170 */       save(Configuration.texture);
 /*     */     }
-/* 172 */     TextureConfig.set();
-/*     */     try {
-/* 174 */       texture.save();
-/*     */     } catch (Exception e) {
-/* 176 */       e.printStackTrace();
-/*     */     }
-
  }
 private static void complainFileCreation(String filename) {
 		 MoOres.log.severe("[Mo Ores] On file " + filename + ":");

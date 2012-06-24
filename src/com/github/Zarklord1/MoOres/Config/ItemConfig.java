@@ -29,21 +29,12 @@
 /*  65 */     if (!Configuration.items.contains("Custom Items.Flarite Ingot.texture url")) {
 /*  66 */       Configuration.items.set("Custom Items.Flarite Ingot.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Flarite/Flartieingot.png");
 /*     */     }
-/*  68 */     if (!Configuration.items.contains("Custom Items.Flarite Ingot.furnace recipe1.amount")) {
-/*  69 */       Configuration.items.set("Custom Items.Flarite Ingot.furnace recipe1.amount", Integer.valueOf(1));
-/*     */     }
-/*  71 */     if (!Configuration.items.contains("Custom Items.Flarite Ingot.furnace recipe1.ingredient")) {
-/*  72 */       Configuration.items.set("Custom Items.Flarite Ingot.furnace recipe1.ingredient", "Flarite Ore");
+/*  65 */     if (!Configuration.items.contains("Custom Items.Flarite Nugget.texture url")) {
+/*  66 */       Configuration.items.set("Custom Items.Flarite Nugget.texture url", "https://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Flarite/FlariteNugget.png");
 /*     */     }
 /*     */ 
 /*  76 */     if (!Configuration.items.contains("Custom Items.Silver Ingot.texture url")) {
 /*  77 */       Configuration.items.set("Custom Items.Silver Ingot.texture url", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Silver/Silveringot.png");
-/*     */     }
-/*  79 */     if (!Configuration.items.contains("Custom Items.Silver Ingot.furnace recipe1.amount")) {
-/*  80 */       Configuration.items.set("Custom Items.Silver Ingot.furnace recipe1.amount", Integer.valueOf(1));
-/*     */     }
-/*  82 */     if (!Configuration.items.contains("Custom Items.Silver Ingot.furnace recipe1.ingredient")) {
-/*  83 */       Configuration.items.set("Custom Items.Silver Ingot.furnace recipe1.ingredient", "Silver Ore");
 /*     */     }
 /*     */ 
 /*  87 */     if (!Configuration.items.contains("Custom Items.Ruby.texture url")) {
@@ -186,6 +177,9 @@
 /*     */     }
 /* 594 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.shaped recipe1.ingredients")) {
 /* 595 */       Configuration.items.set("Custom Tools.Silver Pickaxe.shaped recipe1.ingredients", Arrays.asList(new String[] { "Silver,Silver,Silver", "-,280,-", "-,280,-" }));
+/*     */     }
+/* 594 */     if (!Configuration.items.contains("Custom Tools.Silver Pickaxe.tooltype.Pickaxe")) {
+/* 595 */       Configuration.items.set("Custom Tools.Silver Pickaxe.tooltype.Pickaxe", Arrays.asList(new String[] { "Silver,Silver,Silver", "-,280,-", "-,280,-" }));
 /*     */     }
 /*     */ 
 /*     */ 

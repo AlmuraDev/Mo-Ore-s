@@ -73,7 +73,7 @@ public class Hashmaps {
             float hard = 0.0F;
             float friction = 0.0F;
             int light = 0;
-            int amount = 0;
+            int amount = 1;
             int id = 1;
             int metadata = 0;
             CustomItem idrop = null;
@@ -94,13 +94,11 @@ public class Hashmaps {
             if (Configuration.block.contains("Custom Ores." + name + ".friction")) {
                 friction = Configuration.block.getInt("Custom Ores." + name + ".friction");
             }
+            if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
+                amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
+            }
             if (Configuration.block.contains("Custom Ores." + name + ".drop")) {
                 drop = Configuration.block.getString("Custom Ores." + name + ".drop");
-                if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
-                    amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
-                } else {
-                    amount = 1;
-                }
                 if (customblocksmap.containsKey(drop)) {
                     bdrop = customblocksmap.get(drop);
                     addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
@@ -122,17 +120,16 @@ public class Hashmaps {
                 } else if (customtoolsmap.containsKey(drop)) {
                     idrop = customtoolsmap.get(drop);
                     addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-                } else if (drop.startsWith("1") || drop.startsWith("2") || drop.startsWith("3") || drop.startsWith("4") || drop.startsWith("5") || drop.startsWith("6") || drop.startsWith("7") || drop.startsWith("8") || drop.startsWith("9")) {
+                } else {
                     if (drop.contains(":")) {
                         ores = drop.split(":");
                         addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(ores[0]), Short.parseShort(ores[1]));
                     } else {
-                        ores[0] = drop;
-                        addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(ores[0]), Short.parseShort("0"));
+                        addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(drop), Short.parseShort("o"));
                     }
-                } else {
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
                 }
+            } else {
+                addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
             }
         }
     }
@@ -268,9 +265,9 @@ public class Hashmaps {
         originalores.add(RedstoneOre);
         originalores.add(DiamondOre);
         CustomBlock(plugin);
-        CustomOres(plugin);
         CustomBushes(plugin);
         CustomItems(plugin);
+        CustomOres(plugin);
     }
     public static void addvanillablocks(MoOres plugin) {
         List<?> list = Configuration.config.getList("tools.Pickaxebreackableblockids");

@@ -1,8 +1,8 @@
 package com.github.Zarklord1.MoOres.Custom.Blocks;
 
+import com.github.Zarklord1.MoOres.MoOres;
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
-import com.github.Zarklord1.MoOres.*;
 
 public class CustomBlocks extends GenericCubeCustomBlock
 {
@@ -12,7 +12,7 @@ public class CustomBlocks extends GenericCubeCustomBlock
   float friction = 0.0F;
 
   public CustomBlocks(MoOres plugin, String name, int textureID, float hard, int light, float friction, int blockId, int metadata) {
-    super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, plugin.blocks, textureID));
+    super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, MoOres.blocks, textureID));
     this.setLightLevel(light);
   }
 
