@@ -70,7 +70,6 @@ public class Recipes {
                         }
                         List<String> recshape = Configuration.recipe.getStringList("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".Shape");
                         Iterator rec = recshape.iterator();
-                        System.out.println(recshape.size());
                         if (recshape.size() == 1) {
                             shapedrecipe.shape(rec.next().toString());
                         } else if (recshape.size() == 2) {
@@ -105,12 +104,6 @@ public class Recipes {
                         if (Configuration.recipe.contains("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".i")) {
                             addIngredient(Configuration.recipe.getString("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".i"), shapedrecipe, 'i');
                         }
-                        for (String string:recshape) {
-                            if (string.contains("-")) {
-                                shapedrecipe.setIngredient('-', MaterialData.air);
-                                break;
-                            }
-                        }
                         SpoutManager.getMaterialManager().registerSpoutRecipe(shapedrecipe);
                     }
                 }
@@ -118,14 +111,14 @@ public class Recipes {
         }
     }
     private static void addShaplessRecipes() {
-        if (Configuration.recipe.contains("Shapless Recipes")) {
-            ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapless Recipes");
+        if (Configuration.recipe.contains("Shapeless Recipes")) {
+            ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapeless Recipes");
             Object[] keys = section.getKeys(false).toArray();
             for (int num = 0; num < keys.length; num++) {
                 for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
                     String resultname = (String)keys[num];
-                    if (Configuration.recipe.contains("Shapless Recipes." + resultname + ".Recipe" + rpcnum)) {
-                        int amount = Configuration.recipe.getInt("Shapless Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
+                    if (Configuration.recipe.contains("Shapeless Recipes." + resultname + ".Recipe" + rpcnum)) {
+                        int amount = Configuration.recipe.getInt("Shapeless Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
                         if (Hashmaps.customblocksmap.containsKey(resultname)) {
                             ItemStack result = new SpoutItemStack(Hashmaps.customblocksmap.get(resultname), amount);
                             shaplessrecipe = new SpoutShapelessRecipe(result);
@@ -157,8 +150,8 @@ public class Recipes {
                                 shaplessrecipe = new SpoutShapelessRecipe(result);
                             }
                         }
-                        for (int count = 1; Configuration.recipe.contains("Shapless Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient" + count); count++) {
-                            String ingredient = Configuration.recipe.getString("Shapless Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient" + count);
+                        for (int count = 1; Configuration.recipe.contains("Shapeless Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient" + count); count++) {
+                            String ingredient = Configuration.recipe.getString("Shapeless Recipes." + resultname + ".Recipe" + rpcnum + ".ingredient" + count);
                             if (Hashmaps.customblocksmap.containsKey(ingredient)) {
                                 shaplessrecipe.addIngredient(Hashmaps.customblocksmap.get(ingredient));
                             } else if (Hashmaps.customoresmap.containsKey(ingredient)) {

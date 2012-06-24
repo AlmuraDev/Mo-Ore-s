@@ -6,13 +6,17 @@ public class ConfigWriter {
     private static String name;
     
     public static void setRecipes(MyConfiguration cfg, String furn, String shapeless, String shaped) {
+        name = ".Flarite Block";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"aaa", "aaa", "aaa"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Flarite Ingot");
+        }
         name = ".Flarite Ingot";
-        if (!cfg.contains(furn + name + ".Recipe1.amount")) {
-            cfg.set(furn + name + ".Recipe1.amount", Integer.valueOf(1));
-        }
-        if (!cfg.contains(furn + name + ".Recipe1.ingredient")) {
-            cfg.set(furn + name + ".Recipe1.ingredient", "Flarite Ore");
-        }
         if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
             cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
         }
@@ -21,6 +25,134 @@ public class ConfigWriter {
         }
         if (!cfg.contains(shaped + name + ".Recipe1.a")) {
             cfg.set(shaped + name + ".Recipe1.a", "Flarite Nugget");
+        }
+        name = ".Flarite Sword(Ruby)";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"a", "a", "b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Flarite Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", "Ruby Shaft");
+        }
+        name = ".Flarite Sword";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"a", "a", "b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Flarite Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", Integer.valueOf(280));
+        }
+        name = ".Silver Block";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"aaa", "aaa", "aaa"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        name = ".Silver Sword(Ruby)";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"a", "a", "b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", "Ruby Shaft");
+        }
+        name = ".Silver Sword";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"a", "a", "b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", Integer.valueOf(280));
+        }
+        name = ".Silver Pickaxe";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"aaa", "-b-", "-b-"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", Integer.valueOf(280));
+        }
+        name = ".Silver Axe";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"aa", "ab", "-b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", Integer.valueOf(280));
+        }
+        name = ".Silver Shovel";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"a", "b", "b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", Integer.valueOf(280));
+        }
+        name = ".Silver Hoe";
+        if (!cfg.contains(shaped + name + ".Recipe1.amount")) {
+            cfg.set(shaped + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.Shape")) {
+            cfg.set(shaped + name + ".Recipe1.Shape", Arrays.asList(new String[] {"aa", "-b", "-b"}));
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.a")) {
+            cfg.set(shaped + name + ".Recipe1.a", "Silver Ingot");
+        }
+        if (!cfg.contains(shaped + name + ".Recipe1.b")) {
+            cfg.set(shaped + name + ".Recipe1.b", Integer.valueOf(280));
+        }
+        name = ".Flarite Nugget";
+        if (!cfg.contains(shapeless + name + ".Recipe1.amount")) {
+            cfg.set(shapeless + name + ".Recipe1.amount", Integer.valueOf(4));
+        }
+        if (!cfg.contains(shapeless + name + ".Recipe1.ingredient1")) {
+            cfg.set(shapeless + name + ".Recipe1.ingredient1", "Flarite Ingot");
+        }
+        name = ".Flarite Ingot";
+        if (!cfg.contains(furn + name + ".Recipe1.amount")) {
+            cfg.set(furn + name + ".Recipe1.amount", Integer.valueOf(1));
+        }
+        if (!cfg.contains(furn + name + ".Recipe1.ingredient")) {
+            cfg.set(furn + name + ".Recipe1.ingredient", "Flarite Ore");
         }
         name = ".Silver Ingot";
         if (!cfg.contains(furn + name + ".Recipe1.amount")) {
