@@ -1,12 +1,11 @@
 package com.github.Zarklord1.MoOres.Generator;
 
+import com.github.Zarklord1.MoOres.Config.Configuration;
+import com.github.Zarklord1.MoOres.MoOres;
+import com.github.Zarklord1.MoOres.Util.BO2Populator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.github.Zarklord1.MoOres.*;
-import com.github.Zarklord1.MoOres.Config.*;
-import com.github.Zarklord1.MoOres.Util.*;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -28,15 +27,16 @@ public class Generator extends ChunkGenerator {
 	private boolean mounlogged = false;
 	private boolean beachlogged = false;
 
-	public Generator(MoOres rpgEssentials) {
-		this.plugin = rpgEssentials;
+	public Generator(MoOres moOres) {
+		this.plugin = moOres;
 	}
 
+    @Override
 	public List<BlockPopulator> getDefaultPopulators(World world){
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 
 		//ores
-		populators.add(new OresPopulator(plugin));
+		populators.add(new OresPopulator());
 
 		//BO2objects
 		populators.add(new BO2Populator(plugin));
@@ -53,6 +53,7 @@ public class Generator extends ChunkGenerator {
 		return populators;
 	}
 
+    @Override
 	public Location getFixedSpawnLocation(World world, Random random){
 		int x,y,z;
 		x = random.nextInt(16);

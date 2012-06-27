@@ -59,12 +59,9 @@ public class MoOres extends JavaPlugin{
     }
 	
     private void loadTextures() {
-        int j = Configuration.texture.getInt("Ores Block Texture Size");
-        int d = Configuration.texture.getInt("Blocks Block Texture Size");
-        int k = Configuration.texture.getInt("Plants Block Texture Size");
-        MoOres.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), j * j, j * j, j);
-        MoOres.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), d * d, d * d, d);
-        MoOres.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), k * k, k * k, k);
+        MoOres.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), Configuration.texture.getInt("Ores Texture Size"), Configuration.texture.getInt("Ores Texture Size"), Configuration.texture.getInt("Ores Block Texture Size"));
+        MoOres.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), Configuration.texture.getInt("Blocks Texture Size"), Configuration.texture.getInt("Blocks Texture Size"), Configuration.texture.getInt("Blocks Block Texture Size"));
+        MoOres.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), Configuration.texture.getInt("Plants Texture Size"), Configuration.texture.getInt("Plants Texture Size"), Configuration.texture.getInt("Plants Block Texture Size"));
     }
 	  
     @Override

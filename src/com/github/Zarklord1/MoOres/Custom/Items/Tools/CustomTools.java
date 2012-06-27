@@ -19,8 +19,7 @@ import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.item.GenericCustomTool;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-public class CustomTools extends GenericCustomTool
-{
+public class CustomTools extends GenericCustomTool {
     
     boolean Pickaxe;
     boolean Axe;
@@ -34,7 +33,7 @@ public class CustomTools extends GenericCustomTool
     int fireticks;
     int poisonticks;
     int damage;
-	public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks) {
+    public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks) {
 		super(plugin, name, textureurl);
 		this.setDurability(durability);
                 this.damage = damage;

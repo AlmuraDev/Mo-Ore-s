@@ -29,11 +29,13 @@ public class Recipes {
     }
     
     private static void addShapedRecipes() {
+        System.out.println(1);
         if (Configuration.recipe.contains("Shaped Recipes")) {
+            System.out.println(2);
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shaped Recipes");
             Object[] keys = section.getKeys(false).toArray();
             for (int num = 0; num < keys.length; num++) {
-                for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
+                for (int rpcnum = 1; rpcnum == rpcnum; rpcnum++) {
                     String resultname = (String)keys[num];
                     if (Configuration.recipe.contains("Shaped Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
@@ -105,6 +107,8 @@ public class Recipes {
                             addIngredient(Configuration.recipe.getString("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".i"), shapedrecipe, 'i');
                         }
                         SpoutManager.getMaterialManager().registerSpoutRecipe(shapedrecipe);
+                    } else {
+                        break;
                     }
                 }
             }   
@@ -115,7 +119,7 @@ public class Recipes {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shapeless Recipes");
             Object[] keys = section.getKeys(false).toArray();
             for (int num = 0; num < keys.length; num++) {
-                for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
+                for (int rpcnum = 1; rpcnum == rpcnum; rpcnum++) {
                     String resultname = (String)keys[num];
                     if (Configuration.recipe.contains("Shapeless Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Shapeless Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
@@ -180,6 +184,8 @@ public class Recipes {
                             if (count == 9) break;
                         }
                         SpoutManager.getMaterialManager().registerSpoutRecipe(shaplessrecipe);
+                    } else {
+                        break;
                     }
                 }
             }
@@ -190,7 +196,7 @@ public class Recipes {
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Furnace Recipes");
             Object[] keys = section.getKeys(false).toArray();
             for (int num = 0; num < keys.length; num++) {
-                for (int rpcnum = 1; rpcnum < 30; rpcnum++) {
+                for (int rpcnum = 1; rpcnum == rpcnum; rpcnum++) {
                     String resultname = (String)keys[num];
                     if (Configuration.recipe.contains("Furnace Recipes." + resultname + ".Recipe" + rpcnum)) {
                         int amount = Configuration.recipe.getInt("Furnace Recipes." + resultname + ".Recipe" + rpcnum + ".amount");
@@ -260,6 +266,8 @@ public class Recipes {
                                 frecipe.addFurnaceRecipe(result, Material.getMaterial(id));
                             }
                         }
+                    } else {
+                        break;
                     }
                 }
             }

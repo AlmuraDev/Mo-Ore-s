@@ -22,17 +22,16 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
 
 public class Hashmaps {
-    
-    private static String[] pick;
-    private static String[] axe;
-    private static String[] shovel;
-    private static String[] sword;
     private static String[] ores;
     
-    public static Set<Block> Pickaxebreackableblocks = new LinkedHashSet();
-    public static Set<Block> Swordbreackableblocks = new LinkedHashSet();
-    public static Set<Block> Axebreackableblocks = new LinkedHashSet();
-    public static Set<Block> Shovelbreackableblocks = new LinkedHashSet();
+    public static Set<Material> Pickaxebreackableblocks = new LinkedHashSet();
+    public static Set<Material> Swordbreackableblocks = new LinkedHashSet();
+    public static Set<Material> Axebreackableblocks = new LinkedHashSet();
+    public static Set<Material> Shovelbreackableblocks = new LinkedHashSet();
+    public static Set<Block> PickaxeSpeedIds = new LinkedHashSet();
+    public static Set<Block> SwordSpeedIds = new LinkedHashSet();
+    public static Set<Block> AxeSpeedIds = new LinkedHashSet();
+    public static Set<Block> ShovelSpeedIds = new LinkedHashSet();
     
     public static Set<CustomOres> customores = new LinkedHashSet();
     public static HashMap<String, CustomOres> customoresmap = new LinkedHashMap();
@@ -148,12 +147,20 @@ public class Hashmaps {
         Iterator keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
+            int id = 1;
+            int metadata = 0;
             int textureID = Configuration.block.getInt("Custom Blocks." + name + ".textureID");
             float hard = Configuration.block.getInt("Custom Blocks." + name + ".hardness");
             int light = Configuration.block.getInt("Custom Blocks." + name + ".lightlevel");
             float friction = Configuration.block.getInt("Custom Blocks." + name + ".friction");
-            int id = 1;//Configuration.Blocks.getInt("Custom Blocks." + name + ".block id");
-            int metadata = 0;//Configuration.Blocks.getInt("Custom Blocks." + name + ".metadata id");
+            
+            if (Configuration.block.contains("Custom Blocks." + name + ".block id")) {
+                id = Configuration.block.getInt("Custom Blocks." + name + ".block id");
+            }
+            
+            if (Configuration.block.contains("Custom Blocks." + name + ".metadata id")) {
+                metadata = Configuration.block.getInt("Custom Blocks." + name + ".metadata id");
+            }
             addblock(plugin, name, textureID, hard, light, friction, id, metadata);
         }
     }
@@ -170,22 +177,20 @@ public class Hashmaps {
         while (keys2.hasNext()) {
             String name = (String)keys2.next();
             String textureurl = Configuration.items.getString("Custom Tools." + name + ".texture url");
-            short durability1 = (short) Configuration.items.getInt("Custom Tools." + name + ".durability");
-            float strength1 = Configuration.items.getInt("Custom Tools." + name + ".toolstrength");
+            short durability = Configuration.items.getShort("Custom Tools." + name + ".durability");
+            float strength = Configuration.items.getFloat("Custom Tools." + name + ".Tool Strength");
             boolean Pickaxe = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Pickaxe");
             boolean Axe = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Axe");
             boolean Shovel = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Shovel");
             boolean Hoe = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Hoe");
             boolean Bow = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Bow");
             boolean Sword = Configuration.items.getBoolean("Custom Tools." + name + ".tooltype.Sword");
-            boolean fire = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.setfire");
-            boolean poison = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.setpoison");
-            boolean lightning = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.strikelightning");
+            boolean fire = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.Set Fire");
+            boolean poison = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.Set Poison");
+            boolean lightning = Configuration.items.getBoolean("Custom Tools." + name + ".Sword.Strike Lightning");
             int damage = Configuration.items.getInt("Custom Tools." + name + ".Sword.damage");
             int fireticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Fire Ticks");
             int poisonticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Poison Ticks");
-            short durability = (short) durability1;
-            float strength = (float) strength1;
             addTool(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, fireticks, poison, lightning, poisonticks);
         }
         ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
@@ -269,57 +274,48 @@ public class Hashmaps {
         CustomItems(plugin);
         CustomOres(plugin);
     }
-    public static void addvanillablocks(MoOres plugin) {
-        List<?> list = Configuration.config.getList("tools.Pickaxebreackableblockids");
-        Object[] arraylist = list.toArray();
-        for(int pos = 0; pos < arraylist.length; pos++){
-            String x = (String) arraylist[pos];
-            if (x.contains(":")) {
-                pick = x.split(":");
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(pick[0]), Short.parseShort(pick[1]));
-                Pickaxebreackableblocks.add(materialdata);
+    public static void addvanillablocks() {
+        
+        List<Integer> list = Configuration.config.getIntegerList("tools.Pickaxe Breackable Blocks");
+        for(int pos = 0; pos < list.size(); pos++){
+            Pickaxebreackableblocks.add(Material.getMaterial(list.get(pos)));
+        }
+        list = Configuration.config.getIntegerList("tools.Axe Breackable Blocks");
+        for(int pos = 0; pos < list.size(); pos++){
+            Axebreackableblocks.add(Material.getMaterial(list.get(pos)));
+        }
+        list = Configuration.config.getIntegerList("tools.Shovel Breackable Blocks");
+        for(int pos = 0; pos < list.size(); pos++){
+            Shovelbreackableblocks.add(Material.getMaterial(list.get(pos)));
+        }
+        list = Configuration.config.getIntegerList("tools.Sword Breackable Blocks");
+        for(int pos = 0; pos < list.size(); pos++){
+            Swordbreackableblocks.add(Material.getMaterial(list.get(pos)));
+        }
+        List<String> block = Configuration.config.getStringList("tools.Pickaxe Breackable Block Ids");
+        for(int pos = 0; pos < list.size(); pos++){
+            if (block.get(pos).contains(":")) {
+                
             } else {
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(x));
-                Pickaxebreackableblocks.add(materialdata);
+                Hashmaps.PickaxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
             }
         }
-        list = Configuration.config.getList("tools.Axebreackableblockids");
-        arraylist = list.toArray();
-        for(int pos = 0; pos < arraylist.length; pos++){
-            String x = (String) arraylist[pos];
-            if (x.contains(":")) {
-                axe = x.split(":");
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(axe[0]), Short.parseShort(axe[1]));
-                Axebreackableblocks.add(materialdata);
-            } else {
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(x));
-                Axebreackableblocks.add(materialdata);
+        block = Configuration.config.getStringList("tools.Axe Breackable Block Ids");
+        for(int pos = 0; pos < list.size(); pos++){
+            if (block.get(pos).contains(":")) {
+                
             }
         }
-        list = Configuration.config.getList("tools.Shovelbreackableblockids");
-        arraylist = list.toArray();
-        for(int pos = 0; pos < arraylist.length; pos++){
-            String x = (String) arraylist[pos];
-            if (x.contains(":")) {
-                shovel = x.split(":");
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(shovel[0]), Short.parseShort(shovel[1]));
-                Shovelbreackableblocks.add(materialdata);
-            } else {
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(x));
-                Shovelbreackableblocks.add(materialdata);
+        block = Configuration.config.getStringList("tools.Shovel Breackable Block Ids");
+        for(int pos = 0; pos < list.size(); pos++){
+            if (block.get(pos).contains(":")) {
+                
             }
         }
-        list = Configuration.config.getList("tools.Swordbreackableblockids");
-        arraylist = list.toArray();
-        for(int pos = 0; pos < arraylist.length; pos++){
-            String x = (String) arraylist[pos];
-            if (x.contains(":")) {
-                sword = x.split(":");
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(sword[0]), Short.parseShort(sword[1]));
-                Swordbreackableblocks.add(materialdata);
-            } else {
-                Block materialdata = (Block) MaterialData.getMaterial(Integer.parseInt(x));
-                Swordbreackableblocks.add(materialdata);
+        block = Configuration.config.getStringList("tools.Sword Breackable Block Ids");
+        for(int pos = 0; pos < list.size(); pos++){
+            if (block.get(pos).contains(":")) {
+                
             }
         }
     }
