@@ -22,7 +22,7 @@ public class Recipes {
     private static SpoutShapedRecipe shapedrecipe;
     private static SpoutShapelessRecipe shaplessrecipe;
     
-    public static void addAllRecipes(MoOres plugin) {
+    public static void addAllRecipes() {
         addShapedRecipes();
         addShaplessRecipes();
         addFurnaceRecipes();

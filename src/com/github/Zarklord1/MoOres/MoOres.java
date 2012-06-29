@@ -26,16 +26,16 @@ public class MoOres extends JavaPlugin{
         log.info("[Mo Ores] Is Enabling...");
 
         log.info("[Mo Ores] Loading Configs...");
-        Configuration.start();
+        Configuration.load();
         log.info("[Mo Ores] Loaded Configs!");
         loadTextures();
         log.info("[Mo Ores] Registering Block And Items...");
-        Hashmaps.addvanillablocks(this);
-        Hashmaps.registerBlocks(this);
+        Hashmaps.addvanillablocks();
+        Hashmaps.registerBlocks(plugin);
         log.info("[Mo Ores] Registered all Custom Blocks And Items!");
         reg();
         log.info("[Mo Ores] Registering Recipes...");
-        Recipes.addAllRecipes(plugin); 
+        Recipes.addAllRecipes(); 
         log.info("[Mo Ores] Registered all Recipes!");
 		
         log.info("[Mo Ores] Is Enabled!");
@@ -51,10 +51,11 @@ public class MoOres extends JavaPlugin{
         Hashmaps.customtools.clear();
         Hashmaps.originalores.clear();
         Hashmaps.plants.clear();
-        Hashmaps.Axebreackableblocks.clear();
         Hashmaps.Pickaxebreackableblocks.clear();
-        Hashmaps.Shovelbreackableblocks.clear();
-        Hashmaps.Swordbreackableblocks.clear();
+        Hashmaps.PickaxeSpeedIds.clear();
+        Hashmaps.AxeSpeedIds.clear();
+        Hashmaps.ShovelSpeedIds.clear();
+        Hashmaps.SwordSpeedIds.clear();
         log.info("[Mo Ores] Is Disabled!");
     }
 	

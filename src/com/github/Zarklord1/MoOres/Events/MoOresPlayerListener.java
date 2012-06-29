@@ -6,6 +6,7 @@ import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
 import java.util.List;
 import java.util.Random;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -70,8 +71,8 @@ public class MoOresPlayerListener implements Listener {
             for (CustomTools tools:Hashmaps.customtools) {
                 if (splayer.getItemInHand().getDurability() == tools.getCustomId() && splayer.isSpoutCraftEnabled()) {
                     if (tools.isPickaxe()) {
-                       for (org.getspout.spoutapi.material.Block blok:Hashmaps.Pickaxebreackableblocks) {
-                            if (block.equals(blok)) {
+                       for (Material material:Hashmaps.Pickaxebreackableblocks) {
+                            if (block.getType().equals(material)) {
                                 block.breakNaturally();
                             }
                         } 

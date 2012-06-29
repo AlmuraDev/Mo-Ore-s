@@ -25,9 +25,6 @@ public class Hashmaps {
     private static String[] ores;
     
     public static Set<Material> Pickaxebreackableblocks = new LinkedHashSet();
-    public static Set<Material> Swordbreackableblocks = new LinkedHashSet();
-    public static Set<Material> Axebreackableblocks = new LinkedHashSet();
-    public static Set<Material> Shovelbreackableblocks = new LinkedHashSet();
     public static Set<Block> PickaxeSpeedIds = new LinkedHashSet();
     public static Set<Block> SwordSpeedIds = new LinkedHashSet();
     public static Set<Block> AxeSpeedIds = new LinkedHashSet();
@@ -276,46 +273,45 @@ public class Hashmaps {
     }
     public static void addvanillablocks() {
         
-        List<Integer> list = Configuration.config.getIntegerList("tools.Pickaxe Breackable Blocks");
+        List<Integer> list = Configuration.config.getIntegerList("Tools.Pickaxe Breackable Block Ids");
         for(int pos = 0; pos < list.size(); pos++){
             Pickaxebreackableblocks.add(Material.getMaterial(list.get(pos)));
         }
-        list = Configuration.config.getIntegerList("tools.Axe Breackable Blocks");
-        for(int pos = 0; pos < list.size(); pos++){
-            Axebreackableblocks.add(Material.getMaterial(list.get(pos)));
-        }
-        list = Configuration.config.getIntegerList("tools.Shovel Breackable Blocks");
-        for(int pos = 0; pos < list.size(); pos++){
-            Shovelbreackableblocks.add(Material.getMaterial(list.get(pos)));
-        }
-        list = Configuration.config.getIntegerList("tools.Sword Breackable Blocks");
-        for(int pos = 0; pos < list.size(); pos++){
-            Swordbreackableblocks.add(Material.getMaterial(list.get(pos)));
-        }
-        List<String> block = Configuration.config.getStringList("tools.Pickaxe Breackable Block Ids");
+        
+        List<String> block = Configuration.config.getStringList("Tools.Pickaxe Block Break Speed");
         for(int pos = 0; pos < list.size(); pos++){
             if (block.get(pos).contains(":")) {
-                
+                String[] split = block.get(pos).split(":");
+                PickaxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1])));
             } else {
-                Hashmaps.PickaxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
+                PickaxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
             }
         }
-        block = Configuration.config.getStringList("tools.Axe Breackable Block Ids");
+        block = Configuration.config.getStringList("Tools.Axe Block Break Speed");
         for(int pos = 0; pos < list.size(); pos++){
             if (block.get(pos).contains(":")) {
-                
+                String[] split = block.get(pos).split(":");
+                AxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1])));
+            } else {
+                AxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
             }
         }
-        block = Configuration.config.getStringList("tools.Shovel Breackable Block Ids");
+        block = Configuration.config.getStringList("Tools.Shovel Block Break Speed");
         for(int pos = 0; pos < list.size(); pos++){
             if (block.get(pos).contains(":")) {
-                
+                String[] split = block.get(pos).split(":");
+                ShovelSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1]))); 
+            } else {
+                ShovelSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
             }
         }
-        block = Configuration.config.getStringList("tools.Sword Breackable Block Ids");
+        block = Configuration.config.getStringList("Tools.Sword Block Break Speed");
         for(int pos = 0; pos < list.size(); pos++){
             if (block.get(pos).contains(":")) {
-                
+                String[] split = block.get(pos).split(":");
+                SwordSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1])));
+            } else {
+                SwordSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
             }
         }
     }

@@ -49,36 +49,28 @@ public class CustomTools extends GenericCustomTool {
                 this.poison = poison;
                 this.lightning = lightning;
 		if (Pickaxe) {
-                    for (Block block:Hashmaps.Pickaxebreackableblocks) {
+                    for (Block block:Hashmaps.PickaxeSpeedIds) {
 			this.setStrengthModifier(block, strength);
                     }
 		}
                 
                 if (Axe) {
-                    for (Block block:Hashmaps.Axebreackableblocks) {
+                    for (Block block:Hashmaps.AxeSpeedIds) {
 			this.setStrengthModifier(block, strength);
                     }
 		}
                 
                 if (Shovel) {
-                    for (Block block:Hashmaps.Shovelbreackableblocks) {
+                    for (Block block:Hashmaps.ShovelSpeedIds) {
 			this.setStrengthModifier(block, strength);
                     }
                 }
                 
                 if (Sword) {
-                    for (Block block:Hashmaps.Swordbreackableblocks) {
+                    for (Block block:Hashmaps.SwordSpeedIds) {
                        this.setStrengthModifier(block, strength);
                     }
 		}
-                
-                if (Hoe) {
-                    this.setStrengthModifier(MaterialData.farmland, strength);
-                }
-                
-                if (Bow) {
-                    this.setStrengthModifier(MaterialData.dirt, strength);
-                }
                 
 	}
         public boolean isPickaxe() {

@@ -1132,17 +1132,20 @@ public class ConfigWriter {
     }
     
     public static void setConfig(MoOresConfiguration cfg) {
-        if (!cfg.contains("tools.Pickaxebreackableblockids")) {
-            cfg.set("tools.Pickaxebreackableblockids", Arrays.asList(new String[] {"1" , "67", "71", "24", "70"}));
+        if (!cfg.contains("tools.Pickaxe Breackable Block Ids")) {
+            cfg.set("tools.Pickaxe Breackable Block Ids", Arrays.asList(new Integer[] {1 , 67, 71, 24, 70}));
         }
-        if (!cfg.contains("tools.Axebreackableblockids")) {
-            cfg.set("tools.Axebreackableblockids", Arrays.asList(new String[] {"5", "53", "54"}));
+        if (!cfg.contains("tools.Pickaxe Block Break Speed")) {
+            cfg.set("tools.Pickaxe Block Break Speed", Arrays.asList(new String[] {"1" , "67", "71", "24", "70"}));
         }
-        if (!cfg.contains("tools.Shovelbreackableblockids")) {
-            cfg.set("tools.Shovelbreackableblockids", Arrays.asList(new String[] {"2", "3", "60"}));
+        if (!cfg.contains("tools.Axe Block Break Speed")) {
+            cfg.set("tools.Axe Block Break Speed", Arrays.asList(new String[] {"5", "53", "54"}));
         }
-        if (!cfg.contains("tools.Swordbreackableblockids")) {
-            cfg.set("tools.Swordbreackableblockids", Arrays.asList(new String[] {"26", "30", "92"}));
+        if (!cfg.contains("tools.Shovel Block Break Speed")) {
+            cfg.set("tools.Pickaxe Block Break Speed", Arrays.asList(new String[] {"2", "3", "60"}));
+        }
+        if (!cfg.contains("tools.Sword Block Break Speed")) {
+            cfg.set("tools.Sword Block Break Speed", Arrays.asList(new String[] {"26", "30", "92"}));
         }
     }
     

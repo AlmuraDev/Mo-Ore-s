@@ -87,6 +87,7 @@ public class Generator extends ChunkGenerator {
 
 	@Override
 	public short[][] generateExtBlockSections(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomes) {
+            System.out.print("1");
 		short[][] result = new short[world.getMaxHeight() / 16 + 1][];
 		int x, y, z;
 

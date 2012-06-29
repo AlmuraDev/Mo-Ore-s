@@ -51,7 +51,7 @@ public class Configuration {
         MoOres.log.log(Level.INFO, "[Mo Ores] Saved file " + filename + "!");
     }
 
-    public static void start() {
+    public static void load() {
         if (load(Configuration.config, "Config.yml")) {
             Configuration.config = MoOresConfiguration.loadConfiguration("plugins/MoOres/Config.yml");
             ConfigWriter.setConfig(Configuration.config);
