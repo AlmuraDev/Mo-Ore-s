@@ -1142,7 +1142,7 @@ public class ConfigWriter {
             cfg.set("tools.Axe Block Break Speed", Arrays.asList(new String[] {"5", "53", "54"}));
         }
         if (!cfg.contains("tools.Shovel Block Break Speed")) {
-            cfg.set("tools.Pickaxe Block Break Speed", Arrays.asList(new String[] {"2", "3", "60"}));
+            cfg.set("tools.Shovel Block Break Speed", Arrays.asList(new String[] {"2", "3", "60"}));
         }
         if (!cfg.contains("tools.Sword Block Break Speed")) {
             cfg.set("tools.Sword Block Break Speed", Arrays.asList(new String[] {"26", "30", "92"}));

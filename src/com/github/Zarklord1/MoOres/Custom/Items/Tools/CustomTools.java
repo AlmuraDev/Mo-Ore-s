@@ -1,15 +1,11 @@
 package com.github.Zarklord1.MoOres.Custom.Items.Tools;
 
-import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
 import com.github.Zarklord1.MoOres.Custom.Items.Arrows.CustomArrows;
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Util.Hashmaps;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
@@ -34,7 +30,7 @@ public class CustomTools extends GenericCustomTool {
     int poisonticks;
     int damage;
     public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks) {
-		super(plugin, name, textureurl);
+		super(MoOres.plugin, name, textureurl);
 		this.setDurability(durability);
                 this.damage = damage;
                 this.Axe = Axe;
@@ -48,7 +44,8 @@ public class CustomTools extends GenericCustomTool {
                 this.Pickaxe = Pickaxe;
                 this.poison = poison;
                 this.lightning = lightning;
-		if (Pickaxe) {
+                System.out.println(Pickaxe);
+		if (this.isPickaxe()) {
                     for (Block block:Hashmaps.PickaxeSpeedIds) {
 			this.setStrengthModifier(block, strength);
                     }
@@ -73,43 +70,42 @@ public class CustomTools extends GenericCustomTool {
 		}
                 
 	}
-        public boolean isPickaxe() {
-            return Pickaxe;
-        }
-        public boolean isAxe() {
-            return Axe;
-        }
-        public boolean isShovel() {
-            return Shovel;
-        }
-        public boolean isBow() {
-            return Bow;
-        }
-        public boolean isSword() {
-            return Sword;
-        }
-        public boolean isHoe() {
-            return Hoe;
-        }
-        public int getdamage() {
-            return damage;
-        }
-        public boolean isFireSword() {
-            return fire;
-        }
-        public boolean isLightningSword() {
-            return this.lightning;
-        }
-        public boolean isPoisonSword() {
-            return this.poison;
-        }
-        public int getPoisonTicks() {
-            return poisonticks;
-        }
-        public int getFireTicks() {
-            return fireticks;
-        }
-
+    public boolean isPickaxe() {
+        return Pickaxe;
+    }
+    public boolean isAxe() {
+        return Axe;
+    }
+    public boolean isShovel() {
+        return Shovel;
+    }
+    public boolean isBow() {
+        return Bow;
+    }
+    public boolean isSword() {
+        return Sword;
+    }
+    public boolean isHoe() {
+        return Hoe;
+    }
+    public int getdamage() {
+        return damage;
+    }
+    public boolean isFireSword() {
+        return fire;
+    }
+    public boolean isLightningSword() {
+        return this.lightning;
+    }
+    public boolean isPoisonSword() {
+        return this.poison;
+    }
+    public int getPoisonTicks() {
+        return poisonticks;
+    }
+    public int getFireTicks() {
+        return fireticks;
+    }
     public int getId() {
       return 318;
     }

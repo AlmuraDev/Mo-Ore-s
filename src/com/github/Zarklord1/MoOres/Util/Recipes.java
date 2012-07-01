@@ -2,7 +2,6 @@ package com.github.Zarklord1.MoOres.Util;
 
 import com.github.Zarklord1.FurnaceApi.FurnaceRecipes;
 import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.MoOres;
 import java.util.Iterator;
 import java.util.List;
 import org.bukkit.Material;
@@ -29,9 +28,7 @@ public class Recipes {
     }
     
     private static void addShapedRecipes() {
-        System.out.println(1);
         if (Configuration.recipe.contains("Shaped Recipes")) {
-            System.out.println(2);
             ConfigurationSection section = Configuration.recipe.getConfigurationSection("Shaped Recipes");
             Object[] keys = section.getKeys(false).toArray();
             for (int num = 0; num < keys.length; num++) {

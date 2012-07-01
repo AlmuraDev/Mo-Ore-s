@@ -68,11 +68,11 @@ public class MoOresPlayerListener implements Listener {
         Player player = event.getPlayer();
         if (player instanceof SpoutPlayer){
             SpoutPlayer splayer = (SpoutPlayer) player;
-            for (CustomTools tools:Hashmaps.customtools) {
-                if (splayer.getItemInHand().getDurability() == tools.getCustomId() && splayer.isSpoutCraftEnabled()) {
-                    if (tools.isPickaxe()) {
+            for (CustomTools tool:Hashmaps.customtools) {
+                if (splayer.getItemInHand().getDurability() == tool.getCustomId() && splayer.isSpoutCraftEnabled()) {
+                    if (tool.isPickaxe()) {
                        for (Material material:Hashmaps.Pickaxebreackableblocks) {
-                            if (block.getType().equals(material)) {
+                            if (block.getType() == material) {
                                 block.breakNaturally();
                             }
                         } 
