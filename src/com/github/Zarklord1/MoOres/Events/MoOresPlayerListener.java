@@ -3,7 +3,7 @@ package com.github.Zarklord1.MoOres.Events;
 import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Util.Hashmaps;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
 import java.util.List;
 import java.util.Random;
 import org.bukkit.Material;
@@ -46,7 +46,7 @@ public class MoOresPlayerListener implements Listener {
                             Item item = (Item) entity;
                             ItemStack fishstack = new ItemStack(349, 1);
                             if (item.getItemStack() == fishstack) {
-                                for (CustomFishes fishie:Hashmaps.customfish) {
+                                for (CustomFishes fishie:BlockLoader.customfish) {
                                     ItemStack customfishiestack = new SpoutItemStack(fishie, 1);
                                     int nextInt = randomgen.nextInt(100);
                                     if (fishie.getchance() <= nextInt) {
@@ -68,10 +68,10 @@ public class MoOresPlayerListener implements Listener {
         Player player = event.getPlayer();
         if (player instanceof SpoutPlayer){
             SpoutPlayer splayer = (SpoutPlayer) player;
-            for (CustomTools tool:Hashmaps.customtools) {
+            for (CustomTools tool:BlockLoader.customtools) {
                 if (splayer.getItemInHand().getDurability() == tool.getCustomId() && splayer.isSpoutCraftEnabled()) {
                     if (tool.isPickaxe()) {
-                       for (Material material:Hashmaps.Pickaxebreackableblocks) {
+                       for (Material material:BlockLoader.Pickaxebreackableblocks) {
                             if (block.getType() == material) {
                                 block.breakNaturally();
                             }

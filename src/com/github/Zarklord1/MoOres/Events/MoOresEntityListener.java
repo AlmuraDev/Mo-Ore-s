@@ -1,10 +1,12 @@
 package com.github.Zarklord1.MoOres.Events;
 
+import com.github.Zarklord1.MoOres.Custom.Items.Arrows.MoArrow;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Util.Hashmaps;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +30,14 @@ public class MoOresEntityListener implements Listener  {
     public void onEntityDamage ( EntityDamageByEntityEvent event )
     {
         if(event.getCause() == DamageCause.PROJECTILE) {
-            
+        	Entity entityhit = event.getEntity();
+        	if (event.getDamager() instanceof Arrow) {
+        		Arrow arrow = (Arrow) event.getDamager();
+        		System.out.println(true);
+        		if (arrow instanceof MoArrow) {
+        			System.out.println(true);
+        		}
+        	}
         }
         if(event.getCause() == DamageCause.ENTITY_ATTACK) {
             Entity entityhit = event.getEntity();
@@ -38,7 +47,7 @@ public class MoOresEntityListener implements Listener  {
                 if (player instanceof SpoutPlayer) {
                     SpoutPlayer splayer = SpoutManager.getPlayer(player);
                     World world = splayer.getWorld();
-                    for (CustomTools tool:Hashmaps.customtools){
+                    for (CustomTools tool:BlockLoader.customtools){
                         if (tool.isSword() && splayer.isSpoutCraftEnabled()) {
                             if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
                                 event.setDamage(tool.getdamage());
@@ -53,7 +62,6 @@ public class MoOresEntityListener implements Listener  {
                                     Location location = entityhit.getLocation();
                                     world.strikeLightning(location);
                                 }
-                                
                                 return;
                             }
                         }

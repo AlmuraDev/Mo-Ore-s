@@ -5,7 +5,7 @@ import java.util.Random;
 import com.github.Zarklord1.MoOres.*;
 import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.*;
 import com.github.Zarklord1.MoOres.Config.*;
-import com.github.Zarklord1.MoOres.Util.Hashmaps;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 import org.bukkit.Chunk;
 import org.bukkit.Material;
@@ -27,7 +27,7 @@ public class OresPopulator extends BlockPopulator {
         Material material;
 
         if(Configuration.generator.getBoolean("Generator.Ores.Custom")){
-            for (CustomOres block:Hashmaps.customores) {
+            for (CustomOres block:BlockLoader.customores) {
                 freq = block.getFreq();
                 minY = block.getMinY();
                 maxY = block.getMaxY();
@@ -41,7 +41,7 @@ public class OresPopulator extends BlockPopulator {
         }
 
         if(Configuration.generator.getBoolean("Generator.Ores.Original")){
-            for (OriginalOres block:Hashmaps.originalores){
+            for (OriginalOres block:BlockLoader.originalores){
                 freq = block.getfreq();
                 minY = block.getminY();
                 maxY = block.getmaxY();

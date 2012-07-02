@@ -3,31 +3,63 @@ package com.github.Zarklord1.MoOres.Custom.Items.Arrows;
 import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
 
-public class CustomArrows extends GenericCustomItem  {
+import com.github.Zarklord1.MoOres.MoOres;
+
+public class CustomArrows extends GenericCustomItem {
     int damage;
-    boolean firearrow;
-    boolean lighntingarrow;
+    boolean fireArrow;
+    boolean lighntingArrow;
+    boolean poisonArrow;
+    boolean explosivearrow;
     int fireticks;
-	public CustomArrows(Plugin plugin, String name, String texture, int damage, boolean firearrow, boolean lighntingarrow, int fireticks) {
-		super(plugin, name, texture);
-                this.damage = damage;
-                this.firearrow = firearrow;
-                this.lighntingarrow = lighntingarrow;
-                this.fireticks = fireticks;
+    int poisonticks;
+    int NumofBoltStrikes;
+    float Radius;
+    float speedmodifier;
+	public CustomArrows(String name, String texture, int damage, boolean firearrow, boolean lighntingarrow, boolean Poisonarrow, boolean ExplosionArrow, int poisonticks, int fireticks, int LightningStrikes, float EsplosionRadius, float speedmodifier) {
+		super(MoOres.plugin, name, texture);
+        this.damage = damage;
+        this.fireArrow = firearrow;
+        this.lighntingArrow = lighntingarrow;
+        this.poisonArrow = Poisonarrow;
+        this.explosivearrow = ExplosionArrow;
+        this.fireticks = fireticks;
+        this.poisonticks = poisonticks;
+        this.NumofBoltStrikes = LightningStrikes;
+        this.Radius = EsplosionRadius;
+        this.speedmodifier = speedmodifier;
 	}
-        public int getId() {
-            return 318;
-        }
-        public int getArrowDamage() {
-            return damage;
-        }
-        public boolean isFireArrow() {
-            return this.firearrow;
-        }
-        public boolean isLighntingArrow() {
-            return this.lighntingarrow;
-        }
-        public int getFireTicks() {
-            return fireticks;
-        }
+	public int getId() {
+		return 318;
+	}
+	public int getArrowDamage() {
+		return damage;
+	}
+	public boolean isFireArrow() {
+		return this.fireArrow;
+	}
+	public boolean isLighntingArrow() { 
+		return this.lighntingArrow;
+	}
+	public boolean isPoisonArrow() {
+		return this.poisonArrow;
+	}
+	public boolean isExplosiveArrow() {
+		return this.explosivearrow;
+	}
+	public int getFireTicks() {
+		return fireticks;
+	}
+	public int getpoisonTicks() {
+		return poisonticks;
+	}
+	public int getNumOfBolts() {
+		return this.NumofBoltStrikes;
+	}
+	public float getExplosionRadius() {
+		return this.Radius;
+    }
+	public float getSpeedModifier() {
+		return speedmodifier;
+	}
 }

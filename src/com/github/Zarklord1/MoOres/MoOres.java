@@ -4,8 +4,8 @@ import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
 import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
 import com.github.Zarklord1.MoOres.Generator.Generator;
-import com.github.Zarklord1.MoOres.Util.Hashmaps;
-import com.github.Zarklord1.MoOres.Util.Recipes;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
+import com.github.Zarklord1.MoOres.Util.RecipeLoader;
 import java.util.logging.Logger;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.PluginManager;
@@ -30,12 +30,12 @@ public class MoOres extends JavaPlugin{
         log.info("[Mo Ores] Loaded Configs!");
         loadTextures();
         log.info("[Mo Ores] Registering Block And Items...");
-        Hashmaps.addvanillablocks();
-        Hashmaps.registerBlocks(plugin);
+        BlockLoader.addvanillablocks();
+        BlockLoader.registerBlocks(plugin);
         log.info("[Mo Ores] Registered all Custom Blocks And Items!");
         reg();
         log.info("[Mo Ores] Registering Recipes...");
-        Recipes.addAllRecipes(); 
+        RecipeLoader.addAllRecipes(); 
         log.info("[Mo Ores] Registered all Recipes!");
 		
         log.info("[Mo Ores] Is Enabled!");
@@ -45,17 +45,17 @@ public class MoOres extends JavaPlugin{
 
     @Override
     public void onDisable(){ 
-        Hashmaps.custombushes.clear();
-        Hashmaps.customitems.clear();
-        Hashmaps.customores.clear();
-        Hashmaps.customtools.clear();
-        Hashmaps.originalores.clear();
-        Hashmaps.plants.clear();
-        Hashmaps.Pickaxebreackableblocks.clear();
-        Hashmaps.PickaxeSpeedIds.clear();
-        Hashmaps.AxeSpeedIds.clear();
-        Hashmaps.ShovelSpeedIds.clear();
-        Hashmaps.SwordSpeedIds.clear();
+        BlockLoader.custombushes.clear();
+        BlockLoader.customitems.clear();
+        BlockLoader.customores.clear();
+        BlockLoader.customtools.clear();
+        BlockLoader.originalores.clear();
+        BlockLoader.plants.clear();
+        BlockLoader.Pickaxebreackableblocks.clear();
+        BlockLoader.PickaxeSpeedIds.clear();
+        BlockLoader.AxeSpeedIds.clear();
+        BlockLoader.ShovelSpeedIds.clear();
+        BlockLoader.SwordSpeedIds.clear();
         log.info("[Mo Ores] Is Disabled!");
     }
 	

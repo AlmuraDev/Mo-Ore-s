@@ -12,6 +12,7 @@ import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFood;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.MoOres;
 import java.util.*;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.getspout.spoutapi.material.Block;
@@ -21,41 +22,41 @@ import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
 
-public class Hashmaps {
+public class BlockLoader {
     private static String[] ores;
     
-    public static Set<Material> Pickaxebreackableblocks = new LinkedHashSet();
-    public static Set<Block> PickaxeSpeedIds = new LinkedHashSet();
-    public static Set<Block> SwordSpeedIds = new LinkedHashSet();
-    public static Set<Block> AxeSpeedIds = new LinkedHashSet();
-    public static Set<Block> ShovelSpeedIds = new LinkedHashSet();
+    public static Set<Material> Pickaxebreackableblocks = new LinkedHashSet<Material>();
+    public static Set<Block> PickaxeSpeedIds = new LinkedHashSet<Block>();
+    public static Set<Block> SwordSpeedIds = new LinkedHashSet<Block>();
+    public static Set<Block> AxeSpeedIds = new LinkedHashSet<Block>();
+    public static Set<Block> ShovelSpeedIds = new LinkedHashSet<Block>();
     
-    public static Set<CustomOres> customores = new LinkedHashSet();
-    public static HashMap<String, CustomOres> customoresmap = new LinkedHashMap();
+    public static Set<CustomOres> customores = new LinkedHashSet<CustomOres>();
+    public static HashMap<String, CustomOres> customoresmap = new LinkedHashMap<String, CustomOres>();
     
-    public static Set<CustomBlocks> customblocks = new LinkedHashSet();
-    public static HashMap<String, CustomBlocks> customblocksmap = new LinkedHashMap();
+    public static Set<CustomBlocks> customblocks = new LinkedHashSet<CustomBlocks>();
+    public static HashMap<String, CustomBlocks> customblocksmap = new LinkedHashMap<String, CustomBlocks>();
     
-    public static Set<CustomItems> customitems = new LinkedHashSet();
-    public static HashMap<String, CustomItems> customitemsmap = new LinkedHashMap();
+    public static Set<CustomItems> customitems = new LinkedHashSet<CustomItems>();
+    public static HashMap<String, CustomItems> customitemsmap = new LinkedHashMap<String, CustomItems>();
     
-    public static Set<CustomTools> customtools = new LinkedHashSet();
-    public static HashMap<String, CustomTools> customtoolsmap = new LinkedHashMap();
+    public static Set<CustomTools> customtools = new LinkedHashSet<CustomTools>();
+    public static HashMap<String, CustomTools> customtoolsmap = new LinkedHashMap<String, CustomTools>();
     
-    public static Set<CustomFood> customfood = new LinkedHashSet();
-    public static HashMap<String, CustomFood> customfoodmap = new LinkedHashMap();
+    public static Set<CustomFood> customfood = new LinkedHashSet<CustomFood>();
+    public static HashMap<String, CustomFood> customfoodmap = new LinkedHashMap<String, CustomFood>();
     
-    public static Set<CustomArrows> customarrows = new LinkedHashSet();
-    public static HashMap<String, CustomArrows> customarrowsmap = new LinkedHashMap();
+    public static Set<CustomArrows> customarrows = new LinkedHashSet<CustomArrows>();
+    public static HashMap<String, CustomArrows> customarrowsmap = new LinkedHashMap<String, CustomArrows>();
     
-    public static Set<CustomFishes> customfish = new LinkedHashSet();
-    public static HashMap<String, CustomFishes> customfishmap = new LinkedHashMap();
+    public static Set<CustomFishes> customfish = new LinkedHashSet<CustomFishes>();
+    public static HashMap<String, CustomFishes> customfishmap = new LinkedHashMap<String, CustomFishes>();
     
-    public static Set<CustomBush> custombushes = new LinkedHashSet();
-    public static HashMap<String, CustomBush> custombushesmap = new LinkedHashMap();
+    public static Set<CustomBush> custombushes = new LinkedHashSet<CustomBush>();
+    public static HashMap<String, CustomBush> custombushesmap = new LinkedHashMap<String, CustomBush>();
     
-    public static Set<OriginalOres> originalores = new LinkedHashSet();
-    public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet();
+    public static Set<OriginalOres> originalores = new LinkedHashSet<OriginalOres>();
+    public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet<GenericCubeCustomBlock>();
     
     public static void CustomOres(MoOres plugin) {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Ores");
@@ -131,7 +132,7 @@ public class Hashmaps {
     }
     public static void CustomBushes(MoOres plugin) {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Bushes");
-        Iterator keys = section.getKeys(false).iterator();
+        Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
             int textureID = Configuration.block.getInt("Custom Bushes." + name + ".textureID");
@@ -141,7 +142,7 @@ public class Hashmaps {
     }
     public static void CustomBlock(MoOres plugin) {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Blocks");
-        Iterator keys = section.getKeys(false).iterator();
+        Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
             int id = 1;
@@ -163,14 +164,14 @@ public class Hashmaps {
     }
     public static void CustomItems(MoOres plugin) {
         ConfigurationSection section = Configuration.items.getConfigurationSection("Custom Items");
-        Iterator keys = section.getKeys(false).iterator();
+        Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
             String textureurl = Configuration.items.getString("Custom Items." + name + ".texture url");
             addItem(plugin, name, textureurl);
         }
         ConfigurationSection section2 = Configuration.items.getConfigurationSection("Custom Tools");
-        Iterator keys2 = section2.getKeys(false).iterator();
+        Iterator<String> keys2 = section2.getKeys(false).iterator();
         while (keys2.hasNext()) {
             String name = (String)keys2.next();
             String textureurl = Configuration.items.getString("Custom Tools." + name + ".texture url");
@@ -188,10 +189,11 @@ public class Hashmaps {
             int damage = Configuration.items.getInt("Custom Tools." + name + ".Sword.damage");
             int fireticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Fire Ticks");
             int poisonticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Poison Ticks");
-            addTool(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, fireticks, poison, lightning, poisonticks);
+            float speed = Configuration.items.getFloat("Custom Tools." + name + "Bow.Speed");
+            addTool(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, fireticks, poison, lightning, poisonticks, speed);
         }
         ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
-        Iterator keys3 = section3.getKeys(false).iterator();
+        Iterator<String> keys3 = section3.getKeys(false).iterator();
         while (keys3.hasNext()) {
             String name = (String)keys3.next();
             String textureurl = Configuration.items.getString("Custom Food." + name + ".texture url");
@@ -199,7 +201,7 @@ public class Hashmaps {
             addFood(plugin, name, textureurl, restore);
         }
         ConfigurationSection section4 = Configuration.items.getConfigurationSection("Custom Fish");
-        Iterator keys4 = section4.getKeys(false).iterator();
+        Iterator<String> keys4 = section4.getKeys(false).iterator();
         while (keys4.hasNext()) {
             String name = (String)keys4.next();
             String textureurl = Configuration.items.getString("Custom Fish." + name + ".texture url");
@@ -233,6 +235,11 @@ public class Hashmaps {
         customitems.add(item);
         customitemsmap.put(name, item);
     }
+    private static void addArrow(String name, String textureurl, int damage, boolean firearrow, boolean poisonarrow, boolean lightningarrow, boolean explosivearrow, int fireticks, int poisonticks, int Numberofbolts, float explosionradius, float speedmodifier) {
+        CustomArrows arrow = new CustomArrows(name, textureurl, damage, firearrow, poisonarrow, lightningarrow, explosivearrow, fireticks, poisonticks, Numberofbolts, explosionradius, speedmodifier);
+        customarrows.add(arrow);
+        customarrowsmap.put(name, arrow);
+    }
     private static void addFood(MoOres plugin, String name, String textureurl, int restore) {
         CustomFood food = new CustomFood(plugin, name, textureurl, restore);
         customfood.add(food);
@@ -243,8 +250,8 @@ public class Hashmaps {
         customfish.add(fish);
         customfishmap.put(name, fish);
     }
-    private static void addTool(MoOres plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean lightning, boolean poison, int poisonticks) {
-        CustomTools tool = new CustomTools(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, ticks, lightning, poison, poisonticks);
+    private static void addTool(MoOres plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean lightning, boolean poison, int poisonticks, float speed) {
+        CustomTools tool = new CustomTools(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, ticks, lightning, poison, poisonticks, speed);
         customtools.add(tool);
         customtoolsmap.put(name, tool);
     }
@@ -270,6 +277,7 @@ public class Hashmaps {
         CustomBushes(plugin);
         CustomItems(plugin);
         CustomOres(plugin);
+        addArrow("Test Arrow", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 7, true, false, false, false, 100, 0, 0, 0.0F, 3.5F);
     }
     public static void addvanillablocks() {
         
