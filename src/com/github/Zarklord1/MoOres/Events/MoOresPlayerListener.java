@@ -17,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
@@ -80,5 +81,9 @@ public class MoOresPlayerListener implements Listener {
                 }
             }
         }
+    }
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onItemInteract(PlayerInteractEvent event) {
+        
     }
 }

@@ -36,9 +36,9 @@ public class CustomTools extends GenericCustomTool {
     int damage;
     float speed;
     public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks, float speed) {
-		super(MoOres.plugin, name, textureurl);
-		this.setDurability(durability);
-		this.damage = damage;
+	super(MoOres.plugin, name, textureurl);
+	this.setDurability(durability);
+        this.damage = damage;
         this.Axe = Axe;
         this.Shovel = Shovel;
         this.Hoe = Hoe;
