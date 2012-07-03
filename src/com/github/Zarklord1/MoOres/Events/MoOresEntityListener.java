@@ -1,11 +1,5 @@
 package com.github.Zarklord1.MoOres.Events;
 
-import com.github.Zarklord1.MoOres.Custom.Items.Arrows.MoArrow;
-import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
-import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Util.BlockLoader;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -19,6 +13,11 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
+
+import com.github.Zarklord1.MoOres.MoOres;
+import com.github.Zarklord1.MoOres.Custom.Items.Arrows.MoArrow;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresEntityListener implements Listener  {
     	public static MoOres plugin;
@@ -39,7 +38,7 @@ public class MoOresEntityListener implements Listener  {
                     if (player.isSpoutCraftEnabled()) {
                         event.setDamage(MoArrow.getDamage(arrow));
                         if (MoArrow.IsExplosiveArrow(arrow)) {
-                        	player.getWorld().createExplosion(player.getLocation(), MoArrow.getExplosionRadius(arrow), true);
+                        	player.getWorld().createExplosion(player.getLocation(), MoArrow.getExplosionPower(arrow), true);
                         }
                         if (MoArrow.IsFireArrow(arrow)) {
                             entityhit.setFireTicks(MoArrow.getFireTicks(arrow));

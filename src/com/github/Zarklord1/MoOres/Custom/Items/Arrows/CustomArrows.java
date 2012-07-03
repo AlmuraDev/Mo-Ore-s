@@ -13,9 +13,9 @@ public class CustomArrows extends GenericCustomItem {
     int fireticks;
     int poisonticks;
     int NumofBoltStrikes;
-    float Radius;
+    float Power;
     float speedmodifier;
-    public CustomArrows(String name, String texture, int damage, boolean firearrow, boolean lighntingarrow, boolean Poisonarrow, boolean ExplosionArrow, int poisonticks, int fireticks, int LightningStrikes, float ExplosionRadius, float speedmodifier) {
+    public CustomArrows(String name, String texture, int damage, boolean firearrow, boolean lighntingarrow, boolean Poisonarrow, boolean ExplosionArrow, int poisonticks, int fireticks, int LightningStrikes, float ExplosionPower, float speedmodifier) {
         super(MoOres.plugin, name, texture);
         this.damage = damage;
         this.fireArrow = firearrow;
@@ -25,7 +25,7 @@ public class CustomArrows extends GenericCustomItem {
             this.fireticks = fireticks;
             this.poisonticks = poisonticks;
             this.NumofBoltStrikes = LightningStrikes;
-            this.Radius = ExplosionRadius;
+            this.Power = ExplosionPower;
             this.speedmodifier = speedmodifier;
 	}
 	public int getId() {
@@ -56,7 +56,7 @@ public class CustomArrows extends GenericCustomItem {
 		return this.NumofBoltStrikes;
 	}
 	public float getExplosionRadius() {
-            return this.Radius;
+            return this.Power;
         }
 	public float getSpeedModifier() {
 		return speedmodifier;

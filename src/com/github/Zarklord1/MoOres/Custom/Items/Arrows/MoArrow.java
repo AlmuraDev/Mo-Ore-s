@@ -125,7 +125,7 @@ public class MoArrow{
             return 1;
 	}
 
-	public static float getExplosionRadius(Arrow arrow) {
+	public static float getExplosionPower(Arrow arrow) {
             if (MoArrow.ExplosionPower.containsKey(arrow)) {
                 return MoArrow.ExplosionPower.get(arrow);
             }
