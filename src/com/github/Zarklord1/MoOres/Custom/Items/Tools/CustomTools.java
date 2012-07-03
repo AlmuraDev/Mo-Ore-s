@@ -127,7 +127,13 @@ public class CustomTools extends GenericCustomTool {
         ItemStack arrowstack = null;
         if (this.isBow()) {
             SpoutPlayerInventory inventory = (SpoutPlayerInventory) player.getInventory();
-            arrowstack = getArrow(inventory, arrow);
+            for (CustomArrows arrows:BlockLoader.customarrows) {
+                ItemStack stack = new SpoutItemStack(arrows);
+                if (inventory.contains(stack)) {
+                    arrow = arrows;
+                    arrowstack = inventory.getItem(inventory.first(arrowstack));
+                }
+            }
             if (arrowstack != null) {
                 arrowstack.setAmount(arrowstack.getAmount() - 1);
                 Vector direction = player.getEyeLocation().getDirection().multiply(2.5);
@@ -151,15 +157,5 @@ public class CustomTools extends GenericCustomTool {
           }
         }
         return true;
-    }
-    private ItemStack getArrow(SpoutPlayerInventory inventory, CustomArrows arrow) {
-        for (CustomArrows arrows:BlockLoader.customarrows) {
-            ItemStack arrowstack = new SpoutItemStack(arrows);
-            if (inventory.contains(arrowstack)) {
-                arrow = arrows;
-                return inventory.getItem(inventory.first(arrowstack));
-            }
-        }
-        return null;
     }
 }
