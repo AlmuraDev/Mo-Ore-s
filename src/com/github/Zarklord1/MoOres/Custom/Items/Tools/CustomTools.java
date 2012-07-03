@@ -123,34 +123,6 @@ public class CustomTools extends GenericCustomTool {
     }
     @Override
     public boolean onItemInteract(SpoutPlayer player, SpoutBlock block, BlockFace face) {
-        CustomArrows arrow = null;
-        ItemStack arrowstack = null;
-        if (this.isBow()) {
-            SpoutPlayerInventory inventory = (SpoutPlayerInventory) player.getInventory();
-            for (CustomArrows arrows:BlockLoader.customarrows) {
-                ItemStack stack = new SpoutItemStack(arrows);
-                if (inventory.contains(stack)) {
-                    arrow = arrows;
-                    arrowstack = inventory.getItem(inventory.first(arrowstack));
-                }
-            }
-            if (arrowstack != null) {
-                arrowstack.setAmount(arrowstack.getAmount() - 1);
-                Vector direction = player.getEyeLocation().getDirection().multiply(2.5);
-                Arrow spawnedarrow = player.getWorld().spawnArrow(player.getLocation(), direction, this.getSpeed() + arrow.getSpeedModifier(), 12);
-                MoArrow.setDamage(spawnedarrow, arrow.getArrowDamage());
-                MoArrow.setIsFireArrow(spawnedarrow, arrow.isFireArrow());
-                MoArrow.setIsPoisonArrow(spawnedarrow, arrow.isPoisonArrow());
-                MoArrow.setIsLightningArrow(spawnedarrow, arrow.isLighntingArrow());
-                MoArrow.setIsExplosiveArrow(spawnedarrow, arrow.isExplosiveArrow());
-                MoArrow.setFireTicks(spawnedarrow, arrow.getFireTicks());
-                MoArrow.setPoisonTicks(spawnedarrow, arrow.getpoisonTicks());
-                MoArrow.setNumberOfLightningBolts(spawnedarrow, arrow.getNumOfBolts());
-                MoArrow.setExplosionPower(spawnedarrow, arrow.getExplosionRadius());
-                EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, this.getSpeed() + arrow.getSpeedModifier());
-                Bukkit.getPluginManager().callEvent(evt);
-            }
-        }
         if (this.isHoe()) {
           if (block.equals(MaterialData.dirt) || block.equals(MaterialData.grass)) {
               block.setType(Material.SOIL);
