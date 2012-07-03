@@ -25,7 +25,7 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 public class BlockLoader {
     private static String[] ores;
     
-    public static Set<Material> Pickaxebreackableblocks = new LinkedHashSet<Material>();
+    public static HashSet<Material> Pickaxebreackableblocks = new LinkedHashSet<Material>();
     public static Set<Block> PickaxeSpeedIds = new LinkedHashSet<Block>();
     public static Set<Block> SwordSpeedIds = new LinkedHashSet<Block>();
     public static Set<Block> AxeSpeedIds = new LinkedHashSet<Block>();

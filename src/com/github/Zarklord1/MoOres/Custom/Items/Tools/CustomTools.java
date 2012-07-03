@@ -37,7 +37,7 @@ public class CustomTools extends GenericCustomTool {
     float speed;
     public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks, float speed) {
 		super(MoOres.plugin, name, textureurl);
-		this.setMaxDurability(durability);
+		this.setDurability(durability);
 		this.damage = damage;
         this.Axe = Axe;
         this.Shovel = Shovel;
@@ -125,23 +125,22 @@ public class CustomTools extends GenericCustomTool {
     public boolean onItemInteract(SpoutPlayer player, SpoutBlock block, BlockFace face) {
         CustomArrows arrow = null;
         ItemStack arrowstack = null;
-        boolean firethearrow = false;
         if (this.isBow()) {
             SpoutPlayerInventory inventory = (SpoutPlayerInventory) player.getInventory();
-            arrowstack = getArrow(inventory, arrow, firethearrow);
-            if (firethearrow) {
+            arrowstack = getArrow(inventory, arrow);
+            if (arrowstack != null) {
                 arrowstack.setAmount(arrowstack.getAmount() - 1);
                 Vector direction = player.getEyeLocation().getDirection().multiply(2.5);
-                MoArrow spawnedarrow = (MoArrow)player.getWorld().spawnArrow(player.getLocation(), direction, this.getSpeed() + arrow.getSpeedModifier(), 12);
-                spawnedarrow.setDamage(arrow.getArrowDamage());
-                spawnedarrow.setIsFireArrow(arrow.isFireArrow());
-                spawnedarrow.setIsPoisonArrow(arrow.isPoisonArrow());
-                spawnedarrow.setIsLightningArrow(arrow.isLighntingArrow());
-                spawnedarrow.setIsExplosiveArrow(arrow.isExplosiveArrow());
-                spawnedarrow.setArrowFireTicks(arrow.getFireTicks());
-                spawnedarrow.setPoisonTicks(arrow.getpoisonTicks());
-                spawnedarrow.setNumberOfLightningBolts(arrow.getNumOfBolts());
-                spawnedarrow.setExplosionRadius(arrow.getExplosionRadius());
+                Arrow spawnedarrow = player.getWorld().spawnArrow(player.getLocation(), direction, this.getSpeed() + arrow.getSpeedModifier(), 12);
+                MoArrow.setDamage(spawnedarrow, arrow.getArrowDamage());
+                MoArrow.setIsFireArrow(spawnedarrow, arrow.isFireArrow());
+                MoArrow.setIsPoisonArrow(spawnedarrow, arrow.isPoisonArrow());
+                MoArrow.setIsLightningArrow(spawnedarrow, arrow.isLighntingArrow());
+                MoArrow.setIsExplosiveArrow(spawnedarrow, arrow.isExplosiveArrow());
+                MoArrow.setFireTicks(spawnedarrow, arrow.getFireTicks());
+                MoArrow.setPoisonTicks(spawnedarrow, arrow.getpoisonTicks());
+                MoArrow.setNumberOfLightningBolts(spawnedarrow, arrow.getNumOfBolts());
+                MoArrow.setExplosionRadius(spawnedarrow, arrow.getExplosionRadius());
                 EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, this.getSpeed() + arrow.getSpeedModifier());
                 Bukkit.getPluginManager().callEvent(evt);
             }
@@ -153,12 +152,11 @@ public class CustomTools extends GenericCustomTool {
         }
         return true;
     }
-    private ItemStack getArrow(SpoutPlayerInventory inventory, CustomArrows arrow, boolean bool) {
+    private ItemStack getArrow(SpoutPlayerInventory inventory, CustomArrows arrow) {
         for (CustomArrows arrows:BlockLoader.customarrows) {
             ItemStack arrowstack = new SpoutItemStack(arrows);
             if (inventory.contains(arrowstack)) {
                 arrow = arrows;
-                bool = true;
                 return inventory.getItem(inventory.first(arrowstack));
             }
         }

@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -30,14 +31,30 @@ public class MoOresEntityListener implements Listener  {
     public void onEntityDamage ( EntityDamageByEntityEvent event )
     {
         if(event.getCause() == DamageCause.PROJECTILE) {
-        	Entity entityhit = event.getEntity();
-        	if (event.getDamager() instanceof Arrow) {
-        		Arrow arrow = (Arrow) event.getDamager();
-        		System.out.println(true);
-        		if (arrow instanceof MoArrow) {
-        			System.out.println(true);
-        		}
-        	}
+            Entity entityhit = event.getEntity();
+            if (event.getDamager() instanceof Arrow) {
+                Arrow arrow = (Arrow) event.getDamager();
+                if (arrow.getShooter() instanceof SpoutPlayer) {
+                    SpoutPlayer player = (SpoutPlayer)arrow.getShooter();
+                    if (player.isSpoutCraftEnabled()) {
+                        event.setDamage(MoArrow.getDamage(arrow));
+                        if (MoArrow.IsExplosiveArrow(arrow)) {
+                        }
+                        if (MoArrow.IsFireArrow(arrow)) {
+                            entityhit.setFireTicks(MoArrow.getFireTicks(arrow));
+                        }
+                        if (MoArrow.IsLightningArrow(arrow)) {
+                            for (int i = 0; i < MoArrow.getNumberOfLightningBolts(arrow); i++) {
+                                player.getWorld().strikeLightning(entityhit.getLocation());
+                            }
+                        }
+                        if (entityhit instanceof LivingEntity && MoArrow.IsPoisonArrow(arrow)) {
+                            LivingEntity hit = (LivingEntity) entityhit;
+                            hit.addPotionEffect(new PotionEffect(PotionEffectType.POISON, MoArrow.getPoisonTicks(arrow), 1));
+                        }
+                    }
+                }
+            }
         }
         if(event.getCause() == DamageCause.ENTITY_ATTACK) {
             Entity entityhit = event.getEntity();
@@ -46,7 +63,6 @@ public class MoOresEntityListener implements Listener  {
                 Player player = (Player) entityhitting;
                 if (player instanceof SpoutPlayer) {
                     SpoutPlayer splayer = SpoutManager.getPlayer(player);
-                    World world = splayer.getWorld();
                     for (CustomTools tool:BlockLoader.customtools){
                         if (tool.isSword() && splayer.isSpoutCraftEnabled()) {
                             if (splayer.getItemInHand().getDurability() == tool.getCustomId()) {
@@ -54,13 +70,12 @@ public class MoOresEntityListener implements Listener  {
                                 if (tool.isFireSword()) {
                                     entityhit.setFireTicks(tool.getFireTicks());
                                 }
-                                if (entityhit instanceof Player && tool.isPoisonSword()) {
-                                    Player playerhit = (Player) entityhit;
-                                    playerhit.addPotionEffect(new PotionEffect(PotionEffectType.POISON, tool.getPoisonTicks(), 1));
+                                if (entityhit instanceof LivingEntity && tool.isPoisonSword()) {
+                                    LivingEntity hit = (LivingEntity) entityhit;
+                                    hit.addPotionEffect(new PotionEffect(PotionEffectType.POISON, tool.getPoisonTicks(), 1));
                                 }
                                 if (tool.isLightningSword()) {
-                                    Location location = entityhit.getLocation();
-                                    world.strikeLightning(location);
+                                    splayer.getWorld().strikeLightning(entityhit.getLocation());
                                 }
                                 return;
                             }
