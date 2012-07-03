@@ -16,6 +16,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -92,6 +93,15 @@ public class MoOresPlayerListener implements Listener {
         }
     }
     @EventHandler(priority = EventPriority.HIGHEST)
+    public void onArrowShotFromBow(EntityShootBowEvent event) {
+    	if (event.getEntity() instanceof Skeleton) {
+    		Skeleton skelly = (Skeleton) event.getEntity();
+    		//TODO add configuration to skeleton for custom arrows...
+    	} else if (event.getEntity() instanceof SpoutPlayer) {
+    		
+    	}
+    }
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onItemInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_AIR) {
         	SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
@@ -106,14 +116,14 @@ public class MoOresPlayerListener implements Listener {
         		                ItemStack stack = new SpoutItemStack(arrows);
         		                if (inventory.contains(stack)) {
         		                    arrow = arrows;
-        		                    arrowstack = inventory.getItem(inventory.first(arrowstack));
+        		                    arrowstack = inventory.getItem(inventory.first(stack));
         		                    if (arrowstack.getAmount() > 1) {
         		                    	arrowstack.setAmount(arrowstack.getAmount() - 1);
         		                    } else {
         		                    	player.setItemInHand(null);
         		                    }
         		                    Vector direction = player.getEyeLocation().getDirection().multiply(2.5);
-        		                    Arrow spawnedarrow = player.getWorld().spawnArrow(player.getLocation(), direction, this.getSpeed() + arrow.getSpeedModifier(), 12);
+        		                    Arrow spawnedarrow = player.getWorld().spawnArrow(player.getLocation(), direction, bow.getSpeed() + arrow.getSpeedModifier(), 12);
         		                    MoArrow.setDamage(spawnedarrow, arrow.getArrowDamage());
         		                    MoArrow.setIsFireArrow(spawnedarrow, arrow.isFireArrow());
         		                    MoArrow.setIsPoisonArrow(spawnedarrow, arrow.isPoisonArrow());
@@ -123,7 +133,7 @@ public class MoOresPlayerListener implements Listener {
         		                    MoArrow.setPoisonTicks(spawnedarrow, arrow.getpoisonTicks());
         		                    MoArrow.setNumberOfLightningBolts(spawnedarrow, arrow.getNumOfBolts());
         		                    MoArrow.setExplosionPower(spawnedarrow, arrow.getExplosionRadius());
-        		                    EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, this.getSpeed() + arrow.getSpeedModifier());
+        		                    EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, bow.getSpeed() + arrow.getSpeedModifier());
         		                    Bukkit.getPluginManager().callEvent(evt);
         		                }
         		            }

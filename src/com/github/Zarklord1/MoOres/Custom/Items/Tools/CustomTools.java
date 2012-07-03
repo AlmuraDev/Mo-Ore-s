@@ -1,24 +1,16 @@
 package com.github.Zarklord1.MoOres.Custom.Items.Tools;
 
-import com.github.Zarklord1.MoOres.Custom.Items.Arrows.CustomArrows;
-import com.github.Zarklord1.MoOres.Custom.Items.Arrows.MoArrow;
-import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Util.BlockLoader;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Arrow;
-import org.bukkit.event.entity.EntityShootBowEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.util.Vector;
 import org.getspout.spoutapi.block.SpoutBlock;
-import org.getspout.spoutapi.inventory.SpoutItemStack;
-import org.getspout.spoutapi.inventory.SpoutPlayerInventory;
 import org.getspout.spoutapi.material.Block;
 import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.item.GenericCustomTool;
 import org.getspout.spoutapi.player.SpoutPlayer;
+
+import com.github.Zarklord1.MoOres.MoOres;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class CustomTools extends GenericCustomTool {
     
