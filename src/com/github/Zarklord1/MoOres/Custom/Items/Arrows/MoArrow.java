@@ -8,12 +8,12 @@ public class MoArrow{
 	
 	private static HashMap<Arrow, Boolean> FireArrow = new LinkedHashMap<Arrow, Boolean>();
 	private static HashMap<Arrow, Boolean> PoisonArrow = new LinkedHashMap<Arrow, Boolean>();
-        private static HashMap<Arrow, Boolean> LightningArrow = new LinkedHashMap<Arrow, Boolean>();
-        private static HashMap<Arrow, Boolean> ExplosiveArrow = new LinkedHashMap<Arrow, Boolean>();
+	private static HashMap<Arrow, Boolean> LightningArrow = new LinkedHashMap<Arrow, Boolean>();
+	private static HashMap<Arrow, Boolean> ExplosiveArrow = new LinkedHashMap<Arrow, Boolean>();
 	private static HashMap<Arrow, Integer> FireTicks = new LinkedHashMap<Arrow, Integer>();
-        private static HashMap<Arrow, Integer> PoisonTicks = new LinkedHashMap<Arrow, Integer>();
-        private static HashMap<Arrow, Integer> NumOfBolts = new LinkedHashMap<Arrow, Integer>();
-        private static HashMap<Arrow, Float> ExplosionRadius = new LinkedHashMap<Arrow, Float>();
+	private static HashMap<Arrow, Integer> PoisonTicks = new LinkedHashMap<Arrow, Integer>();
+	private static HashMap<Arrow, Integer> NumOfBolts = new LinkedHashMap<Arrow, Integer>();
+	private static HashMap<Arrow, Float> ExplosionPower = new LinkedHashMap<Arrow, Float>();
 	private static HashMap<Arrow, Integer> Damage = new LinkedHashMap<Arrow, Integer>();
         
 
@@ -97,8 +97,8 @@ public class MoArrow{
 	}
 
 
-	public static void setExplosionRadius(Arrow arrow, float Radius) {
-            MoArrow.ExplosionRadius.put(arrow, Radius);
+	public static void setExplosionPower(Arrow arrow, float Radius) {
+            MoArrow.ExplosionPower.put(arrow, Radius);
 	}
 	
 
@@ -126,8 +126,8 @@ public class MoArrow{
 	}
 
 	public static float getExplosionRadius(Arrow arrow) {
-            if (MoArrow.ExplosionRadius.containsKey(arrow)) {
-                return MoArrow.ExplosionRadius.get(arrow);
+            if (MoArrow.ExplosionPower.containsKey(arrow)) {
+                return MoArrow.ExplosionPower.get(arrow);
             }
             return 3.5F;
 	}

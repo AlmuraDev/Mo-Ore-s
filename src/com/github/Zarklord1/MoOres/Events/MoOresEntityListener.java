@@ -39,6 +39,7 @@ public class MoOresEntityListener implements Listener  {
                     if (player.isSpoutCraftEnabled()) {
                         event.setDamage(MoArrow.getDamage(arrow));
                         if (MoArrow.IsExplosiveArrow(arrow)) {
+                        	player.getWorld().createExplosion(player.getLocation(), MoArrow.getExplosionRadius(arrow), true);
                         }
                         if (MoArrow.IsFireArrow(arrow)) {
                             entityhit.setFireTicks(MoArrow.getFireTicks(arrow));

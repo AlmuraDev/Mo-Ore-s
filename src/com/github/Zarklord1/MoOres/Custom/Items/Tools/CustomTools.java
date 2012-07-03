@@ -140,7 +140,7 @@ public class CustomTools extends GenericCustomTool {
                 MoArrow.setFireTicks(spawnedarrow, arrow.getFireTicks());
                 MoArrow.setPoisonTicks(spawnedarrow, arrow.getpoisonTicks());
                 MoArrow.setNumberOfLightningBolts(spawnedarrow, arrow.getNumOfBolts());
-                MoArrow.setExplosionRadius(spawnedarrow, arrow.getExplosionRadius());
+                MoArrow.setExplosionPower(spawnedarrow, arrow.getExplosionRadius());
                 EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, this.getSpeed() + arrow.getSpeedModifier());
                 Bukkit.getPluginManager().callEvent(evt);
             }
