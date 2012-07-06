@@ -1,6 +1,5 @@
-package com.github.Zarklord1.MoOres.Custom.Blocks.Ores;
+package com.github.Zarklord1.MoOres.Custom.Blocks;
 
-import com.github.Zarklord1.MoOres.MoOres;
 import org.bukkit.Material;
 
 public class OriginalOres {
@@ -10,7 +9,7 @@ public class OriginalOres {
     private int freq = 0;
     Material material;
     
-    public OriginalOres(MoOres plugin, Material material, int freq, int minY, int maxY) {
+    public OriginalOres(Material material, int freq, int minY, int maxY) {
         this.minY = minY;
         this.maxY = maxY;
         this.freq = freq;

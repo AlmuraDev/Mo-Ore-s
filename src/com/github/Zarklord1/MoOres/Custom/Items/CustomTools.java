@@ -1,8 +1,7 @@
-package com.github.Zarklord1.MoOres.Custom.Items.Tools;
+package com.github.Zarklord1.MoOres.Custom.Items;
 
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
-import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.material.Block;
 import org.getspout.spoutapi.material.MaterialData;
@@ -27,53 +26,52 @@ public class CustomTools extends GenericCustomTool {
     int poisonticks;
     int damage;
     float speed;
-    public CustomTools(Plugin plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks, float speed) {
-	super(MoOres.plugin, name, textureurl);
-	this.setDurability(durability);
-        this.damage = damage;
-        this.Axe = Axe;
-        this.Shovel = Shovel;
-        this.Hoe = Hoe;
-        this.Bow = Bow;
-        this.Sword = Sword;
-        this.fire = fire;
-        this.fireticks = fireticks;
-        this.poisonticks = poisonticks;
-        this.Pickaxe = Pickaxe;
-        this.poison = poison;
-        this.lightning = lightning;
-        this.speed = speed;
-        
-		if (this.isPickaxe()) {
+    public CustomTools(String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks, float speed) {
+    	super(MoOres.plugin, name, textureurl);
+    	this.setDurability(durability);
+    	this.damage = damage;
+    	this.Axe = Axe;
+    	this.Shovel = Shovel;
+    	this.Hoe = Hoe;
+    	this.Bow = Bow;
+    	this.Sword = Sword;
+    	this.fire = fire;
+    	this.fireticks = fireticks;
+    	this.poisonticks = poisonticks;
+    	this.Pickaxe = Pickaxe;
+    	this.poison = poison;
+    	this.lightning = lightning;
+    	this.speed = speed;
+    	
+    	if (this.isPickaxe()) {
 			for (Block block:BlockLoader.PickaxeSpeedIds) {
 				this.setStrengthModifier(block, strength);
             }
-		}
+    	}
                 
-        if (Axe) {
+    	if (Axe) {
         	for (Block block:BlockLoader.AxeSpeedIds) {
         		this.setStrengthModifier(block, strength);
         	}
-		}
+    	}
                 
-        if (Shovel) {
+    	if (Shovel) {
         	for (Block block:BlockLoader.ShovelSpeedIds) {
         		this.setStrengthModifier(block, strength);
         	}
-        }
+    	}
                 
-        if (Sword) {
+    	if (Sword) {
         	for (Block block:BlockLoader.SwordSpeedIds) {
         		this.setStrengthModifier(block, strength);
         	}
-		}
+    	}
                 
     }
     
     public boolean isPickaxe() {
         return Pickaxe;
     }
-    
     public boolean isAxe() {
         return Axe;
     }
@@ -115,11 +113,13 @@ public class CustomTools extends GenericCustomTool {
     }
     @Override
     public boolean onItemInteract(SpoutPlayer player, SpoutBlock block, BlockFace face) {
-        if (this.isHoe()) {
-          if (block.equals(MaterialData.dirt) || block.equals(MaterialData.grass)) {
-              block.setType(Material.SOIL);
-          }
-        }
+    	if (player.isSpoutCraftEnabled()) {
+    		if (this.isHoe()) {
+    			if (block.equals(MaterialData.dirt) || block.equals(MaterialData.grass)) {
+    				block.setType(Material.SOIL);
+    			}
+    		}
+    	}
         return true;
     }
 }

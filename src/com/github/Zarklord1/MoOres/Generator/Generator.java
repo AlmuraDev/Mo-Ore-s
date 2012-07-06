@@ -2,7 +2,6 @@ package com.github.Zarklord1.MoOres.Generator;
 
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Util.BO2Populator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,8 +22,6 @@ public class Generator extends ChunkGenerator {
 	double noise;
 	double noise2;
 	private boolean sealogged = false;
-	private boolean desertlogged = false;
-	private boolean mounlogged = false;
 	private boolean beachlogged = false;
 
 	public Generator(MoOres moOres) {

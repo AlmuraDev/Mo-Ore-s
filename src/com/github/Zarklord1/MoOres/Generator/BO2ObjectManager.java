@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Util;
+package com.github.Zarklord1.MoOres.Generator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class BO2ObjectManager {
 	static ArrayList<BO2Object> objects = new ArrayList<BO2Object>();
+	private static Scanner s;
 
 	public static void ReadBO2Files(String path) throws FileNotFoundException
 	  {
@@ -14,9 +15,9 @@ public class BO2ObjectManager {
 	    File[] files = dir.listFiles();
 
 	    for (int i = 0; i < files.length; i++) {
-	      Scanner s = new Scanner(files[i]);
+	      s = new Scanner(files[i]);
 	      BO2Object obj = new BO2Object();
-	      ArrayList strs = new ArrayList();
+	      ArrayList<String> strs = new ArrayList<String>();
 	      while (s.hasNext())
 	      {
 	        String str = s.nextLine();

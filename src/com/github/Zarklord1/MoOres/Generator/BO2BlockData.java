@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Util;
+package com.github.Zarklord1.MoOres.Generator;
 
 import org.bukkit.*;
 

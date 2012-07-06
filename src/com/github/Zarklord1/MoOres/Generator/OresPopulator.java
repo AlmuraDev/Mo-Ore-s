@@ -3,7 +3,8 @@ package com.github.Zarklord1.MoOres.Generator;
 import java.util.Random;
 
 import com.github.Zarklord1.MoOres.*;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.*;
+import com.github.Zarklord1.MoOres.Custom.Blocks.CustomOres;
+import com.github.Zarklord1.MoOres.Custom.Blocks.OriginalOres;
 import com.github.Zarklord1.MoOres.Config.*;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 

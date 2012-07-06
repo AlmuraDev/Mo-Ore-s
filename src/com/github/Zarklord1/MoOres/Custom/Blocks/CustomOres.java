@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Custom.Blocks.Ores;
+package com.github.Zarklord1.MoOres.Custom.Blocks;
 
 import com.github.Zarklord1.MoOres.MoOres;
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
@@ -18,8 +18,8 @@ public class CustomOres extends GenericCubeCustomBlock {
     float friction = 0.0F;
     int id;
     
-    public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomItem drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
-        super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, MoOres.ores, textureid));
+    public CustomOres(String name, int textureid, int freq, int minY, int maxY, CustomItem drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
+        super(MoOres.plugin, name, blockId, metadata, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureid));
         this.minY = minY;
         this.maxY = maxY;
         this.freq = freq;
@@ -34,8 +34,8 @@ public class CustomOres extends GenericCubeCustomBlock {
         this.setItemDrop(drops);
     }
  
-    public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, CustomBlock drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
-        super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, MoOres.ores, textureid));
+    public CustomOres(String name, int textureid, int freq, int minY, int maxY, CustomBlock drop, float hard, int light, float friction, int amount, int blockId, int metadata) {
+        super(MoOres.plugin, name, blockId, metadata, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureid));
         this.minY = minY;
         this.maxY = maxY;
         this.freq = freq;
@@ -55,8 +55,8 @@ public class CustomOres extends GenericCubeCustomBlock {
         }
     }
 
-    public CustomOres(MoOres plugin, String name, int textureid, int freq, int minY, int maxY, float hard, int light, float friction, int amount, int blockId, int metadata, int dropid, short dropmetaid) {
-        super(plugin, name, blockId, metadata, new GenericCubeBlockDesign(plugin, MoOres.ores, textureid));
+    public CustomOres(String name, int textureid, int freq, int minY, int maxY, float hard, int light, float friction, int amount, int blockId, int metadata, int dropid, short dropmetaid) {
+        super(MoOres.plugin, name, blockId, metadata, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureid));
         this.minY = minY;
         this.maxY = maxY;
         this.freq = freq;

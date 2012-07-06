@@ -4,7 +4,6 @@ import com.github.Zarklord1.FurnaceApi.FurnaceRecipes;
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import java.util.Iterator;
 import java.util.List;
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.SpoutManager;
@@ -68,7 +67,7 @@ public class RecipeLoader {
                             }
                         }
                         List<String> recshape = Configuration.recipe.getStringList("Shaped Recipes." + resultname + ".Recipe" + rpcnum + ".Shape");
-                        Iterator rec = recshape.iterator();
+                        Iterator<String> rec = recshape.iterator();
                         if (recshape.size() == 1) {
                             shapedrecipe.shape(rec.next().toString());
                         } else if (recshape.size() == 2) {

@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Custom.Blocks.Bushes;
+package com.github.Zarklord1.MoOres.Custom.Blocks;
 
 import com.github.Zarklord1.MoOres.MoOres;
 import org.getspout.spoutapi.block.design.GenericBlockDesign;
@@ -8,10 +8,10 @@ import org.getspout.spoutapi.block.design.Texture;
 public class CustomBushDesign extends GenericBlockDesign {
     public static int freq = 0;
 
-    public CustomBushDesign(MoOres plugin, int[] textureids, int freq) {
+    public CustomBushDesign(int[] textureids, int freq) {
         Texture thetexture = MoOres.plants;
         setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).setQuadNumber(26);
-        setTexture(plugin, thetexture.getTexture()).setMinBrightness(1.0F).setMaxBrightness(1.0F);
+        setTexture(MoOres.plugin, thetexture.getTexture()).setMinBrightness(1.0F).setMaxBrightness(1.0F);
 
         Quad bottom = new Quad(0, thetexture.getSubTexture(textureids[0]));
         bottom.addVertex(3, 0.25F, 0.0F, 0.25F);

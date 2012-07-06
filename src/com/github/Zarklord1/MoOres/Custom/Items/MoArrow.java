@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Custom.Items.Arrows;
+package com.github.Zarklord1.MoOres.Custom.Items;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Custom.Items.Arrows;
+package com.github.Zarklord1.MoOres.Custom.Items;
 
 import org.getspout.spoutapi.material.item.GenericCustomItem;
 
@@ -49,13 +49,13 @@ public class CustomArrows extends GenericCustomItem {
 	public int getFireTicks() {
 		return fireticks;
 	}
-	public int getpoisonTicks() {
+	public int getPoisonTicks() {
 		return poisonticks;
 	}
 	public int getNumOfBolts() {
 		return this.NumofBoltStrikes;
 	}
-	public float getExplosionRadius() {
+	public float getExplosionPower() {
             return this.Power;
         }
 	public float getSpeedModifier() {

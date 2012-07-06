@@ -1,24 +1,24 @@
-package com.github.Zarklord1.MoOres.Custom.Items.Food;
+package com.github.Zarklord1.MoOres.Custom.Items;
 
 import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
+import com.github.Zarklord1.MoOres.MoOres;
 
-public class CustomFishes extends GenericCustomItem {
-    int restore;
-    int chance;
-    
-    public CustomFishes(Plugin plugin, String name, String texture, int restore, int chance){
-        super(plugin, name, texture);
-        this.restore = restore;
-        this.chance = chance;
-    }
+public class CustomFood extends GenericCustomItem
+{
+  int restore;
+
+  public CustomFood(String name, String texture, int restore)
+  {
+    super(MoOres.plugin, name, texture);
+    this.restore = restore;
+  }
 
     @Override
     public boolean onItemInteract(SpoutPlayer player, SpoutBlock block, BlockFace face) {
@@ -43,9 +43,6 @@ public class CustomFishes extends GenericCustomItem {
         return true;
     }
     
-    public int getchance() {
-        return chance;
-    }
     public int getId() {
       return 318;
    }

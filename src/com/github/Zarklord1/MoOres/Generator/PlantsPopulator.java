@@ -143,7 +143,7 @@ public class PlantsPopulator extends BlockPopulator {
 				if(Configuration.generator.getBoolean("Generator.Plants.Pumpkins and Melons") == true){
 					type = (random.nextInt(100) < 40) ? Material.MELON_BLOCK : Material.PUMPKIN;
 					if(random.nextInt(10000) < 1){
-						int a = random.nextInt(1);
+						random.nextInt(1);
 						block = chunk.getBlock(x,y,z);
 						if(block != null){
 							if(block.getType() == Material.GRASS){

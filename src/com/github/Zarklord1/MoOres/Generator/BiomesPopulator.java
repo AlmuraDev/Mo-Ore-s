@@ -19,7 +19,6 @@ public class BiomesPopulator extends BlockPopulator {
 
 	private boolean sealogged = false;
 	private boolean desertlogged = false;
-	private boolean mounlogged = false;
 	private boolean beachlogged = false;
 
 	public void populate(World world, Random random, Chunk chunk) {

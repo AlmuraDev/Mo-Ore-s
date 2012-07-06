@@ -1,29 +1,19 @@
 package com.github.Zarklord1.MoOres.Util;
 
 import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Bushes.CustomBush;
-import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.CustomOres;
-import com.github.Zarklord1.MoOres.Custom.Blocks.Ores.OriginalOres;
-import com.github.Zarklord1.MoOres.Custom.Items.Arrows.CustomArrows;
-import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
-import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFishes;
-import com.github.Zarklord1.MoOres.Custom.Items.Food.CustomFood;
-import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
-import com.github.Zarklord1.MoOres.MoOres;
+import com.github.Zarklord1.MoOres.Custom.Blocks.*;
+import com.github.Zarklord1.MoOres.Custom.Items.*;
 import java.util.*;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
-import org.getspout.spoutapi.material.Block;
-import org.getspout.spoutapi.material.CustomBlock;
-import org.getspout.spoutapi.material.CustomItem;
-import org.getspout.spoutapi.material.MaterialData;
+import org.getspout.spoutapi.material.*;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
 
 public class BlockLoader {
-    private static String[] ores;
+	
+
     
     public static HashSet<Material> Pickaxebreackableblocks = new LinkedHashSet<Material>();
     public static Set<Block> PickaxeSpeedIds = new LinkedHashSet<Block>();
@@ -58,7 +48,7 @@ public class BlockLoader {
     public static Set<OriginalOres> originalores = new LinkedHashSet<OriginalOres>();
     public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet<GenericCubeCustomBlock>();
     
-    public static void CustomOres(MoOres plugin) {
+    public static void CustomOres() {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Ores");
         Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
@@ -98,49 +88,49 @@ public class BlockLoader {
                 drop = Configuration.block.getString("Custom Ores." + name + ".drop");
                 if (customblocksmap.containsKey(drop)) {
                     bdrop = customblocksmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
                 } else if (custombushesmap.containsKey(drop)) {
                     bdrop = custombushesmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
                 } else if (customitemsmap.containsKey(drop)) {
                     idrop = customitemsmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
                 } else if (customfishmap.containsKey(drop)) {
                     idrop = customfishmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
                 } else if (customarrowsmap.containsKey(drop)) {
                     idrop = customarrowsmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
                 } else if (customfoodmap.containsKey(drop)) {
                     idrop = customfoodmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
                 } else if (customtoolsmap.containsKey(drop)) {
                     idrop = customtoolsmap.get(drop);
-                    addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
+                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
                 } else {
                     if (drop.contains(":")) {
-                        ores = drop.split(":");
-                        addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(ores[0]), Short.parseShort(ores[1]));
+                        String[] ores = drop.split(":");
+                        addOre(name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(ores[0]), Short.parseShort(ores[1]));
                     } else {
-                        addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(drop), Short.parseShort("o"));
+                        addOre(name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(drop), Short.parseShort("o"));
                     }
                 }
             } else {
-                addOre(plugin, name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
+                addOre(name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
             }
         }
     }
-    public static void CustomBushes(MoOres plugin) {
+    public static void CustomBushes() {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Bushes");
         Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
             int textureID = Configuration.block.getInt("Custom Bushes." + name + ".textureID");
             int freq = Configuration.block.getInt("Custom Bushes." + name + ".frequency");
-            addbushes(plugin, name, new int[] {textureID, textureID, textureID, textureID, textureID, textureID}, freq);
+            addbushes(name, new int[] {textureID, textureID, textureID, textureID, textureID, textureID}, freq);
         }
     }
-    public static void CustomBlock(MoOres plugin) {
+    public static void CustomBlock() {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Blocks");
         Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
@@ -159,16 +149,16 @@ public class BlockLoader {
             if (Configuration.block.contains("Custom Blocks." + name + ".metadata id")) {
                 metadata = Configuration.block.getInt("Custom Blocks." + name + ".metadata id");
             }
-            addblock(plugin, name, textureID, hard, light, friction, id, metadata);
+            addblock(name, textureID, hard, light, friction, id, metadata);
         }
     }
-    public static void CustomItems(MoOres plugin) {
+    public static void CustomItems() {
         ConfigurationSection section = Configuration.items.getConfigurationSection("Custom Items");
         Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
             String textureurl = Configuration.items.getString("Custom Items." + name + ".texture url");
-            addItem(plugin, name, textureurl);
+            addItem(name, textureurl);
         }
         ConfigurationSection section2 = Configuration.items.getConfigurationSection("Custom Tools");
         Iterator<String> keys2 = section2.getKeys(false).iterator();
@@ -190,7 +180,7 @@ public class BlockLoader {
             int fireticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Fire Ticks");
             int poisonticks = Configuration.items.getInt("Custom Tools." + name + ".Sword.Poison Ticks");
             float speed = Configuration.items.getFloat("Custom Tools." + name + "Bow.Speed");
-            addTool(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, fireticks, poison, lightning, poisonticks, speed);
+            addTool(name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, fireticks, poison, lightning, poisonticks, speed);
         }
         ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
         Iterator<String> keys3 = section3.getKeys(false).iterator();
@@ -198,7 +188,7 @@ public class BlockLoader {
             String name = (String)keys3.next();
             String textureurl = Configuration.items.getString("Custom Food." + name + ".texture url");
             int restore = Configuration.items.getInt("Custom Food." + name + ".restore");
-            addFood(plugin, name, textureurl, restore);
+            addFood(name, textureurl, restore);
         }
         ConfigurationSection section4 = Configuration.items.getConfigurationSection("Custom Fish");
         Iterator<String> keys4 = section4.getKeys(false).iterator();
@@ -207,31 +197,31 @@ public class BlockLoader {
             String textureurl = Configuration.items.getString("Custom Fish." + name + ".texture url");
             int restore = Configuration.items.getInt("Custom Fish." + name + ".restore");
             int chance = Configuration.items.getInt("Custom Fish." + name + ".chance", 100);
-            addFish(plugin, name, textureurl, restore, chance);
+            addFish(name, textureurl, restore, chance);
         }
     }
-    private static void addblock(MoOres plugin, String name, int textureID, float hard, int light, float friction, int id , int metadata) {
-        CustomBlocks block = new CustomBlocks(plugin, name, textureID, hard, light, friction, id ,metadata);
+    private static void addblock(String name, int textureID, float hard, int light, float friction, int id , int metadata) {
+        CustomBlocks block = new CustomBlocks(name, textureID, hard, light, friction, id ,metadata);
         customblocks.add(block);
         customblocksmap.put(name, block);
     }
-    private static void addOre(MoOres plugin, String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, CustomBlock drop, int amount, int id , int metadata) {
-        CustomOres ore = new CustomOres(plugin, name, textureID, freq, minY, maxY, drop, hard, light, friction, amount, id ,metadata);
+    private static void addOre(String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, CustomBlock drop, int amount, int id , int metadata) {
+        CustomOres ore = new CustomOres(name, textureID, freq, minY, maxY, drop, hard, light, friction, amount, id ,metadata);
         customores.add(ore);
         customoresmap.put(name, ore);
     }
-    private static void addOre(MoOres plugin, String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, CustomItem drop, int amount, int id , int metadata) {
-        CustomOres ore = new CustomOres(plugin, name, textureID, freq, minY, maxY, drop, hard, light, friction, amount, id ,metadata);
+    private static void addOre(String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, CustomItem drop, int amount, int id , int metadata) {
+        CustomOres ore = new CustomOres(name, textureID, freq, minY, maxY, drop, hard, light, friction, amount, id ,metadata);
         customores.add(ore);
         customoresmap.put(name, ore);
     }
-    private static void addOre(MoOres plugin, String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, int amount, int id , int metadata, int dropid, short dropmetaid) {
-        CustomOres ore = new CustomOres(plugin, name, textureID, freq, minY, maxY, hard, light, friction, amount, id , metadata, dropid, dropmetaid);
+    private static void addOre(String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, int amount, int id , int metadata, int dropid, short dropmetaid) {
+        CustomOres ore = new CustomOres(name, textureID, freq, minY, maxY, hard, light, friction, amount, id , metadata, dropid, dropmetaid);
         customores.add(ore);
         customoresmap.put(name, ore);
     }
-    private static void addItem(MoOres plugin, String name, String textureurl) {
-        CustomItems item = new CustomItems(plugin, name, textureurl);
+    private static void addItem(String name, String textureurl) {
+        CustomItems item = new CustomItems(name, textureurl);
         customitems.add(item);
         customitemsmap.put(name, item);
     }
@@ -240,43 +230,43 @@ public class BlockLoader {
         customarrows.add(arrow);
         customarrowsmap.put(name, arrow);
     }
-    private static void addFood(MoOres plugin, String name, String textureurl, int restore) {
-        CustomFood food = new CustomFood(plugin, name, textureurl, restore);
+    private static void addFood(String name, String textureurl, int restore) {
+        CustomFood food = new CustomFood(name, textureurl, restore);
         customfood.add(food);
         customfoodmap.put(name, food);
     }
-    private static void addFish(MoOres plugin, String name, String textureurl, int restore, int chance) {
-        CustomFishes fish = new CustomFishes(plugin, name, textureurl, restore, chance);
+    private static void addFish(String name, String textureurl, int restore, int chance) {
+        CustomFishes fish = new CustomFishes(name, textureurl, restore, chance);
         customfish.add(fish);
         customfishmap.put(name, fish);
     }
-    private static void addTool(MoOres plugin, String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean lightning, boolean poison, int poisonticks, float speed) {
-        CustomTools tool = new CustomTools(plugin, name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, ticks, lightning, poison, poisonticks, speed);
+    private static void addTool(String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int ticks, boolean lightning, boolean poison, int poisonticks, float speed) {
+        CustomTools tool = new CustomTools(name, textureurl, durability, strength, Pickaxe, Axe, Shovel, Hoe, Bow, Sword, damage, fire, ticks, lightning, poison, poisonticks, speed);
         customtools.add(tool);
         customtoolsmap.put(name, tool);
     }
-    private static void addbushes(MoOres plugin, String name, int[] textureids, int freq) {
-        CustomBush bush = new CustomBush(plugin, name, textureids, freq);
+    private static void addbushes(String name, int[] textureids, int freq) {
+        CustomBush bush = new CustomBush(name, textureids, freq);
         custombushes.add(bush);
         custombushesmap.put(name, bush);
     }
-    public static void registerBlocks(MoOres plugin) {
-        OriginalOres CoalOre = new OriginalOres(plugin, Material.COAL_ORE, Configuration.block.getInt("Original Ores.Coal Ore.frequency"), Configuration.block.getInt("Original Ores.Coal Ore.minheight"), Configuration.block.getInt("Original Ores.Coal Ore.maxheight"));
-        OriginalOres IronOre = new OriginalOres(plugin, Material.IRON_ORE, Configuration.block.getInt("Original Ores.Iron Ore.frequency"), Configuration.block.getInt("Original Ores.Iron Ore.minheight"), Configuration.block.getInt("Original Ores.Iron Ore.maxheight"));
-        OriginalOres LapisOre = new OriginalOres(plugin, Material.LAPIS_ORE, Configuration.block.getInt("Original Ores.Lapis Ore.frequency"), Configuration.block.getInt("Original Ores.Lapis Ore.minheight"), Configuration.block.getInt("Original Ores.Lapis Ore.maxheight"));
-        OriginalOres GoldOre = new OriginalOres(plugin, Material.GOLD_ORE, Configuration.block.getInt("Original Ores.Gold Ore.frequency"), Configuration.block.getInt("Original Ores.Gold Ore.minheight"), Configuration.block.getInt("Original Ores.Gold Ore.maxheight"));
-        OriginalOres RedstoneOre = new OriginalOres(plugin, Material.REDSTONE_ORE, Configuration.block.getInt("Original Ores.Redstone Ore.frequency"), Configuration.block.getInt("Original Ores.Redstone Ore.minheight"), Configuration.block.getInt("Original Ores.Redstone Ore.maxheight"));
-        OriginalOres DiamondOre = new OriginalOres(plugin, Material.DIAMOND_ORE, Configuration.block.getInt("Original Ores.Diamond Ore.frequency"), Configuration.block.getInt("Original Ores.Diamond Ore.minheight"), Configuration.block.getInt("Original Ores.Diamond Ore.maxheight"));
+    public static void registerBlocks() {
+        OriginalOres CoalOre = new OriginalOres(Material.COAL_ORE, Configuration.block.getInt("Original Ores.Coal Ore.frequency"), Configuration.block.getInt("Original Ores.Coal Ore.minheight"), Configuration.block.getInt("Original Ores.Coal Ore.maxheight"));
+        OriginalOres IronOre = new OriginalOres(Material.IRON_ORE, Configuration.block.getInt("Original Ores.Iron Ore.frequency"), Configuration.block.getInt("Original Ores.Iron Ore.minheight"), Configuration.block.getInt("Original Ores.Iron Ore.maxheight"));
+        OriginalOres LapisOre = new OriginalOres(Material.LAPIS_ORE, Configuration.block.getInt("Original Ores.Lapis Ore.frequency"), Configuration.block.getInt("Original Ores.Lapis Ore.minheight"), Configuration.block.getInt("Original Ores.Lapis Ore.maxheight"));
+        OriginalOres GoldOre = new OriginalOres(Material.GOLD_ORE, Configuration.block.getInt("Original Ores.Gold Ore.frequency"), Configuration.block.getInt("Original Ores.Gold Ore.minheight"), Configuration.block.getInt("Original Ores.Gold Ore.maxheight"));
+        OriginalOres RedstoneOre = new OriginalOres(Material.REDSTONE_ORE, Configuration.block.getInt("Original Ores.Redstone Ore.frequency"), Configuration.block.getInt("Original Ores.Redstone Ore.minheight"), Configuration.block.getInt("Original Ores.Redstone Ore.maxheight"));
+        OriginalOres DiamondOre = new OriginalOres(Material.DIAMOND_ORE, Configuration.block.getInt("Original Ores.Diamond Ore.frequency"), Configuration.block.getInt("Original Ores.Diamond Ore.minheight"), Configuration.block.getInt("Original Ores.Diamond Ore.maxheight"));
         originalores.add(CoalOre);
         originalores.add(IronOre);
         originalores.add(LapisOre);
         originalores.add(GoldOre);
         originalores.add(RedstoneOre);
         originalores.add(DiamondOre);
-        CustomBlock(plugin);
-        CustomBushes(plugin);
-        CustomItems(plugin);
-        CustomOres(plugin);
+        CustomBlock();
+        CustomBushes();
+        CustomItems();
+        CustomOres();
         addArrow("Test Arrow", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 7, true, false, false, false, 100, 0, 0, 0.0F, 3.5F);
     }
     public static void addvanillablocks() {

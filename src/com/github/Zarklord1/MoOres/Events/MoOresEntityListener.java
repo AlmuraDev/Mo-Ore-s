@@ -15,8 +15,8 @@ import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Custom.Items.Arrows.MoArrow;
-import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
+import com.github.Zarklord1.MoOres.Custom.Items.MoArrow;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresEntityListener implements Listener  {
