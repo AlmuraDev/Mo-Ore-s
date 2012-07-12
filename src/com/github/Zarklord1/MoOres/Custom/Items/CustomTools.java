@@ -28,7 +28,7 @@ public class CustomTools extends GenericCustomTool {
     float speed;
     public CustomTools(String name, String textureurl, short durability, float strength, boolean Pickaxe, boolean Axe, boolean Shovel, boolean Hoe, boolean Bow, boolean Sword, int damage, boolean fire, int fireticks, boolean poison, boolean lightning, int poisonticks, float speed) {
     	super(MoOres.plugin, name, textureurl);
-    	this.setDurability(durability);
+    	this.setMaxDurability(durability);
     	this.damage = damage;
     	this.Axe = Axe;
     	this.Shovel = Shovel;
@@ -117,6 +117,7 @@ public class CustomTools extends GenericCustomTool {
     		if (this.isHoe()) {
     			if (block.equals(MaterialData.dirt) || block.equals(MaterialData.grass)) {
     				block.setType(Material.SOIL);
+    				CustomTools.setDurability(player.getItemInHand(), (short) (CustomTools.getDurability(player.getItemInHand()) + 1));
     			}
     		}
     	}
