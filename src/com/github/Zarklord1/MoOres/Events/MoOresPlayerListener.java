@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
@@ -20,12 +21,12 @@ import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.getspout.spoutapi.SpoutManager;
+import org.getspout.spoutapi.event.spout.ServerTickEvent;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
@@ -131,17 +132,20 @@ public class MoOresPlayerListener implements Listener {
         		                stack = new SpoutItemStack(arrows, i);
         		                	if (inventory.contains(stack)) {
         		                		hasArrows = true;
+        		                		break;
         		                	}
         						}
         		                //does the inventory have any arrows?
-        		                if (hasArrows) {
+        		                if (hasArrows || player.getGameMode() == GameMode.CREATIVE) {
         		                    arrow = arrows;
         		                    //remove one arrow from the inventory
-        		                    arrowstack = inventory.getItem(inventory.first(stack));
-        		                    if (arrowstack.getAmount() > 1) {
-        		                    	arrowstack.setAmount(arrowstack.getAmount() - 1);
-        		                    } else {
-        		                    	inventory.setItem(inventory.first(stack), null);
+        		                    if (player.getGameMode() != GameMode.CREATIVE) {
+        		                    	arrowstack = inventory.getItem(inventory.first(stack));
+        		                    	if (arrowstack.getAmount() > 1) {
+        		                    		arrowstack.setAmount(arrowstack.getAmount() - 1);
+        		                    	} else {
+        		                    		inventory.setItem(inventory.first(stack), null);
+        		                    	}
         		                    }
         		                    //fire the arrow
         		                    CustomTools.setDurability(player.getItemInHand(), (short) (CustomTools.getDurability(player.getItemInHand()) + 1));
@@ -163,26 +167,27 @@ public class MoOresPlayerListener implements Listener {
     }
     //pickup any custom arrows...
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerMove(PlayerMoveEvent event) {
-    	SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
-    	//check if the player is using the spoutcraft client
-    	if (player.isSpoutCraftEnabled()) {
-    		//get the entities within 2 blocks of the player...
-    		for (Entity entity:player.getNearbyEntities(2.0D, 2.0D, 2.0D)) {
-    			//check if that entity is a fired arrow
-    			if (entity instanceof Arrow) {
-    				Arrow arrow = (Arrow)entity;
-    				List<MetadataValue> list = arrow.getMetadata(arrow.getUniqueId().toString());
-                	for (MetadataValue value:list) {
-                		if (value.getOwningPlugin().equals(MoOres.plugin)) {
-                			Object obj = value.value();
-                			if (obj instanceof CustomArrows) {
-                				CustomArrows itemarrow = (CustomArrows) obj;
-                				arrow.remove();
-                				player.getInventory().addItem(new SpoutItemStack(itemarrow));
+    public void onPlayerMove(ServerTickEvent event) {
+    	for (SpoutPlayer player:(SpoutPlayer[])(MoOres.plugin.getServer().getOnlinePlayers())) {
+    		//check if the player is using the spoutcraft client
+    		if (player.isSpoutCraftEnabled()) {
+    			//get the entities within 2 blocks of the player...
+    			for (Entity entity:player.getNearbyEntities(2.0D, 2.0D, 2.0D)) {
+    				//check if that entity is a fired arrow
+    				if (entity instanceof Arrow) {
+    					Arrow arrow = (Arrow)entity;
+    					List<MetadataValue> list = arrow.getMetadata(arrow.getUniqueId().toString());
+    					for (MetadataValue value:list) {
+    						if (value.getOwningPlugin().equals(MoOres.plugin)) {
+    							Object obj = value.value();
+    							if (obj instanceof CustomArrows) {
+                					CustomArrows itemarrow = (CustomArrows) obj;
+                					arrow.remove();
+                					player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
+                				}
                 			}
                 		}
-                	}
+    				}
     			}
     		}
     	}
