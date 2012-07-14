@@ -21,6 +21,7 @@ import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -37,13 +38,10 @@ import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresPlayerListener implements Listener {
-    public static MoOres plugin;
-    Boolean fishchanged = false;
+   
         
         
-    public MoOresPlayerListener(MoOres instance) {
-        plugin = instance; 
-    }
+    public MoOresPlayerListener() {}
     
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerFish(PlayerFishEvent event) {
@@ -150,7 +148,7 @@ public class MoOresPlayerListener implements Listener {
         		                    //fire the arrow
         		                    CustomTools.setDurability(player.getItemInHand(), (short) (CustomTools.getDurability(player.getItemInHand()) + 1));
         		                    Arrow spawnedarrow = player.launchProjectile(Arrow.class);
-        		                    spawnedarrow.setVelocity(spawnedarrow.getVelocity().multiply(2.5));
+        		                    spawnedarrow.setVelocity(spawnedarrow.getVelocity().multiply(bow.getSpeed() + arrow.getSpeedModifier()));
         		                    //SpoutManager.setEntitySkin(spawnedarrow, String url, EntitySkinType.valueOf(spawnedarrow.toString()));
         		                    //set the arrows atributes
         		                    spawnedarrow.setMetadata(spawnedarrow.getUniqueId().toString(), new FixedMetadataValue(MoOres.plugin, arrow));
@@ -165,25 +163,36 @@ public class MoOresPlayerListener implements Listener {
         	}
         }
     }
-    //pickup any custom arrows...
+    
+    
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerMove(ServerTickEvent event) {
-    	for (SpoutPlayer player:(SpoutPlayer[])(MoOres.plugin.getServer().getOnlinePlayers())) {
+    public void onWorldGenerate(WorldInitEvent event) {
+    	
+    }
+    
+    //pickup any custom arrows
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onServerTick(ServerTickEvent event) {
+    	for (Player pl:MoOres.plugin.getServer().getOnlinePlayers()) {
     		//check if the player is using the spoutcraft client
+    		SpoutPlayer player = SpoutManager.getPlayer(pl);
     		if (player.isSpoutCraftEnabled()) {
     			//get the entities within 2 blocks of the player...
     			for (Entity entity:player.getNearbyEntities(2.0D, 2.0D, 2.0D)) {
-    				//check if that entity is a fired arrow
+    				//is the entity a fired arrow
     				if (entity instanceof Arrow) {
     					Arrow arrow = (Arrow)entity;
     					List<MetadataValue> list = arrow.getMetadata(arrow.getUniqueId().toString());
     					for (MetadataValue value:list) {
     						if (value.getOwningPlugin().equals(MoOres.plugin)) {
-    							Object obj = value.value();
-    							if (obj instanceof CustomArrows) {
-                					CustomArrows itemarrow = (CustomArrows) obj;
-                					arrow.remove();
-                					player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
+    							if (value.value() instanceof CustomArrows) {
+                    				Bukkit.broadcastMessage("Hi!");
+                					CustomArrows itemarrow = (CustomArrows)value.value();
+                					//is the arrow moving?
+                					if (arrow.getVelocity() == null) {
+                						arrow.remove();
+                						player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
+                					}
                 				}
                 			}
                 		}

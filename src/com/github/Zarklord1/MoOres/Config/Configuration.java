@@ -9,7 +9,6 @@ public class Configuration {
     
     public static MoOresConfiguration config = new MoOresConfiguration();
     public static MoOresConfiguration block = new MoOresConfiguration();
-    public static MoOresConfiguration generator = new MoOresConfiguration();
     public static MoOresConfiguration items = new MoOresConfiguration();
     public static MoOresConfiguration texture = new MoOresConfiguration();
     public static MoOresConfiguration recipe = new MoOresConfiguration();
@@ -68,11 +67,6 @@ public class Configuration {
             ConfigWriter.setBushes(Configuration.block, "Custom Bushes");
             ConfigWriter.setOres(Configuration.block, "Custom Ores", "Original Ores");
             save(Configuration.block);
-        }
-        if (load(Configuration.generator, "WorldGenerator.yml")) {
-            Configuration.generator = MoOresConfiguration.loadConfiguration("plugins/MoOres/WorldGenerator.yml");
-            ConfigWriter.setGenerator(Configuration.generator, "Generator");
-            save(Configuration.generator);
         }
         if (load(Configuration.items, "Items.yml")) {
             Configuration.items = MoOresConfiguration.loadConfiguration("plugins/MoOres/Items.yml");

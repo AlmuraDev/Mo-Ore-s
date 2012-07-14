@@ -1147,50 +1147,8 @@ public class ConfigWriter {
         if (!cfg.contains("tools.Sword Block Break Speed")) {
             cfg.set("tools.Sword Block Break Speed", Arrays.asList(new String[] {"26", "30", "92"}));
         }
-    }
-    
-    public static void setGenerator(MoOresConfiguration cfg, String type) {
-        if (!cfg.contains(type + ".Biomes.Desert")) {
-            cfg.set(type + ".Biomes.Desert", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Biomes.Beach")) {
-            cfg.set(type + ".Biomes.Beach", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Biomes.Sea")) {
-            cfg.set(type + ".Biomes.Sea", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Biomes.Mushroom Island")) {
-            cfg.set(type + ".Biomes.Mushroom Island", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Structures.caves")) {
-            cfg.set(type + ".Structures.caves", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Ores.Custom")) {
-            cfg.set(type + ".Ores.Custom", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Ores.Original")) {
-            cfg.set(type + ".Ores.Original", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Grass")) {
-            cfg.set(type + ".Plants.Grass", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Flowers")) {
-            cfg.set(type + ".Plants.Flowers", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Cacti")) {
-            cfg.set(type + ".Plants.Cacti", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Pumpkins and Melons")) {
-            cfg.set(type + ".Plants.Pumpkins and Melons", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Sugar Cane")) {
-            cfg.set(type + ".Plants.Sugar Cane", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Trees")) {
-            cfg.set(type + ".Plants.Trees", Boolean.valueOf(true));
-        }
-        if (!cfg.contains(type + ".Plants.Mushrooms")) {
-            cfg.set(type + ".Plants.Mushrooms", Boolean.valueOf(true));
+        if (!cfg.contains("generator.Generate Custom Ores.List")) {
+        	cfg.set("generator.Generate Custom Ores.List", Arrays.asList(new String[] {"world"}));
         }
     }
 }

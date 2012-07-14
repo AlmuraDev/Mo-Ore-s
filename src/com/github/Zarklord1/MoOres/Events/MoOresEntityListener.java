@@ -26,9 +26,7 @@ import com.github.Zarklord1.MoOres.Util.BlockLoader;
 public class MoOresEntityListener implements Listener  {
     	public static MoOres plugin;
     
-    public MoOresEntityListener(MoOres instance) {
-        plugin = instance; 
-    }
+    public MoOresEntityListener() {}
     
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDamage ( EntityDamageByEntityEvent event )
@@ -43,15 +41,16 @@ public class MoOresEntityListener implements Listener  {
                     	List<MetadataValue> list = arrow.getMetadata(arrow.getUniqueId().toString());
                     	for (MetadataValue value:list) {
                     		if (value.getOwningPlugin().equals(MoOres.plugin)) {
-                    			Object obj = value.value();
-                    			if (obj instanceof CustomArrows) {
-                    				CustomArrows itemarrow = (CustomArrows) obj;
+                    			if (value.value() instanceof CustomArrows) {
+                    				CustomArrows itemarrow = (CustomArrows) value.value();
+                    				Bukkit.broadcastMessage("Hi!");
                     				event.setDamage(itemarrow.getArrowDamage());
                                     if (itemarrow.isExplosiveArrow()) {
                                     	player.getWorld().createExplosion(player.getLocation(), itemarrow.getExplosionPower(), true);
                                     }
                                     if (itemarrow.isFireArrow()) {
                                         entityhit.setFireTicks(itemarrow.getFireTicks());
+                                        Bukkit.broadcastMessage("Fire: " + itemarrow.isFireArrow() + " Ticks: " + itemarrow.getFireTicks());
                                     }
                                     if (itemarrow.isLighntingArrow()) {
                                         for (int i = 0; i < itemarrow.getNumOfBolts(); i++) {

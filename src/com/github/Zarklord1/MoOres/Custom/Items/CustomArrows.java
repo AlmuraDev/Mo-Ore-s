@@ -21,12 +21,12 @@ public class CustomArrows extends GenericCustomItem {
         this.fireArrow = firearrow;
         this.lighntingArrow = lighntingarrow;
         this.poisonArrow = Poisonarrow;
-            this.explosivearrow = ExplosionArrow;
-            this.fireticks = fireticks;
-            this.poisonticks = poisonticks;
-            this.NumofBoltStrikes = LightningStrikes;
-            this.Power = ExplosionPower;
-            this.speedmodifier = speedmodifier;
+        this.explosivearrow = ExplosionArrow;
+        this.fireticks = fireticks;
+        this.poisonticks = poisonticks;
+        this.NumofBoltStrikes = LightningStrikes;
+        this.Power = ExplosionPower;
+        this.speedmodifier = speedmodifier;
 	}
 	public int getId() {
             return 318;
