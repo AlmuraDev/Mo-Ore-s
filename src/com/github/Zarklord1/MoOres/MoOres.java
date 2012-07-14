@@ -1,17 +1,16 @@
 package com.github.Zarklord1.MoOres;
 
-import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
-import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
-import com.github.Zarklord1.MoOres.Generator.OresPopulator;
-import com.github.Zarklord1.MoOres.Util.BlockLoader;
-import com.github.Zarklord1.MoOres.Util.RecipeLoader;
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.block.design.Texture;
+
+import com.github.Zarklord1.MoOres.Config.Configuration;
+import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
+import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
+import com.github.Zarklord1.MoOres.Util.BlockLoader;
+import com.github.Zarklord1.MoOres.Util.RecipeLoader;
 
 public class MoOres extends JavaPlugin{
     
@@ -38,17 +37,7 @@ public class MoOres extends JavaPlugin{
         log.info("[Mo Ores] Registering Recipes...");
         RecipeLoader.addAllRecipes(); 
         log.info("[Mo Ores] Registered all Recipes!");
-		
-        log.info("Loading Custom World Ore Generators...");
-        for (String worldname:Configuration.config.getStringList("generator.Generate Custom Ores.List")) {
-        	if (Bukkit.getServer().getWorld(worldname) != null) {
-                Bukkit.getServer().getWorld(worldname).getPopulators().add(new OresPopulator());
-        	} else {
-        		log.severe(worldname + " Is Not A Valid World Name");
-        	}
-        }
-        log.info("Loaded Custom World Ore Generators!");
-        
+		        
         log.info("[Mo Ores] Is Enabled!");
     }
 	 
@@ -60,7 +49,6 @@ public class MoOres extends JavaPlugin{
         BlockLoader.customitems.clear();
         BlockLoader.customores.clear();
         BlockLoader.customtools.clear();
-        BlockLoader.originalores.clear();
         BlockLoader.plants.clear();
         BlockLoader.Pickaxebreackableblocks.clear();
         BlockLoader.PickaxeSpeedIds.clear();

@@ -32,9 +32,11 @@ import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
+import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomArrows;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
+import com.github.Zarklord1.MoOres.Generator.OresPopulator;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresPlayerListener implements Listener {
@@ -166,8 +168,12 @@ public class MoOresPlayerListener implements Listener {
     
     
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onWorldGenerate(WorldInitEvent event) {
-    	
+    public void onWorldInit(WorldInitEvent event) {
+    	for (String worldname:Configuration.config.getStringList("generator.Generate Custom Ores.List")) {
+        	if (worldname.equals(event.getWorld().getName())) {
+        		event.getWorld().getPopulators().add(new OresPopulator());
+        	}
+        }
     }
     
     //pickup any custom arrows

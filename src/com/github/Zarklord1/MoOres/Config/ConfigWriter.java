@@ -400,72 +400,6 @@ public class ConfigWriter {
     }
     
     public static void setOres(MoOresConfiguration cfg, String custom, String orig) {
-        name = ".Coal Ore";
-        if (!cfg.contains(orig + name + ".frequency")) {
-            cfg.set(orig + name + ".frequency", Integer.valueOf(100));
-        }  
-        if (!cfg.contains(orig + name + "minheight")) {
-            cfg.set(orig + name + ".minheight", Integer.valueOf(16));
-        }  
-        if (!cfg.contains(orig + name + "maxheight")) { 
-            cfg.set(orig + name + ".maxheight", Integer.valueOf(76));
-        }
-        
-        name = ".Iron Ore";
-        if (!cfg.contains(orig + name + ".frequency")) {
-            cfg.set(orig + name + ".frequency", Integer.valueOf(80));
-        }   
-        if (!cfg.contains(orig + name + "minheight")) {
-            cfg.set(orig + name + ".minheight", Integer.valueOf(16));
-        }   
-        if (!cfg.contains(orig + name + "maxheight")) { 
-            cfg.set(orig + name + ".maxheight", Integer.valueOf(64));
-        }
-        
-        name = ".Lapis Ore";
-        if (!cfg.contains(orig + name + ".frequency")) {
-            cfg.set(orig + name + ".frequency", Integer.valueOf(4));
-        }  
-        if (!cfg.contains(orig + name + "minheight")) {
-            cfg.set(orig + name + ".minheight", Integer.valueOf(2));
-        }  
-        if (!cfg.contains(orig + name + "maxheight")) { 
-            cfg.set(orig + name + ".maxheight", Integer.valueOf(32));
-        }
-        
-        name = ".Gold Ore";
-        if (!cfg.contains(orig + name + ".frequency")) {
-            cfg.set(orig + name + ".frequency", Integer.valueOf(20));
-        }  
-        if (!cfg.contains(orig + name + "minheight")) {
-            cfg.set(orig + name + ".minheight", Integer.valueOf(5));
-        }   
-        if (!cfg.contains(orig + name + "maxheight")) { 
-            cfg.set(orig + name + ".maxheight", Integer.valueOf(32));
-        }
-        
-        name = ".Redstone Ore";
-        if (!cfg.contains(orig + name + ".frequency")) {
-            cfg.set(orig + name + ".frequency", Integer.valueOf(20));
-        }   
-        if (!cfg.contains(orig + name + "minheight")) {
-            cfg.set(orig + name + ".minheight", Integer.valueOf(2));
-        }  
-        if (!cfg.contains(orig + name + "maxheight")) { 
-            cfg.set(orig + name + ".maxheight", Integer.valueOf(16));
-        }
-        
-        name = ".Diamond Ore";
-        if (!cfg.contains(orig + name + ".frequency")) {
-            cfg.set(orig + name + ".frequency", Integer.valueOf(5));
-        }   
-        if (!cfg.contains(orig + name + "minheight")) {
-            cfg.set(orig + name + ".minheight", Integer.valueOf(2));
-        }   
-        if (!cfg.contains(orig + name + "maxheight")) { 
-            cfg.set(orig + name + ".maxheight", Integer.valueOf(17));
-        }
-        
         name = ".Flarite Ore";
         if (!cfg.contains(custom +  name + ".textureID")) {
             cfg.set(custom +  name + ".textureID", Integer.valueOf(8));
@@ -478,6 +412,15 @@ public class ConfigWriter {
         }
         if (!cfg.contains(custom +  name + ".maxheight")) {
             cfg.set(custom +  name + ".maxheight", Integer.valueOf(100));
+        }
+        if (!cfg.contains(custom +  name + ".minVeinSize")) {
+            cfg.set(custom +  name + ".minVeinSize", Integer.valueOf(3));
+        }
+        if (!cfg.contains(custom +  name + ".maxVeinSize")) {
+            cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(8));
+        }
+        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
+            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(43));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(10));
@@ -505,6 +448,15 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxheight")) {
             cfg.set(custom +  name + ".maxheight", Integer.valueOf(100));
         }
+        if (!cfg.contains(custom +  name + ".minVeinSize")) {
+            cfg.set(custom +  name + ".minVeinSize", Integer.valueOf(1));
+        }
+        if (!cfg.contains(custom +  name + ".maxVeinSize")) {
+            cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(6));
+        }
+        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
+            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(33));
+        }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(2));
         }
@@ -530,6 +482,15 @@ public class ConfigWriter {
         }
         if (!cfg.contains(custom +  name + ".maxheight")) {
             cfg.set(custom +  name + ".maxheight", Integer.valueOf(100));
+        }
+        if (!cfg.contains(custom +  name + ".minVeinSize")) {
+            cfg.set(custom +  name + ".minVeinSize", Integer.valueOf(2));
+        }
+        if (!cfg.contains(custom +  name + ".maxVeinSize")) {
+            cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(8));
+        }
+        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
+            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(35));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(7));
@@ -563,6 +524,15 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxheight")) {
             cfg.set(custom +  name + ".maxheight", Integer.valueOf(100));
         }
+        if (!cfg.contains(custom +  name + ".minVeinSize")) {
+            cfg.set(custom +  name + ".minVeinSize", Integer.valueOf(4));
+        }
+        if (!cfg.contains(custom +  name + ".maxVeinSize")) {
+            cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(6));
+        }
+        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
+            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(35));
+        }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(73));
         }
@@ -594,6 +564,15 @@ public class ConfigWriter {
         }
         if (!cfg.contains(custom +  name + ".maxheight")) {
             cfg.set(custom +  name + ".maxheight", Integer.valueOf(100));
+        }
+        if (!cfg.contains(custom +  name + ".minVeinSize")) {
+            cfg.set(custom +  name + ".minVeinSize", Integer.valueOf(3));
+        }
+        if (!cfg.contains(custom +  name + ".maxVeinSize")) {
+            cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(5));
+        }
+        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
+            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(25));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(8));
@@ -753,8 +732,7 @@ public class ConfigWriter {
         name = ".White Bush";
         if (!cfg.contains(type + name + ".textureID")) {
             cfg.set(type + name + ".textureID", Integer.valueOf(12));
-        }
-                        
+        }                  
     }
     
     public static void setTools(MoOresConfiguration cfg, String type) {

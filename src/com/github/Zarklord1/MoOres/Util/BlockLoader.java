@@ -45,7 +45,6 @@ public class BlockLoader {
     public static Set<CustomBush> custombushes = new LinkedHashSet<CustomBush>();
     public static HashMap<String, CustomBush> custombushesmap = new LinkedHashMap<String, CustomBush>();
     
-    public static Set<OriginalOres> originalores = new LinkedHashSet<OriginalOres>();
     public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet<GenericCubeCustomBlock>();
     
     public static void CustomOres() {
@@ -54,70 +53,15 @@ public class BlockLoader {
         while (keys.hasNext()) {
             String name = keys.next();
             int textureID = Configuration.block.getInt("Custom Ores." + name + ".textureID");
-            int freq = Configuration.block.getInt("Custom Ores." + name + ".frequency");
-            int minY = Configuration.block.getInt("Custom Ores." + name + ".minheight");
-            int maxY = Configuration.block.getInt("Custom Ores." + name + ".maxheight");
-            float hard = 0.0F;
-            float friction = 0.0F;
-            int light = 0;
-            int amount = 1;
-            int id = 1;
-            int metadata = 0;
-            CustomItem idrop = null;
-            CustomBlock bdrop = null;
-            String drop = null;
-            if (Configuration.block.contains("Custom Ores." + name + ".hardness")) {
-                hard = Configuration.block.getInt("Custom Ores." + name + ".hardness");
-            }
+            int blockId = 1;
+            int metaData = 0;
             if (Configuration.block.contains("Custom Ores." + name + ".block id")) {
-                id = Configuration.block.getInt("Custom Ores." + name + ".block id");
+                blockId = Configuration.block.getInt("Custom Ores." + name + ".block id");
             }
             if (Configuration.block.contains("Custom Ores." + name + ".metadata id")) {
-                metadata = Configuration.block.getInt("Custom Ores." + name + ".metadata id");
+                metaData = Configuration.block.getInt("Custom Ores." + name + ".metadata id");
             }
-            if (Configuration.block.contains("Custom Ores." + name + ".lightlevel")) {
-                light = Configuration.block.getInt("Custom Ores." + name + ".lightlevel");
-            }
-            if (Configuration.block.contains("Custom Ores." + name + ".friction")) {
-                friction = Configuration.block.getInt("Custom Ores." + name + ".friction");
-            }
-            if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
-                amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
-            }
-            if (Configuration.block.contains("Custom Ores." + name + ".drop")) {
-                drop = Configuration.block.getString("Custom Ores." + name + ".drop");
-                if (customblocksmap.containsKey(drop)) {
-                    bdrop = customblocksmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
-                } else if (custombushesmap.containsKey(drop)) {
-                    bdrop = custombushesmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
-                } else if (customitemsmap.containsKey(drop)) {
-                    idrop = customitemsmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-                } else if (customfishmap.containsKey(drop)) {
-                    idrop = customfishmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-                } else if (customarrowsmap.containsKey(drop)) {
-                    idrop = customarrowsmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-                } else if (customfoodmap.containsKey(drop)) {
-                    idrop = customfoodmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-                } else if (customtoolsmap.containsKey(drop)) {
-                    idrop = customtoolsmap.get(drop);
-                    addOre(name, textureID, freq, minY, maxY, hard, light, friction, idrop, amount, id, metadata);
-                } else {
-                    if (drop.contains(":")) {
-                        String[] ores = drop.split(":");
-                        addOre(name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(ores[0]), Short.parseShort(ores[1]));
-                    } else {
-                        addOre(name, textureID, freq, minY, maxY, hard, light, friction, amount, id, metadata, Integer.parseInt(drop), Short.parseShort("o"));
-                    }
-                }
-            } else {
-                addOre(name, textureID, freq, minY, maxY, hard, light, friction, bdrop, amount, id, metadata);
-            }
+            addOre(name, textureID, blockId, metaData);
         }
     }
     public static void CustomBushes() {
@@ -126,8 +70,7 @@ public class BlockLoader {
         while (keys.hasNext()) {
             String name = (String)keys.next();
             int textureID = Configuration.block.getInt("Custom Bushes." + name + ".textureID");
-            int freq = Configuration.block.getInt("Custom Bushes." + name + ".frequency");
-            addbushes(name, new int[] {textureID, textureID, textureID, textureID, textureID, textureID}, freq);
+            addbushes(name, new int[] {textureID, textureID, textureID, textureID, textureID, textureID});
         }
     }
     public static void CustomBlock() {
@@ -135,21 +78,18 @@ public class BlockLoader {
         Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
             String name = (String)keys.next();
-            int id = 1;
-            int metadata = 0;
+            int blockId = 1;
+            int metaData = 0;
             int textureID = Configuration.block.getInt("Custom Blocks." + name + ".textureID");
-            float hard = Configuration.block.getInt("Custom Blocks." + name + ".hardness");
-            int light = Configuration.block.getInt("Custom Blocks." + name + ".lightlevel");
-            float friction = Configuration.block.getInt("Custom Blocks." + name + ".friction");
             
             if (Configuration.block.contains("Custom Blocks." + name + ".block id")) {
-                id = Configuration.block.getInt("Custom Blocks." + name + ".block id");
+                blockId = Configuration.block.getInt("Custom Blocks." + name + ".block id");
             }
             
             if (Configuration.block.contains("Custom Blocks." + name + ".metadata id")) {
-                metadata = Configuration.block.getInt("Custom Blocks." + name + ".metadata id");
+                metaData = Configuration.block.getInt("Custom Blocks." + name + ".metadata id");
             }
-            addblock(name, textureID, hard, light, friction, id, metadata);
+            addblock(name, textureID, blockId, metaData);
         }
     }
     public static void CustomItems() {
@@ -200,23 +140,13 @@ public class BlockLoader {
             addFish(name, textureurl, restore, chance);
         }
     }
-    private static void addblock(String name, int textureID, float hard, int light, float friction, int id , int metadata) {
-        CustomBlocks block = new CustomBlocks(name, textureID, hard, light, friction, id ,metadata);
+    private static void addblock(String name, int textureID, int blockId , int metaData) {
+        CustomBlocks block = new CustomBlocks(name, textureID, blockId ,metaData);
         customblocks.add(block);
         customblocksmap.put(name, block);
     }
-    private static void addOre(String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, CustomBlock drop, int amount, int id , int metadata) {
-        CustomOres ore = new CustomOres(name, textureID, freq, minY, maxY, drop, hard, light, friction, amount, id ,metadata);
-        customores.add(ore);
-        customoresmap.put(name, ore);
-    }
-    private static void addOre(String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, CustomItem drop, int amount, int id , int metadata) {
-        CustomOres ore = new CustomOres(name, textureID, freq, minY, maxY, drop, hard, light, friction, amount, id ,metadata);
-        customores.add(ore);
-        customoresmap.put(name, ore);
-    }
-    private static void addOre(String name, int textureID, int freq, int minY, int maxY, float hard, int light, float friction, int amount, int id , int metadata, int dropid, short dropmetaid) {
-        CustomOres ore = new CustomOres(name, textureID, freq, minY, maxY, hard, light, friction, amount, id , metadata, dropid, dropmetaid);
+    private static void addOre(String name, int textureID, int blockId, int metaData) {
+        CustomOres ore = new CustomOres(name, textureID, blockId , metaData);
         customores.add(ore);
         customoresmap.put(name, ore);
     }
@@ -245,24 +175,12 @@ public class BlockLoader {
         customtools.add(tool);
         customtoolsmap.put(name, tool);
     }
-    private static void addbushes(String name, int[] textureids, int freq) {
-        CustomBush bush = new CustomBush(name, textureids, freq);
+    private static void addbushes(String name, int[] textureids) {
+        CustomBush bush = new CustomBush(name, textureids);
         custombushes.add(bush);
         custombushesmap.put(name, bush);
     }
     public static void registerBlocks() {
-        OriginalOres CoalOre = new OriginalOres(Material.COAL_ORE, Configuration.block.getInt("Original Ores.Coal Ore.frequency"), Configuration.block.getInt("Original Ores.Coal Ore.minheight"), Configuration.block.getInt("Original Ores.Coal Ore.maxheight"));
-        OriginalOres IronOre = new OriginalOres(Material.IRON_ORE, Configuration.block.getInt("Original Ores.Iron Ore.frequency"), Configuration.block.getInt("Original Ores.Iron Ore.minheight"), Configuration.block.getInt("Original Ores.Iron Ore.maxheight"));
-        OriginalOres LapisOre = new OriginalOres(Material.LAPIS_ORE, Configuration.block.getInt("Original Ores.Lapis Ore.frequency"), Configuration.block.getInt("Original Ores.Lapis Ore.minheight"), Configuration.block.getInt("Original Ores.Lapis Ore.maxheight"));
-        OriginalOres GoldOre = new OriginalOres(Material.GOLD_ORE, Configuration.block.getInt("Original Ores.Gold Ore.frequency"), Configuration.block.getInt("Original Ores.Gold Ore.minheight"), Configuration.block.getInt("Original Ores.Gold Ore.maxheight"));
-        OriginalOres RedstoneOre = new OriginalOres(Material.REDSTONE_ORE, Configuration.block.getInt("Original Ores.Redstone Ore.frequency"), Configuration.block.getInt("Original Ores.Redstone Ore.minheight"), Configuration.block.getInt("Original Ores.Redstone Ore.maxheight"));
-        OriginalOres DiamondOre = new OriginalOres(Material.DIAMOND_ORE, Configuration.block.getInt("Original Ores.Diamond Ore.frequency"), Configuration.block.getInt("Original Ores.Diamond Ore.minheight"), Configuration.block.getInt("Original Ores.Diamond Ore.maxheight"));
-        originalores.add(CoalOre);
-        originalores.add(IronOre);
-        originalores.add(LapisOre);
-        originalores.add(GoldOre);
-        originalores.add(RedstoneOre);
-        originalores.add(DiamondOre);
         CustomBlock();
         CustomBushes();
         CustomItems();
