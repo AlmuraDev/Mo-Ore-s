@@ -7,6 +7,8 @@ import java.util.*;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
+import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.material.*;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
@@ -53,15 +55,77 @@ public class BlockLoader {
         while (keys.hasNext()) {
             String name = keys.next();
             int textureID = Configuration.block.getInt("Custom Ores." + name + ".textureID");
+            int minY = Configuration.block.getInt("Custom Ores." + name + ".minheight");
+            int maxY = Configuration.block.getInt("Custom Ores." + name + ".maxheight");
+            int minVeinSize = Configuration.block.getInt("Custom Ores." + name + ".minVeinSize");
+            int maxVeinSize = Configuration.block.getInt("Custom Ores." + name + ".maxVeinSize");
+            int veinsPerChunk = Configuration.block.getInt("Custom Ores." + name + ".veinsPerChunk");
+            int hardness = Configuration.block.getInt("Custom Ores." + name + ".hardness");
+            int lightlevel = Configuration.block.getInt("Custom Ores." + name + ".lightlevel");
+            int friction = Configuration.block.getInt("Custom Ores." + name + ".friction");
             int blockId = 1;
             int metaData = 0;
+            int amount = 1;
+            String drop = null;
+            CustomBlock bdrop = null;
+            CustomItem idrop = null;
+            ItemStack stack = null;
             if (Configuration.block.contains("Custom Ores." + name + ".block id")) {
                 blockId = Configuration.block.getInt("Custom Ores." + name + ".block id");
             }
             if (Configuration.block.contains("Custom Ores." + name + ".metadata id")) {
                 metaData = Configuration.block.getInt("Custom Ores." + name + ".metadata id");
             }
-            addOre(name, textureID, blockId, metaData);
+            if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
+            	amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
+            }
+            if (Configuration.block.contains("Custom Ores." + name + ".drop")) {
+            	drop = Configuration.block.getString("Custom Ores." + name + ".drop");
+            	if (customoresmap.containsKey(drop)) {
+            		bdrop = customoresmap.get(drop);
+            		stack = new SpoutItemStack(bdrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (customblocksmap.containsKey(drop)) {
+            		bdrop = customblocksmap.get(drop);
+            		stack = new SpoutItemStack(bdrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (custombushesmap.containsKey(drop)) {
+            		bdrop = custombushesmap.get(drop);
+            		stack = new SpoutItemStack(bdrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (customitemsmap.containsKey(drop)) {
+            		idrop = customitemsmap.get(drop);
+            		stack = new SpoutItemStack(idrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (customfishmap.containsKey(drop)) {
+            		idrop = customfishmap.get(drop);
+            		stack = new SpoutItemStack(idrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (customarrowsmap.containsKey(drop)) {
+            		idrop = customarrowsmap.get(drop);
+            		stack = new SpoutItemStack(idrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (customfoodmap.containsKey(drop)) {
+            		idrop = customfoodmap.get(drop);
+            		stack = new SpoutItemStack(idrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else if (customtoolsmap.containsKey(drop)) {
+            		idrop = customtoolsmap.get(drop);
+            		stack = new SpoutItemStack(idrop, amount);
+            		addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            	} else {
+            		if (drop.contains(":")) {
+            			String[] ores = drop.split(":");
+            			stack = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(ores[0]),Short.parseShort( ores[1])), amount);
+            			addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            		} else {
+            			stack = new SpoutItemStack(MaterialData.getMaterial(Integer.parseInt(drop)), amount);
+            			addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            		}
+            	}
+            } else {
+            	addOre(name, textureID, blockId, metaData, hardness, lightlevel, friction, stack, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
+            }
         }
     }
     public static void CustomBushes() {
@@ -136,7 +200,7 @@ public class BlockLoader {
             String name = (String)keys4.next();
             String textureurl = Configuration.items.getString("Custom Fish." + name + ".texture url");
             int restore = Configuration.items.getInt("Custom Fish." + name + ".restore");
-            int chance = Configuration.items.getInt("Custom Fish." + name + ".chance", 100);
+            int chance = Configuration.items.getInt("Custom Fish." + name + ".chance");
             addFish(name, textureurl, restore, chance);
         }
     }
@@ -145,8 +209,8 @@ public class BlockLoader {
         customblocks.add(block);
         customblocksmap.put(name, block);
     }
-    private static void addOre(String name, int textureID, int blockId, int metaData) {
-        CustomOres ore = new CustomOres(name, textureID, blockId , metaData);
+    private static void addOre(String name, int textureID, int blockId, int metaData, int hardness, int lightlevel, int friction, ItemStack drop, int amount, int minY, int maxY, int minVeinSize, int maxVeinSize, int veinsPerChunk) {
+        CustomOres ore = new CustomOres(name, textureID, blockId, metaData, hardness, friction, lightlevel, drop, amount, minY, maxY, minVeinSize, maxVeinSize, veinsPerChunk);
         customores.add(ore);
         customoresmap.put(name, ore);
     }
@@ -181,13 +245,13 @@ public class BlockLoader {
         custombushesmap.put(name, bush);
     }
     public static void registerBlocks() {
-        CustomBlock();
-        CustomBushes();
         CustomItems();
+        CustomBushes();
+        CustomBlock();
         CustomOres();
-        addArrow("Test Arrow", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 7, true, false, false, false, 100, 0, 0, 0.0F, 3.5F);
+        addArrow("Test Arrow", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 7, true, false, false, false, 100, 100, 0, 0.0F, 3.5F);
     }
-    public static void addvanillablocks() {
+    public static void addVanillaBlocks() {
         
         List<Integer> list = Configuration.config.getIntegerList("Tools.Pickaxe Breackable Block Ids");
         for(int pos = 0; pos < list.size(); pos++){

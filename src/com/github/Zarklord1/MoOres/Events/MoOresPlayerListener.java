@@ -2,114 +2,72 @@ package com.github.Zarklord1.MoOres.Events;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Skeleton;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.world.WorldInitEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.event.spout.ServerTickEvent;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomArrows;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
-import com.github.Zarklord1.MoOres.Generator.OresPopulator;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresPlayerListener implements Listener {
-   
-        
-        
+
     public MoOresPlayerListener() {}
     
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerFish(PlayerFishEvent event) {
         State state = event.getState();
-        Player player = event.getPlayer();
-        Random randomgen = new Random();
-        if (player instanceof SpoutPlayer) {
-            SpoutPlayer splayer = SpoutManager.getPlayer(player);
-            if (splayer.isSpoutCraftEnabled()) {
-                if (state.equals(State.CAUGHT_FISH)) {
-                    List<Entity> nearbyEntities = splayer.getNearbyEntities(5.0D, 5.0D, 5.0D);
-                    for (Entity entity:nearbyEntities) {
-                        if (entity instanceof Item) {
-                            Item item = (Item) entity;
-                            ItemStack fishstack = new ItemStack(349, 1);
-                            if (item.getItemStack() == fishstack) {
-                                for (CustomFishes fishie:BlockLoader.customfish) {
-                                    ItemStack customfishiestack = new SpoutItemStack(fishie, 1);
-                                    int nextInt = randomgen.nextInt(100);
-                                    if (fishie.getchance() <= nextInt) {
-                                        item.setItemStack(customfishiestack);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
+        Random ran = new Random();
+        if (player.isSpoutCraftEnabled()) {
+        	Bukkit.broadcastMessage("Spout Client Enabled");
+        	if (state.equals(State.CAUGHT_FISH)) {
+        		Bukkit.broadcastMessage("Player Has Caught A Fish");
+        		for (Entity entity:player.getNearbyEntities(15.0D, 15.0D, 15.0D)) {
+        			Bukkit.broadcastMessage("Got Nearby Entities Within 15 Blocks Of The Player");
+        			if (entity instanceof Item) {
+        				Bukkit.broadcastMessage("Nearby Entity Is Item");
+        				Item item = (Item)entity;
+        				ItemStack fishstack = new ItemStack(349, 1);
+        				if (item.getItemStack() == fishstack) {
+        					Bukkit.broadcastMessage("Item Is A Fish");
+        					for (CustomFishes fishie:BlockLoader.customfish) {
+        						ItemStack customfishiestack = new SpoutItemStack(fishie, 1);
+        						int nextInt = ran.nextInt(100);
+        						if (fishie.getchance() <= nextInt) {
+        							Bukkit.broadcastMessage("Item Was Replaced With Custom Fish");
+        							item.setItemStack(customfishiestack);
+        							return;
+        						}
+        					}
+        				}
+        			}
+        		}
+        	}
         }
-    }
-    
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onBlockBreak( BlockBreakEvent event ) {
-        Block block = event.getBlock();
-        Player player = event.getPlayer();
-        if (player instanceof SpoutPlayer){
-            SpoutPlayer splayer = (SpoutPlayer) player;
-            for (CustomTools tool:BlockLoader.customtools) {
-                if (splayer.getItemInHand().getDurability() == tool.getCustomId() && splayer.isSpoutCraftEnabled()) {
-                    if (tool.isPickaxe()) {
-                       for (Material material:BlockLoader.Pickaxebreackableblocks) {
-                            if (block.getType() == material) {
-                                block.breakNaturally();
-                                CustomTools.setDurability(splayer.getItemInHand(), (short) (CustomTools.getDurability(splayer.getItemInHand()) + 1));
-                            }
-                        } 
-                    } else if(tool.isAxe() || tool.isHoe() || tool.isShovel()) {
-                    	CustomTools.setDurability(splayer.getItemInHand(), (short) (CustomTools.getDurability(splayer.getItemInHand()) + 1));
-                    } else {
-                    	CustomTools.setDurability(splayer.getItemInHand(), (short) (CustomTools.getDurability(splayer.getItemInHand()) + 2));
-                    	Bukkit.broadcastMessage("" + CustomTools.getDurability(splayer.getItemInHand()));
-                    }
-                }
-            }
-        }
-    }
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onArrowShotFromBow(EntityShootBowEvent event) {
-    	if (event.getEntity() instanceof Skeleton) {
-    		@SuppressWarnings("unused")
-			Skeleton skelly = (Skeleton) event.getEntity();
-    		//TODO add configuration to skeleton for custom arrows...
-    	}
-    }
-    
+    }   
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onItemInteract(PlayerInteractEvent event) {
     	//check if the action is the bow fire action...
@@ -143,8 +101,10 @@ public class MoOresPlayerListener implements Listener {
         		                    	arrowstack = inventory.getItem(inventory.first(stack));
         		                    	if (arrowstack.getAmount() > 1) {
         		                    		arrowstack.setAmount(arrowstack.getAmount() - 1);
+                							player.updateInventory();
         		                    	} else {
         		                    		inventory.setItem(inventory.first(stack), null);
+                							player.updateInventory();
         		                    	}
         		                    }
         		                    //fire the arrow
@@ -165,46 +125,36 @@ public class MoOresPlayerListener implements Listener {
         	}
         }
     }
-    
-    
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onWorldInit(WorldInitEvent event) {
-    	for (String worldname:Configuration.config.getStringList("generator.Generate Custom Ores.List")) {
-        	if (worldname.equals(event.getWorld().getName())) {
-        		event.getWorld().getPopulators().add(new OresPopulator());
-        	}
-        }
-    }
-    
-    //pickup any custom arrows
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onServerTick(ServerTickEvent event) {
-    	for (Player pl:MoOres.plugin.getServer().getOnlinePlayers()) {
-    		//check if the player is using the spoutcraft client
-    		SpoutPlayer player = SpoutManager.getPlayer(pl);
-    		if (player.isSpoutCraftEnabled()) {
-    			//get the entities within 2 blocks of the player...
-    			for (Entity entity:player.getNearbyEntities(2.0D, 2.0D, 2.0D)) {
-    				//is the entity a fired arrow
-    				if (entity instanceof Arrow) {
-    					Arrow arrow = (Arrow)entity;
-    					List<MetadataValue> list = arrow.getMetadata(arrow.getUniqueId().toString());
-    					for (MetadataValue value:list) {
-    						if (value.getOwningPlugin().equals(MoOres.plugin)) {
-    							if (value.value() instanceof CustomArrows) {
-                    				Bukkit.broadcastMessage("Hi!");
-                					CustomArrows itemarrow = (CustomArrows)value.value();
-                					//is the arrow moving?
-                					if (arrow.getVelocity() == null) {
-                						arrow.remove();
-                						player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
-                					}
-                				}
-                			}
-                		}
-    				}
-    			}
+    //pickup custom arrows
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerMove(PlayerMoveEvent event) {
+        SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
+        if (player.isSpoutCraftEnabled()) {
+        	//get the entities within 2 blocks of the player...
+        	for (Entity entity:player.getNearbyEntities(2.0D, 2.0D, 2.0D)) {
+        		//is the entity a fired arrow
+        		if (entity instanceof Arrow) {
+        			Arrow arrow = (Arrow)entity;
+        			List<MetadataValue> list = arrow.getMetadata(arrow.getUniqueId().toString());
+        			for (MetadataValue value:list) {
+        				if (value.getOwningPlugin().equals(MoOres.plugin)) {
+        					if (value.value() instanceof CustomArrows) {
+        						CustomArrows itemarrow = (CustomArrows)value.value();
+        						//is the arrow moving?
+        						for (UUID id:MoOresServerListener.isMoving) {
+        							if (id.equals(arrow.getUniqueId())) {
+        								//remove the arrow from the world
+        								arrow.remove();
+        								//add the arrowitem to the player's inventory
+        								player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
+            							player.updateInventory();
+        							}
+        						}
+        					}
+        				}
+        			}
+        		}
     		}
-    	}
+        }
     }
 }

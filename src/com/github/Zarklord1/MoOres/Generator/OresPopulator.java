@@ -18,13 +18,13 @@ public class OresPopulator extends BlockPopulator {
     @Override
     public void populate(World world, Random random, Chunk chunk) {
         for (CustomOres block:BlockLoader.customores) {
-        	for (byte i = 0; i < block.getMaxPerChunk(); i++) {
-				final int x = random.nextInt(15);
+        	for (byte i = 0; i < block.getVeinsPerChunk(); i++) {
+				final int x = chunk.getX() + random.nextInt(15);
 				int y = random.nextInt(block.getMaxY());
 				while (y < block.getMinY()) {
 					y = random.nextInt(block.getMaxY());
 				}
-				final int z = random.nextInt(15);
+				final int z = chunk.getZ() + random.nextInt(15);
 				int veinSize = random.nextInt(block.getMaxVeinSize());
 				while (veinSize < block.getMinVeinSize()) {
 					veinSize = random.nextInt(block.getMinVeinSize());

@@ -30,7 +30,7 @@ public class MoOres extends JavaPlugin{
         log.info("[Mo Ores] Loaded Configs!");
         loadTextures();
         log.info("[Mo Ores] Registering Block And Items...");
-        BlockLoader.addvanillablocks();
+        BlockLoader.addVanillaBlocks();
         BlockLoader.registerBlocks();
         log.info("[Mo Ores] Registered all Custom Blocks And Items!");
         reg();
