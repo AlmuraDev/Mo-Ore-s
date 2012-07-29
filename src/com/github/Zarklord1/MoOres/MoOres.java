@@ -1,16 +1,18 @@
 package com.github.Zarklord1.MoOres;
 
+import java.util.HashSet;
 import java.util.logging.Logger;
 
+import org.bukkit.Chunk;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.block.design.Texture;
 
 import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
-import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
+import com.github.Zarklord1.MoOres.Events.*;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 import com.github.Zarklord1.MoOres.Util.RecipeLoader;
+import com.github.Zarklord1.MoOres.Util.SaveAndLoad;
 
 public class MoOres extends JavaPlugin{
     
@@ -21,7 +23,7 @@ public class MoOres extends JavaPlugin{
     public static Texture plants;
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         MoOres.plugin = this;
         log.info("[Mo Ores] Is Enabling...");
 
@@ -33,6 +35,7 @@ public class MoOres extends JavaPlugin{
         BlockLoader.addVanillaBlocks();
         BlockLoader.registerBlocks();
         log.info("[Mo Ores] Registered all Custom Blocks And Items!");
+        load();
         reg();
         log.info("[Mo Ores] Registering Recipes...");
         RecipeLoader.addAllRecipes(); 
@@ -55,6 +58,7 @@ public class MoOres extends JavaPlugin{
         BlockLoader.AxeSpeedIds.clear();
         BlockLoader.ShovelSpeedIds.clear();
         BlockLoader.SwordSpeedIds.clear();
+        save();
         log.info("[Mo Ores] Is Disabled!");
     }
 	
@@ -68,6 +72,25 @@ public class MoOres extends JavaPlugin{
         PluginManager pm = this.getServer().getPluginManager();
         pm.registerEvents(new MoOresEntityListener(), this);
         pm.registerEvents(new MoOresPlayerListener(), this);
+        pm.registerEvents(new MoOresServerListener(), this);
+        pm.registerEvents(new MoOresBlockListener(), this);
+        pm.registerEvents(new MoOresChunkListener(), this);
         //BukkitScheduler sch = this.getServer().getScheduler();
-    }	  
+    }
+    
+    private void load() {
+        try {
+			MoOresChunkListener.hasOres = (HashSet<Chunk>) SaveAndLoad.load("plugins/MoOres/Data/Chunks.dat");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
+    private void save() {
+    	try {
+    		SaveAndLoad.save(MoOresChunkListener.hasOres, ("plugins/MoOres/Data/Chunks.dat"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 }

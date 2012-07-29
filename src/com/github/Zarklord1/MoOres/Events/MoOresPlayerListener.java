@@ -9,6 +9,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -24,6 +25,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
+import org.getspout.spoutapi.player.EntitySkinType;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
@@ -111,7 +113,6 @@ public class MoOresPlayerListener implements Listener {
         		                    CustomTools.setDurability(player.getItemInHand(), (short) (CustomTools.getDurability(player.getItemInHand()) + 1));
         		                    Arrow spawnedarrow = player.launchProjectile(Arrow.class);
         		                    spawnedarrow.setVelocity(spawnedarrow.getVelocity().multiply(bow.getSpeed() + arrow.getSpeedModifier()));
-        		                    //SpoutManager.setEntitySkin(spawnedarrow, String url, EntitySkinType.valueOf(spawnedarrow.toString()));
         		                    //set the arrows atributes
         		                    spawnedarrow.setMetadata(spawnedarrow.getUniqueId().toString(), new FixedMetadataValue(MoOres.plugin, arrow));
         		                    //call the bukkit event so people will now that a bow was fired

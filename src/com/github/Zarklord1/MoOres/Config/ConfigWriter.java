@@ -419,8 +419,8 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxVeinSize")) {
             cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(8));
         }
-        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
-            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(43));
+        if (!cfg.contains(custom +  name + ".veinsPerChunk")) {
+            cfg.set(custom +  name + ".veinsPerChunk", Integer.valueOf(43));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(10));
@@ -454,8 +454,8 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxVeinSize")) {
             cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(6));
         }
-        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
-            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(33));
+        if (!cfg.contains(custom +  name + ".veinsPerChunk")) {
+            cfg.set(custom +  name + ".veinsPerChunk", Integer.valueOf(33));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(2));
@@ -489,8 +489,8 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxVeinSize")) {
             cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(8));
         }
-        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
-            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(35));
+        if (!cfg.contains(custom +  name + ".veinsPerChunk")) {
+            cfg.set(custom +  name + ".veinsPerChunk", Integer.valueOf(35));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(7));
@@ -530,8 +530,8 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxVeinSize")) {
             cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(6));
         }
-        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
-            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(35));
+        if (!cfg.contains(custom +  name + ".veinsPerChunk")) {
+            cfg.set(custom +  name + ".veinsPerChunk", Integer.valueOf(35));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(73));
@@ -571,8 +571,8 @@ public class ConfigWriter {
         if (!cfg.contains(custom +  name + ".maxVeinSize")) {
             cfg.set(custom +  name + ".maxVeinSize", Integer.valueOf(5));
         }
-        if (!cfg.contains(custom +  name + ".maxPerChunk")) {
-            cfg.set(custom +  name + ".maxPerChunk", Integer.valueOf(25));
+        if (!cfg.contains(custom +  name + ".veinsPerChunk")) {
+            cfg.set(custom +  name + ".veinsPerChunk", Integer.valueOf(25));
         }
         if (!cfg.contains(custom +  name + ".hardness")) {
             cfg.set(custom +  name + ".hardness", Integer.valueOf(8));

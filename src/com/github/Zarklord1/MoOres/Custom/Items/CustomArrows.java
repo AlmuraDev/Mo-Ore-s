@@ -1,64 +1,82 @@
 package com.github.Zarklord1.MoOres.Custom.Items;
 
+import org.bukkit.entity.Entity;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
 
 import com.github.Zarklord1.MoOres.MoOres;
 
 public class CustomArrows extends GenericCustomItem {
+    float speedModifier;
+    boolean remove;
     int damage;
     boolean fireArrow;
-    boolean lighntingArrow;
+    int fireTicks;
     boolean poisonArrow;
-    boolean explosivearrow;
-    int fireticks;
-    int poisonticks;
-    int NumofBoltStrikes;
-    float Power;
-    float speedmodifier;
-    public CustomArrows(String name, String texture, int damage, boolean firearrow, boolean lighntingarrow, boolean Poisonarrow, boolean ExplosionArrow, int poisonticks, int fireticks, int LightningStrikes, float ExplosionPower, float speedmodifier) {
+    int poisonTicks;
+    boolean lighntingArrow;
+    int numofBolts;
+    boolean explosiveArrow;
+    float explosionPower;
+    boolean entityArrow;
+    Entity entityToSpawn;
+    
+    public CustomArrows(String name, String texture, float speedModifier, boolean remove, int damage, boolean fireArrow, int fireTicks, boolean poisonArrow, int poisonTicks, boolean lightningArrow, int numOfBolts, boolean explosiveArrow, float explosionPower, boolean entityArrow, Entity entityToSpawn) {
         super(MoOres.plugin, name, texture);
+        this.speedModifier = speedModifier;
+        this.remove = remove;
         this.damage = damage;
-        this.fireArrow = firearrow;
-        this.lighntingArrow = lighntingarrow;
-        this.poisonArrow = Poisonarrow;
-        this.explosivearrow = ExplosionArrow;
-        this.fireticks = fireticks;
-        this.poisonticks = poisonticks;
-        this.NumofBoltStrikes = LightningStrikes;
-        this.Power = ExplosionPower;
-        this.speedmodifier = speedmodifier;
+        this.fireArrow = fireArrow;
+        this.fireTicks = fireTicks;
+        this.poisonArrow = poisonArrow;
+        this.poisonTicks = poisonTicks;
+        this.lighntingArrow = lightningArrow;
+        this.numofBolts = numOfBolts;
+        this.explosiveArrow = explosiveArrow;
+        this.explosionPower = explosionPower;
+        this.entityArrow = entityArrow;
+        this.entityToSpawn = entityToSpawn;
 	}
+    
 	public int getId() {
-            return 318;
+		return 318;
 	}
-	public int getArrowDamage() {
-            return damage;
+	public float getSpeedModifier() {
+		return speedModifier;
 	}
-	public boolean isFireArrow() {
-            return this.fireArrow;
+	public boolean getRemove() {
+		return remove;
 	}
-	public boolean isLighntingArrow() { 
-		return this.lighntingArrow;
+	public int getDamage() {
+		return damage;
 	}
-	public boolean isPoisonArrow() {
-		return this.poisonArrow;
-	}
-	public boolean isExplosiveArrow() {
-		return this.explosivearrow;
+	public boolean isFireArrow() { 
+		return fireArrow;
 	}
 	public int getFireTicks() {
-		return fireticks;
+		return fireTicks;
+	}
+	public boolean isPoisonArrow() {
+		return poisonArrow;
 	}
 	public int getPoisonTicks() {
-		return poisonticks;
+		return poisonTicks;
+	}
+	public boolean isLightningArrow() {
+		return lighntingArrow;
 	}
 	public int getNumOfBolts() {
-		return this.NumofBoltStrikes;
+		return numofBolts;
+	}
+	public boolean isExplosiveArrow() {
+        return explosiveArrow;
 	}
 	public float getExplosionPower() {
-            return this.Power;
-        }
-	public float getSpeedModifier() {
-		return speedmodifier;
+        return explosionPower;
+    }
+	public boolean isEntityArrow() {
+        return entityArrow;
+	}
+	public Entity getEntityToSpawn() { 
+		return entityToSpawn;
 	}
 }

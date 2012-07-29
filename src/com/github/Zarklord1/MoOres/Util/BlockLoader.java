@@ -7,6 +7,7 @@ import java.util.*;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.material.*;
@@ -219,8 +220,8 @@ public class BlockLoader {
         customitems.add(item);
         customitemsmap.put(name, item);
     }
-    private static void addArrow(String name, String textureurl, int damage, boolean firearrow, boolean poisonarrow, boolean lightningarrow, boolean explosivearrow, int fireticks, int poisonticks, int Numberofbolts, float explosionradius, float speedmodifier) {
-        CustomArrows arrow = new CustomArrows(name, textureurl, damage, firearrow, poisonarrow, lightningarrow, explosivearrow, fireticks, poisonticks, Numberofbolts, explosionradius, speedmodifier);
+    private static void addArrow(String name, String texture, float speedModifier, boolean remove, int damage, boolean fireArrow, int fireTicks, boolean poisonArrow, int poisonTicks, boolean lightningArrow, int numOfBolts, boolean explosiveArrow, float explosionPower, boolean entityArrow, Entity entityToSpawn) {
+        CustomArrows arrow = new CustomArrows(name, texture, speedModifier, remove, damage, fireArrow, fireTicks, poisonArrow, poisonTicks, lightningArrow, numOfBolts, explosiveArrow, explosionPower, entityArrow, entityToSpawn);
         customarrows.add(arrow);
         customarrowsmap.put(name, arrow);
     }
@@ -249,7 +250,7 @@ public class BlockLoader {
         CustomBushes();
         CustomBlock();
         CustomOres();
-        addArrow("Test Arrow", "http://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 7, true, false, false, false, 100, 100, 0, 0.0F, 3.5F);
+        addArrow("Test Arrow", "https://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 20.5F, false, 15, true, 100, false, 0, false, 3, true, 20.0F, false, null);
     }
     public static void addVanillaBlocks() {
         
