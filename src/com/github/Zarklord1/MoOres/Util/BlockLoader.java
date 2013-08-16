@@ -4,7 +4,6 @@ import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Custom.Blocks.*;
 import com.github.Zarklord1.MoOres.Custom.Items.*;
 import java.util.*;
-
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
@@ -191,10 +190,10 @@ public class BlockLoader {
         ConfigurationSection section3 = Configuration.items.getConfigurationSection("Custom Food");
         Iterator<String> keys3 = section3.getKeys(false).iterator();
         while (keys3.hasNext()) {
-            String name = (String)keys3.next();
-            String textureurl = Configuration.items.getString("Custom Food." + name + ".texture url");
-            int restore = Configuration.items.getInt("Custom Food." + name + ".restore");
-            addFood(name, textureurl, restore);
+        	String name = (String)keys3.next();
+        	String textureurl = Configuration.items.getString("Custom Food." + name + ".texture url");
+        	int restore = Configuration.items.getInt("Custom Food." + name + ".restore");
+        	addFood(name, textureurl, restore);
         }
         ConfigurationSection section4 = Configuration.items.getConfigurationSection("Custom Fish");
         Iterator<String> keys4 = section4.getKeys(false).iterator();

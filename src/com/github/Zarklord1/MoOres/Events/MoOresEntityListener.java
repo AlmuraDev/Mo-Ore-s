@@ -64,7 +64,7 @@ public class MoOresEntityListener implements Listener  {
                                     }
                                     
                                     if (itemarrow.isEntityArrow()) {
-                                    	player.getWorld().spawnCreature(entityhit.getLocation(), itemarrow.getEntityToSpawn().getType());
+                                    	player.getWorld().spawnEntity(entityhit.getLocation(), itemarrow.getEntityToSpawn().getType());
                                     }
                                     return;
                     			}
@@ -142,7 +142,7 @@ public class MoOresEntityListener implements Listener  {
     						}
     					}
     					if (itemarrow.isEntityArrow()) {
-    						arrow.getWorld().spawnCreature(arrow.getLocation(), itemarrow.getEntityToSpawn().getType());
+    						arrow.getWorld().spawnEntity(arrow.getLocation(), itemarrow.getEntityToSpawn().getType());
     					}
     				}
     			}

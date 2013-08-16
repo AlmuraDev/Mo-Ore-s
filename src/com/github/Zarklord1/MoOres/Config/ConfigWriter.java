@@ -1015,25 +1015,14 @@ public class ConfigWriter {
     }
     
     public static void setFood(MoOresConfiguration cfg, String type) {
-        name = ".Salad";
-        if (!cfg.contains(type + name + ".texture url")) {
-            cfg.set(type + name + ".texture url", "http://dl.lynxdragon.com/rpgessentials/textures/food/salad.png");
-        }
-        if (!cfg.contains(type + name + ".restore")) {
-            cfg.set(type + name + ".restore", Integer.valueOf(2));
+    	if (!cfg.contains(type)) {
+    		cfg.createSection(type);
         }
     }
     
     public static void setFish(MoOresConfiguration cfg, String type) {
-        name = ".Raw Cave Trout";
-        if (!cfg.contains(type + name + ".texture url")) {
-            cfg.set(type + name + ".texture url", "http://dl.lynxdragon.com/rpgessentials/textures/fish/cavetrout.png");
-        }
-        if (!cfg.contains(type + name + ".restore")) {
-            cfg.set(type + name + ".restore", Integer.valueOf(5));
-        }
-        if (!cfg.contains(type + name + ".chance")) {
-            cfg.set(type + name + ".chance", Integer.valueOf(50));
+    	if (!cfg.contains(type)) {
+            cfg.createSection(type);
         }
     }
     
