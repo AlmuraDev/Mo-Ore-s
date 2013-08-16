@@ -1,5 +1,6 @@
 package com.github.Zarklord1.MoOres.Util;
 
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -14,10 +15,11 @@ public class SaveAndLoad {
 		oos.close();
 	}
 	
-	public static Object load(String path) throws Exception {
+	@SuppressWarnings("unchecked")
+	public static <T extends Object> T load(String path) throws Exception {
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
 		Object result = ois.readObject();
 		ois.close();
-		return result;
+		return (T) result;
 	}
 }

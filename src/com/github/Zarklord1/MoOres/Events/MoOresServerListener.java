@@ -26,7 +26,8 @@ public class MoOresServerListener implements Listener {
     public MoOresServerListener() {}
 	
 	//pickup any custom arrows
-    @EventHandler(priority = EventPriority.LOWEST)
+    @SuppressWarnings("deprecation")
+	@EventHandler(priority = EventPriority.LOWEST)
     public void onServerTick(ServerTickEvent event) {
     	for (Player pl:MoOres.plugin.getServer().getOnlinePlayers()) {
     		//check if the player is using the spoutcraft client

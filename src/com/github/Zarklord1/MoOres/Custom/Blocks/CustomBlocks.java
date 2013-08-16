@@ -16,33 +16,33 @@ public class CustomBlocks extends GenericCubeCustomBlock {
 		this.setLightLevel(Configuration.block.getInt("Custom Blocks." + name + ".lightlevel"));
 		this.setHardness(Configuration.block.getInt("Custom Blocks." + name + ".hardness"));
 		this.setFriction(Configuration.block.getInt("Custom Blocks." + name + ".friction"));
-		int amount = 1;
         String drop = null;
-		if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
-            amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
-        }
         if (Configuration.block.contains("Custom Ores." + name + ".drop")) {
+    		int amount = 1;
             drop = Configuration.block.getString("Custom Ores." + name + ".drop");
+            if (Configuration.block.contains("Custom Ores." + name + ".amount")) {
+                amount = Configuration.block.getInt("Custom Ores." + name + ".amount");
+            }
             if (BlockLoader.customblocksmap.containsKey(drop)) {
             	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customblocksmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else if (BlockLoader.custombushesmap.containsKey(drop)) {
-            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.custombushesmap.get(drop));
+            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.custombushesmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else if (BlockLoader.customitemsmap.containsKey(drop)) {
-            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customitemsmap.get(drop));
+            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customitemsmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else if (BlockLoader.customfishmap.containsKey(drop)) {
-            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customfishmap.get(drop));
+            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customfishmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else if (BlockLoader.customarrowsmap.containsKey(drop)) {
-            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customarrowsmap.get(drop));
+            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customarrowsmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else if (BlockLoader.customfoodmap.containsKey(drop)) {
-            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customfoodmap.get(drop));
+            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customfoodmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else if (BlockLoader.customtoolsmap.containsKey(drop)) {
-            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customtoolsmap.get(drop));
+            	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customtoolsmap.get(drop), amount);
             	this.setItemDrop(drops);
             } else {
                 if (drop.contains(":")) {
@@ -54,13 +54,8 @@ public class CustomBlocks extends GenericCubeCustomBlock {
                     this.setItemDrop(drops);
                 }
             }
-        } else {
-        	SpoutItemStack drops = new SpoutItemStack(this, amount);
-            this.setItemDrop(drops);
         }
 	}
-	
-	
 	
 	public int getId() {
 		return 318;

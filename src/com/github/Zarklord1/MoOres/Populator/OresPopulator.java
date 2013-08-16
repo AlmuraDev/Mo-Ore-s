@@ -6,12 +6,10 @@ import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
-import org.getspout.spoutapi.Spout;
-import org.getspout.spoutapi.SpoutWorld;
-import org.getspout.spoutapi.block.SpoutBlock;
 import org.getspout.spoutapi.block.SpoutChunk;
 
 import com.github.Zarklord1.MoOres.Custom.Blocks.CustomOres;
+import static com.github.Zarklord1.MoOres.Events.MoOresOrePopulator.hasOres;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class OresPopulator extends BlockPopulator {
@@ -20,11 +18,13 @@ public class OresPopulator extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
+    	hasOres.add(chunk);
         for (CustomOres ore:BlockLoader.customores) {
-        	for (byte i = 0; i < ore.getVeinsPerChunk(); i++) {
-        		final int x = random.nextInt(15);
+        	final int veinsPerChunk = random.nextInt(ore.getMaxVeinsPerChunk() - ore.getMinVeinsPerChunk()) + ore.getMinVeinsPerChunk();
+        	for (byte i = 0; i < veinsPerChunk; i++) {
+        		final int x = random.nextInt(16);
             	final int y = random.nextInt(ore.getMaxY() - ore.getMinY()) + ore.getMinY();
-            	final int z = random.nextInt(15);
+            	final int z = random.nextInt(16);
             	final int veinSize = random.nextInt(ore.getMaxVeinSize() - ore.getMinVeinSize()) + ore.getMinVeinSize();
 				this.placeObject(world, chunk, x, y, z, veinSize, random, ore);
 			}
@@ -32,7 +32,7 @@ public class OresPopulator extends BlockPopulator {
     }
     
             
-    public void placeObject(World world, Chunk chunk, int originX, int originY, int originZ, int clusterSize, Random random, CustomOres ore) {
+    public void placeObject(World world, Chunk c, int originX, int originY, int originZ, int clusterSize, Random random, CustomOres ore) {
     	final double angle = random.nextDouble() * Math.PI;
     	final double x1 = ((originX + 8) + Math.sin(angle) * clusterSize / 8);
     	final double x2 = ((originX + 8) - Math.sin(angle) * clusterSize / 8);
@@ -67,9 +67,9 @@ public class OresPopulator extends BlockPopulator {
     						for (int z = startZ; z <= endZ; z++) {
     							double sizeZ = (z + 0.5 - seedZ) / size;
     							sizeZ *= sizeZ;
-    							if (sizeX + sizeY + sizeZ < 1 && chunk.getBlock(x, y, z).getType() == Material.STONE) {
-    								SpoutChunk chunk1 = (SpoutChunk) chunk;
-    								chunk1.setCustomBlock(x, y, z, ore);
+    							if (sizeX + sizeY + sizeZ < 1 && world.getBlockAt(x, y, z).getType().equals(Material.STONE) || world.getBlockAt(x, y, z).getType().equals(Material.AIR) && sizeX + sizeY + sizeZ < 1 && y <= 128) {
+    								SpoutChunk chunk = (SpoutChunk) c;
+    								chunk.setCustomBlock(x, y, z, ore);
     							}
     						}
     					}

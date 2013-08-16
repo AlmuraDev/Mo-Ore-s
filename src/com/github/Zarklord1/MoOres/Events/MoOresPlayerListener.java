@@ -9,7 +9,6 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -25,7 +24,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
-import org.getspout.spoutapi.player.EntitySkinType;
+import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
@@ -70,7 +69,8 @@ public class MoOresPlayerListener implements Listener {
         	}
         }
     }   
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @SuppressWarnings("deprecation")
+	@EventHandler(priority = EventPriority.HIGHEST)
     public void onItemInteract(PlayerInteractEvent event) {
     	//check if the action is the bow fire action...
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
@@ -82,10 +82,9 @@ public class MoOresPlayerListener implements Listener {
         			if (bow.isBow()) {
         				//check if the player is holding the bow!
         				if (player.getItemInHand().getDurability() == bow.getCustomId()) {
-        					CustomArrows arrow;
-        					ItemStack arrowstack;
         					PlayerInventory inventory = player.getInventory();
         					for (CustomArrows arrows:BlockLoader.customarrows) {
+            					CustomArrows arrow;
         						boolean hasArrows = false;
         						ItemStack stack = null;
         						for (int i = 1; i <= 64; i++) {
@@ -100,9 +99,8 @@ public class MoOresPlayerListener implements Listener {
         		                    arrow = arrows;
         		                    //remove one arrow from the inventory
         		                    if (player.getGameMode() != GameMode.CREATIVE) {
-        		                    	arrowstack = inventory.getItem(inventory.first(stack));
-        		                    	if (arrowstack.getAmount() > 1) {
-        		                    		arrowstack.setAmount(arrowstack.getAmount() - 1);
+        		                    	if (inventory.getItem(inventory.first(stack)).getAmount() > 1) {
+        		                    		inventory.getItem(inventory.first(stack)).setAmount(inventory.getItem(inventory.first(stack)).getAmount() - 1);
                 							player.updateInventory();
         		                    	} else {
         		                    		inventory.setItem(inventory.first(stack), null);
@@ -118,8 +116,43 @@ public class MoOresPlayerListener implements Listener {
         		                    //call the bukkit event so people will now that a bow was fired
         		                    EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, bow.getSpeed() + arrow.getSpeedModifier());
         		                    Bukkit.getPluginManager().callEvent(evt);
+        		                    if (evt.isCancelled()) {
+        		                    	spawnedarrow.remove();
+        		                    	inventory.getItem(inventory.first(stack)).setAmount(inventory.getItem(inventory.first(stack)).getAmount() + 1);
+        		                    }
+        		                    return;
         		                }
         		            }
+        					boolean hasArrows = false;
+        					ItemStack stack = null;
+        					for (int i = 1; i <= 64; i++) {
+        						stack = new SpoutItemStack(MaterialData.arrow, i);
+        						if (inventory.contains(stack)) {
+        							hasArrows = true;
+        							break;
+        		                }
+        					}
+        					//does the inventory have any arrows?
+        					if (hasArrows) {
+        						//remove one arrow from the inventory
+        						if (inventory.getItem(inventory.first(stack)).getAmount() > 1) {
+        							inventory.getItem(inventory.first(stack)).setAmount(inventory.getItem(inventory.first(stack)).getAmount() - 1);
+        							player.updateInventory();
+        		                } else {
+        		                	inventory.setItem(inventory.first(stack), null);
+        		                	player.updateInventory();
+        						}
+        						//fire the arrow
+        						CustomTools.setDurability(player.getItemInHand(), (short) (CustomTools.getDurability(player.getItemInHand()) + 1));
+        						Arrow spawnedarrow = player.launchProjectile(Arrow.class);
+        						//call the bukkit event so people will now that a bow was fired
+        						EntityShootBowEvent evt = new EntityShootBowEvent(player, player.getItemInHand(), spawnedarrow, 6);
+        						Bukkit.getPluginManager().callEvent(evt);
+        						if (evt.isCancelled()) {
+        							spawnedarrow.remove();
+        							inventory.getItem(inventory.first(stack)).setAmount(inventory.getItem(inventory.first(stack)).getAmount() + 1);
+        						}
+        					}
         				}
         			}
         		}
@@ -127,7 +160,8 @@ public class MoOresPlayerListener implements Listener {
         }
     }
     //pickup custom arrows
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @SuppressWarnings("deprecation")
+	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerMove(PlayerMoveEvent event) {
         SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
         if (player.isSpoutCraftEnabled()) {
@@ -149,6 +183,7 @@ public class MoOresPlayerListener implements Listener {
         								//add the arrowitem to the player's inventory
         								player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
             							player.updateInventory();
+            							break;
         							}
         						}
         					}

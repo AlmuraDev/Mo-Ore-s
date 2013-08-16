@@ -1,5 +1,5 @@
-/*     */ package com.github.Zarklord1.MoOres.Config;
-/*     */ 
+package com.github.Zarklord1.MoOres.Config;
+
 import com.github.Zarklord1.MoOres.MoOres;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +12,7 @@ public class Configuration {
     public static MoOresConfiguration items = new MoOresConfiguration();
     public static MoOresConfiguration texture = new MoOresConfiguration();
     public static MoOresConfiguration recipe = new MoOresConfiguration();
+    public static MoOresConfiguration player = new MoOresConfiguration();
     
     private static void complainFileCreation(String filename) {
         MoOres.log.log(Level.SEVERE, "[Mo Ores] On file: " + filename);
@@ -65,7 +66,7 @@ public class Configuration {
             Configuration.block = MoOresConfiguration.loadConfiguration("plugins/MoOres/Blocks.yml");
             ConfigWriter.setBlocks(Configuration.block, "Custom Blocks");
             ConfigWriter.setBushes(Configuration.block, "Custom Bushes");
-            ConfigWriter.setOres(Configuration.block, "Custom Ores", "Original Ores");
+            ConfigWriter.setOres(Configuration.block, "Custom Ores");
             save(Configuration.block);
         }
         if (load(Configuration.items, "Items.yml")) {

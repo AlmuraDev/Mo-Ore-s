@@ -2,35 +2,56 @@ package com.github.Zarklord1.MoOres.Custom.Blocks;
 
 import org.bukkit.inventory.ItemStack;
 import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
-import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
 import com.github.Zarklord1.MoOres.MoOres;
 
-public class CustomOres extends GenericCubeCustomBlock {
+public final class CustomOres extends GenericCubeCustomBlock {
     
-    private int minY = 2;
-    private int maxY = 256;
-    private int minVeinSize = 2;
-    private int maxVeinSize = 256;
-    private int veinsPerChunk = 300;
+    private int minY = 0;
+    private int maxY = 0;
+    private int minVeinSize = 0;
+    private int maxVeinSize = 0;
+    private int minVeinsPerChunk = 0;
+    private int maxVeinsPerChunk = 0;
     
-    public CustomOres(String name, int blockId, int metaData, int textureId, int hardness, int lightlevel, int friction, ItemStack drops, int amount, int minY, int maxY, int minVeinSize, int maxVeinSize, int veinsPerChunk) {
-        super(MoOres.plugin, name, metaData, blockId, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureId));
-        this.minY = minY;
-        this.maxY = maxY;
-        this.minVeinSize = minVeinSize;
-        this.maxVeinSize = maxVeinSize;
-        this.veinsPerChunk = veinsPerChunk;
-        setHardness(hardness);
-        setLightLevel(lightlevel);
+    public CustomOres(String name, int textureID, int blockId, int metaData, int hardness, int lightlevel, int friction, ItemStack drops, int minY, int maxY, int minVeinSize, int maxVeinSize, int minVeinsPerChunk, int maxVeinsPerChunk) {
+        super(MoOres.plugin, name, metaData, blockId, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureID));
+        this.setMinY(minY);
+        this.setMaxY(maxY);
+        this.setMinVeinSize(minVeinSize);
+        this.setMaxVeinSize(maxVeinSize);
+        this.setMinVeinsPerChunk(minVeinsPerChunk);
+        this.setMaxVeinsPerChunk(maxVeinsPerChunk);
         setFriction(friction);
-        if (drops == null) {
-        	this.setItemDrop(new SpoutItemStack(this, amount));
-        } else {
+        if (drops != null) {
         	this.setItemDrop(drops);
         }
-    }   
+    }
+    
+    public void setMinY(int minY) {
+    	this.minY = minY;
+    }
+    
+    public void setMaxY(int maxY) {
+    	this.maxY = maxY;
+    }
+    
+    public void setMinVeinSize(int minVeinSize) {
+    	this.minVeinSize = minVeinSize;
+    }
+    
+    public void setMaxVeinSize(int maxVeinSize) {
+    	this.maxVeinSize = maxVeinSize;
+    }
+    
+    public void setMinVeinsPerChunk(int minVeinsPerChunk) {
+    	this.minVeinsPerChunk = minVeinsPerChunk;
+    }
+    
+    public void setMaxVeinsPerChunk(int maxVeinsPerChunk) {
+    	this.maxVeinsPerChunk = maxVeinsPerChunk;
+    }
     
     public int getMinY() {
         return this.minY;
@@ -48,8 +69,12 @@ public class CustomOres extends GenericCubeCustomBlock {
         return this.maxVeinSize;
     }
     
-    public int getVeinsPerChunk() {
-        return this.veinsPerChunk;
+    public int getMinVeinsPerChunk() {
+        return this.minVeinsPerChunk;
+    }
+    
+    public int getMaxVeinsPerChunk() {
+        return this.maxVeinsPerChunk;
     }
     
     public int getId() {
