@@ -16,7 +16,7 @@ public final class CustomOres extends GenericCubeCustomBlock {
     private int maxVeinsPerChunk = 0;
     
     public CustomOres(String name, int textureID, int blockId, int metaData, int hardness, int lightlevel, int friction, ItemStack drops, int minY, int maxY, int minVeinSize, int maxVeinSize, int minVeinsPerChunk, int maxVeinsPerChunk) {
-        super(MoOres.plugin, name, metaData, blockId, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureID));
+    	super(MoOres.plugin, name, blockId, metaData, new GenericCubeBlockDesign(MoOres.plugin, MoOres.ores, textureID));
         this.setMinY(minY);
         this.setMaxY(maxY);
         this.setMinVeinSize(minVeinSize);
@@ -24,6 +24,7 @@ public final class CustomOres extends GenericCubeCustomBlock {
         this.setMinVeinsPerChunk(minVeinsPerChunk);
         this.setMaxVeinsPerChunk(maxVeinsPerChunk);
         setFriction(friction);
+        setLightLevel(lightlevel);
         if (drops != null) {
         	this.setItemDrop(drops);
         }

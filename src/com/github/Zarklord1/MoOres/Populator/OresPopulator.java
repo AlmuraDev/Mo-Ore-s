@@ -1,5 +1,7 @@
 package com.github.Zarklord1.MoOres.Populator;
 
+import static com.github.Zarklord1.MoOres.Events.MoOresOrePopulator.hasOres;
+
 import java.util.Random;
 
 import org.bukkit.Chunk;
@@ -9,7 +11,6 @@ import org.bukkit.generator.BlockPopulator;
 import org.getspout.spoutapi.block.SpoutChunk;
 
 import com.github.Zarklord1.MoOres.Custom.Blocks.CustomOres;
-import static com.github.Zarklord1.MoOres.Events.MoOresOrePopulator.hasOres;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class OresPopulator extends BlockPopulator {
@@ -67,9 +68,14 @@ public class OresPopulator extends BlockPopulator {
     						for (int z = startZ; z <= endZ; z++) {
     							double sizeZ = (z + 0.5 - seedZ) / size;
     							sizeZ *= sizeZ;
-    							if (sizeX + sizeY + sizeZ < 1 && world.getBlockAt(x, y, z).getType().equals(Material.STONE) || world.getBlockAt(x, y, z).getType().equals(Material.AIR) && sizeX + sizeY + sizeZ < 1 && y <= 128) {
-    								SpoutChunk chunk = (SpoutChunk) c;
-    								chunk.setCustomBlock(x, y, z, ore);
+    							if (sizeX + sizeY + sizeZ < 1) {
+    								if (world.getBlockAt(x, y, z).getType().equals(Material.STONE)) {
+    									SpoutChunk chunk = (SpoutChunk) c;
+    									chunk.setCustomBlock(x, y, z, ore);
+    								} else {
+    									SpoutChunk chunk = (SpoutChunk) c;
+        								chunk.setCustomBlock(x, y, z, ore);
+    								}
     							}
     						}
     					}

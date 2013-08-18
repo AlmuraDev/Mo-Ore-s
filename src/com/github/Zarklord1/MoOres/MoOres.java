@@ -33,23 +33,23 @@ public class MoOres extends JavaPlugin{
     @Override
     public void onEnable() {
         MoOres.plugin = this;
-        log.info("[Mo Ores] Is Enabling...");
+        log.info("[MoOres] Is Enabling...");
 
-        log.info("[Mo Ores] Loading Configs...");
+        log.info("[MoOres] Loading Configs...");
         Configuration.load();
-        log.info("[Mo Ores] Loaded Configs!");
+        log.info("[MoOres] Loaded Configs!");
         loadTextures();
-        log.info("[Mo Ores] Registering Block And Items...");
+        log.info("[MoOres] Registering Block And Items...");
         BlockLoader.addVanillaBlocks();
         BlockLoader.registerBlocks();
-        log.info("[Mo Ores] Registered all Custom Blocks And Items!");
+        log.info("[MoOres] Registered all Custom Blocks And Items!");
         load();
         reg();
-        log.info("[Mo Ores] Registering Recipes...");
+        log.info("[MoOres] Registering Recipes...");
         RecipeLoader.addAllRecipes(); 
-        log.info("[Mo Ores] Registered all Recipes!");
+        log.info("[MoOres] Registered all Recipes!");
 		        
-        log.info("[Mo Ores] Is Enabled!");
+        log.info("[MoOres] Is Enabled!");
     }
 	 
 
@@ -67,7 +67,7 @@ public class MoOres extends JavaPlugin{
         BlockLoader.ShovelSpeedIds.clear();
         BlockLoader.SwordSpeedIds.clear();
         save();
-        log.info("[Mo Ores] Is Disabled!");
+        log.info("[MoOres] Is Disabled!");
     }
 	
     private void loadTextures() {

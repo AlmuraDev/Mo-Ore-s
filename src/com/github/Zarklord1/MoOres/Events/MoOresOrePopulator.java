@@ -34,8 +34,12 @@ public class MoOresOrePopulator implements Listener {
     public void onWorldInit(WorldInitEvent event) {
     	for (String worldname:Configuration.config.getStringList("generator.Generate Custom Ores")) {
     		if (worldname.equalsIgnoreCase(event.getWorld().getName())) {
-    			MoOres.log.info("Added Ores Populator For: " + event.getWorld().getName());
-    			event.getWorld().getPopulators().add(MoOres.oresPop);
+    			if (!event.getWorld().getPopulators().contains(MoOres.oresPop))  {
+    				MoOres.log.info("Added Ores Populator For: " + event.getWorld().getName());
+    				event.getWorld().getPopulators().add(MoOres.oresPop);
+    			} else {
+    				MoOres.log.warning("Ores Populator For: " + event.getWorld().getName() + "Already Exists");
+    			}
     		}
     	}    
     }
