@@ -1,5 +1,6 @@
 package com.github.Zarklord1.MoOres;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,43 +14,42 @@ import org.getspout.spoutapi.block.design.Texture;
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Events.MoOresBlockListener;
 import com.github.Zarklord1.MoOres.Events.MoOresEntityListener;
-import com.github.Zarklord1.MoOres.Events.MoOresOrePopulator;
 import com.github.Zarklord1.MoOres.Events.MoOresPlayerListener;
 import com.github.Zarklord1.MoOres.Events.MoOresServerListener;
-import com.github.Zarklord1.MoOres.Populator.OresPopulator;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 import com.github.Zarklord1.MoOres.Util.RecipeLoader;
 import com.github.Zarklord1.MoOres.Util.SaveAndLoad;
+import com.github.Zarklord1.MoOres.WGen.MoOresOrePopulator;
+import com.github.Zarklord1.MoOres.WGen.OresPopulator;
 
 public class MoOres extends JavaPlugin{
     
     public static MoOres plugin;
     public static final Logger log = Logger.getLogger("Minecraft");
     public static OresPopulator oresPop = new OresPopulator();
-    public static Texture ores;
     public static Texture blocks;
     public static Texture plants;
 
     @Override
     public void onEnable() {
         MoOres.plugin = this;
-        log.info("[MoOres] Is Enabling...");
+        log.info("[Mo Ores] Is Enabling...");
 
-        log.info("[MoOres] Loading Configs...");
+        log.info("[Mo Ores] Loading Configs...");
         Configuration.load();
-        log.info("[MoOres] Loaded Configs!");
+        log.info("[Mo Ores] Loaded Configs!");
         loadTextures();
-        log.info("[MoOres] Registering Block And Items...");
+        log.info("[Mo Ores] Registering Block And Items...");
         BlockLoader.addVanillaBlocks();
         BlockLoader.registerBlocks();
-        log.info("[MoOres] Registered all Custom Blocks And Items!");
+        log.info("[Mo Ores] Registered all Custom Blocks And Items!");
         load();
         reg();
-        log.info("[MoOres] Registering Recipes...");
+        log.info("[Mo Ores] Registering Recipes...");
         RecipeLoader.addAllRecipes(); 
-        log.info("[MoOres] Registered all Recipes!");
+        log.info("[Mo Ores] Registered all Recipes!");
 		        
-        log.info("[MoOres] Is Enabled!");
+        log.info("[Mo Ores] Is Enabled!");
     }
 	 
 
@@ -58,7 +58,6 @@ public class MoOres extends JavaPlugin{
     public void onDisable(){ 
         BlockLoader.custombushes.clear();
         BlockLoader.customitems.clear();
-        BlockLoader.customores.clear();
         BlockLoader.customtools.clear();
         BlockLoader.plants.clear();
         BlockLoader.Pickaxebreackableblocks.clear();
@@ -67,11 +66,10 @@ public class MoOres extends JavaPlugin{
         BlockLoader.ShovelSpeedIds.clear();
         BlockLoader.SwordSpeedIds.clear();
         save();
-        log.info("[MoOres] Is Disabled!");
+        log.info("[Mo Ores] Is Disabled!");
     }
 	
     private void loadTextures() {
-        MoOres.ores = new Texture(this, Configuration.texture.getString("Ores Texture"), Configuration.texture.getInt("Ores Texture Size"), Configuration.texture.getInt("Ores Texture Size"), Configuration.texture.getInt("Ores Block Texture Size"));
         MoOres.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), Configuration.texture.getInt("Blocks Texture Size"), Configuration.texture.getInt("Blocks Texture Size"), Configuration.texture.getInt("Blocks Block Texture Size"));
         MoOres.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), Configuration.texture.getInt("Plants Texture Size"), Configuration.texture.getInt("Plants Texture Size"), Configuration.texture.getInt("Plants Block Texture Size"));
     }

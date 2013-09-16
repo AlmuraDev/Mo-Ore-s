@@ -349,7 +349,7 @@ public class ConfigWriter {
         }
         name = ".Flarite Ingot";
         if (!cfg.contains(shapeless + name + ".Recipe1.amount")) {
-            cfg.set(shapeless + name + ".Recipe1.amount", Integer.valueOf(4));
+            cfg.set(shapeless + name + ".Recipe1.amount", Integer.valueOf(9));
         }
         if (!cfg.contains(shapeless + name + ".Recipe1.ingredient1")) {
             cfg.set(shapeless + name + ".Recipe1.ingredient1", "Flarite Block");
@@ -398,200 +398,125 @@ public class ConfigWriter {
         }
         
     }
-    
-    public static void setOres(MoOresConfiguration cfg, String custom) {
-        name = ".Flarite Ore";
-        if (!cfg.contains(custom +  name + ".textureID")) {
-            cfg.set(custom +  name + ".textureID", Integer.valueOf(8));
+
+    public static void setBlocks(MoOresConfiguration cfg, String type) {
+    	name = ".Flarite Ore";
+        if (!cfg.contains(type +  name + ".textureID")) {
+            cfg.set(type +  name + ".textureID", Integer.valueOf(25));
         }
-        if (!cfg.contains(custom +  name + ".min height")) {
-            cfg.set(custom +  name + ".min height", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".hardness")) {
+            cfg.set(type +  name + ".hardness", Integer.valueOf(10));
         }
-        if (!cfg.contains(custom +  name + ".max height")) {
-            cfg.set(custom +  name + ".max height", Integer.valueOf(46));
+        if (!cfg.contains(type +  name + ".lightlevel")) {
+            cfg.set(type +  name + ".lightlevel", Integer.valueOf(2));
         }
-        if (!cfg.contains(custom +  name + ".min Vein Size")) {
-            cfg.set(custom +  name + ".min Vein Size", Integer.valueOf(3));
+        if (!cfg.contains(type +  name + ".friction")) {
+            cfg.set(type +  name + ".friction", Integer.valueOf(5));
         }
-        if (!cfg.contains(custom +  name + ".max Vein Size")) {
-            cfg.set(custom +  name + ".max Vein Size", Integer.valueOf(8));
-        }
-        if (!cfg.contains(custom +  name + ".min Veins Per Chunk")) {
-            cfg.set(custom +  name + ".min Veins Per Chunk", Integer.valueOf(10));
-        }
-        if (!cfg.contains(custom +  name + ".max Veins Per Chunk")) {
-            cfg.set(custom +  name + ".max Veins Per Chunk", Integer.valueOf(25));
-        }
-        if (!cfg.contains(custom +  name + ".hardness")) {
-            cfg.set(custom +  name + ".hardness", Integer.valueOf(10));
-        }
-        if (!cfg.contains(custom +  name + ".block id")) {
-            cfg.set(custom +  name + ".block id", Integer.valueOf(14));
-        }
-        if (!cfg.contains(custom +  name + ".lightlevel")) {
-            cfg.set(custom +  name + ".lightlevel", Integer.valueOf(2));
-        }
-        if (!cfg.contains(custom +  name + ".friction")) {
-            cfg.set(custom +  name + ".friction", Integer.valueOf(5));
+        if (!cfg.contains(type +  name + ".block id")) {
+            cfg.set(type +  name + ".block id", Integer.valueOf(14));
         }
         
         name = ".Silver Ore";
-        if (!cfg.contains(custom +  name + ".textureID")) {
-            cfg.set(custom +  name + ".textureID", Integer.valueOf(9));
+        if (!cfg.contains(type +  name + ".textureID")) {
+            cfg.set(type +  name + ".textureID", Integer.valueOf(26));
         }
-        if (!cfg.contains(custom +  name + ".min height")) {
-            cfg.set(custom +  name + ".min height", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".hardness")) {
+            cfg.set(type +  name + ".hardness", Integer.valueOf(2));
         }
-        if (!cfg.contains(custom +  name + ".max height")) {
-            cfg.set(custom +  name + ".max height", Integer.valueOf(33));
+        if (!cfg.contains(type +  name + ".lightlevel")) {
+            cfg.set(type +  name + ".lightlevel", Integer.valueOf(0));
         }
-        if (!cfg.contains(custom +  name + ".min Vein Size")) {
-            cfg.set(custom +  name + ".min Vein Size", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".friction")) {
+            cfg.set(type +  name + ".friction", Integer.valueOf(6));
         }
-        if (!cfg.contains(custom +  name + ".max Vein Size")) {
-            cfg.set(custom +  name + ".max Vein Size", Integer.valueOf(6));
-        }
-        if (!cfg.contains(custom +  name + ".min Veins Per Chunk")) {
-            cfg.set(custom +  name + ".min Veins Per Chunk", Integer.valueOf(7));
-        }
-        if (!cfg.contains(custom +  name + ".max Veins Per Chunk")) {
-            cfg.set(custom +  name + ".max Veins Per Chunk", Integer.valueOf(13));
-        }
-        if (!cfg.contains(custom +  name + ".hardness")) {
-            cfg.set(custom +  name + ".hardness", Integer.valueOf(2));
-        }
-        if (!cfg.contains(custom +  name + ".block id")) {
-            cfg.set(custom +  name + ".block id", Integer.valueOf(15));
-        }
-        if (!cfg.contains(custom +  name + ".lightlevel")) {
-            cfg.set(custom +  name + ".lightlevel", Integer.valueOf(0));
-        }
-        if (!cfg.contains(custom +  name + ".friction")) {
-            cfg.set(custom +  name + ".friction", Integer.valueOf(6));
+        if (!cfg.contains(type +  name + ".block id")) {
+            cfg.set(type +  name + ".block id", Integer.valueOf(15));
         }
         
         name = ".Thermite Ore";
-        if (!cfg.contains(custom +  name + ".textureID")) {
-            cfg.set(custom +  name + ".textureID", Integer.valueOf(10));
+        if (!cfg.contains(type +  name + ".textureID")) {
+            cfg.set(type +  name + ".textureID", Integer.valueOf(27));
         }
-        if (!cfg.contains(custom +  name + ".min height")) {
-            cfg.set(custom +  name + ".min height", Integer.valueOf(18));
+        if (!cfg.contains(type +  name + ".hardness")) {
+            cfg.set(type +  name + ".hardness", Integer.valueOf(7));
         }
-        if (!cfg.contains(custom +  name + ".max height")) {
-            cfg.set(custom +  name + ".max height", Integer.valueOf(42));
+        if (!cfg.contains(type +  name + ".lightlevel")) {
+            cfg.set(type +  name + ".lightlevel", Integer.valueOf(0));
         }
-        if (!cfg.contains(custom +  name + ".min Vein Size")) {
-            cfg.set(custom +  name + ".min Vein Size", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".friction")) {
+            cfg.set(type +  name + ".friction", Integer.valueOf(3));
         }
-        if (!cfg.contains(custom +  name + ".max Vein Size")) {
-            cfg.set(custom +  name + ".max Vein Size", Integer.valueOf(8));
+        if (!cfg.contains(type +  name + ".block id")) {
+            cfg.set(type +  name + ".block id", Integer.valueOf(16));
         }
-        if (!cfg.contains(custom +  name + ".min Veins Per Chunk")) {
-            cfg.set(custom +  name + ".min Veins Per Chunk", Integer.valueOf(8));
+        if (!cfg.contains(type +  name + ".drop")) {
+            cfg.set(type +  name + ".drop", "Thermite Dust");
         }
-        if (!cfg.contains(custom +  name + ".max Veins Per Chunk")) {
-            cfg.set(custom +  name + ".max Veins Per Chunk", Integer.valueOf(16));
-        }
-        if (!cfg.contains(custom +  name + ".hardness")) {
-            cfg.set(custom +  name + ".hardness", Integer.valueOf(7));
-        }
-        if (!cfg.contains(custom +  name + ".block id")) {
-            cfg.set(custom +  name + ".block id", Integer.valueOf(16));
-        }
-        if (!cfg.contains(custom +  name + ".lightlevel")) {
-            cfg.set(custom +  name + ".lightlevel", Integer.valueOf(0));
-        }
-        if (!cfg.contains(custom +  name + ".friction")) {
-            cfg.set(custom +  name + ".friction", Integer.valueOf(3));
-        }
-        if (!cfg.contains(custom +  name + ".drop")) {
-            cfg.set(custom +  name + ".drop", "Thermite Dust");
-        }
-        if (!cfg.contains(custom +  name + ".amount")) {
-            cfg.set(custom +  name + ".amount", Integer.valueOf(4));
+        if (!cfg.contains(type +  name + ".amount")) {
+            cfg.set(type +  name + ".amount", Integer.valueOf(4));
         }
         
         name = ".Crystalite Ore";
-        if (!cfg.contains(custom +  name + ".textureID")) {
-            cfg.set(custom +  name + ".textureID", Integer.valueOf(254));
+        if (!cfg.contains(type +  name + ".textureID")) {
+            cfg.set(type +  name + ".textureID", Integer.valueOf(34));
         }
-        if (!cfg.contains(custom +  name + ".min height")) {
-            cfg.set(custom +  name + ".min height", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".hardness")) {
+            cfg.set(type +  name + ".hardness", Integer.valueOf(73));
         }
-        if (!cfg.contains(custom +  name + ".max height")) {
-            cfg.set(custom +  name + ".max height", Integer.valueOf(32));
+        if (!cfg.contains(type +  name + ".lightlevel")) {
+            cfg.set(type +  name + ".lightlevel", Integer.valueOf(0));
         }
-        if (!cfg.contains(custom +  name + ".min Vein Size")) {
-            cfg.set(custom +  name + ".min Vein Size", Integer.valueOf(3));
+        if (!cfg.contains(type +  name + ".friction")) {
+            cfg.set(type +  name + ".friction", Integer.valueOf(9));
         }
-        if (!cfg.contains(custom +  name + ".max Vein Size")) {
-            cfg.set(custom +  name + ".max Vein Size", Integer.valueOf(6));
+        if (!cfg.contains(type +  name + ".block id")) {
+            cfg.set(type +  name + ".block id", Integer.valueOf(21));
         }
-        if (!cfg.contains(custom +  name + ".min Veins Per Chunk")) {
-            cfg.set(custom +  name + ".min Veins Per Chunk", Integer.valueOf(12));
+        if (!cfg.contains(type +  name + ".drop")) {
+            cfg.set(type +  name + ".drop", "Crystalite");
         }
-        if (!cfg.contains(custom +  name + ".max Veins Per Chunk")) {
-            cfg.set(custom +  name + ".max Veins Per Chunk", Integer.valueOf(18));
-        }
-        if (!cfg.contains(custom +  name + ".hardness")) {
-            cfg.set(custom +  name + ".hardness", Integer.valueOf(73));
-        }
-        if (!cfg.contains(custom +  name + ".block id")) {
-            cfg.set(custom +  name + ".block id", Integer.valueOf(21));
-        }
-        if (!cfg.contains(custom +  name + ".lightlevel")) {
-            cfg.set(custom +  name + ".lightlevel", Integer.valueOf(0));
-        }
-        if (!cfg.contains(custom +  name + ".friction")) {
-            cfg.set(custom +  name + ".friction", Integer.valueOf(9));
-        }
-        if (!cfg.contains(custom +  name + ".drop")) {
-            cfg.set(custom +  name + ".drop", "Crystalite");
-        }
-        if (!cfg.contains(custom +  name + ".amount")) {
-            cfg.set(custom +  name + ".amount", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".amount")) {
+            cfg.set(type +  name + ".amount", Integer.valueOf(2));
         }
         
         name = ".Ruby Ore";
-        if (!cfg.contains(custom +  name + ".textureID")) {
-            cfg.set(custom +  name + ".textureID", Integer.valueOf(7));
+        if (!cfg.contains(type +  name + ".textureID")) {
+            cfg.set(type +  name + ".textureID", Integer.valueOf(24));
         }
-        if (!cfg.contains(custom +  name + ".min height")) {
-            cfg.set(custom +  name + ".min height", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".hardness")) {
+            cfg.set(type +  name + ".hardness", Integer.valueOf(8));
         }
-        if (!cfg.contains(custom +  name + ".max height")) {
-            cfg.set(custom +  name + ".max height", Integer.valueOf(14));
+        if (!cfg.contains(type +  name + ".lightlevel")) {
+            cfg.set(type +  name + ".lightlevel", Integer.valueOf(0));
         }
-        if (!cfg.contains(custom +  name + ".min Vein Size")) {
-            cfg.set(custom +  name + ".min Vein Size", Integer.valueOf(2));
+        if (!cfg.contains(type +  name + ".friction")) {
+            cfg.set(type +  name + ".friction", Integer.valueOf(7));
         }
-        if (!cfg.contains(custom +  name + ".max Vein Size")) {
-            cfg.set(custom +  name + ".max Vein Size", Integer.valueOf(4));
+        if (!cfg.contains(type +  name + ".block id")) {
+            cfg.set(type +  name + ".block id", Integer.valueOf(56));
         }
-        if (!cfg.contains(custom +  name + ".min Veins Per Chunk")) {
-            cfg.set(custom +  name + ".min Veins Per Chunk", Integer.valueOf(4));
+        if (!cfg.contains(type +  name + ".drop")) {
+            cfg.set(type +  name + ".drop", "Ruby");
         }
-        if (!cfg.contains(custom +  name + ".max Veins Per Chunk")) {
-            cfg.set(custom +  name + ".max Veins Per Chunk", Integer.valueOf(7));
+        
+        name = ".Moon Stone";
+        if (!cfg.contains(type +  name + ".textureID")) {
+            cfg.set(type +  name + ".textureID", Integer.valueOf(28));
         }
-        if (!cfg.contains(custom +  name + ".hardness")) {
-            cfg.set(custom +  name + ".hardness", Integer.valueOf(8));
+        if (!cfg.contains(type +  name + ".hardness")) {
+            cfg.set(type +  name + ".hardness", Integer.valueOf(10));
         }
-        if (!cfg.contains(custom +  name + ".block id")) {
-            cfg.set(custom +  name + ".block id", Integer.valueOf(56));
+        if (!cfg.contains(type +  name + ".lightlevel")) {
+            cfg.set(type +  name + ".lightlevel", Integer.valueOf(25));
         }
-        if (!cfg.contains(custom +  name + ".lightlevel")) {
-            cfg.set(custom +  name + ".lightlevel", Integer.valueOf(0));
+        if (!cfg.contains(type +  name + ".friction")) {
+            cfg.set(type +  name + ".friction", Integer.valueOf(5));
         }
-        if (!cfg.contains(custom +  name + ".friction")) {
-            cfg.set(custom +  name + ".friction", Integer.valueOf(7));
+        if (!cfg.contains(type +  name + ".block id")) {
+            cfg.set(type +  name + ".block id", Integer.valueOf(14));
         }
-        if (!cfg.contains(custom +  name + ".drop")) {
-            cfg.set(custom +  name + ".drop", "Ruby");
-        }
-    }
-    
-    public static void setBlocks(MoOresConfiguration cfg, String type) {
+        
         name = ".Flarite Block";
         if (!cfg.contains(type + name + ".textureID")) {
             cfg.set(type + name + ".textureID", Integer.valueOf(13));
@@ -628,7 +553,7 @@ public class ConfigWriter {
 		
         name = ".Thermite Bomb";
         if (!cfg.contains(type + name + ".textureID")) {
-            cfg.set(type + name + ".textureID", Integer.valueOf(12));
+            cfg.set(type + name + ".textureID", Integer.valueOf(1));
         }
         if (!cfg.contains(type + name + ".hardness")) {
             cfg.set(type + name + ".hardness", Integer.valueOf(0));
@@ -1114,11 +1039,131 @@ public class ConfigWriter {
         if (!cfg.contains("tools.Sword Block Break Speed")) {
             cfg.set("tools.Sword Block Break Speed", Arrays.asList(new String[] {"26", "30", "92"}));
         }
-        if (!cfg.contains("generator.Generate Custom Ores")) {
-        	cfg.set("generator.Generate Custom Ores", Arrays.asList(new String[] {}));
+    }
+    
+    public static void setWGen(MoOresConfiguration cfg) {
+    	name = ".Flarite Ore";
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Height")) {
+        	cfg.set("wGen.Ores" + name + ".Min Height", Integer.valueOf(2));
         }
-        if (!cfg.contains("generator.Generate In Old Chunks")) {
-        	cfg.set("generator.Generate In Old Chunks", Boolean.valueOf(false));
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Height")) {
+        	cfg.set("wGen.Ores" + name + ".Max Height", Integer.valueOf(46));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Min Vein Size", Integer.valueOf(3));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Max Vein Size", Integer.valueOf(8));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Min Veins Per Chunk", Integer.valueOf(10));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Max Veins Per Chunk", Integer.valueOf(25));
+        }
+    	name = ".Silver Ore";
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Height")) {
+        	cfg.set("wGen.Ores" + name + ".Min Height", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Height")) {
+        	cfg.set("wGen.Ores" + name + ".Max Height", Integer.valueOf(33));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Min Vein Size", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Max Vein Size", Integer.valueOf(6));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Min Veins Per Chunk", Integer.valueOf(7));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Max Veins Per Chunk", Integer.valueOf(13));
+        }
+    	name = ".Thermite Ore";
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Height")) {
+        	cfg.set("wGen.Ores" + name + ".Min Height", Integer.valueOf(18));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Height")) {
+        	cfg.set("wGen.Ores" + name + ".Max Height", Integer.valueOf(42));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Min Vein Size", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Max Vein Size", Integer.valueOf(8));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Min Veins Per Chunk", Integer.valueOf(8));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Max Veins Per Chunk", Integer.valueOf(16));
+        }
+    	name = ".Crystalite Ore";
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Height")) {
+        	cfg.set("wGen.Ores" + name + ".Min Height", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Height")) {
+        	cfg.set("wGen.Ores" + name + ".Max Height", Integer.valueOf(32));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Min Vein Size", Integer.valueOf(3));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Max Vein Size", Integer.valueOf(6));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Min Veins Per Chunk", Integer.valueOf(12));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Max Veins Per Chunk", Integer.valueOf(18));
+        }
+    	name = ".Ruby Ore";
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Height")) {
+        	cfg.set("wGen.Ores" + name + ".Min Height", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Height")) {
+        	cfg.set("wGen.Ores" + name + ".Max Height", Integer.valueOf(14));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Min Vein Size", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Max Vein Size", Integer.valueOf(4));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Min Veins Per Chunk", Integer.valueOf(4));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Max Veins Per Chunk", Integer.valueOf(7));
+        }
+    	name = ".Moon Stone";
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Height")) {
+        	cfg.set("wGen.Ores" + name + ".Min Height", Integer.valueOf(215));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Height")) {
+        	cfg.set("wGen.Ores" + name + ".Max Height", Integer.valueOf(256));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Min Vein Size", Integer.valueOf(1));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Vein Size")) {
+        	cfg.set("wGen.Ores" + name + ".Max Vein Size", Integer.valueOf(3));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Min Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Min Veins Per Chunk", Integer.valueOf(2));
+        }
+    	if (!cfg.contains("wGen.Ores" + name + ".Max Veins Per Chunk")) {
+        	cfg.set("wGen.Ores" + name + ".Max Veins Per Chunk", Integer.valueOf(4));
+        }
+        if (!cfg.contains("wGen.Generate Custom Ores")) {
+        	cfg.set("wGen.Generate Custom Ores", Boolean.valueOf(true));
+        }
+        if (!cfg.contains("wGen.Generate In Old Chunks")) {
+        	cfg.set("wGen.Generate In Old Chunks", Boolean.valueOf(false));
+        }
+        if (!cfg.contains("wGen.Overworld Name")) {
+        	cfg.set("wGen.Overworld Name", Arrays.asList(new String[] {"Put your overworld world name here"}));
         }
     }
 }

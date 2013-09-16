@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Events;
+package com.github.Zarklord1.MoOres.WGen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +19,12 @@ public class MoOresOrePopulator implements Listener {
 	   
     public MoOresOrePopulator() {}
     
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onChunkLoad(ChunkLoadEvent event) {
-    	if (Configuration.config.getBoolean("generator.Generate In Old Chunks")) {
+    	if (Configuration.wGen.getBoolean("wGen.Generate In Old Chunks")) {
     		if (event.getWorld().getPopulators().contains(MoOres.oresPop)) {
     			if (!event.isNewChunk() && !hasOres.contains(event.getChunk())) {
+    				hasOres.remove(event.getChunk());
     				MoOres.oresPop.populate(event.getWorld(), new Random(), event.getChunk());
     			}	
     		}
@@ -32,13 +33,11 @@ public class MoOresOrePopulator implements Listener {
     
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onWorldInit(WorldInitEvent event) {
-    	for (String worldname:Configuration.config.getStringList("generator.Generate Custom Ores")) {
-    		if (worldname.equalsIgnoreCase(event.getWorld().getName())) {
-    			if (!event.getWorld().getPopulators().contains(MoOres.oresPop))  {
-    				MoOres.log.info("Added Ores Populator For: " + event.getWorld().getName());
+    	if (Configuration.wGen.getBoolean("wGen.Generate Custom Ores")) {
+    		for (String worldname:Configuration.wGen.getStringList("wGen.Overworld Name")) {
+    			if (worldname.equalsIgnoreCase(event.getWorld().getName())) {
     				event.getWorld().getPopulators().add(MoOres.oresPop);
-    			} else {
-    				MoOres.log.warning("Ores Populator For: " + event.getWorld().getName() + "Already Exists");
+        			MoOres.log.info("[Mo Ores] Added Ores Populator For: " + event.getWorld().getName());
     			}
     		}
     	}    
