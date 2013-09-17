@@ -1,20 +1,10 @@
 package com.github.Zarklord1.MoOres.Events;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.player.SpoutPlayer;
-
-import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
-import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresBlockListener implements Listener {
 	   
-    public MoOresBlockListener() {}
+/*    public MoOresBlockListener() {}
 	
     @EventHandler(priority = EventPriority.HIGHEST)
 	public void onBlockBreak(BlockBreakEvent event) {
@@ -33,5 +23,5 @@ public class MoOresBlockListener implements Listener {
                 }
             }
         }
-    }
+    }*/
 }

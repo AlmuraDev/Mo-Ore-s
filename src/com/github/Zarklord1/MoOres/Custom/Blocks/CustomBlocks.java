@@ -24,20 +24,17 @@ public class CustomBlocks extends GenericCubeCustomBlock {
 		this.setFriction(Configuration.block.getInt("Custom Blocks." + name + ".friction"));
 		this.setBlockName(name);
 		boolean haveBlockDesign = false;
-		int numOfVertexes = 0;
+		int numOfQuads = 0;
     	MoOres.log.fine("kitten7");
 		
 		if (Configuration.block.contains("Custom Blocks." + name + ".Has Block Design")) {
-	    	MoOres.log.fine("kitten4");
 			haveBlockDesign = Configuration.block.getBoolean("Custom Blocks." + name + ".Has Block Design");
 		}
 		if (haveBlockDesign) {
-			numOfVertexes = Configuration.block.getInt("Custom Blocks." + name + ".Number Of Vertexes");
-			MoOres.log.fine(String.valueOf(numOfVertexes));
+			numOfQuads = Configuration.block.getInt("Custom Blocks." + name + ".Number Of Quads");
         }
 		if (haveBlockDesign == true) {
-	    	MoOres.log.fine("kitten6");
-			setblockDesign(name, numOfVertexes, textureID);
+			setblockDesign(name, numOfQuads, textureID);
 		}
 		
         if (Configuration.block.contains("Custom BLocks." + name + ".drop")) {
@@ -52,10 +49,30 @@ public class CustomBlocks extends GenericCubeCustomBlock {
         }
 	}
 	
-	private void setblockDesign(String name, int numOfVertexes, int textureID) {
+	private void setblockDesign(String name, int numOfQuads, int textureID) {
 		if (Configuration.loadBlockDesign(Configuration.blockDesign, name + ".yml")) {
-	    	MoOres.log.fine("kitten3");
-			this.setBlockDesign(new BlockShapeLoader(Configuration.blockDesign, numOfVertexes, textureID));
+			this.setBlockDesign(new BlockShapeLoader(Configuration.blockDesign, numOfQuads, textureID));
+		}
+	}
+	
+	@SuppressWarnings("unused")
+	private void setblockDesign(String name, int numOfQuads, int textureIDs[]) {
+		if (Configuration.loadBlockDesign(Configuration.blockDesign, name + ".yml")) {
+			this.setBlockDesign(new BlockShapeLoader(Configuration.blockDesign, numOfQuads, textureIDs));
+		}
+	}
+	
+	@SuppressWarnings("unused")
+	private void setblockDesign(String name, int numOfQuads, int textureIDs[], int numberOfBlockDesigns) {
+		if (Configuration.loadBlockDesign(Configuration.blockDesign, name + ".yml")) {
+			this.setBlockDesign(new BlockShapeLoader(Configuration.blockDesign, numOfQuads, textureIDs, numberOfBlockDesigns));
+		}
+	}
+	
+	@SuppressWarnings("unused")
+	private void setblockDesign(String name, int numOfQuads, int textureID, int numberOfBlockDesigns) {
+		if (Configuration.loadBlockDesign(Configuration.blockDesign, name + ".yml")) {
+			this.setBlockDesign(new BlockShapeLoader(Configuration.blockDesign, numOfQuads, textureID, numberOfBlockDesigns));
 		}
 	}
 
@@ -66,9 +83,6 @@ public class CustomBlocks extends GenericCubeCustomBlock {
 	public void setBlockDrops(String drop, int amount) {
 		if (BlockLoader.customblocksmap.containsKey(drop)) {
         	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customblocksmap.get(drop), amount);
-        	this.setItemDrop(drops);
-        } else if (BlockLoader.custombushesmap.containsKey(drop)) {
-        	SpoutItemStack drops = new SpoutItemStack(BlockLoader.custombushesmap.get(drop), amount);
         	this.setItemDrop(drops);
         } else if (BlockLoader.customitemsmap.containsKey(drop)) {
         	SpoutItemStack drops = new SpoutItemStack(BlockLoader.customitemsmap.get(drop), amount);

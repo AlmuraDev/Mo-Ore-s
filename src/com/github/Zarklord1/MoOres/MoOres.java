@@ -28,7 +28,6 @@ public class MoOres extends JavaPlugin{
     public static final Logger log = Logger.getLogger("Minecraft");
     public static OresPopulator oresPop = new OresPopulator();
     public static Texture blocks;
-    public static Texture plants;
 
     @Override
     public void onEnable() {
@@ -40,7 +39,6 @@ public class MoOres extends JavaPlugin{
         log.info("[Mo Ores] Loaded Configs!");
         loadTextures();
         log.info("[Mo Ores] Registering Block And Items...");
-        BlockLoader.addVanillaBlocks();
         BlockLoader.registerBlocks();
         log.info("[Mo Ores] Registered all Custom Blocks And Items!");
         load();
@@ -55,23 +53,19 @@ public class MoOres extends JavaPlugin{
 
 
     @Override
-    public void onDisable(){ 
-        BlockLoader.custombushes.clear();
+    public void onDisable(){
+    	BlockLoader.customarrows.clear();
+    	BlockLoader.customblocks.clear();
+    	BlockLoader.customfish.clear();
+    	BlockLoader.customfood.clear();
         BlockLoader.customitems.clear();
         BlockLoader.customtools.clear();
-        BlockLoader.plants.clear();
-        BlockLoader.Pickaxebreackableblocks.clear();
-        BlockLoader.PickaxeSpeedIds.clear();
-        BlockLoader.AxeSpeedIds.clear();
-        BlockLoader.ShovelSpeedIds.clear();
-        BlockLoader.SwordSpeedIds.clear();
         save();
         log.info("[Mo Ores] Is Disabled!");
     }
 	
     private void loadTextures() {
         MoOres.blocks = new Texture(this, Configuration.texture.getString("Blocks Texture"), Configuration.texture.getInt("Blocks Texture Size"), Configuration.texture.getInt("Blocks Texture Size"), Configuration.texture.getInt("Blocks Block Texture Size"));
-        MoOres.plants = new Texture(this, Configuration.texture.getString("Plants Texture"), Configuration.texture.getInt("Plants Texture Size"), Configuration.texture.getInt("Plants Texture Size"), Configuration.texture.getInt("Plants Block Texture Size"));
     }
     
     private void reg() {

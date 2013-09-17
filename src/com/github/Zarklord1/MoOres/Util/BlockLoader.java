@@ -1,30 +1,25 @@
 package com.github.Zarklord1.MoOres.Util;
 
-import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Config.Configuration;
-import com.github.Zarklord1.MoOres.Custom.Blocks.*;
-import com.github.Zarklord1.MoOres.Custom.Items.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-import java.util.*;
-
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
-//import org.bukkit.inventory.ItemStack;
-//import org.getspout.spoutapi.inventory.SpoutItemStack;
-import org.getspout.spoutapi.material.*;
-import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
+
+import com.github.Zarklord1.MoOres.MoOres;
+import com.github.Zarklord1.MoOres.Config.Configuration;
+import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomArrows;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomFishes;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomFood;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
+import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
 
 
 public class BlockLoader {
-	
-
-    
-    public static HashSet<Material> Pickaxebreackableblocks = new LinkedHashSet<Material>();
-    public static Set<Block> PickaxeSpeedIds = new LinkedHashSet<Block>();
-    public static Set<Block> SwordSpeedIds = new LinkedHashSet<Block>();
-    public static Set<Block> AxeSpeedIds = new LinkedHashSet<Block>();
-    public static Set<Block> ShovelSpeedIds = new LinkedHashSet<Block>();
     
     public static Set<CustomBlocks> customblocks = new LinkedHashSet<CustomBlocks>();
     public static HashMap<String, CustomBlocks> customblocksmap = new LinkedHashMap<String, CustomBlocks>();
@@ -44,22 +39,7 @@ public class BlockLoader {
     public static Set<CustomFishes> customfish = new LinkedHashSet<CustomFishes>();
     public static HashMap<String, CustomFishes> customfishmap = new LinkedHashMap<String, CustomFishes>();
     
-    public static Set<CustomBush> custombushes = new LinkedHashSet<CustomBush>();
-    public static HashMap<String, CustomBush> custombushesmap = new LinkedHashMap<String, CustomBush>();
-    
-    public static Set<GenericCubeCustomBlock> plants = new LinkedHashSet<GenericCubeCustomBlock>();
-    
-    
-    /*public static void CustomBushes() {
-        ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Bushes");
-        Iterator<String> keys = section.getKeys(false).iterator();
-        while (keys.hasNext()) {
-            String name = (String)keys.next();
-            int textureID = Configuration.block.getInt("Custom Bushes." + name + ".textureID");
-            addbushes(name, new int[] {textureID, textureID, textureID, textureID, textureID, textureID});
-        }
-    }*/
-    public static void CustomBlock() {
+    public static void CustomBlocks() {
         ConfigurationSection section = Configuration.block.getConfigurationSection("Custom Blocks");
         Iterator<String> keys = section.getKeys(false).iterator();
         while (keys.hasNext()) {
@@ -157,59 +137,9 @@ public class BlockLoader {
         customtools.add(tool);
         customtoolsmap.put(name, tool);
     }
-    /*private static void addbushes(String name, int[] textureids) {
-        CustomBush bush = new CustomBush(name, textureids);
-        custombushes.add(bush);
-        custombushesmap.put(name, bush);
-    }*/
     public static void registerBlocks() {
         CustomItems();
-        //CustomBushes();
-        CustomBlock();
+        CustomBlocks();
         addArrow("Test Arrow", "https://dl.dropbox.com/u/77733573/Plugins/MoOres1.6/Crystalite/CrystaliteArrow.png", 20.5F, false, 15, true, 100, false, 0, false, 3, true, 20.0F, false, null);
-    }
-    public static void addVanillaBlocks() {
-        
-        List<Integer> list = Configuration.config.getIntegerList("Tools.Pickaxe Breackable Block Ids");
-        for(int pos = 0; pos < list.size(); pos++){
-            Pickaxebreackableblocks.add(Material.getMaterial(list.get(pos)));
-        }
-        
-        List<String> block = Configuration.config.getStringList("Tools.Pickaxe Block Break Speed");
-        for(int pos = 0; pos < list.size(); pos++){
-            if (block.get(pos).contains(":")) {
-                String[] split = block.get(pos).split(":");
-                PickaxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1])));
-            } else {
-                PickaxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
-            }
-        }
-        block = Configuration.config.getStringList("Tools.Axe Block Break Speed");
-        for(int pos = 0; pos < list.size(); pos++){
-            if (block.get(pos).contains(":")) {
-                String[] split = block.get(pos).split(":");
-                AxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1])));
-            } else {
-                AxeSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
-            }
-        }
-        block = Configuration.config.getStringList("Tools.Shovel Block Break Speed");
-        for(int pos = 0; pos < list.size(); pos++){
-            if (block.get(pos).contains(":")) {
-                String[] split = block.get(pos).split(":");
-                ShovelSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1]))); 
-            } else {
-                ShovelSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
-            }
-        }
-        block = Configuration.config.getStringList("Tools.Sword Block Break Speed");
-        for(int pos = 0; pos < list.size(); pos++){
-            if (block.get(pos).contains(":")) {
-                String[] split = block.get(pos).split(":");
-                SwordSpeedIds.add(MaterialData.getBlock(Integer.parseInt(split[0]), Short.parseShort(split[1])));
-            } else {
-                SwordSpeedIds.add(MaterialData.getBlock(Integer.parseInt(block.get(pos))));
-            }
-        }
     }
 }

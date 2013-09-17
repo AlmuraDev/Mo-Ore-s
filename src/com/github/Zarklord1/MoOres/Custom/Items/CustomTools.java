@@ -3,13 +3,11 @@ package com.github.Zarklord1.MoOres.Custom.Items;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.getspout.spoutapi.block.SpoutBlock;
-import org.getspout.spoutapi.material.Block;
 import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.material.item.GenericCustomTool;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class CustomTools extends GenericCustomTool {
     
@@ -42,31 +40,7 @@ public class CustomTools extends GenericCustomTool {
     	this.poison = poison;
     	this.lightning = lightning;
     	this.speed = speed;
-    	
-    	if (this.isPickaxe()) {
-			for (Block block:BlockLoader.PickaxeSpeedIds) {
-				this.setStrengthModifier(block, strength);
-            }
-    	}
-                
-    	if (Axe) {
-        	for (Block block:BlockLoader.AxeSpeedIds) {
-        		this.setStrengthModifier(block, strength);
-        	}
-    	}
-                
-    	if (Shovel) {
-        	for (Block block:BlockLoader.ShovelSpeedIds) {
-        		this.setStrengthModifier(block, strength);
-        	}
-    	}
-                
-    	if (Sword) {
-        	for (Block block:BlockLoader.SwordSpeedIds) {
-        		this.setStrengthModifier(block, strength);
-        	}
-    	}
-                
+    	//TODO implement block breack speeds and what blocks can be broken per tool
     }
     
     public boolean isPickaxe() {

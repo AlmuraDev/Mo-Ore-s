@@ -12,6 +12,7 @@ import com.github.Zarklord1.MoOres.Config.MoOresConfiguration;
 public class BlockShapeLoader extends GenericBlockDesign {
 	
 	public BlockShapeLoader(MoOresConfiguration config, int amountOfQuads, int textureID/*,Texture texture*/) {
+		//TODO set Bounding Box needs to be configurable
 		//For Individal Block Designs With A Individual Texture
 		Texture texture = MoOres.blocks;//TODO Texture png file needs to be configurable...
         setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F).setQuadNumber(amountOfQuads);
@@ -22,6 +23,7 @@ public class BlockShapeLoader extends GenericBlockDesign {
         		String vertex = stringlist.get(i);
         		String[] individualVertexNum = vertex.split(" ");
         		quad.addVertex(i, Float.valueOf(individualVertexNum[0]), Float.valueOf(individualVertexNum[1]), Float.valueOf(individualVertexNum[2]));
+        		setQuad(quad);
         	}
         }
 	}
