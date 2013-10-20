@@ -1,4 +1,4 @@
-package com.github.Zarklord1.MoOres.Custom.Items;
+package com.github.Zarklord1.MoOres.Custom.Items.Tools;
 
 import org.bukkit.entity.Entity;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
