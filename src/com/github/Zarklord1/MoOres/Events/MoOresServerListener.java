@@ -18,7 +18,7 @@ import org.getspout.spoutapi.inventory.SpoutItemStack;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Custom.Items.CustomArrows;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomArrows;
 
 public class MoOresServerListener implements Listener {
 	public static HashSet<UUID> isMoving = new LinkedHashSet<UUID>();

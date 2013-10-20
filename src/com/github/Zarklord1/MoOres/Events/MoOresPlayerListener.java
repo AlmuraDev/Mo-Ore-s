@@ -28,9 +28,10 @@ import org.getspout.spoutapi.material.MaterialData;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
-import com.github.Zarklord1.MoOres.Custom.Items.CustomArrows;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomFishes;
-import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomArrows;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomBows;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresPlayerListener implements Listener {
@@ -77,7 +78,7 @@ public class MoOresPlayerListener implements Listener {
         	SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
         	//check if the player is running spoutcraft...
         	if (player.isSpoutCraftEnabled()) {
-        		for (CustomTools bow:BlockLoader.customtools) {
+        		for (CustomBows bow:BlockLoader.customtools) {
         			//check if the tool is a bow...
         			if (bow.isBow()) {
         				//check if the player is holding the bow!

@@ -12,11 +12,11 @@ import org.bukkit.entity.Entity;
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Config.Configuration;
 import com.github.Zarklord1.MoOres.Custom.Blocks.CustomBlocks;
-import com.github.Zarklord1.MoOres.Custom.Items.CustomArrows;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomFishes;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomFood;
 import com.github.Zarklord1.MoOres.Custom.Items.CustomItems;
-import com.github.Zarklord1.MoOres.Custom.Items.CustomTools;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomArrows;
+import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
 
 
 public class BlockLoader {
