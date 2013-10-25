@@ -37,34 +37,7 @@ public class MoOresPlayerListener implements Listener {
 
     public MoOresPlayerListener() {}
     
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerLogon(KeyPressedEvent event) {
-    	/*GenericTexture classic = new GenericTexture();
-    	classic.setUrl("https://dl.dropboxusercontent.com/u/77733573/Plugins/MoOres1.6/GUI/ArrowSwitcherClassicHighRes.png");*/
-    	if (event.getKey() == Keyboard.KEY_M) {
-    		int baseY = 150;
-    		int baseX = 0;
-        	PopupScreen gui = new GenericPopup();
-        	GenericTexture modern = new GenericTexture();
-        	modern.setUrl("https://dl.dropboxusercontent.com/u/77733573/Plugins/MoOres1.6/GUI/ArrowSwitcherModernHighRes.png");
-        	//X=0 Y=150 puts it in proper position
-        	modern.setX(baseX).setY(baseY).setWidth(20).setHeight(48).setPriority(RenderPriority.Highest);
-        	GenericItemWidget arrowTop = new GenericItemWidget(new ItemStack(Material.ARROW, 1));
-        	arrowTop.setX(baseX + 5).setY(baseY + 3).setWidth(6).setHeight(6);
-        	GenericItemWidget arrowMiddle = new GenericItemWidget(new ItemStack(Material.ARROW, 1));
-        	arrowMiddle.setX(baseX + 3).setY(baseY + 17).setWidth(8).setHeight(8);
-        	GenericItemWidget arrowBottom = new GenericItemWidget(new ItemStack(Material.ARROW, 1));
-        	arrowBottom.setX(baseX + 5).setY(baseY + 35).setWidth(6).setHeight(6);
-        	gui.attachWidget(MoOres.plugin, modern);
-        	gui.attachWidget(MoOres.plugin, arrowTop);
-        	gui.attachWidget(MoOres.plugin, arrowMiddle);
-        	gui.attachWidget(MoOres.plugin, arrowBottom);
-        	if (event.getPlayer() instanceof SpoutPlayer) {
-        		SpoutPlayer splayer = (SpoutPlayer) event.getPlayer();
-        		splayer.getMainScreen().attachPopupScreen(gui);
-        	}	
-    	}
-    }
+    
     
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerFish(PlayerFishEvent event) {

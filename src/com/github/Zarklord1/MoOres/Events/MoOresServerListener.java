@@ -48,8 +48,9 @@ public class MoOresServerListener implements Listener {
                 						if (id.equals(arrow.getUniqueId())) {
                 							//remove the arrow from the world
                 							arrow.remove();
-                							//add the arroitem to the player's inventory
+                							//add the arrow item to the player's inventory
                 							player.getInventory().addItem(new SpoutItemStack(itemarrow, 1));
+                							//code is still in place and no altenative is available (?)
                 							player.updateInventory();
                 						}
                 					}
