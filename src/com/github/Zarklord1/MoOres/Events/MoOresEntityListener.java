@@ -4,34 +4,23 @@ import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.metadata.MetadataValue;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import com.github.Zarklord1.MoOres.MoOres;
 import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomArrows;
-import com.github.Zarklord1.MoOres.Custom.Items.Tools.CustomTools;
-import com.github.Zarklord1.MoOres.Util.BlockLoader;
 
 public class MoOresEntityListener implements Listener  {
     	public static MoOres plugin;
     
     public MoOresEntityListener() {}
     
-    @EventHandler(priority = EventPriority.LOW)
+    /*@EventHandler(priority = EventPriority.LOW)
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if(event.getCause() == DamageCause.PROJECTILE) {
             Entity entityhit = event.getEntity();
@@ -105,7 +94,7 @@ public class MoOresEntityListener implements Listener  {
                 }
             }                
         }
-    }
+    }*/
     
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onArrowShotFromBow(EntityShootBowEvent event) {

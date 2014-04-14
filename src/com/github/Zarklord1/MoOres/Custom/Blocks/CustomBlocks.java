@@ -13,7 +13,7 @@ import com.github.Zarklord1.MoOres.Util.BlockShapeLoader;
 
 public class CustomBlocks extends GenericCubeCustomBlock {
 	
-	//private boolean done = true;
+	
 	private String blockName;
 	
 	public CustomBlocks(String name, int textureID, int blockId, int metadata) {

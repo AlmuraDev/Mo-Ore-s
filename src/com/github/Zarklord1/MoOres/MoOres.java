@@ -46,7 +46,6 @@ public class MoOres extends JavaPlugin{
         log.info("[Mo Ores] Registering Recipes...");
         RecipeLoader.addAllRecipes(); 
         log.info("[Mo Ores] Registered all Recipes!");
-		        
         log.info("[Mo Ores] Is Enabled!");
     }
 	 

@@ -1,11 +1,18 @@
 package com.github.Zarklord1.MoOres.Custom.Items.Tools;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.bukkit.entity.Entity;
 import org.getspout.spoutapi.material.item.GenericCustomItem;
 
 import com.github.Zarklord1.MoOres.MoOres;
 
 public class CustomArrows extends GenericCustomItem {
+	public static HashMap<String, Set<CustomArrows>> ArrowGenreMap = new LinkedHashMap<String, Set<CustomArrows>>();
+	public Set<CustomArrows> ArrowGenre = new LinkedHashSet<CustomArrows>();
     float speedModifier;
     boolean remove;
     int damage;
@@ -19,6 +26,7 @@ public class CustomArrows extends GenericCustomItem {
     float explosionPower;
     boolean entityArrow;
     Entity entityToSpawn;
+    int numOfEntitysToSpawn;
     
     public CustomArrows(String name, String texture, float speedModifier, boolean remove, int damage, boolean fireArrow, int fireTicks, boolean poisonArrow, int poisonTicks, boolean lightningArrow, int numOfBolts, boolean explosiveArrow, float explosionPower, boolean entityArrow, Entity entityToSpawn) {
         super(MoOres.plugin, name, texture);
