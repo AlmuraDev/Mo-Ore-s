@@ -77,6 +77,7 @@ public class MoOresPlayerListener implements Listener {
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
         	SpoutPlayer player = SpoutManager.getPlayer(event.getPlayer());
         	//check if the player is running spoutcraft...
+        	/*
         	if (player.isSpoutCraftEnabled()) {
         		for (CustomBows bow:BlockLoader.customtools) {
         			//check if the tool is a bow...
@@ -156,8 +157,8 @@ public class MoOresPlayerListener implements Listener {
         					}
         				}
         			}
-        		}
-        	}
+        		} 
+        	} */
         }
     }
     //pickup custom arrows

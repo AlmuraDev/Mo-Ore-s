@@ -81,6 +81,7 @@ public class MoOresEntityListener implements Listener  {
             	for (CustomTools tool:BlockLoader.customtools){
             		if (player.isSpoutCraftEnabled()) {
             			if (player.getItemInHand().getTypeId() == 318 && player.getItemInHand().getDurability() == tool.getCustomId()) {
+            				/*
             				if (tool.isSword()) {
             					event.setDamage(tool.getdamage());
             					if (tool.isFireSword()) {
@@ -98,7 +99,7 @@ public class MoOresEntityListener implements Listener  {
             				} else {
                         		CustomTools.setDurability(player.getItemInHand(), (short) (CustomTools.getDurability(player.getItemInHand()) + 2));
                         		return;
-                        	}
+                        	} */
                     	} 
                     }
                 }

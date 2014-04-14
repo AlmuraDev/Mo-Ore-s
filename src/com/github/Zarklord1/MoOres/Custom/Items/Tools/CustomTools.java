@@ -49,4 +49,8 @@ public class CustomTools extends GenericCustomTool {
     public float getSpeed() {
         return speed;
     }
+	public boolean isBow() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
